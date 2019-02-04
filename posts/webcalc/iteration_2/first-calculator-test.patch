@@ -1,0 +1,32 @@
+Index: build.gradle
+===================================================================
+--- build.gradle
++++ build.gradle
+@@ -32,6 +32,7 @@
+   testImplementation("io.rest-assured:rest-assured")
+   testImplementation("org.junit.jupiter:junit-jupiter-api")
+   testRuntime("org.junit.jupiter:junit-jupiter-engine")
++  testCompile("org.assertj:assertj-core")
+ }
+
+ test {
+Index: src/test/java/com/webcalc/calculator/CalculatorShould.java
+===================================================================
+--- src/test/java/com/webcalc/calculator/CalculatorShould.java
++++ src/test/java/com/webcalc/calculator/CalculatorShould.java
+@@ -0,0 +1,15 @@
++package com.webcalc.calculator;
++
++import org.junit.jupiter.api.Test;
++
++import static org.assertj.core.api.Assertions.assertThat;
++
++class CalculatorShould {
++
++  @Test
++  void sum() {
++    Calculator calculator = new Calculator();
++    String result = calculator.eval("1 2 +");
++    assertThat(result).isEqualTo("3");
++  }
++}

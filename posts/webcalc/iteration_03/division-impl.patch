@@ -1,0 +1,14 @@
+Index: calculator/src/main/java/com/webcalc/calculator/Calculator.java
+===================================================================
+--- calculator/src/main/java/com/webcalc/calculator/Calculator.java
++++ calculator/src/main/java/com/webcalc/calculator/Calculator.java
+@@ -19,6 +19,9 @@
+       case "*":
+         result = v1.multiply(v2);
+         break;
++      case "/":
++        result = v1.divide(v2);
++        break;
+       default:
+         throw new RuntimeException("Unsupported operation: " + tokens[2]);
+     }

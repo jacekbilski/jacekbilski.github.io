@@ -1,0 +1,20 @@
+Index: src/main/java/com/webcalc/calculator/CalculatorController.java
+===================================================================
+--- src/main/java/com/webcalc/calculator/CalculatorController.java
++++ src/main/java/com/webcalc/calculator/CalculatorController.java
+@@ -6,8 +6,14 @@
+ @RestController
+ public class CalculatorController {
+
++  private final Calculator calculator;
++
++  public CalculatorController() {
++    calculator = new Calculator();
++  }
++
+   @PostMapping("/eval")
+   public String calculate() {
+-    return new Calculator().eval("");
++    return calculator.eval("");
+   }
+ }

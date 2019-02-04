@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Junit 5 on On Software Development</title>
+    <link>http://bilski.tech/tags/junit-5/</link>
+    <description>Recent content in Junit 5 on On Software Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bilski.tech/tags/junit-5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WebCalc iteration 3 - formatting and cleanup in calculator module</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
+      <description>Welcome to the third iteration of WebCalc implementation. Previously I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&amp;rsquo;m expecting issues with the division. Once I get these things working, I&amp;rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.
+Multiplication is, indeed, straightforward.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 2 - actual calculations and modules separation</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
+But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 1 - setting up with one test</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
+Goal I want to have a very first and simple test working: adding 1 to 2.</description>
+    </item>
+    
+  </channel>
+</rss>

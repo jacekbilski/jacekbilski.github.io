@@ -1,0 +1,24 @@
+Index: app/build.gradle
+===================================================================
+--- app/build.gradle
++++ app/build.gradle
+@@ -3,7 +3,7 @@
+
+ group = "com.webcalc"
+ version = "0.0.1-SNAPSHOT"
+-sourceCompatibility = 10
++sourceCompatibility = 11
+
+ dependencies {
+   implementation(project(":calculator"))
+Index: calculator/build.gradle
+===================================================================
+--- calculator/build.gradle
++++ calculator/build.gradle
+@@ -1,5 +1,5 @@
+ version = "0.0.1-SNAPSHOT"
+-sourceCompatibility = 10
++sourceCompatibility = 11
+
+ dependencies {
+   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

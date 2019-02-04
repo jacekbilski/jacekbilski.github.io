@@ -1,0 +1,51 @@
+Index: src/main/java/com/webcalc/app/WebCalcApplication.java
+===================================================================
+--- src/main/java/com/webcalc/app/WebCalcApplication.java
++++ src/main/java/com/webcalc/app/WebCalcApplication.java
+@@ -1,7 +1,9 @@
+ package com.webcalc.app;
+
++import com.webcalc.calculator.Calculator;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.ComponentScan;
+
+ @SpringBootApplication
+@@ -11,4 +13,9 @@
+   public static void main(String[] args) {
+     SpringApplication.run(WebCalcApplication.class, args);
+   }
++
++  @Bean
++  public Calculator calculator() {
++    return new Calculator();
++  }
+ }
+Index: src/main/java/com/webcalc/calculator/Calculator.java
+===================================================================
+--- src/main/java/com/webcalc/calculator/Calculator.java
++++ src/main/java/com/webcalc/calculator/Calculator.java
+@@ -1,6 +1,6 @@
+ package com.webcalc.calculator;
+
+-class Calculator {
++public class Calculator {
+
+   String eval(String input) {
+     return "3";
+Index: src/main/java/com/webcalc/calculator/CalculatorController.java
+===================================================================
+--- src/main/java/com/webcalc/calculator/CalculatorController.java
++++ src/main/java/com/webcalc/calculator/CalculatorController.java
+@@ -8,8 +8,8 @@
+
+   private final Calculator calculator;
+
+-  public CalculatorController() {
+-    calculator = new Calculator();
++  public CalculatorController(Calculator calculator) {
++    this.calculator = calculator;
+   }
+
+   @PostMapping("/eval")

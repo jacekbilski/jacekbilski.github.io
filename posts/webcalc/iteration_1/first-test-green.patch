@@ -1,0 +1,13 @@
+Index: src/main/java/com/webcalc/calculator/CalculatorController.java
+===================================================================
+--- src/main/java/com/webcalc/calculator/CalculatorController.java
++++ src/main/java/com/webcalc/calculator/CalculatorController.java
+@@ -7,6 +7,7 @@
+ public class CalculatorController {
+
+   @PostMapping("/eval")
+-  public void calculate() {
++  public String calculate() {
++    return "3";
+   }
+ }

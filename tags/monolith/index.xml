@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monolith on On Software Development</title>
+    <link>http://bilski.tech/tags/monolith/</link>
+    <description>Recent content in Monolith on On Software Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 04 Jul 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bilski.tech/tags/monolith/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Microservices - a solution or a problem?</title>
+      <link>http://bilski.tech/posts/microservices-a-solution-or-a-problem/</link>
+      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/microservices-a-solution-or-a-problem/</guid>
+      <description>Microservices seem to be everywhere, everybody is talking about them, writing and consuming them. For a good reason, they can solve a lot of problems like scaling, high availability, independent developability, etc. But are they really THE solution to our problems? Do we always remember their costs?
+Integration One of the good things about microservices is, that they&amp;rsquo;re simple. Each one should be easy to understand even by a new person joining a team.</description>
+    </item>
+    
+  </channel>
+</rss>

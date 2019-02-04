@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+    
+    
+    
+
+<title>Project WebCalc - motivation and plan • On Software Development</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Project WebCalc - motivation and plan"/>
+<meta name="twitter:description" content="Motivation behind creating a not-so-small example project that shows how to develop a Spring project using TDD."/>
+
+<meta property="og:title" content="Project WebCalc - motivation and plan" />
+<meta property="og:description" content="Motivation behind creating a not-so-small example project that shows how to develop a Spring project using TDD." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bilski.tech/posts/project-webcalc-motivation-and-plan/" />
+<meta property="article:published_time" content="2018-09-04T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-04T00:00:00&#43;00:00"/>
+
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.1d0509a3f35d4e92d82ebb7d552b74317b2a8464fdbdc9870f522e786bdc5dcf.css" integrity="sha256-HQUJo/NdTpLYLrt9VSt0MXsqhGT9vcmHD1IueGvcXc8=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="http://bilski.tech/">On Software Development</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="http://bilski.tech//img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Development</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>Project WebCalc - motivation and plan</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Sep 4, 2018
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/clean-code">clean code</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/craftsmanship">craftsmanship</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/programming">programming</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/software-development">software development</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/spring">spring</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/tdd">tdd</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/tests">tests</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 7 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+<p>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&rsquo;ll do almost the opposite, I&rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&rsquo;ll not be discussing them, just applying.</p>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>There are many reasons I want to do this:</p>
+
+<ol>
+<li>I want to really show, that everything I was talking about (plus other things I didn&rsquo;t mention so far) are actually doable. As Linus Torvalds puts it: &ldquo;Talk is cheap, show me the code&rdquo;.</li>
+<li>There are multiple technologies, that I never had a chance to actually try out like Java above 8 including modules, JUnit 5, Spring 5 with reactive web stack and HTTP/2 or Kafka.</li>
+<li>I&rsquo;ve known theoretically both <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank">hexagonal architecture</a> and <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank">domain driven design</a> and I&rsquo;d like to apply them somewhere.</li>
+<li>I&rsquo;d like to find out if things, that I was doing so far in a specific way, could be done better with design patterns. I have no clue if I&rsquo;ll find such functionalities, but I&rsquo;ll try to keep my eyes open.</li>
+<li>When working with Spring applications, it&rsquo;s very easy to let Spring go too deep into the application itself. I think I know what Uncle Bob means when he talks about &ldquo;the main partition&rdquo;, but I want to finally write an app this way to prove, that it&rsquo;s actually possible. Also, my wife is now struggling with testing of a legacy application that&rsquo;s using Spring Security, so I also want to find out how to test such applications properly.</li>
+<li>Whenever I&rsquo;m looking for some examples of how to use something, they&rsquo;re very simple, covering only the basics, and, quite often, providing very little value, especially when I&rsquo;m struggling with putting together two different technologies. So I thought I&rsquo;ll create a sample project putting together a few things, show how they work together (or against each other) in a much bigger and comprehensive &ldquo;example&rdquo;. I will also be &ldquo;recording&rdquo; changes to the code in git so you can follow the commits to see how the system was evolving.</li>
+<li>I&rsquo;ve seen video series from Robert C. Martin and Sandro Mancuso <a href="https://cleancoders.com/videos/comparativeDesign" target="_blank">&ldquo;London vs. Chicago&rdquo;</a> and, honestly, I see some serious flaws in both their approaches (which they both also acknowledge). London school of TDD (outside-in with a lot of mocking) seems to me like it would, later on, prevent any refactoring, because every interaction between components is mocked and thus fixed. Chicago school of TDD (inside-out) seems to be avoiding this problem, but then the amount of speculation about what might come worries me. By the way, both of them agree to those points and provide ways of mitigating those issues. But, having watched an excellent video from Ian Cooper <a href="https://vimeo.com/68375232" target="_blank">&ldquo;TDD, where did it all go wrong&rdquo;</a>, I&rsquo;d like to see how Kent Beck&rsquo;s style TDD can this be done in practice and if this approach would lead to a different code (and issues most likely).</li>
+</ol>
+
+<h3 id="the-app-itself">The app itself</h3>
+
+<p>As this is actually the least important thing in my endeavour, I&rsquo;ll keep it simple. It will be a calculator with a REST interface. It will support a few basic operations like addition or multiplication, maybe a few standard functions like trigonometry, not much. It will be available to only registered users as a paid service so it will need to have things like authentication, user management and billing. Users might also belong to a bigger organisation like research institute. That would allow us to bill the organisations, not individuals.</p>
+
+<p>And that&rsquo;s it. Hopefully, this will already enable me to show/test/play around with things I mentioned above. If not I&rsquo;ll be either adding new features, or I&rsquo;ll be dropping some ideas. I guess it will depend on time and how much I really want to deal with a particular topic. Hopefully, given big enough audience, you could also try to convince me to add or remove something. I cannot tell anything right now for sure, nor I want to promise anything.</p>
+
+<h3 id="what-s-not-planned">What&rsquo;s not planned</h3>
+
+<p>As mentioned above, the only interface I&rsquo;m planning right now is REST, any other GUI is a far bigger topic for me to include in here. I&rsquo;m mostly a backend developer, just to try to catch up with frontend I would probably be creating a similar project to this one, but focused on Web UI. Maybe I&rsquo;d take this application as a starting point, but that&rsquo;s currently speculation on my side.</p>
+
+<p>Deployment is also outside of scope. The app will be just a standalone JAR, most likely with only an in-memory DB, if necessary. I&rsquo;m not expecting any need for something like Docker, Kubernetes or anything &ldquo;cloudy&rdquo;.</p>
+
+<p>I&rsquo;m not currently planning it, but maybe I&rsquo;ll change my mind later on: operations and monitoring. Though I&rsquo;d like to learn Spring Actuator more, I&rsquo;m not sure this is the right time and place. If I find a good use case for it, I&rsquo;ll not be thinking too long before including it in here though.</p>
+
+<h3 id="high-level-architecture">High-level architecture</h3>
+
+<p>Although TDD should help me get a good architecture of the system, I should have an idea of how it should look like. As mentioned already, I&rsquo;ll be using hexagonal architecture and I expect around 5 modules to appear:</p>
+
+<ul>
+<li>&ldquo;business logic&rdquo; so calculator itself,</li>
+<li>REST interface,</li>
+<li>user management,</li>
+<li>billing,</li>
+<li>app.</li>
+</ul>
+
+<p>The last one might require some explanation. The concept comes from Robert C. Martin, a.k.a. Uncle Bob, and it&rsquo;s described in his &ldquo;Clean Code&rdquo; book. The general idea is, that each other module doesn&rsquo;t know how to actually start, where to get its dependencies, etc. It&rsquo;s the role of &ldquo;main&rdquo; module (or, as Robert calls it, partition) to be able to wire up and start everything. This should be the only place where Spring lives. Each module will also be a Java module so I will be able to enforce some additional restrictions as to code visibility.</p>
+
+<p>Having modules clearly separated from each other, I can apply TDD to each one and test them only through their APIs. I&rsquo;ll treat each module as a separate unit, just like Kent Beck intended. Most of my tests will be going for those module/unit APIs, but I&rsquo;ll also have a few integration tests, starting with a REST call and going through the whole system.</p>
+
+<p>According to DDD (domain driven design) every module might/should have its own data model, so please not be surprised if I find myself having, say, at least two different concepts of users or accounts, one for purpose of authentication/authorisation, one for billing and maybe yet another in calculator module.</p>
+
+<p>There&rsquo;s a bit of speculation above, I don&rsquo;t know how many modules I&rsquo;ll end up with. I also don&rsquo;t know how many domain models I&rsquo;ll have in the end, but most likely it will equal the number of modules. All this I expect to emerge by itself from the code.</p>
+
+<p>One more thing, even though I&rsquo;ll have multiple modules, I will not be creating microservices. I&rsquo;m not too fond of them, because quite often they create much more problems than they actually solve. Plus this project is far too small to get any benefit from such architecture. But, having separate modules I could easily go that way if I needed to.</p>
+
+<h3 id="what-can-you-expect">What can you expect</h3>
+
+<p>I&rsquo;ll try to post regularly. The current plan is, that each post will cover one <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">&ldquo;tomato&rdquo;</a>, so 20 minutes of working with code. I&rsquo;ll show you the code and changes I&rsquo;m introducing. I&rsquo;ll also try to explain my thinking, why am I doing the things I&rsquo;m doing, and why in such a way. Like mentioned before, I&rsquo;ll not be going too deep into explanations, just referring to a concept.</p>
+
+<p>You can also follow the <a href="https://github.com/jacekbilski/WebCalc" target="_blank">code on GitHub</a>, where I&rsquo;ll be pushing all the changes in small chunks.</p>
+
+<p>So far I&rsquo;m not planning any videos or screencasts, but if need be, I&rsquo;ll think about them.</p>
+
+<h3 id="without-further-ado">Without further ado&hellip;</h3>
+
+<p>That&rsquo;s about it for an introduction. In <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/" target="_blank">next part</a> I&rsquo;ll get my hands dirty by starting actual implementation. Hope to see you there!</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/understanding-decomposed/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Understanding decomposed</span>
+    </a>
+    
+    
+    <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/" class="navigation-next">
+      <span class="navigation-tittle">WebCalc iteration 1 - setting up with one test</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

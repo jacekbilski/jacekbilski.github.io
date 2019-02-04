@@ -1,0 +1,34 @@
+Index: calculator/src/main/java/com/webcalc/calculator/Calculator.java
+===================================================================
+--- calculator/src/main/java/com/webcalc/calculator/Calculator.java
++++ calculator/src/main/java/com/webcalc/calculator/Calculator.java
+@@ -1,6 +1,7 @@
+ package com.webcalc.calculator;
+
+ import java.math.BigDecimal;
++import java.math.RoundingMode;
+ import java.text.NumberFormat;
+ import java.util.Locale;
+
+@@ -8,6 +9,12 @@
+
+   private NumberFormat formatter = NumberFormat.getNumberInstance(Locale.GERMANY);
+
++  private int maxFractionDigits;
++
++  void setMaxFractionDigits(int maxFractionDigits) {
++    this.maxFractionDigits = maxFractionDigits;
++  }
++
+   String eval(String input) {
+     String[] tokens = input.split(" ");
+     BigDecimal v1 = new BigDecimal(tokens[0]);
+@@ -24,7 +31,7 @@
+         result = v1.multiply(v2);
+         break;
+       case "/":
+-        result = v1.divide(v2);
++        result = v1.divide(v2, maxFractionDigits, RoundingMode.HALF_UP);
+         break;
+       default:
+         throw new RuntimeException("Unsupported operation: " + tokens[2]);

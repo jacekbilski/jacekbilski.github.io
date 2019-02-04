@@ -1,0 +1,32 @@
+Index: src/main/java/com/webcalc/app/WebCalcApplication.java
+===================================================================
+--- src/main/java/com/webcalc/app/WebCalcApplication.java
++++ src/main/java/com/webcalc/app/WebCalcApplication.java
+@@ -2,8 +2,10 @@
+
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.annotation.ComponentScan;
+
+ @SpringBootApplication
++@ComponentScan("com.webcalc")
+ public class WebCalcApplication {
+
+   public static void main(String[] args) {
+Index: src/main/java/com/webcalc/calculator/CalculatorController.java
+===================================================================
+--- src/main/java/com/webcalc/calculator/CalculatorController.java
++++ src/main/java/com/webcalc/calculator/CalculatorController.java
+@@ -0,0 +1,12 @@
++package com.webcalc.calculator;
++
++import org.springframework.web.bind.annotation.PostMapping;
++import org.springframework.web.bind.annotation.RestController;
++
++@RestController
++public class CalculatorController {
++
++  @PostMapping("/eval")
++  public void calculate() {
++  }
++}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Myfaces on On Software Development</title>
+    <link>http://bilski.tech/tags/myfaces/</link>
+    <description>Recent content in Myfaces on On Software Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 23 Jul 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bilski.tech/tags/myfaces/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>More on MyFaces and ContentType</title>
+      <link>http://bilski.tech/posts/more-on-myfaces-and-contenttype/</link>
+      <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/more-on-myfaces-and-contenttype/</guid>
+      <description>I&amp;rsquo;ve dug some more, debugged some more and know a little more. The whole problem with Apache MyFaces and ContentType comes from the awful idea that there is more than one moment, when, for a single request, resulting ContentType is evaluated.
+MyFaces looks at Accept HTTP header, which, in my case, states text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8. MyFaces goes through that list and picks first entry which it understands, in my case that&amp;rsquo;s text/html. It doesn&amp;rsquo;t really matter, that next entry application/xhtml+xml is what I would really want, &amp;ldquo;text/html&amp;rdquo; was first.</description>
+    </item>
+    
+    <item>
+      <title>Including JavaScript in HTML content</title>
+      <link>http://bilski.tech/posts/including-javascript-in-html-content/</link>
+      <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/including-javascript-in-html-content/</guid>
+      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&amp;rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &amp;ldquo;oamSubmitForm is not defined&amp;rdquo; after clicking a commandLink.</description>
+    </item>
+    
+    <item>
+      <title>Autowiring EJB 3.0 in Tomcat from remote JBoss</title>
+      <link>http://bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</guid>
+      <description>To be honest I&amp;rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&amp;rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean.</description>
+    </item>
+    
+  </channel>
+</rss>

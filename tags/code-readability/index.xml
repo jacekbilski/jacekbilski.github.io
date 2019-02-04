@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Readability on On Software Development</title>
+    <link>http://bilski.tech/tags/code-readability/</link>
+    <description>Recent content in Code Readability on On Software Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 22 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bilski.tech/tags/code-readability/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Understanding decomposed</title>
+      <link>http://bilski.tech/posts/understanding-decomposed/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/understanding-decomposed/</guid>
+      <description>I previously wrote about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.
+Despite what people might think, our main purpose as developers is not writing software, but solving problems. A code is just a means, not the goal. Nobody demands software just for the sake of it from a developer.</description>
+    </item>
+    
+    <item>
+      <title>Supporting understanding with simplicity</title>
+      <link>http://bilski.tech/posts/supporting-understanding-with-simplicity/</link>
+      <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
+      <description>Some time ago, my colleague Joy Clark wrote about simplicity. I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
+What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</description>
+    </item>
+    
+  </channel>
+</rss>

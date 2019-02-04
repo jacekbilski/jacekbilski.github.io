@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>On Software Development</title>
+    <link>http://bilski.tech/</link>
+    <description>Recent content on On Software Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://bilski.tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About me</title>
+      <link>http://bilski.tech/about/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/about/</guid>
+      <description>I&amp;rsquo;m a software engineer trying to find the sweet spot between providing business value to my customers and technical excellence enabling me to work fast.
+For those interested, here&amp;rsquo;s my CV.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 5 - more complex calculations</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</link>
+      <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</guid>
+      <description>Welcome everyone to the fifth iteration of WebCalc. Previously I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&amp;rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like 1+2+3. To IDE then!
+But first, let&amp;rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call gradle wrapper --gradle-version=5.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 4 - fixes only</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-4-fixes-only/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-4-fixes-only/</guid>
+      <description>Welcome to the fourth iteration of WebCalc implementation. Previously I added multiplication and division as operations supported by my WebCalc. Especially the latter one forced me to add and change a few things in the code. By doing so I think I&amp;rsquo;ve made a mistake, that I&amp;rsquo;ll fix now.
+The problem was to make Calculator stateful, it now remembers maxFractionDigits. If one user would set maxFractionDigits, all others would see that changed too.</description>
+    </item>
+    
+    <item>
+      <title>Testing is storytelling</title>
+      <link>http://bilski.tech/posts/testing-is-storytelling/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/testing-is-storytelling/</guid>
+      <description>While working with a customer, I recently saw a test, that looked like this: throw a big XML (&amp;gt;10kB) at a function, get another XML of similar size back and compare it with a pre-recorded one. The test is green if they&amp;rsquo;re equal. I guess, at the very minimum, it serves a purpose of detecting issues. The problem is that it cannot do much more.
+What such a test is not providing are hints as to what the problem is when it fails.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 3 - formatting and cleanup in calculator module</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
+      <description>Welcome to the third iteration of WebCalc implementation. Previously I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&amp;rsquo;m expecting issues with the division. Once I get these things working, I&amp;rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.
+Multiplication is, indeed, straightforward.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 2 - actual calculations and modules separation</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
+But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
+    </item>
+    
+    <item>
+      <title>WebCalc iteration 1 - setting up with one test</title>
+      <link>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
+Goal I want to have a very first and simple test working: adding 1 to 2.</description>
+    </item>
+    
+    <item>
+      <title>Project WebCalc - motivation and plan</title>
+      <link>http://bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
+      <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
+      <description>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&amp;rsquo;ll do almost the opposite, I&amp;rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&amp;rsquo;ll not be discussing them, just applying.
+Motivation There are many reasons I want to do this:</description>
+    </item>
+    
+    <item>
+      <title>Understanding decomposed</title>
+      <link>http://bilski.tech/posts/understanding-decomposed/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/understanding-decomposed/</guid>
+      <description>I previously wrote about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.
+Despite what people might think, our main purpose as developers is not writing software, but solving problems. A code is just a means, not the goal. Nobody demands software just for the sake of it from a developer.</description>
+    </item>
+    
+    <item>
+      <title>Supporting understanding with simplicity</title>
+      <link>http://bilski.tech/posts/supporting-understanding-with-simplicity/</link>
+      <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
+      <description>Some time ago, my colleague Joy Clark wrote about simplicity. I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
+What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</description>
+    </item>
+    
+    <item>
+      <title>What do I believe in</title>
+      <link>http://bilski.tech/posts/what-do-i-believe-in/</link>
+      <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/what-do-i-believe-in/</guid>
+      <description>Below are my guiding principles, that are the basis of what, how and why am I doing with regards to software development.
+Long term development speed First and foremost I understand my main responsibility as delivering value as fast as possible in the long term. By delivering value I mean adding, changing or removing features, that &amp;ldquo;business&amp;rdquo; requested, but also things like:
+ improving processes around me, both technical, like application deployment, and business, like simplifying stock management, proposing and introducing new techniques and technologies whenever I feel that they will improve things, sharing knowledge within and outside of the team (blog, mentoring, pair/crowd programming, etc.</description>
+    </item>
+    
+    <item>
+      <title>Code quality as a winning factor</title>
+      <link>http://bilski.tech/posts/code-quality-as-a-winning-factor/</link>
+      <pubDate>Fri, 21 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/code-quality-as-a-winning-factor/</guid>
+      <description>Software development seems to me like the only discipline where practitioners can get away with producing crap. If you&amp;rsquo;re a doctor and you screw up surgery or treatment, in the worst case you will kill your patient, in the best you will not make his/her situation worse. If you&amp;rsquo;re a bridge builder and you&amp;rsquo;ll make a mistake during construction, in the worst case the bridge will collapse killing people, in the best case, the bridge will be usable only after adding some additional support to it.</description>
+    </item>
+    
+    <item>
+      <title>Writing good test scenarios</title>
+      <link>http://bilski.tech/posts/writing-good-test-scenarios/</link>
+      <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/writing-good-test-scenarios/</guid>
+      <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo;. Now it&amp;rsquo;s time to continue.
+Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &amp;ldquo;avoid unnecessary information&amp;rdquo;, &amp;ldquo;don&amp;rsquo;t include implementation details&amp;rdquo; or &amp;ldquo;don&amp;rsquo;t repeat yourself in different scenarios&amp;rdquo;. This time I&amp;rsquo;d like to dig deeper and present results of discussions we had in the team.</description>
+    </item>
+    
+    <item>
+      <title>Microservices - a solution or a problem?</title>
+      <link>http://bilski.tech/posts/microservices-a-solution-or-a-problem/</link>
+      <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/microservices-a-solution-or-a-problem/</guid>
+      <description>Microservices seem to be everywhere, everybody is talking about them, writing and consuming them. For a good reason, they can solve a lot of problems like scaling, high availability, independent developability, etc. But are they really THE solution to our problems? Do we always remember their costs?
+Integration One of the good things about microservices is, that they&amp;rsquo;re simple. Each one should be easy to understand even by a new person joining a team.</description>
+    </item>
+    
+    <item>
+      <title>More on MyFaces and ContentType</title>
+      <link>http://bilski.tech/posts/more-on-myfaces-and-contenttype/</link>
+      <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/more-on-myfaces-and-contenttype/</guid>
+      <description>I&amp;rsquo;ve dug some more, debugged some more and know a little more. The whole problem with Apache MyFaces and ContentType comes from the awful idea that there is more than one moment, when, for a single request, resulting ContentType is evaluated.
+MyFaces looks at Accept HTTP header, which, in my case, states text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8. MyFaces goes through that list and picks first entry which it understands, in my case that&amp;rsquo;s text/html. It doesn&amp;rsquo;t really matter, that next entry application/xhtml+xml is what I would really want, &amp;ldquo;text/html&amp;rdquo; was first.</description>
+    </item>
+    
+    <item>
+      <title>Including JavaScript in HTML content</title>
+      <link>http://bilski.tech/posts/including-javascript-in-html-content/</link>
+      <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/including-javascript-in-html-content/</guid>
+      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&amp;rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &amp;ldquo;oamSubmitForm is not defined&amp;rdquo; after clicking a commandLink.</description>
+    </item>
+    
+    <item>
+      <title>Autowiring EJB 3.0 in Tomcat from remote JBoss</title>
+      <link>http://bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</guid>
+      <description>To be honest I&amp;rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&amp;rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean.</description>
+    </item>
+    
+  </channel>
+</rss>
