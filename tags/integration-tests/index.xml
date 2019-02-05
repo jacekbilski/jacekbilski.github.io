@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Integration Tests on On Software Development</title>
-    <link>http://bilski.tech/tags/integration-tests/</link>
+    <link>https://bilski.tech/tags/integration-tests/</link>
     <description>Recent content in Integration Tests on On Software Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bilski.tech/tags/integration-tests/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bilski.tech/tags/integration-tests/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>WebCalc iteration 1 - setting up with one test</title>
-      <link>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <link>https://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <guid>https://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
       <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
 Goal I want to have a very first and simple test working: adding 1 to 2.</description>
     </item>

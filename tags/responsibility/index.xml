@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Responsibility on On Software Development</title>
-    <link>http://bilski.tech/tags/responsibility/</link>
+    <link>https://bilski.tech/tags/responsibility/</link>
     <description>Recent content in Responsibility on On Software Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Fri, 21 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bilski.tech/tags/responsibility/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bilski.tech/tags/responsibility/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Code quality as a winning factor</title>
-      <link>http://bilski.tech/posts/code-quality-as-a-winning-factor/</link>
+      <link>https://bilski.tech/posts/code-quality-as-a-winning-factor/</link>
       <pubDate>Fri, 21 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/code-quality-as-a-winning-factor/</guid>
+      <guid>https://bilski.tech/posts/code-quality-as-a-winning-factor/</guid>
       <description>Software development seems to me like the only discipline where practitioners can get away with producing crap. If you&amp;rsquo;re a doctor and you screw up surgery or treatment, in the worst case you will kill your patient, in the best you will not make his/her situation worse. If you&amp;rsquo;re a bridge builder and you&amp;rsquo;ll make a mistake during construction, in the worst case the bridge will collapse killing people, in the best case, the bridge will be usable only after adding some additional support to it.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Features on On Software Development</title>
-    <link>http://bilski.tech/tags/features/</link>
+    <link>https://bilski.tech/tags/features/</link>
     <description>Recent content in Features on On Software Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Tue, 16 Aug 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bilski.tech/tags/features/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bilski.tech/tags/features/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Writing good test scenarios</title>
-      <link>http://bilski.tech/posts/writing-good-test-scenarios/</link>
+      <link>https://bilski.tech/posts/writing-good-test-scenarios/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/writing-good-test-scenarios/</guid>
+      <guid>https://bilski.tech/posts/writing-good-test-scenarios/</guid>
       <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo;. Now it&amp;rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &amp;ldquo;avoid unnecessary information&amp;rdquo;, &amp;ldquo;don&amp;rsquo;t include implementation details&amp;rdquo; or &amp;ldquo;don&amp;rsquo;t repeat yourself in different scenarios&amp;rdquo;. This time I&amp;rsquo;d like to dig deeper and present results of discussions we had in the team.</description>
     </item>

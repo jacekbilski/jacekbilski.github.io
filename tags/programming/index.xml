@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on On Software Development</title>
-    <link>http://bilski.tech/tags/programming/</link>
+    <link>https://bilski.tech/tags/programming/</link>
     <description>Recent content in Programming on On Software Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bilski.tech/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bilski.tech/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Testing is storytelling</title>
-      <link>http://bilski.tech/posts/testing-is-storytelling/</link>
+      <link>https://bilski.tech/posts/testing-is-storytelling/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/testing-is-storytelling/</guid>
+      <guid>https://bilski.tech/posts/testing-is-storytelling/</guid>
       <description>While working with a customer, I recently saw a test, that looked like this: throw a big XML (&amp;gt;10kB) at a function, get another XML of similar size back and compare it with a pre-recorded one. The test is green if they&amp;rsquo;re equal. I guess, at the very minimum, it serves a purpose of detecting issues. The problem is that it cannot do much more.
 What such a test is not providing are hints as to what the problem is when it fails.</description>
     </item>
     
     <item>
       <title>Project WebCalc - motivation and plan</title>
-      <link>http://bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
+      <link>https://bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
+      <guid>https://bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
       <description>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&amp;rsquo;ll do almost the opposite, I&amp;rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&amp;rsquo;ll not be discussing them, just applying.
 Motivation There are many reasons I want to do this:</description>
     </item>
     
     <item>
       <title>Understanding decomposed</title>
-      <link>http://bilski.tech/posts/understanding-decomposed/</link>
+      <link>https://bilski.tech/posts/understanding-decomposed/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/understanding-decomposed/</guid>
+      <guid>https://bilski.tech/posts/understanding-decomposed/</guid>
       <description>I previously wrote about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.
 Despite what people might think, our main purpose as developers is not writing software, but solving problems. A code is just a means, not the goal. Nobody demands software just for the sake of it from a developer.</description>
     </item>
     
     <item>
       <title>Supporting understanding with simplicity</title>
-      <link>http://bilski.tech/posts/supporting-understanding-with-simplicity/</link>
+      <link>https://bilski.tech/posts/supporting-understanding-with-simplicity/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
+      <guid>https://bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
       <description>Some time ago, my colleague Joy Clark wrote about simplicity. I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
 What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</description>
     </item>

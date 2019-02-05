@@ -2,318 +2,318 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on On Software Development</title>
-    <link>http://bilski.tech/tags/</link>
+    <link>https://bilski.tech/tags/</link>
     <description>Recent content in Tags on On Software Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Tue, 16 Aug 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bdd</title>
-      <link>http://bilski.tech/tags/bdd/</link>
+      <link>https://bilski.tech/tags/bdd/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/bdd/</guid>
+      <guid>https://bilski.tech/tags/bdd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Clean Architecture</title>
-      <link>http://bilski.tech/tags/clean-architecture/</link>
+      <link>https://bilski.tech/tags/clean-architecture/</link>
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/clean-architecture/</guid>
+      <guid>https://bilski.tech/tags/clean-architecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Clean Code</title>
-      <link>http://bilski.tech/tags/clean-code/</link>
+      <link>https://bilski.tech/tags/clean-code/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/clean-code/</guid>
+      <guid>https://bilski.tech/tags/clean-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code Quality</title>
-      <link>http://bilski.tech/tags/code-quality/</link>
+      <link>https://bilski.tech/tags/code-quality/</link>
       <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/code-quality/</guid>
+      <guid>https://bilski.tech/tags/code-quality/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code Readability</title>
-      <link>http://bilski.tech/tags/code-readability/</link>
+      <link>https://bilski.tech/tags/code-readability/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/code-readability/</guid>
+      <guid>https://bilski.tech/tags/code-readability/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Complexity</title>
-      <link>http://bilski.tech/tags/complexity/</link>
+      <link>https://bilski.tech/tags/complexity/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/complexity/</guid>
+      <guid>https://bilski.tech/tags/complexity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Craftsmanship</title>
-      <link>http://bilski.tech/tags/craftsmanship/</link>
+      <link>https://bilski.tech/tags/craftsmanship/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/craftsmanship/</guid>
+      <guid>https://bilski.tech/tags/craftsmanship/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cucumber</title>
-      <link>http://bilski.tech/tags/cucumber/</link>
+      <link>https://bilski.tech/tags/cucumber/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/cucumber/</guid>
+      <guid>https://bilski.tech/tags/cucumber/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fast Development</title>
-      <link>http://bilski.tech/tags/fast-development/</link>
+      <link>https://bilski.tech/tags/fast-development/</link>
       <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/fast-development/</guid>
+      <guid>https://bilski.tech/tags/fast-development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Features</title>
-      <link>http://bilski.tech/tags/features/</link>
+      <link>https://bilski.tech/tags/features/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/features/</guid>
+      <guid>https://bilski.tech/tags/features/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gradle</title>
-      <link>http://bilski.tech/tags/gradle/</link>
+      <link>https://bilski.tech/tags/gradle/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/gradle/</guid>
+      <guid>https://bilski.tech/tags/gradle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Integration Tests</title>
-      <link>http://bilski.tech/tags/integration-tests/</link>
+      <link>https://bilski.tech/tags/integration-tests/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/integration-tests/</guid>
+      <guid>https://bilski.tech/tags/integration-tests/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://bilski.tech/tags/javascript/</link>
+      <link>https://bilski.tech/tags/javascript/</link>
       <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/javascript/</guid>
+      <guid>https://bilski.tech/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jsp</title>
-      <link>http://bilski.tech/tags/jsp/</link>
+      <link>https://bilski.tech/tags/jsp/</link>
       <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/jsp/</guid>
+      <guid>https://bilski.tech/tags/jsp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Junit 5</title>
-      <link>http://bilski.tech/tags/junit-5/</link>
+      <link>https://bilski.tech/tags/junit-5/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/junit-5/</guid>
+      <guid>https://bilski.tech/tags/junit-5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microservices</title>
-      <link>http://bilski.tech/tags/microservices/</link>
+      <link>https://bilski.tech/tags/microservices/</link>
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/microservices/</guid>
+      <guid>https://bilski.tech/tags/microservices/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monolith</title>
-      <link>http://bilski.tech/tags/monolith/</link>
+      <link>https://bilski.tech/tags/monolith/</link>
       <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/monolith/</guid>
+      <guid>https://bilski.tech/tags/monolith/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Myfaces</title>
-      <link>http://bilski.tech/tags/myfaces/</link>
+      <link>https://bilski.tech/tags/myfaces/</link>
       <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/myfaces/</guid>
+      <guid>https://bilski.tech/tags/myfaces/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Obvious Implementation</title>
-      <link>http://bilski.tech/tags/obvious-implementation/</link>
+      <link>https://bilski.tech/tags/obvious-implementation/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/obvious-implementation/</guid>
+      <guid>https://bilski.tech/tags/obvious-implementation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>http://bilski.tech/tags/programming/</link>
+      <link>https://bilski.tech/tags/programming/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/programming/</guid>
+      <guid>https://bilski.tech/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Responsibility</title>
-      <link>http://bilski.tech/tags/responsibility/</link>
+      <link>https://bilski.tech/tags/responsibility/</link>
       <pubDate>Fri, 21 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/responsibility/</guid>
+      <guid>https://bilski.tech/tags/responsibility/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Simplicity</title>
-      <link>http://bilski.tech/tags/simplicity/</link>
+      <link>https://bilski.tech/tags/simplicity/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/simplicity/</guid>
+      <guid>https://bilski.tech/tags/simplicity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Software Craftsman</title>
-      <link>http://bilski.tech/tags/software-craftsman/</link>
+      <link>https://bilski.tech/tags/software-craftsman/</link>
       <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/software-craftsman/</guid>
+      <guid>https://bilski.tech/tags/software-craftsman/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Software Development</title>
-      <link>http://bilski.tech/tags/software-development/</link>
+      <link>https://bilski.tech/tags/software-development/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/software-development/</guid>
+      <guid>https://bilski.tech/tags/software-development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Software Engineer</title>
-      <link>http://bilski.tech/tags/software-engineer/</link>
+      <link>https://bilski.tech/tags/software-engineer/</link>
       <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/software-engineer/</guid>
+      <guid>https://bilski.tech/tags/software-engineer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spring</title>
-      <link>http://bilski.tech/tags/spring/</link>
+      <link>https://bilski.tech/tags/spring/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/spring/</guid>
+      <guid>https://bilski.tech/tags/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spring Boot</title>
-      <link>http://bilski.tech/tags/spring-boot/</link>
+      <link>https://bilski.tech/tags/spring-boot/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/spring-boot/</guid>
+      <guid>https://bilski.tech/tags/spring-boot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tdd</title>
-      <link>http://bilski.tech/tags/tdd/</link>
+      <link>https://bilski.tech/tags/tdd/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/tdd/</guid>
+      <guid>https://bilski.tech/tags/tdd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test Cases</title>
-      <link>http://bilski.tech/tags/test-cases/</link>
+      <link>https://bilski.tech/tags/test-cases/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/test-cases/</guid>
+      <guid>https://bilski.tech/tags/test-cases/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test Scenarios</title>
-      <link>http://bilski.tech/tags/test-scenarios/</link>
+      <link>https://bilski.tech/tags/test-scenarios/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/test-scenarios/</guid>
+      <guid>https://bilski.tech/tags/test-scenarios/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Testing</title>
-      <link>http://bilski.tech/tags/testing/</link>
+      <link>https://bilski.tech/tags/testing/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/testing/</guid>
+      <guid>https://bilski.tech/tags/testing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tests</title>
-      <link>http://bilski.tech/tags/tests/</link>
+      <link>https://bilski.tech/tags/tests/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/tests/</guid>
+      <guid>https://bilski.tech/tags/tests/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Understanding</title>
-      <link>http://bilski.tech/tags/understanding/</link>
+      <link>https://bilski.tech/tags/understanding/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/understanding/</guid>
+      <guid>https://bilski.tech/tags/understanding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xml</title>
-      <link>http://bilski.tech/tags/xml/</link>
+      <link>https://bilski.tech/tags/xml/</link>
       <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>http://bilski.tech/tags/xml/</guid>
+      <guid>https://bilski.tech/tags/xml/</guid>
       <description></description>
     </item>
     
