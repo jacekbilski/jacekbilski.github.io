@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tdd on On Software Development</title>
-    <link>https://bilski.tech/tags/tdd/</link>
-    <description>Recent content in Tdd on On Software Development</description>
+    <title>Tdd on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/tdd/</link>
+    <description>Recent content in Tdd on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Fri, 02 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://bilski.tech/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.bilski.tech/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>WebCalc iteration 4 - fixes only</title>
-      <link>https://bilski.tech/posts/webcalc-iteration-4-fixes-only/</link>
+      <link>https://www.bilski.tech/posts/webcalc-iteration-4-fixes-only/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/posts/webcalc-iteration-4-fixes-only/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc-iteration-4-fixes-only/</guid>
       <description>Welcome to the fourth iteration of WebCalc implementation. Previously I added multiplication and division as operations supported by my WebCalc. Especially the latter one forced me to add and change a few things in the code. By doing so I think I&amp;rsquo;ve made a mistake, that I&amp;rsquo;ll fix now.
 The problem was to make Calculator stateful, it now remembers maxFractionDigits. If one user would set maxFractionDigits, all others would see that changed too.</description>
     </item>
     
     <item>
       <title>WebCalc iteration 3 - formatting and cleanup in calculator module</title>
-      <link>https://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
+      <link>https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
       <description>Welcome to the third iteration of WebCalc implementation. Previously I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&amp;rsquo;m expecting issues with the division. Once I get these things working, I&amp;rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.
 Multiplication is, indeed, straightforward.</description>
     </item>
     
     <item>
       <title>WebCalc iteration 2 - actual calculations and modules separation</title>
-      <link>https://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
       <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
 But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
     </item>
     
     <item>
       <title>WebCalc iteration 1 - setting up with one test</title>
-      <link>https://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <link>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
       <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
 Goal I want to have a very first and simple test working: adding 1 to 2.</description>
     </item>
     
     <item>
       <title>Project WebCalc - motivation and plan</title>
-      <link>https://bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
+      <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
+      <guid>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
       <description>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&amp;rsquo;ll do almost the opposite, I&amp;rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&amp;rsquo;ll not be discussing them, just applying.
 Motivation There are many reasons I want to do this:</description>
     </item>

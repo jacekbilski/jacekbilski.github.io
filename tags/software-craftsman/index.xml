@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software Craftsman on On Software Development</title>
-    <link>https://bilski.tech/tags/software-craftsman/</link>
-    <description>Recent content in Software Craftsman on On Software Development</description>
+    <title>Software Craftsman on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/software-craftsman/</link>
+    <description>Recent content in Software Craftsman on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://bilski.tech/tags/software-craftsman/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.bilski.tech/tags/software-craftsman/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About me</title>
-      <link>https://bilski.tech/about/</link>
+      <link>https://www.bilski.tech/about/</link>
       <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bilski.tech/about/</guid>
+      <guid>https://www.bilski.tech/about/</guid>
       <description>I&amp;rsquo;m a software engineer trying to find the sweet spot between providing business value to my customers and technical excellence enabling me to work fast.
 For those interested, here&amp;rsquo;s my CV.</description>
     </item>
