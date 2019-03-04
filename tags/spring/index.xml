@@ -41,5 +41,14 @@ Goal I want to have a very first and simple test working: adding 1 to 2.</descri
 Motivation There are many reasons I want to do this:</description>
     </item>
     
+    <item>
+      <title>Autowiring EJB 3.0 in Tomcat from remote JBoss</title>
+      <link>https://www.bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</guid>
+      <description>To be honest I&amp;rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&amp;rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean.</description>
+    </item>
+    
   </channel>
 </rss>

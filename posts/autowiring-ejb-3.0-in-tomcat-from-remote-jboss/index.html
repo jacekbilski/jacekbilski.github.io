@@ -20,7 +20,7 @@
 
 <title>Autowiring EJB 3.0 in Tomcat from remote JBoss • On Software Engineering</title>
 <meta name="description" content="To be honest I&rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean.">
-<meta name="keywords" content="JavaScript, MyFaces, XML">
+<meta name="keywords" content="dependency injection, EJB3, Spring">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Autowiring EJB 3.0 in Tomcat from remote JBoss"/>
 <meta name="twitter:description" content="To be honest I&rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean."/>
@@ -41,7 +41,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.6b77503110258639e6f1aad73b37ed42e11b7fa20673b556f0f74f0d0f48b6f8.css" integrity="sha256-a3dQMRAlhjnm8arXOzftQuEbf6IGc7VW8PdPDQ9Itvg=">
+<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -69,7 +69,7 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="https://www.bilski.tech">On Software Engineering</a>
+        <a href="https://www.bilski.tech/">On Software Engineering</a>
       </span>
       
         
@@ -172,13 +172,13 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
           <br/>
            <i class="fas fa-tags"></i>
           
-          <a class="badge badge-tag" href="/tags/javascript">javascript</a>
+          <a class="badge badge-tag" href="/tags/dependency-injection">dependency injection</a>
            
       
-          <a class="badge badge-tag" href="/tags/myfaces">myfaces</a>
+          <a class="badge badge-tag" href="/tags/ejb3">ejb3</a>
            
       
-          <a class="badge badge-tag" href="/tags/xml">xml</a>
+          <a class="badge badge-tag" href="/tags/spring">spring</a>
           
       
     
@@ -234,20 +234,18 @@ private SessionService sessionService;
   </div>
   
 
-<div class="navigation navigation-single">
-    
-    
-    <a href="/posts/including-javascript-in-html-content/" class="navigation-next">
-      <span class="navigation-tittle">Including JavaScript in HTML content</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
 
   
 
   
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
     
 
 
