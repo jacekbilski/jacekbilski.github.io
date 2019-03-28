@@ -6,10 +6,19 @@
     <description>Recent content in Posts on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.bilski.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WebCalc iteration 6 - introducing users</title>
+      <link>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</guid>
+      <description>Welcome to the 6th iteration of WebCalc. Previously I was dealing mostly with adding some more complex calculations. Like I mentioned there already, I think that I have already enough business logic to start moving into other areas like billing or user management. I also said that I&amp;rsquo;d be going into the unknown. Up until now, I had a rough idea of how to do things, now I don&amp;rsquo;t, I&amp;rsquo;ll be exploring a lot.</description>
+    </item>
     
     <item>
       <title>WebCalc iteration 5 - more complex calculations</title>
