@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</loc>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</loc>
     <lastmod>2019-03-28T00:00:00+00:00</lastmod>
   </url>
@@ -195,7 +200,7 @@
   
   <url>
     <loc>https://www.bilski.tech/tags/junit-5/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -225,13 +230,13 @@
   
   <url>
     <loc>https://www.bilski.tech/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/posts/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -291,7 +296,7 @@
   
   <url>
     <loc>https://www.bilski.tech/tags/tdd/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -309,13 +314,13 @@
   
   <url>
     <loc>https://www.bilski.tech/tags/testing/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/tags/tests/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
