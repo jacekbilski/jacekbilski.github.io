@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.5" />
 
     
     
@@ -57,7 +57,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.png">
     
-
     
 <link href='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.css' rel='stylesheet' type='text/css'/>
 <style type='text/css'>
@@ -145,6 +144,8 @@
 	
 	
 	
+	
+	
 	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
 	
 	
@@ -172,7 +173,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
         <div class="content container">
             
-    <article>
+    
+<article>
   <header>
     <h1>WebCalc iteration 7 - billing</h1>
     
@@ -345,7 +347,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <p>As for now I only support 4 operations, calculating a balance is complete. Those two switch statements I was talking about previously will become a problem once I decide to add more functions. I would then need to remember to change both places, so I&rsquo;m making now a mental note to myself to go there some other time and see if I can somehow make it more robust. <code>Calculator</code> will complain about not knowing the operation I want to have evaluated, but billing will just ignore it an not charge anything, I certainly don&rsquo;t want to do that!</p>
 
-<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic next time after I extract the billing module from <code>app</code>. See you there!</p>
+<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/" target="_blank">next time</a> after I extract the billing module from <code>app</code>. See you there!</p>
 
   </div>
   
@@ -371,6 +373,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         </div>
         
     
+
 <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 
 
