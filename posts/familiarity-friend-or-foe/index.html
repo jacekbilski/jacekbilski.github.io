@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+<meta name="generator" content="Hugo 0.58.3" />
+
+    
+    
+    
+
+<title>Familiarity - friend or foe • On Software Engineering</title>
+<meta name="description" content="Familiarity has two sides. On one, it is quite beneficial, you know the ways, the tools, the pitfalls and it all enables you to work fast. But at the same time, it can make you blind to mistakes you&#39;re doing or violations of processes or good practices.">
+<meta name="keywords" content="familiarity, simplicity">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Familiarity - friend or foe"/>
+<meta name="twitter:description" content="Familiarity has two sides. On one, it is quite beneficial, you know the ways, the tools, the pitfalls and it all enables you to work fast. But at the same time, it can make you blind to mistakes you&#39;re doing or violations of processes or good practices."/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Familiarity - friend or foe" />
+<meta property="og:description" content="Familiarity has two sides. On one, it is quite beneficial, you know the ways, the tools, the pitfalls and it all enables you to work fast. But at the same time, it can make you blind to mistakes you&#39;re doing or violations of processes or good practices." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/familiarity-friend-or-foe/" />
+<meta property="article:published_time" content="2019-10-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-08T00:00:00+00:00" />
+
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">On Software Engineering</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Familiarity - friend or foe</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Oct 8, 2019<br/>
+    
+    <i class="fas fa-user-edit"></i> Jacek Bilski
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/familiarity">familiarity</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/simplicity">simplicity</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 7 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+<p>Familiarity seems like a good thing, you know the thing, how to deal with it, what to expect and where problems might be hiding.
+But more and more I see its dark side.</p>
+
+<p>Some time ago I was working on a legacy system.
+It was very complex and fragile, most developers didn&rsquo;t want to have anything to do with it.
+We knew the time would come when we would need to touch the core of this monster, so we wrote some tests and started slowly cleaning it up.
+But still, test and release process was quite complex, even if partially scripted.
+Long story short, each release was taking a lot of manual work.
+As in the end, I became the sole maintainer of the app, I was following the process quite often and luckily avoided any major mistakes.
+It took some time, but I got used to it.
+Only when someone joining the team asked why I was doing all this manually despite having Jenkins around, I realized that this &ldquo;getting used to&rdquo; went too far.
+My familiarity with the process was so big, that I didn&rsquo;t see it as a problem anymore, it disappeared from before my very own eyes.
+The process was working, so I stopped thinking about it.</p>
+
+<p>Recently, I saw another situation where familiarity had led to problems.
+I was part of a team, that started developing a product, but some time later I was assigned to another project.
+However, from time to time I got some pull requests to review.
+One time I got another one: I looked at the code but honestly couldn&rsquo;t understand it.
+Fun fact: I was still on that project when this particularly troublesome class had begun to look like a mess.
+I even went as far as to roughly compare code from my last commit to the project with what I got in this pull request.
+There was certainly more code, but the quality and style were comparable.
+The author of this pull request even told me, that he had already cleaned up things a bit.
+Still, for me, the code was very hard to read and this review took me something between 2 and 3 hours.</p>
+
+<p>In both cases, someone being familiar with the code or build system was, unwillingly, preventing others from easily joining the project and starting to work on it.
+In those examples, I was both a victim and an offender.
+In the first case, I created a problem for others by becoming blind to its existence but also fell victim to it by having to explain the process to others.
+In the second case I was partially responsible for the code quality of the project by having written parts of it but then fell victim to it as it was very hard to understand the code.</p>
+
+<p>Of course, it&rsquo;s not all bad.
+Familiar code or tooling means faster development.
+It&rsquo;s easier for us to do this next thing we need to do because we&rsquo;ve probably done it before a few times.
+If not, then at least we roughly know how to move around and know basic principles, so we can imagine how this problem should be approached.
+Imagine yourself trying to write an application in a language you don&rsquo;t know.
+Now take others that have been using this language day in, day out for years.
+They&rsquo;ll be much faster than you, at least for some time.</p>
+
+<p>One other aspect of it is that we can be tempted to go for already known solutions even if they do not fit.
+I&rsquo;m a Java developer and almost every project I&rsquo;m part of is using Spring or Hibernate.
+By themselves those projects are not bad, they do help solve some serious problems.
+But that doesn&rsquo;t mean we should be using them all the time.
+I fell into this trap at least once.
+I had a small application to write that had to do a REST call to another system.
+It was simple enough that I didn&rsquo;t require any complex, full-blown REST client, so I decided to use Spring&rsquo;s RestTemplate.
+I noticed that I was annoyed by how long my integration tests were taking to execute.
+The reason was that the whole Spring <code>ApplicationContext</code> had to be started.
+I did my homework, analysed the application and found out, that this RestTemplate was the only thing I needed from Spring.
+And the only thing I really needed was an HttpClient, so I ended up using HttpComponents from Apache and my tests became much faster.
+At the same time, I didn&rsquo;t have to sacrifice anything, the application itself was still usable, the code might have become clearer and easier to use.</p>
+
+<p>The fact that something is familiar to us and it&rsquo;s easier for us to work with it doesn&rsquo;t mean it applies to everyone.
+The fact that for us something is easy is very subjective.
+We might have been using this particular technology for a very long time, but for a newcomer, it might look more like magic than technology.
+By constantly using the same tools or ways, we might be preventing others from joining us, or making the process very hard.
+We might also be losing opportunities to learn something new.</p>
+
+<p>We need to start questioning our choices from time to time.
+In my last example, I was given a hint: long-running tests.
+If we keep our eyes and minds open, we might be able to spot issues coming from the tensions between the problem we&rsquo;re trying to solve and what our technology choices are good for.
+For example, relational databases might not be good for storing the data your application is using.
+If you&rsquo;re working mostly with big binary data with a bit of metadata attached, you might want to look more closely at things like CouchDB or MongoDB.
+Even if you have never worked with any of them before it might be worth the effort to learn one of them.</p>
+
+<p>On the other hand, for your other system, a relational database might be a perfect fit, but you might find out, that skipping a Hibernate/JPA solution might lead to a simpler and faster application.
+SQL is a very good language for data processing, its implementations in various databases are highly optimized and efficient.
+Is it really always a mistake to not abstract SQL away and use JDBCTemplate?
+And if you ask yourself how high the chances are that you&rsquo;d need to replace your database engine, you might find out that abstracting the database is not worth your time.</p>
+
+<p>I&rsquo;d suggest that quite regularly we need to stop doing whatever it is that we&rsquo;re doing, take a step back and look around, maybe look at things from a different perspective.
+Think if there are places in your system that are particularly troublesome.
+It can be anything: fragility, complex code that is difficult to understand, tests requiring a lot of setup, a lot of boilerplate code, etc.
+Those might be signals that the current implementation somehow doesn&rsquo;t fit the reality.
+This tension or friction is a hint that the system is giving you, suggesting that there is room for improvement.
+Once you put a bit of effort into trying to find out what makes this piece of code so problematic, you might discover better ways of solving this particular problem that the code is responsible for.</p>
+
+<p>This approach is certainly not limited to code.
+The whole agile movement is about constantly adapting and improving, never settling for &ldquo;the perfect process&rdquo;.
+Even if something was working in your last project doesn&rsquo;t mean that it will fit your next one.
+Sure, if you&rsquo;ve been doing something for quite some time already and it&rsquo;s (still) working, it would be a good assumption, that it will also be OK in the future.
+But keep your eyes open, because just this time the situation might so different that you&rsquo;d need to find another way.
+For example, so far your team was mostly developing new software and scrum was working OK for you.
+But now you&rsquo;re taking over a project that includes a lot of ad-hoc support tasks that take precedence over regular development.
+Because you cannot predict how much firefighting you&rsquo;d need to do on any given day/week, scrum with fixed-length sprints might not be the best idea, maybe kanban would be a better choice, better suiting the problem of organizing your work.</p>
+
+<h3 id="tl-dr">tl;dr</h3>
+
+<p>If all you have is a hammer, everything looks like a nail.
+What we already know is not always the best, though it might seem the easiest.
+We should be questioning our choices constantly and look for solutions to the problems we&rsquo;re supposed to solve instead of bending the problem so that it can be solved with the toolset we&rsquo;re familiar with.</p>
+
+<p>I&rsquo;d like to thank Ben Wolf for all the feedback and fixes he provided.</p>
+
+<p>Note, this article was originally posted on <a href="https://www.innoq.com/en/blog/familiarity-friend-or-foe/" target="_blank">INNOQ blog</a>.</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

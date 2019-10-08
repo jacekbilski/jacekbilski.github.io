@@ -6,10 +6,20 @@
     <description>Recent content in Posts on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.bilski.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Familiarity - friend or foe</title>
+      <link>https://www.bilski.tech/posts/familiarity-friend-or-foe/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/familiarity-friend-or-foe/</guid>
+      <description>Familiarity seems like a good thing, you know the thing, how to deal with it, what to expect and where problems might be hiding. But more and more I see its dark side.
+Some time ago I was working on a legacy system. It was very complex and fragile, most developers didn&amp;rsquo;t want to have anything to do with it. We knew the time would come when we would need to touch the core of this monster, so we wrote some tests and started slowly cleaning it up.</description>
+    </item>
     
     <item>
       <title>WebCalc iteration 8 - billing module extraction and differentiating users</title>
