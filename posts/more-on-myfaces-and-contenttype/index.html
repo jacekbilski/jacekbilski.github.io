@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
@@ -44,7 +44,7 @@ MyFaces looks at Accept HTTP header, which, in my case, states text/html,applica
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -97,8 +97,16 @@ MyFaces looks at Accept HTTP header, which, in my case, states text/html,applica
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -194,11 +202,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>I&rsquo;ve dug some more, debugged some more and know a little more. The whole problem with Apache MyFaces and ContentType comes from the awful idea that there is more than one moment, when, for a single request, resulting ContentType is evaluated.</p>
-
 <p>MyFaces looks at Accept HTTP header, which, in my case, states <code>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</code>. MyFaces goes through that list and picks first entry which it understands, in my case that&rsquo;s <code>text/html</code>. It doesn&rsquo;t really matter, that next entry <code>application/xhtml+xml</code> is what I would really want, &ldquo;text/html&rdquo; was first.</p>
-
 <p>But JSP mechanism, when it sees something like <code>&lt;jsp:directive.page contentType=&quot;application/xhtml+xml; charset=UTF-8&quot;/&gt;</code> it does as it is instructed to do and sets ContentType to <code>application/xhtml+xml</code>.</p>
-
 <p>I don&rsquo;t remember now which one comes first, MyFaces or JSP, but something is definitely wrong here. I would like to assume, that when one of those chooses ContentType, the other respects that or if the other one changes it, the first one won&rsquo;t be stubborn and doesn&rsquo;t force its choice. The second solution could be hard to implement, so the first one is the way to go. I would expect that MyFaces before it selects ContentType, tries to get that information from a response that was given to them. And that I will probably file as a bug.</p>
 
   </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tests on On Software Engineering</title>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>WebCalc iteration 7 - billing</title>
+      <title>Iteration 7 - billing</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>WebCalc iteration 6 - introducing users</title>
+      <title>Iteration 6 - introducing users</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</link>
       <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>WebCalc iteration 4 - fixes only</title>
+      <title>Iteration 4 - fixes only</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-4-fixes-only/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
       
@@ -40,7 +40,7 @@ The problem was to make Calculator stateful, it now remembers maxFractionDigits.
     </item>
     
     <item>
-      <title>WebCalc iteration 3 - formatting and cleanup in calculator module</title>
+      <title>Iteration 3 - formatting and cleanup in calculator module</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
@@ -50,7 +50,7 @@ Multiplication is, indeed, straightforward.</description>
     </item>
     
     <item>
-      <title>WebCalc iteration 2 - actual calculations and modules separation</title>
+      <title>Iteration 2 - actual calculations and modules separation</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -60,7 +60,7 @@ But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary thin
     </item>
     
     <item>
-      <title>Project WebCalc - motivation and plan</title>
+      <title>Motivation and plan</title>
       <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -75,7 +75,7 @@ Motivation There are many reasons I want to do this:</description>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/writing-good-test-scenarios/</guid>
-      <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo;. Now it&amp;rsquo;s time to continue.
+      <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo; . Now it&amp;rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &amp;ldquo;avoid unnecessary information&amp;rdquo;, &amp;ldquo;don&amp;rsquo;t include implementation details&amp;rdquo; or &amp;ldquo;don&amp;rsquo;t repeat yourself in different scenarios&amp;rdquo;. This time I&amp;rsquo;d like to dig deeper and present results of discussions we had in the team.</description>
     </item>
     

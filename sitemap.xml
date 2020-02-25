@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -13,12 +13,12 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/</loc>
+    <loc>https://www.bilski.tech/posts/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/posts/</loc>
+    <loc>https://www.bilski.tech/posts/various/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,12 +38,27 @@
   </url>
   
   <url>
+    <loc>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.bilski.tech/tags/learning/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/tags/mistakes/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/series/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/spring/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -58,8 +73,18 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</loc>
+    <loc>https://www.bilski.tech/series/webcalc/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/posts/webcalc/</loc>
+    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</loc>
+    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,17 +103,17 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</loc>
-    <lastmod>2019-04-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</loc>
     <lastmod>2019-03-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/about/</loc>
+    <lastmod>2019-01-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/</loc>
     <lastmod>2019-01-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -108,12 +133,12 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/tags/obvious-implementation/</loc>
+    <loc>https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</loc>
+    <loc>https://www.bilski.tech/tags/obvious-implementation/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -148,17 +173,12 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/tags/spring/</loc>
+    <loc>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/tags/spring-boot/</loc>
-    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   

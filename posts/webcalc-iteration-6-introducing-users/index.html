@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 6 - introducing users • On Software Engineering</title>
+<title>Iteration 6 - introducing users • On Software Engineering</title>
 <meta name="description" content="WebCalc sixth iteration. I&#39;m introducing users, so that I can start billing them for using my CPU time. That forces me to include Spring Security in the project.">
 <meta name="keywords" content="JUnit 5, testing, tests, TDD">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 6 - introducing users"/>
+<meta name="twitter:title" content="Iteration 6 - introducing users"/>
 <meta name="twitter:description" content="WebCalc sixth iteration. I&#39;m introducing users, so that I can start billing them for using my CPU time. That forces me to include Spring Security in the project."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 6 - introducing users" />
+<meta property="og:title" content="Iteration 6 - introducing users" />
 <meta property="og:description" content="WebCalc sixth iteration. I&#39;m introducing users, so that I can start billing them for using my CPU time. That forces me to include Spring Security in the project." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2019-03-28T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 6 - introducing users</h1>
+    <h1>Iteration 6 - introducing users</h1>
     
     
 <div class="post__meta">
@@ -216,14 +225,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the 6th iteration of WebCalc. <a href="/posts/webcalc-iteration-5-more-complex-calculations/" target="_blank">Previously</a> I was dealing mostly with adding some more complex calculations. Like I mentioned there already, I think that I have already enough business logic to start moving into other areas like billing or user management. I also said that I&rsquo;d be going into the unknown. Up until now, I had a rough idea of how to do things, now I don&rsquo;t, I&rsquo;ll be exploring a lot.</p>
-
+    <p>Welcome to the 6th iteration of WebCalc. <a href="/posts/webcalc-iteration-5-more-complex-calculations/">Previously</a>
+ I was dealing mostly with adding some more complex calculations. Like I mentioned there already, I think that I have already enough business logic to start moving into other areas like billing or user management. I also said that I&rsquo;d be going into the unknown. Up until now, I had a rough idea of how to do things, now I don&rsquo;t, I&rsquo;ll be exploring a lot.</p>
 <p>Ultimately I want the application to bill the users, every operation should cost them some money and at the end of a month, an invoice will be prepared. Writing such a test now would make me work in red for days. I think, that the simplest test now would be to disallow anonymous users from doing any calculations, only logged in users can do something. That means, that I need to actually change my integration tests and add some test user there plus write a test that verifies that the system refuses to work without being logged in first.</p>
-
 <p>There are many ways how users can authenticate themselves, but to keep things simple I&rsquo;d go for Basic Authentication. All those OAuth, OpenID or X509 are maybe more secure, can do more, but all that comes with much higher complexity. Long story short, username and password would need to be transferred on every request. That means that I also don&rsquo;t need any logging in functionality or page. That would also mean that I should be using HTTPS only.</p>
-
 <p>My new test will be very simple, I&rsquo;ll just do the call without providing any authentication data and I&rsquo;ll expect to get HTTP 401 in return, like so:</p>
-
 
 
 <span id="c57ae0441455a77bffc5cd252ce1b84e369ec115"></span>
@@ -235,9 +241,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("c57ae0441455a77bffc5cd252ce1b84e369ec115").innerHTML = diffHtml;
 </script>
 
-
 <p>It fails because the HTTP status is still 200. I will already fix other tests to provide authentication data:</p>
-
 
 
 <span id="170e0753cd2f1867bda41d8b373244ece74c9bbe"></span>
@@ -249,9 +253,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("170e0753cd2f1867bda41d8b373244ece74c9bbe").innerHTML = diffHtml;
 </script>
 
-
 <p>Time to include Spring Security in the project:</p>
-
 
 
 <span id="dee9f4d8461b0053678dac72b7aba5755f82eee6"></span>
@@ -263,9 +265,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("dee9f4d8461b0053678dac72b7aba5755f82eee6").innerHTML = diffHtml;
 </script>
 
-
 <p>Apparently, Spring Boot does most of the stuff for me the moment it sees Spring Security JAR on the classpath. My new test is already passing, all others are red. To get them working I need to do a few things. First, I need to &ldquo;add&rdquo; a default user to Spring Security&rsquo;s UserDetailsService:</p>
-
 
 
 <span id="a9c2cef6b7d4b71883ddab52503a6ee4361947b8"></span>
@@ -277,9 +277,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("a9c2cef6b7d4b71883ddab52503a6ee4361947b8").innerHTML = diffHtml;
 </script>
 
-
 <p>I also need to configure the security a little. By default, Spring requires a correct CSRF token, but with basic auth only that doesn&rsquo;t make much sense:</p>
-
 
 
 <span id="0a0c67b20722a496db75b89e79d27b5876fe9977"></span>
@@ -291,13 +289,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("0a0c67b20722a496db75b89e79d27b5876fe9977").innerHTML = diffHtml;
 </script>
 
-
 <p>Now all my tests are once again green. So far so good, three small steps and I get my application secured. Sure, I only have one user and I&rsquo;m not using HTTPS, so those things will require additional effort, but still. Can I unit test the thing that I just did? Unfortunately, it doesn&rsquo;t seem possible and that&rsquo;s making me feel uneasy, but let&rsquo;s see how all this unfolds.</p>
-
 <p>I don&rsquo;t see the need right now to go deeper into user management or creating different users. All that would only be necessary once I start billing them for using the system. And that is, honestly, the only reason I can think of right now why I need any authorization anyway. So let&rsquo;s go there. The idea is pretty simple, for every operation there&rsquo;s a price, so after each calculation is done I&rsquo;ll be adding its cost to the user&rsquo;s bill. Of course, different functions will have different prices and each usage of a function will be charged, for example for calculating <code>1+2+3</code> you&rsquo;d be charged twice for using sum.</p>
-
 <p>One of the most interesting features for the users would be checking their current balance. I&rsquo;ll not surprise anybody by exposing this via REST. This would also give me a possibility to verify later on charging proper users with correct amounts. This requires a new endpoint because it&rsquo;s something else than calculations. It doesn&rsquo;t belong to the app module, it should get its own eventually, but let&rsquo;s start simple, I&rsquo;ll extract it later. A test will look something like this:</p>
-
 
 
 <span id="17e43d031cdab1282037344fabd5bbd9e62798e9"></span>
@@ -309,9 +303,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("17e43d031cdab1282037344fabd5bbd9e62798e9").innerHTML = diffHtml;
 </script>
 
-
-<p>The first thing that I&rsquo;ve noticed was inconsistent naming for test classes. I&rsquo;m still not sure if it&rsquo;s a blessing or a curse. On one hand, such inconsistencies affect readability or understandability of the code and, in effect, lead to errors in the code. On the other hand, going for nothing less than perfection is most likely not helping me deliver business value. In this case, it&rsquo;s a few renames, so let&rsquo;s do it. <code>RestApiTest</code> class will now be known as <code>CalculatorRestApiShould</code>. The idea with test classes ending with <code>should</code> is that when you read class name together with method names inside, they <a href="/posts/testing-is-storytelling/" target="_blank">tell &ldquo;a story&rdquo;</a>. I&rsquo;ve learned it from <a href="https://twitter.com/sandromancuso" target="_blank">Sandro Mancuso</a> and it does make sense. <code>CaclulatorShould</code> is already following this concept, <code>CalculatorRestApiShould</code> not yet, so:</p>
-
+<p>The first thing that I&rsquo;ve noticed was inconsistent naming for test classes. I&rsquo;m still not sure if it&rsquo;s a blessing or a curse. On one hand, such inconsistencies affect readability or understandability of the code and, in effect, lead to errors in the code. On the other hand, going for nothing less than perfection is most likely not helping me deliver business value. In this case, it&rsquo;s a few renames, so let&rsquo;s do it. <code>RestApiTest</code> class will now be known as <code>CalculatorRestApiShould</code>. The idea with test classes ending with <code>should</code> is that when you read class name together with method names inside, they <a href="/posts/testing-is-storytelling/">tell &ldquo;a story&rdquo;</a>
+. I&rsquo;ve learned it from <a href="https://twitter.com/sandromancuso" target="_blank">Sandro Mancuso</a>
+ and it does make sense. <code>CaclulatorShould</code> is already following this concept, <code>CalculatorRestApiShould</code> not yet, so:</p>
 
 
 <span id="b830693ad60975f9b252ad0577778450b3870370"></span>
@@ -323,9 +317,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("b830693ad60975f9b252ad0577778450b3870370").innerHTML = diffHtml;
 </script>
 
-
 <p>Back to the new API. The test is obviously red because I don&rsquo;t have the controller yet. That&rsquo;s easy to fix:</p>
-
 
 
 <span id="a448867f2acbd62da5084a2e29cf8b799edbadee"></span>
@@ -337,9 +329,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("a448867f2acbd62da5084a2e29cf8b799edbadee").innerHTML = diffHtml;
 </script>
 
-
 <p>I should now push returning <code>0</code> down to some kind of service, for example:</p>
-
 
 
 <span id="bb49647534e02c1ef43e9d4d4b498936ba0e7e25"></span>
@@ -351,9 +341,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("bb49647534e02c1ef43e9d4d4b498936ba0e7e25").innerHTML = diffHtml;
 </script>
 
-
-<p>Now things get much more interesting. Next logical step is to define a price for a function, execute a calculation using this function and see, that the balance increased. I&rsquo;ll still blissfully ignore the existence of different users. I can also still get away with not persisting anything &ldquo;for real&rdquo;. The tricky part is, that I want the calculator to be completely unaffected by billing, the module should not depend on the billing module. Obviously, billing would need to depend on the calculator. I can quite easily achieve this with a <a href="https://en.wikipedia.org/wiki/Decorator_pattern" target="_blank">decorator pattern</a>. But before I go in there, I need a test:</p>
-
+<p>Now things get much more interesting. Next logical step is to define a price for a function, execute a calculation using this function and see, that the balance increased. I&rsquo;ll still blissfully ignore the existence of different users. I can also still get away with not persisting anything &ldquo;for real&rdquo;. The tricky part is, that I want the calculator to be completely unaffected by billing, the module should not depend on the billing module. Obviously, billing would need to depend on the calculator. I can quite easily achieve this with a <a href="https://en.wikipedia.org/wiki/Decorator_pattern" target="_blank">decorator pattern</a>
+. But before I go in there, I need a test:</p>
 
 
 <span id="e617f2b3a4fd97416b72cc0f7cf40d22e8110ad9"></span>
@@ -365,9 +354,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("e617f2b3a4fd97416b72cc0f7cf40d22e8110ad9").innerHTML = diffHtml;
 </script>
 
-
 <p>Looks simple enough, but I don&rsquo;t have <code>calculator</code>. I need to create a <code>BillingCalculator</code>, that will be a decorator of a &ldquo;real&rdquo; calculator, it will look like this:</p>
-
 
 
 <span id="24d48b36ffdf86fdc9216360f3c0f4037318a477"></span>
@@ -379,9 +366,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("24d48b36ffdf86fdc9216360f3c0f4037318a477").innerHTML = diffHtml;
 </script>
 
-
 <p>For now the only thing it can is to delegate a call to another calculator that was passed into it. This other calculator might be an actual calculator, the one I&rsquo;ve been writing so far, but it could also be a mock or anything else that can behave like a calculator. I&rsquo;ll go yet again simple and use the real one. The fixed test looks like this:</p>
-
 
 
 <span id="3b5827e5830cc1b4d2153a1499b35277f01578c3"></span>
@@ -393,9 +378,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("3b5827e5830cc1b4d2153a1499b35277f01578c3").innerHTML = diffHtml;
 </script>
 
-
 <p>The test now compiles, but is red, no surprises here. The problem here is that <code>Billing</code> and <code>BillingCalculator</code> are completely separated from one another, yet somehow the information about executed calculations needs to flow between them. For a split second I was thinking about some common repository for the two, but luckily I don&rsquo;t need that. If I pass <code>Billing</code> into <code>BillingCalculator</code>, the latter can inform the former about all important things. Then the implementation could look like:</p>
-
 
 
 <span id="cf4ebcbefd041c2724499a9fbfe4303ac828fab7"></span>
@@ -407,17 +390,16 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("cf4ebcbefd041c2724499a9fbfe4303ac828fab7").innerHTML = diffHtml;
 </script>
 
-
 <p>Of course, there&rsquo;s still a lot of faking, but the tests are green, and that&rsquo;s what I&rsquo;m after. One note, I&rsquo;m not going to be testing <code>BillingCaclculator</code> separately, it&rsquo;s part the whole billing module contract. Having separate tests for this class could make my life harder later on. Given the amount of faking I already did, sooner or later I&rsquo;ll need to refactor the code. Having tests only going through the actual API of a module means that the inner structure of a module is completely irrelevant. That&rsquo;s how I understand unit testing.</p>
-
-<p>Little intermission here. As you might have noticed this iteration 6 is published long after iteration 5. I&rsquo;m sorry about that. But you can also see what I&rsquo;ve been working on in the meantime &ndash; the blog is no longer hosted on blogger.com, but rather <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>, built using <a href="https://www.gohugo.io/" target="_blank">Hugo</a> and available through my own domain. There&rsquo;s more than that, but maybe that&rsquo;s something for another time and place.</p>
-
-<p>That pause made me go back and take a look at what I&rsquo;ve done so far in this iteration, and I&rsquo;ve found a problem. The decorator is a wrong pattern to use in here. Using it I only see the interaction between <code>CalculatorController</code> and <code>Calculator</code> twice, once when <code>CalculatorController</code> calls the <code>Calculator</code> and once when the <code>Calculator</code> returns a result. That&rsquo;s not enough. That means that the billing would need to also parse each expression and count all the operations by itself. That was my original thinking, as far as I can remember, but now I believe I should be using <a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank">observer pattern</a>. I was thinking for a short time about creating two implementations and compare them at the end, but that would probably be too much.</p>
-
-<p>So I&rsquo;m going back to commit <a href="https://github.com/jacekbilski/WebCalc/commit/579a1018c0ee8ee2b21fbe64d8a4ce7dfb5b32e8" target="_blank">commit 579a1018</a> and start over. Those two commits with the usage of the decorator pattern I&rsquo;ve pushed to the <a href="https://github.com/jacekbilski/WebCalc/tree/decorator" target="_blank">decorator</a> branch. This time it will not be possible to avoid any changes in the <code>Calculator</code>, but those changes will not be binding the module to anything, rather providing hooks from where interested parties could get the information they need. I have already one failing test in <code>BillingShould</code>, that&rsquo;s good.</p>
-
+<p>Little intermission here. As you might have noticed this iteration 6 is published long after iteration 5. I&rsquo;m sorry about that. But you can also see what I&rsquo;ve been working on in the meantime &ndash; the blog is no longer hosted on blogger.com, but rather <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+, built using <a href="https://www.gohugo.io/" target="_blank">Hugo</a>
+ and available through my own domain. There&rsquo;s more than that, but maybe that&rsquo;s something for another time and place.</p>
+<p>That pause made me go back and take a look at what I&rsquo;ve done so far in this iteration, and I&rsquo;ve found a problem. The decorator is a wrong pattern to use in here. Using it I only see the interaction between <code>CalculatorController</code> and <code>Calculator</code> twice, once when <code>CalculatorController</code> calls the <code>Calculator</code> and once when the <code>Calculator</code> returns a result. That&rsquo;s not enough. That means that the billing would need to also parse each expression and count all the operations by itself. That was my original thinking, as far as I can remember, but now I believe I should be using <a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank">observer pattern</a>
+. I was thinking for a short time about creating two implementations and compare them at the end, but that would probably be too much.</p>
+<p>So I&rsquo;m going back to commit <a href="https://github.com/jacekbilski/WebCalc/commit/579a1018c0ee8ee2b21fbe64d8a4ce7dfb5b32e8" target="_blank">commit 579a1018</a>
+ and start over. Those two commits with the usage of the decorator pattern I&rsquo;ve pushed to the <a href="https://github.com/jacekbilski/WebCalc/tree/decorator" target="_blank">decorator</a>
+ branch. This time it will not be possible to avoid any changes in the <code>Calculator</code>, but those changes will not be binding the module to anything, rather providing hooks from where interested parties could get the information they need. I have already one failing test in <code>BillingShould</code>, that&rsquo;s good.</p>
 <p>I need a <code>calculator</code> and I need to register my <code>billing</code> as an observer, seems easy:</p>
-
 
 
 <span id="69041cdfcd2483fa88bd9e9fbae8d8f23a6bbb92"></span>
@@ -429,9 +411,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("69041cdfcd2483fa88bd9e9fbae8d8f23a6bbb92").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I need to do two things, add <code>addObserver</code> method to <code>Calculator</code> that would be taking something implementing a new <code>CalculatorObserver</code> interface and make <code>Billing</code> implement that interface. Let&rsquo;s start with the <code>Calculator</code>.</p>
-
 
 
 <span id="37a0ec29934a85a3cdbf8a12477209a26f73e792"></span>
@@ -443,11 +423,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("37a0ec29934a85a3cdbf8a12477209a26f73e792").innerHTML = diffHtml;
 </script>
 
-
 <p>For simplicity, I&rsquo;m now assuming that there can be only one observer. I can extend it later if need be. Also, the interface doesn&rsquo;t do anything just yet, but at least the compilation error is gone so I can run the tests again. Sure enough, one is still red.</p>
-
 <p>Because the test is written in such a way that it doesn&rsquo;t matter what is being evaluated, the simplest thing that could possibly work could look like this:</p>
-
 
 
 <span id="d49e7d427014c9dd90ce37b1cf48f360e5408f0d"></span>
@@ -459,8 +436,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("d49e7d427014c9dd90ce37b1cf48f360e5408f0d").innerHTML = diffHtml;
 </script>
 
-
-<p>And I&rsquo;ll conclude this iteration here so that I can finally publish it. The original plan was to make every iteration out of one tomato of implementation plus then writing a blog post. Obviously, it doesn&rsquo;t work, mostly because I&rsquo;m writing code in parallel to post itself so that I can share my thoughts. But I will try to keep next iterations shorter, but publish them more often. Anyway, <a href="/posts/webcalc-iteration-7-billing/" target="_blank">next time</a> I&rsquo;ll be finishing tests for billing and making the implementation follow. I&rsquo;ll maybe also separate billing module from the app itself. See you next time!</p>
+<p>And I&rsquo;ll conclude this iteration here so that I can finally publish it. The original plan was to make every iteration out of one tomato of implementation plus then writing a blog post. Obviously, it doesn&rsquo;t work, mostly because I&rsquo;m writing code in parallel to post itself so that I can share my thoughts. But I will try to keep next iterations shorter, but publish them more often. Anyway, <a href="/posts/webcalc-iteration-7-billing/">next time</a>
+ I&rsquo;ll be finishing tests for billing and making the implementation follow. I&rsquo;ll maybe also separate billing module from the app itself. See you next time!</p>
 
   </div>
   

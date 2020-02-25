@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 5 - more complex calculations • On Software Engineering</title>
+<title>Iteration 5 - more complex calculations • On Software Engineering</title>
 <meta name="description" content="In WebCalc&#39;s fifth iteration I&#39;m adding support for more complex calculations. I&#39;m also finally dealing with dependency management.">
 <meta name="keywords" content="Gradle, obvious implementation, testing">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 5 - more complex calculations"/>
+<meta name="twitter:title" content="Iteration 5 - more complex calculations"/>
 <meta name="twitter:description" content="In WebCalc&#39;s fifth iteration I&#39;m adding support for more complex calculations. I&#39;m also finally dealing with dependency management."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 5 - more complex calculations" />
+<meta property="og:title" content="Iteration 5 - more complex calculations" />
 <meta property="og:description" content="In WebCalc&#39;s fifth iteration I&#39;m adding support for more complex calculations. I&#39;m also finally dealing with dependency management." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2018-12-18T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 5 - more complex calculations</h1>
+    <h1>Iteration 5 - more complex calculations</h1>
     
     
 <div class="post__meta">
@@ -213,16 +222,14 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome everyone to the fifth iteration of WebCalc. <a href="/posts/webcalc-iteration-4-fixes-only/" target="_blank">Previously</a> I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like <code>1+2+3</code>. To IDE then!</p>
-
-<p>But first, let&rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call <code>gradle wrapper --gradle-version=5.0 --distribution-type=all</code> and that&rsquo;s it, see <a href="https://github.com/jacekbilski/WebCalc/commit/14c17dc3deddc5219f50aa5c27da7926ea61a3fc" target="_blank">commit 14c17dc3</a>.</p>
-
-<p>The second thing is this possible bug in Spring Boot Gradle plugin I was complaining about previously. I did some investigation and, although there might be something not exactly right with this plugin, the problem is actually how I&rsquo;m using both that and dependency-management plugins. I should have done RFTM long time ago. Knowing how to do it properly I can now just import spring-boot-dependencies BOM and have all versions in all modules in sync, see <a href="https://github.com/jacekbilski/WebCalc/commit/2de6a84c8a0ca48364e39e73b9da990ab093c576" target="_blank">commit 2de6a84c</a>. I must admit though that I&rsquo;m still not sure 100% if that&rsquo;s the correct way, especially given that two ways of applying plugins in Gradle do not merely differ in syntax.</p>
-
+    <p>Welcome everyone to the fifth iteration of WebCalc. <a href="/posts/webcalc-iteration-4-fixes-only/">Previously</a>
+ I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like <code>1+2+3</code>. To IDE then!</p>
+<p>But first, let&rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call <code>gradle wrapper --gradle-version=5.0 --distribution-type=all</code> and that&rsquo;s it, see <a href="https://github.com/jacekbilski/WebCalc/commit/14c17dc3deddc5219f50aa5c27da7926ea61a3fc" target="_blank">commit 14c17dc3</a>
+.</p>
+<p>The second thing is this possible bug in Spring Boot Gradle plugin I was complaining about previously. I did some investigation and, although there might be something not exactly right with this plugin, the problem is actually how I&rsquo;m using both that and dependency-management plugins. I should have done RFTM long time ago. Knowing how to do it properly I can now just import spring-boot-dependencies BOM and have all versions in all modules in sync, see <a href="https://github.com/jacekbilski/WebCalc/commit/2de6a84c8a0ca48364e39e73b9da990ab093c576" target="_blank">commit 2de6a84c</a>
+. I must admit though that I&rsquo;m still not sure 100% if that&rsquo;s the correct way, especially given that two ways of applying plugins in Gradle do not merely differ in syntax.</p>
 <p>Short mental detour. Outside of this project, I&rsquo;m recently trying to find a balance between two aspects of developing software: delivering business value and good engineering. On one hand, I have a feeling, that we&rsquo;re too focused on technical details, like using the newest and the most hype technology there is, but providing very little actual value to our stakeholders. On the other hand, we can be so focused on the business value that we are ignoring good engineering practices like keeping cohesion high and coupling low. Not many conclusions yet, but I believe, that we should keep our tools reasonably up-to-date. In order to not spend too much time on that, we need to know how to use them properly and not to couple them too tightly to everything else. That&rsquo;s why I allowed myself to go for all those improvements and fixes lately. Happy to discuss if someone feels like.</p>
-
 <p>Having technical issues out of the way, I can again focus on the code. First, I noticed, that some tests use helper methods I created, some are not. That&rsquo;s easy to fix:</p>
-
 
 
 <span id="fcb2d0ba16445a2f0f45dd0a5ec85abf3bd6511c"></span>
@@ -234,9 +241,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("fcb2d0ba16445a2f0f45dd0a5ec85abf3bd6511c").innerHTML = diffHtml;
 </script>
 
-
 <p>Finally, I can make some progress in terms of functionality. My goal is to have a possibility of calculating expressions like <code>1+2+3</code>. This time, however, I&rsquo;ll start not by writing a test. To make it pass I&rsquo;d need to spend quite some time, but I don&rsquo;t want to be &ldquo;in the red&rdquo; for too long. I&rsquo;m using reverse Polish notation and there&rsquo;s a known algorithm how to do calculations using it. I&rsquo;ll go for obvious implementation. I&rsquo;ll also do it &ldquo;first make the change easy, then make the easy change&rdquo; way. The first step would be to start using Stack in Calculator and keep all current tests green, like so:</p>
-
 
 
 <span id="6a03314ba3a58bca5e20c4c3d31a5b5d2c3fdd82"></span>
@@ -248,11 +253,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("6a03314ba3a58bca5e20c4c3d31a5b5d2c3fdd82").innerHTML = diffHtml;
 </script>
 
-
 <p>I just used for the first time <code>var</code> keyword. It feels like I&rsquo;m giving up on type safety, but I&rsquo;m also removing a few characters from the code, so the rest should theoretically be more &ldquo;meaningful&rdquo;. I&rsquo;ll see where that goes, maybe it&rsquo;s not a bad idea after all.</p>
-
 <p>OK, I now have a partially implemented algorithm for doing calculations in reverse Polish notation. It only supports one operator, but it&rsquo;s sufficient to keep my tests green. Can I go towards the full algorithm already? I don&rsquo;t think so, it&rsquo;s too early, now I need a new test.</p>
-
 
 
 <span id="83284c6f22388e9f85d6ea44dacbc6f644f32877"></span>
@@ -264,11 +266,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("83284c6f22388e9f85d6ea44dacbc6f644f32877").innerHTML = diffHtml;
 </script>
 
-
 <p>I created two tests, one on REST API level and one unit test. They verify exactly the same behaviour, but on different levels. REST is what I&rsquo;m actually after, but unit tests let me work much faster and get the feedback earlier.</p>
-
 <p>As expected, the tests fail. I need to introduce a loop in the Calculator, like so:</p>
-
 
 
 <span id="d90e93c750640d1d99df4b541ed3f3fd55d4f940"></span>
@@ -280,11 +279,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("d90e93c750640d1d99df4b541ed3f3fd55d4f940").innerHTML = diffHtml;
 </script>
 
-
 <p>I&rsquo;m relying in here on exceptions to differentiate between numbers and functions, which I&rsquo;m not entirely fond of, but it&rsquo;s enough to make my tests green. In a real world that would probably be not enough and I&rsquo;d need to revisit this place later on.</p>
-
 <p>That should honestly be about it when it comes to the algorithm itself. To verify this I&rsquo;ll add a few more test cases:</p>
-
 
 
 <span id="9fcc50c3688ea01fa7a356e5d21429061a92964a"></span>
@@ -296,10 +292,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("9fcc50c3688ea01fa7a356e5d21429061a92964a").innerHTML = diffHtml;
 </script>
 
-
 <p>Looks good, I cannot find a use case, where my implementation would fail. I&rsquo;m sure you can figure something out, like trying to use all memory.</p>
-
-<p>That would be all for this time. I think I have enough of my &ldquo;business logic&rdquo; and can go to more tricky parts like users, security and billing. That&rsquo;s the part where I&rsquo;ll be going into the unknown myself. See you <a href="/posts/webcalc-iteration-6-introducing-users/" target="_blank">there</a>!</p>
+<p>That would be all for this time. I think I have enough of my &ldquo;business logic&rdquo; and can go to more tricky parts like users, security and billing. That&rsquo;s the part where I&rsquo;ll be going into the unknown myself. See you <a href="/posts/webcalc-iteration-6-introducing-users/">there</a>
+!</p>
 
   </div>
   

@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 1 - setting up with one test • On Software Engineering</title>
+<title>Iteration 1 - setting up with one test • On Software Engineering</title>
 <meta name="description" content="WebCalc first iteration. It includes setting up Gradle project with JUnit 5 and Spring Boot and then writing a controller driven by an integration test.">
 <meta name="keywords" content="integration tests, JUnit 5, Spring, Spring Boot, TDD">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 1 - setting up with one test"/>
+<meta name="twitter:title" content="Iteration 1 - setting up with one test"/>
 <meta name="twitter:description" content="WebCalc first iteration. It includes setting up Gradle project with JUnit 5 and Spring Boot and then writing a controller driven by an integration test."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 1 - setting up with one test" />
+<meta property="og:title" content="Iteration 1 - setting up with one test" />
 <meta property="og:description" content="WebCalc first iteration. It includes setting up Gradle project with JUnit 5 and Spring Boot and then writing a controller driven by an integration test." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2018-09-05T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 1 - setting up with one test</h1>
+    <h1>Iteration 1 - setting up with one test</h1>
     
     
 <div class="post__meta">
@@ -219,20 +228,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    
-
-<p>Welcome to the first iteration of WebCalc implementation. In my <a href="/posts/project-webcalc-motivation-and-plan/" target="_blank">previous post</a> I just explained my motivations and goals for this project. This time I&rsquo;ll do some actual coding. Although in the end, I&rsquo;ll try to have something &ldquo;business&rdquo; related, I guess most of the time I&rsquo;ll spend wiring things up. To the keyboard then.</p>
-
+    <p>Welcome to the first iteration of WebCalc implementation. In my <a href="/posts/project-webcalc-motivation-and-plan/">previous post</a>
+ I just explained my motivations and goals for this project. This time I&rsquo;ll do some actual coding. Although in the end, I&rsquo;ll try to have something &ldquo;business&rdquo; related, I guess most of the time I&rsquo;ll spend wiring things up. To the keyboard then.</p>
 <h3 id="goal">Goal</h3>
-
 <p>I want to have a very first and simple test working: adding 1 to 2. It will go to the REST interface so that it would force me to wire up everything to get an application available over HTTP/2. This would clearly be an integration test. Below that, I&rsquo;ll have my unit tests.</p>
-
 <h3 id="a-bit-of-infrastructure">A bit of infrastructure</h3>
-
-<p>The easiest way to start a Spring Boot project is to visit <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>. I chose a Gradle project with the newest version of Spring Boot, Java 10 and Reactive Web. This should get me started simple. See <a href="https://github.com/jacekbilski/WebCalc/commit/fb831f9224abbac1b8b57f2fc122de2e5f3a89c7" target="_blank">commit fb831f9</a>.</p>
-
+<p>The easiest way to start a Spring Boot project is to visit <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>
+. I chose a Gradle project with the newest version of Spring Boot, Java 10 and Reactive Web. This should get me started simple. See <a href="https://github.com/jacekbilski/WebCalc/commit/fb831f9224abbac1b8b57f2fc122de2e5f3a89c7" target="_blank">commit fb831f9</a>
+.</p>
 <p>One thing, that I need to fix almost immediately, was removing JUnit 4 and plugging in JUnit 5. Nothing difficult, but it would be nicer to have a boot started with JUnit 5 already. So build.gradle changes:</p>
-
 
 
 <span id="4ef5c539ecd7fb29c44480f7e0f1056e678e8136"></span>
@@ -244,9 +248,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("4ef5c539ecd7fb29c44480f7e0f1056e678e8136").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I need to change the test because it&rsquo;s using old infrastructure.</p>
-
 
 
 <span id="6c6eff9528d0889befb5bd049756608ec554e6ff"></span>
@@ -258,13 +260,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("6c6eff9528d0889befb5bd049756608ec554e6ff").innerHTML = diffHtml;
 </script>
 
-
 <h3 id="first-test">First test</h3>
-
-<p>Now I can write my first test. As I don&rsquo;t have anything so far, I need to start completely from outside, so through my REST interface (an idea of a <a href="https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton/" target="_blank">walking skeleton</a>). I also need to decide how this interface would look like. Let&rsquo;s say, that my endpoint will be responding to GET requests on URL &ldquo;/eval&rdquo;. Let&rsquo;s also say, that, to keep it simple, I&rsquo;ll not be using JSON, XML or anything, I&rsquo;ll be using good old &ldquo;text/plain&rdquo;. Just for the fun of it, and to avoid weird parsing issues, I&rsquo;ll be expecting my input to be using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">reverse Polish notation</a>. Last decision: to actually test my application from outside I&rsquo;ll be using <a href="http://rest-assured.io/" target="_blank">REST Assured</a>.</p>
-
+<p>Now I can write my first test. As I don&rsquo;t have anything so far, I need to start completely from outside, so through my REST interface (an idea of a <a href="https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton/" target="_blank">walking skeleton</a>
+). I also need to decide how this interface would look like. Let&rsquo;s say, that my endpoint will be responding to GET requests on URL &ldquo;/eval&rdquo;. Let&rsquo;s also say, that, to keep it simple, I&rsquo;ll not be using JSON, XML or anything, I&rsquo;ll be using good old &ldquo;text/plain&rdquo;. Just for the fun of it, and to avoid weird parsing issues, I&rsquo;ll be expecting my input to be using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">reverse Polish notation</a>
+. Last decision: to actually test my application from outside I&rsquo;ll be using <a href="http://rest-assured.io/" target="_blank">REST Assured</a>
+.</p>
 <p>OK, from now on, there should be more coding and less talking. First, I need to import REST Assured:</p>
-
 
 
 <span id="d871041097223858d2212bbe2b2bb54a68777f83"></span>
@@ -276,9 +277,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("d871041097223858d2212bbe2b2bb54a68777f83").innerHTML = diffHtml;
 </script>
 
-
 <p>I can finally write my first test:</p>
-
 
 
 <span id="b14da14b180429afae0c306c8997139fa8561b69"></span>
@@ -290,9 +289,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("b14da14b180429afae0c306c8997139fa8561b69").innerHTML = diffHtml;
 </script>
 
-
 <p>It fails miserably, as expected. After reading Spring documentation a bit I can see, that using WebFlux is probably overkill, so I&rsquo;m going back and replacing it with good old SpringMVC. As the most basic things like controllers are common to both stacks, if I were to switch later on to WebFlux, it would probably take me very little time.</p>
-
 
 
 <span id="3279a4277b3adcde49eb2fe924e709aa3fa118e1"></span>
@@ -304,14 +301,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("3279a4277b3adcde49eb2fe924e709aa3fa118e1").innerHTML = diffHtml;
 </script>
 
-
 <p>If I take a look at test results, the problem there is, there&rsquo;s nobody listening on localhost:8080.</p>
-
 <pre><code>java.net.ConnectException: Connection refused (Connection refused)
 </code></pre>
-
 <p>As the application actually didn&rsquo;t even start, it&rsquo;s not a wonder. Let&rsquo;s fix that.</p>
-
 
 
 <span id="c8e1b937d968a0e87d0c8a0a77114690babd5a86"></span>
@@ -323,18 +316,14 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("c8e1b937d968a0e87d0c8a0a77114690babd5a86").innerHTML = diffHtml;
 </script>
 
-
 <p>The application was started, it listens on port 8080, but nobody responds to request to &ldquo;/eval&rdquo;.</p>
-
 <pre><code>java.lang.AssertionError: 1 expectation failed.
 Response body doesn't match expectation.
 Expected: &quot;3&quot;
   Actual: {&quot;timestamp&quot;:&quot;2018-09-04T06:44:17.247+0000&quot;,&quot;status&quot;:404,
      &quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No message available&quot;,&quot;path&quot;:&quot;/eval&quot;}
 </code></pre>
-
 <p>I need a controller.</p>
-
 
 
 <span id="948c588f74ff8bcd1590a685d61b6c7681bd85c0"></span>
@@ -346,9 +335,7 @@ Expected: &quot;3&quot;
     document.getElementById("948c588f74ff8bcd1590a685d61b6c7681bd85c0").innerHTML = diffHtml;
 </script>
 
-
 <p>Now it looks far better, I got an answer, but not the correct one. That&rsquo;s easy.</p>
-
 
 
 <span id="a1ea5047bec747a0327b1575e09b59c80f71c3b3"></span>
@@ -360,10 +347,9 @@ Expected: &quot;3&quot;
     document.getElementById("a1ea5047bec747a0327b1575e09b59c80f71c3b3").innerHTML = diffHtml;
 </script>
 
-
 <p>Tada! First test green.</p>
-
-<p>That&rsquo;s it this time, <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/" target="_blank">next time</a> I&rsquo;ll go deeper into the application and separate web part from calculations. See you soon!</p>
+<p>That&rsquo;s it this time, <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/">next time</a>
+ I&rsquo;ll go deeper into the application and separate web part from calculations. See you soon!</p>
 
   </div>
   

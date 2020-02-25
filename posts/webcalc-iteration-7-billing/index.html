@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 7 - billing • On Software Engineering</title>
+<title>Iteration 7 - billing • On Software Engineering</title>
 <meta name="description" content="WebCalc&#39;s seventh iteration is all about billing basic four operations and making them visible in the balance.">
 <meta name="keywords" content="JUnit 5, testing, tests, TDD">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 7 - billing"/>
+<meta name="twitter:title" content="Iteration 7 - billing"/>
 <meta name="twitter:description" content="WebCalc&#39;s seventh iteration is all about billing basic four operations and making them visible in the balance."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 7 - billing" />
+<meta property="og:title" content="Iteration 7 - billing" />
 <meta property="og:description" content="WebCalc&#39;s seventh iteration is all about billing basic four operations and making them visible in the balance." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-7-billing/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2019-04-08T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 7 - billing</h1>
+    <h1>Iteration 7 - billing</h1>
     
     
 <div class="post__meta">
@@ -216,12 +225,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the 7th iteration of WebCalc. <a href="/posts/webcalc-iteration-6-introducing-users/" target="_blank">Previously</a> I scratched a surface of users and security in order to start working on billing. In retrospective, I don&rsquo;t think I needed any user and Spring Security at all for billing to work, at least not in the first phase. Luckily, their introduction didn&rsquo;t require much and should not actually hurt. The plan for this iteration is to get the billing as far as possible in terms of functionality. To keep iterations shorter, I&rsquo;ll restrict myself from extracting billing module this time, that&rsquo;s the current plan for 8th iteration.</p>
-
+    <p>Welcome to the 7th iteration of WebCalc. <a href="/posts/webcalc-iteration-6-introducing-users/">Previously</a>
+ I scratched a surface of users and security in order to start working on billing. In retrospective, I don&rsquo;t think I needed any user and Spring Security at all for billing to work, at least not in the first phase. Luckily, their introduction didn&rsquo;t require much and should not actually hurt. The plan for this iteration is to get the billing as far as possible in terms of functionality. To keep iterations shorter, I&rsquo;ll restrict myself from extracting billing module this time, that&rsquo;s the current plan for 8th iteration.</p>
 <p>Last time I only managed to get one simple test working, charging one unit of something for calculating a sum. I didn&rsquo;t specify what kind of unit is it, but it&rsquo;s of less importance. What I&rsquo;m currently thinking about is that I should not have added anything to the balance just yet, just count how many times sum was called and only when the balance is checked, calculate something. This would work better if my billing plans were a bit sophisticated and said: &ldquo;I charge 1 Eurocent per 1000 additions&rdquo;. I will probably not go in there, I think that there are no interesting problems to solve, it wouldn&rsquo;t contribute to the idea I have for this series. And if I&rsquo;m wrong, I can always go and fix. After all my tests are checking the balance after executing some calculations, not that I have some intermediate data or how am I doing things. That&rsquo;s important in the tests, the should verify the final outcome, not how we do things.</p>
-
 <p>Enough talking, time to start coding. For now, I have a very simple test with just one operation. Let&rsquo;s add one with two operations and verify, that it still works, like so:</p>
-
 
 
 <span id="4b02949ec8f376f3f3ee77b4afd22f40c0894ae9"></span>
@@ -233,9 +240,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("4b02949ec8f376f3f3ee77b4afd22f40c0894ae9").innerHTML = diffHtml;
 </script>
 
-
 <p>It works. What about multiplication?</p>
-
 
 
 <span id="7de02e6654e5b0af40f9d38daf8f4536e4dee41c"></span>
@@ -247,9 +252,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("7de02e6654e5b0af40f9d38daf8f4536e4dee41c").innerHTML = diffHtml;
 </script>
 
-
 <p>That doesn&rsquo;t work. Fix requires a few changes because I was very minimalistic about my implementation last time:</p>
-
 
 
 <span id="6d709281d7d84e2913cddcf372deec57d4c99060"></span>
@@ -261,9 +264,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("6d709281d7d84e2913cddcf372deec57d4c99060").innerHTML = diffHtml;
 </script>
 
-
 <p>OK, multiplication works. Do I need a test for two multiplications? I don&rsquo;t think so, it would work. I can check some crazy combinations later on after I implement all basic operations. Time for subtraction:</p>
-
 
 
 <span id="7fd7fa8d3c8d64040a13c2c05910214ef2ee0d56"></span>
@@ -275,21 +276,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("7fd7fa8d3c8d64040a13c2c05910214ef2ee0d56").innerHTML = diffHtml;
 </script>
 
-
 <p>I could go on with multiple <code>if ... else</code> statements, but switch is probably a bit more readable.</p>
-
 <p>An issue might be growing in the code. I&rsquo;m doing a switch over the same input for the second time already, first time was in the <code>Calculator</code>. In general, the switch statement in object-oriented programming suggests, that there&rsquo;s a hierarchy of objects missing. In general, I agree, but I don&rsquo;t see it in here yet. This duplication happens in two different modules, once I create a hierarchy of objects it will couple those modules even stronger. I&rsquo;m also not sure if creating objects with just one operation makes sense, especially that Java already provides <code>BinaryOperator</code> interface. Even more, if I introduce this hierarchy I&rsquo;d still need to either:</p>
-
 <ul>
 <li>add some billing responsibilities to those objects completely breaking single responsibility principle,</li>
 <li>switch over specific classes and put the logic in the switch or</li>
 <li>implement a second hierarchy of visitors probably to take care of the billing.</li>
 </ul>
-
 <p>All of those solutions seem either plain wrong or over the top, so I&rsquo;m not going to do anything about those switches. Maybe in the future I&rsquo;d see another solution, or maybe it&rsquo;s not such a big problem after all.</p>
-
 <p>In that case, the only operation missing is division. It is even more complex from a computation point of view, so the price will be even higher.</p>
-
 
 
 <span id="5c064d62bb99081c293feb651a0fc8cd69cbb038"></span>
@@ -301,9 +296,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("5c064d62bb99081c293feb651a0fc8cd69cbb038").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I have all tests green, but those were quite simple. Let&rsquo;s add something more complex. This time I will parameterize the test, similar to <code>CalculatorShould</code> tests:</p>
-
 
 
 <span id="34625d739b495d0caca278ee30794df829ef551c"></span>
@@ -315,9 +308,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("34625d739b495d0caca278ee30794df829ef551c").innerHTML = diffHtml;
 </script>
 
-
 <p>OK, single <code>eval</code> calls, even with multiple operations inside, are working. Just in case I&rsquo;m also adding balance calculations over multiple <code>eval</code> calls:</p>
-
 
 
 <span id="08f486659e5323f781ca395fe3f2543e4a2e4d2f"></span>
@@ -329,9 +320,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("08f486659e5323f781ca395fe3f2543e4a2e4d2f").innerHTML = diffHtml;
 </script>
 
-
 <p>Surprisingly, it doesn&rsquo;t work. It has nothing to do with an error in <code>Calculator</code> or <code>Billing</code>, but apparently, I never sanitized my input! That&rsquo;s a <em>huge</em> security hole and I might need to revisit either <code>Calculator</code> or <code>CalculatorController</code> later on for some more thorough checks. For now a simple <code>trim</code> will suffice:</p>
-
 
 
 <span id="973ff00196ca71850efec6cdec5acebb27561b61"></span>
@@ -343,10 +332,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("973ff00196ca71850efec6cdec5acebb27561b61").innerHTML = diffHtml;
 </script>
 
-
 <p>As for now I only support 4 operations, calculating a balance is complete. Those two switch statements I was talking about previously will become a problem once I decide to add more functions. I would then need to remember to change both places, so I&rsquo;m making now a mental note to myself to go there some other time and see if I can somehow make it more robust. <code>Calculator</code> will complain about not knowing the operation I want to have evaluated, but billing will just ignore it an not charge anything, I certainly don&rsquo;t want to do that!</p>
-
-<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/" target="_blank">next time</a> after I extract the billing module from <code>app</code>. See you there!</p>
+<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/">next time</a>
+ after I extract the billing module from <code>app</code>. See you there!</p>
 
   </div>
   

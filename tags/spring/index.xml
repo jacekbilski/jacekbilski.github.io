@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on On Software Engineering</title>
@@ -6,13 +6,13 @@
     <description>Recent content in Spring on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.bilski.tech/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>WebCalc iteration 2 - actual calculations and modules separation</title>
+      <title>Iteration 2 - actual calculations and modules separation</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -22,7 +22,7 @@ But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary thin
     </item>
     
     <item>
-      <title>WebCalc iteration 1 - setting up with one test</title>
+      <title>Iteration 1 - setting up with one test</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -32,7 +32,7 @@ Goal I want to have a very first and simple test working: adding 1 to 2.</descri
     </item>
     
     <item>
-      <title>Project WebCalc - motivation and plan</title>
+      <title>Motivation and plan</title>
       <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       

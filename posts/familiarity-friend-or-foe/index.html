@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
@@ -41,7 +41,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -94,8 +94,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -190,11 +198,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    
-
-<p>Familiarity seems like a good thing, you know the thing, how to deal with it, what to expect and where problems might be hiding.
+    <p>Familiarity seems like a good thing, you know the thing, how to deal with it, what to expect and where problems might be hiding.
 But more and more I see its dark side.</p>
-
 <p>Some time ago I was working on a legacy system.
 It was very complex and fragile, most developers didn&rsquo;t want to have anything to do with it.
 We knew the time would come when we would need to touch the core of this monster, so we wrote some tests and started slowly cleaning it up.
@@ -205,7 +210,6 @@ It took some time, but I got used to it.
 Only when someone joining the team asked why I was doing all this manually despite having Jenkins around, I realized that this &ldquo;getting used to&rdquo; went too far.
 My familiarity with the process was so big, that I didn&rsquo;t see it as a problem anymore, it disappeared from before my very own eyes.
 The process was working, so I stopped thinking about it.</p>
-
 <p>Recently, I saw another situation where familiarity had led to problems.
 I was part of a team, that started developing a product, but some time later I was assigned to another project.
 However, from time to time I got some pull requests to review.
@@ -215,12 +219,10 @@ I even went as far as to roughly compare code from my last commit to the project
 There was certainly more code, but the quality and style were comparable.
 The author of this pull request even told me, that he had already cleaned up things a bit.
 Still, for me, the code was very hard to read and this review took me something between 2 and 3 hours.</p>
-
 <p>In both cases, someone being familiar with the code or build system was, unwillingly, preventing others from easily joining the project and starting to work on it.
 In those examples, I was both a victim and an offender.
 In the first case, I created a problem for others by becoming blind to its existence but also fell victim to it by having to explain the process to others.
 In the second case I was partially responsible for the code quality of the project by having written parts of it but then fell victim to it as it was very hard to understand the code.</p>
-
 <p>Of course, it&rsquo;s not all bad.
 Familiar code or tooling means faster development.
 It&rsquo;s easier for us to do this next thing we need to do because we&rsquo;ve probably done it before a few times.
@@ -228,7 +230,6 @@ If not, then at least we roughly know how to move around and know basic principl
 Imagine yourself trying to write an application in a language you don&rsquo;t know.
 Now take others that have been using this language day in, day out for years.
 They&rsquo;ll be much faster than you, at least for some time.</p>
-
 <p>One other aspect of it is that we can be tempted to go for already known solutions even if they do not fit.
 I&rsquo;m a Java developer and almost every project I&rsquo;m part of is using Spring or Hibernate.
 By themselves those projects are not bad, they do help solve some serious problems.
@@ -241,32 +242,27 @@ The reason was that the whole Spring <code>ApplicationContext</code> had to be s
 I did my homework, analysed the application and found out, that this RestTemplate was the only thing I needed from Spring.
 And the only thing I really needed was an HttpClient, so I ended up using HttpComponents from Apache and my tests became much faster.
 At the same time, I didn&rsquo;t have to sacrifice anything, the application itself was still usable, the code might have become clearer and easier to use.</p>
-
 <p>The fact that something is familiar to us and it&rsquo;s easier for us to work with it doesn&rsquo;t mean it applies to everyone.
 The fact that for us something is easy is very subjective.
 We might have been using this particular technology for a very long time, but for a newcomer, it might look more like magic than technology.
 By constantly using the same tools or ways, we might be preventing others from joining us, or making the process very hard.
 We might also be losing opportunities to learn something new.</p>
-
 <p>We need to start questioning our choices from time to time.
 In my last example, I was given a hint: long-running tests.
 If we keep our eyes and minds open, we might be able to spot issues coming from the tensions between the problem we&rsquo;re trying to solve and what our technology choices are good for.
 For example, relational databases might not be good for storing the data your application is using.
 If you&rsquo;re working mostly with big binary data with a bit of metadata attached, you might want to look more closely at things like CouchDB or MongoDB.
 Even if you have never worked with any of them before it might be worth the effort to learn one of them.</p>
-
 <p>On the other hand, for your other system, a relational database might be a perfect fit, but you might find out, that skipping a Hibernate/JPA solution might lead to a simpler and faster application.
 SQL is a very good language for data processing, its implementations in various databases are highly optimized and efficient.
 Is it really always a mistake to not abstract SQL away and use JDBCTemplate?
 And if you ask yourself how high the chances are that you&rsquo;d need to replace your database engine, you might find out that abstracting the database is not worth your time.</p>
-
 <p>I&rsquo;d suggest that quite regularly we need to stop doing whatever it is that we&rsquo;re doing, take a step back and look around, maybe look at things from a different perspective.
 Think if there are places in your system that are particularly troublesome.
 It can be anything: fragility, complex code that is difficult to understand, tests requiring a lot of setup, a lot of boilerplate code, etc.
 Those might be signals that the current implementation somehow doesn&rsquo;t fit the reality.
 This tension or friction is a hint that the system is giving you, suggesting that there is room for improvement.
 Once you put a bit of effort into trying to find out what makes this piece of code so problematic, you might discover better ways of solving this particular problem that the code is responsible for.</p>
-
 <p>This approach is certainly not limited to code.
 The whole agile movement is about constantly adapting and improving, never settling for &ldquo;the perfect process&rdquo;.
 Even if something was working in your last project doesn&rsquo;t mean that it will fit your next one.
@@ -275,16 +271,13 @@ But keep your eyes open, because just this time the situation might so different
 For example, so far your team was mostly developing new software and scrum was working OK for you.
 But now you&rsquo;re taking over a project that includes a lot of ad-hoc support tasks that take precedence over regular development.
 Because you cannot predict how much firefighting you&rsquo;d need to do on any given day/week, scrum with fixed-length sprints might not be the best idea, maybe kanban would be a better choice, better suiting the problem of organizing your work.</p>
-
-<h3 id="tl-dr">tl;dr</h3>
-
+<h3 id="tldr">tl;dr</h3>
 <p>If all you have is a hammer, everything looks like a nail.
 What we already know is not always the best, though it might seem the easiest.
 We should be questioning our choices constantly and look for solutions to the problems we&rsquo;re supposed to solve instead of bending the problem so that it can be solved with the toolset we&rsquo;re familiar with.</p>
-
 <p>I&rsquo;d like to thank Ben Wolf for all the feedback and fixes he provided.</p>
-
-<p>Note, this article was originally posted on <a href="https://www.innoq.com/en/blog/familiarity-friend-or-foe/" target="_blank">INNOQ blog</a>.</p>
+<p>Note, this article was originally posted on <a href="https://www.innoq.com/en/blog/familiarity-friend-or-foe/" target="_blank">INNOQ blog</a>
+.</p>
 
   </div>
   

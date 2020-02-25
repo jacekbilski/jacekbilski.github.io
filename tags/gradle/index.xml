@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gradle on On Software Engineering</title>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>WebCalc iteration 5 - more complex calculations</title>
+      <title>Iteration 5 - more complex calculations</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
@@ -22,7 +22,7 @@ But first, let&amp;rsquo;s deal with some technical issues. One is upgrading Gra
     </item>
     
     <item>
-      <title>WebCalc iteration 2 - actual calculations and modules separation</title>
+      <title>Iteration 2 - actual calculations and modules separation</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       

@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
@@ -41,7 +41,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -94,8 +94,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -196,39 +204,23 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    
-
-<p>While working with a customer, I recently saw a test, that looked like this: throw a big XML (&gt;10kB) at a function, get another XML of similar size back and compare it with a pre-recorded one. The test is green if they&rsquo;re equal. I guess, at the very minimum, it serves a purpose of detecting issues. The problem is that it cannot do much more.</p>
-
+    <p>While working with a customer, I recently saw a test, that looked like this: throw a big XML (&gt;10kB) at a function, get another XML of similar size back and compare it with a pre-recorded one. The test is green if they&rsquo;re equal. I guess, at the very minimum, it serves a purpose of detecting issues. The problem is that it cannot do much more.</p>
 <p>What such a test is not providing are hints as to what the problem is when it fails. It could be anything, even XML formatting. If something goes wrong, it can take a few minutes/hours to find out where the differences between the resulting XML and the &ldquo;correct&rdquo; one are, and why the system has created it like this. Then the drilling starts, because the function under test calls other functions, and they again are calling some other functions. In short, the test is not telling me much; the story ends with a simple &ldquo;Houston, we have a problem&rdquo;, not followed by any more details.</p>
-
 <p>I have an issue with such tests, as I am not sure what is really important here. The test will be equally red if the system used tabs instead spaces to indent XML tags, or if it would fail to, for example, create a customer. It seems, that those two things are equally important.</p>
-
 <p>Yet another problem with this test is that it had to run on a pre-populated database, it wasn&rsquo;t creating the data it needed. This makes the test fragile because now it depends on something it cannot control. It also makes it much more difficult to read: we&rsquo;re thrown into the middle of a story,  we don&rsquo;t know what happened so far, thus we might also not understand what is happening right now.</p>
-
 <h3 id="in-a-perfect-world">In a perfect world</h3>
-
 <p>In my perfect (unfortunately, still imaginary) world, each test tells a complete story. First, it prepares the stage, then performs an action, and finally verifies that all the important things are as they should be, may be followed by a clean-up. It shows which requirements need to be met before we do the operation under test, then how to perform it, and at the end what the important outcomes are. After all, our systems are exactly about that, behaviour. When our stakeholders are giving us tasks, they&rsquo;re asking us for software that <em>does</em> foo.</p>
-
 <p>Let&rsquo;s assume that one part of our system is about adding customers. What could our tests look like? From a business perspective, it will probably not contain anything else than providing all the necessary data and asking the system to create a user from this data. Even such a small test already provides information about the minimal set of data that we need to know about a customer. If that was an integration/system/end-to-end test, we could also see how our users need to interact with the system. Such a test already provides several benefits.</p>
-
 <p>If we go to a development level, we&rsquo;re gaining even more. Here, we would probably see how to create a &ldquo;customer&rdquo; object/structure, and how to call the system to add the customer. In the verification phase, we would expect another call to get the newly created customer to verify that it indeed exists. All this would happen on the code level, so the developers could see how to create new objects or call the system. In the setup phase, we could probably see how to put the system together, which collaborators are required in this particular case, where to get them from, and how to bind them. It could even be used as an example to show &ldquo;this is how we do things in here&rdquo; to people joining the project.</p>
-
 <p>More complicated tests add more information. In the case of input validation, for example, we could show from a business perspective what is being validated and how the system responds to invalid requests. From a developer&rsquo;s perspective, such a test could show how the system responds to requests if there&rsquo;s something wrong with them.</p>
-
 <p>If tests are written this way, it would also be far easier to find out what is wrong if a test turns red. If all of a sudden, a test that says &ldquo;customer without an address is invalid&rdquo; fails, we can probably quickly get to a conclusion that something bad happened to our validation logic. Finding the code responsible for this should not be difficult.</p>
-
 <p>Such tests are also valuable in discussions with others because they help to understand the system. It&rsquo;s the idea of ubiquitous language taken from Domain-driven design. If we&rsquo;re talking about a specific system, then no matter who we&rsquo;re talking to, we should be talking about the same things: how the system should behave in certain situations.</p>
-
 <p>In addition, such tests should be more resistant to changes in implementation details. After all, they&rsquo;re more speaking about how the system should behave than anything else. Of course, we can never get rid of all the details. Once we reach the code level, they&rsquo;ll be all over the place, but if we focus on behaviour, we can avoid at least some pitfalls. An example would be testing the database access layer in isolation. This alone doesn&rsquo;t provide any value, we should probably test it together with business logic by, say, calling an API and verifying that the data ended up in the DB.</p>
-
 <p>The list above is by far not complete, such tests can do more. For example, if you feel that writing such tests is difficult or plain impossible, then, maybe you&rsquo;ve just found out that your system is not testable (enough). For example, if you group your tests around concepts or behaviours, it would be easier to find gaps or forgotten requirements.</p>
-
-<h3 id="tl-dr">tl;dr</h3>
-
+<h3 id="tldr">tl;dr</h3>
 <p>Tests are a far more powerful tool than merely a detector of some types of issues. They can – and should – help us understand the system, how it should behave, or which operations are supported. They can also show developers how things are organized in the code, what conventions we follow, how to create, and pass around data or do error handling.</p>
-
-<p>Note, this article was originally posted on <a href="https://www.innoq.com/de/blog/testing-is-storytelling/" target="_blank">INNOQ blog</a>.</p>
+<p>Note, this article was originally posted on <a href="https://www.innoq.com/de/blog/testing-is-storytelling/" target="_blank">INNOQ blog</a>
+.</p>
 
   </div>
   

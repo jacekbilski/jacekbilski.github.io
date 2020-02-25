@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 2 - actual calculations and modules separation • On Software Engineering</title>
+<title>Iteration 2 - actual calculations and modules separation • On Software Engineering</title>
 <meta name="description" content="WebCalc second iteration. I now have two Gradle subprojects and clearly separated calculator module. It now can actually add and subtract.">
 <meta name="keywords" content="Gradle, JUnit 5, Spring, Spring Boot, testing, tests, TDD">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 2 - actual calculations and modules separation"/>
+<meta name="twitter:title" content="Iteration 2 - actual calculations and modules separation"/>
 <meta name="twitter:description" content="WebCalc second iteration. I now have two Gradle subprojects and clearly separated calculator module. It now can actually add and subtract."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 2 - actual calculations and modules separation" />
+<meta property="og:title" content="Iteration 2 - actual calculations and modules separation" />
 <meta property="og:description" content="WebCalc second iteration. I now have two Gradle subprojects and clearly separated calculator module. It now can actually add and subtract." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2018-09-21T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 2 - actual calculations and modules separation</h1>
+    <h1>Iteration 2 - actual calculations and modules separation</h1>
     
     
 <div class="post__meta">
@@ -225,12 +234,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the second iteration of WebCalc implementation. <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/" target="_blank">Last time</a> I managed only to get a basic construct working and only in a very crude way. Always returning &ldquo;3&rdquo; from a controller is hardly a proper solution. This time I&rsquo;ll separate the app module from calculation one and then I&rsquo;ll start digging into actual calculations.</p>
-
-<p>But first, looking at Gradle files I&rsquo;ve noticed a few unnecessary things. One thing is, that I&rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary. Another is, that I&rsquo;m importing snapshots repositories I don&rsquo;t need. Yet another, I&rsquo;m using &ldquo;compile&rdquo; instead of &ldquo;implementation&rdquo; when specifying dependencies, where the former is not exactly deprecated, but the latter is preferred. And, at last, just by copy-pasting last time, I have a mix of single and double quotes, so I&rsquo;m changing all to double ones. See <a href="https://github.com/jacekbilski/WebCalc/commit/60acf6387906c6ffc194308dad41015f93372ba4" target="_blank">commit 60acf63</a>.  (May I express here my dislike to how many different syntaxes are allowed to do one thing? I didn&rsquo;t even start properly and already have a mess).</p>
-
+    <p>Welcome to the second iteration of WebCalc implementation. <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/">Last time</a>
+ I managed only to get a basic construct working and only in a very crude way. Always returning &ldquo;3&rdquo; from a controller is hardly a proper solution. This time I&rsquo;ll separate the app module from calculation one and then I&rsquo;ll start digging into actual calculations.</p>
+<p>But first, looking at Gradle files I&rsquo;ve noticed a few unnecessary things. One thing is, that I&rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary. Another is, that I&rsquo;m importing snapshots repositories I don&rsquo;t need. Yet another, I&rsquo;m using &ldquo;compile&rdquo; instead of &ldquo;implementation&rdquo; when specifying dependencies, where the former is not exactly deprecated, but the latter is preferred. And, at last, just by copy-pasting last time, I have a mix of single and double quotes, so I&rsquo;m changing all to double ones. See <a href="https://github.com/jacekbilski/WebCalc/commit/60acf6387906c6ffc194308dad41015f93372ba4" target="_blank">commit 60acf63</a>
+.  (May I express here my dislike to how many different syntaxes are allowed to do one thing? I didn&rsquo;t even start properly and already have a mess).</p>
 <p>Having that aside I can focus again on the project. What I want to do is to move calculations from controller to calculator. That one doesn&rsquo;t exist, so I&rsquo;ll create it, starting of course with a test. Crazy enough the API will be very simple, take a string in, return a string, so all this parsing will be done on calculator side, not in the controller. Makes sense, a controller should only be responsible for handling the web part, so HTTP, declaring content type, etc. Parsing input belongs to the calculator. So, the test:</p>
-
 
 
 <span id="c74a0e795d793c80444210d81c0438bc7c5a89ca"></span>
@@ -242,9 +250,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("c74a0e795d793c80444210d81c0438bc7c5a89ca").innerHTML = diffHtml;
 </script>
 
-
 <p>To make it green I need an implementation. It cannot be any simpler than:</p>
-
 
 
 <span id="83bab42e3b06aff35963e50b32579866db99e67e"></span>
@@ -256,9 +262,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("83bab42e3b06aff35963e50b32579866db99e67e").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I need to call the calculator from the controller, again, simple:</p>
-
 
 
 <span id="2ee994615737d3853deb392a0e5571a8a4d16c37"></span>
@@ -270,11 +274,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("2ee994615737d3853deb392a0e5571a8a4d16c37").innerHTML = diffHtml;
 </script>
 
-
 <p>A bit crude, but the tests work. Talking about tests, it seems, that WebCalcApplicationTests, which was generated automatically by Spring Initializr, is obsolete. It makes sure, that ApplicationContext is able to start, but my RestApiTest is also verifying that I need a fully working application there. It also takes some time to execute which I just noticed. I can delete WebCalcApplicationTests.</p>
-
 <p>The controller needs to be cleaned up. First, I create a calculator field and initialise it in the constructor:</p>
-
 
 
 <span id="cb07b1d531d951df8b43247ed5f81ad18d1e466e"></span>
@@ -286,9 +287,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("cb07b1d531d951df8b43247ed5f81ad18d1e466e").innerHTML = diffHtml;
 </script>
 
-
 <p>Everything still works, but it&rsquo;s still not perfect, I don&rsquo;t want my controller to know how to create a calculator. I&rsquo;m going to do it Spring way, create it as a bean somewhere in Spring configuration and use constructor injection, like so:</p>
-
 
 
 <span id="b13b904f119c16b31ae6e79442dbed1958f04efb"></span>
@@ -300,15 +299,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("b13b904f119c16b31ae6e79442dbed1958f04efb").innerHTML = diffHtml;
 </script>
 
-
 <p>OK, I have now three classes, that belong to different modules, business logic, web and app. Time for some Gradle subprojects.</p>
-
-<p>The first step is quite big in terms of commit size but provides little more than setting up the stage. It is required though. I&rsquo;m creating a subproject in Gradle called &ldquo;app&rdquo; and I&rsquo;m moving everything in there. This module, in future, will hold only classes responsible for setting up everything, starting Spring, instantiating context, etc. See <a href="https://github.com/jacekbilski/WebCalc/commit/03e5db0bf93a36595098b1364eb2fd41266b3c3a" target="_blank">commit 03e5db0</a>.</p>
-
-<p>Now things get more complex, as I want to extract a &ldquo;calculator&rdquo; module. That one will only have classes responsible for calculations and will be free of any framework dependencies, like Spring. It will also be compiled first. While doing that I faced some serious problems with, most likely, dependency management Gradle plugin from Spring Boot. Whenever I was trying to use it in calculator module, my tests in the app module were not seeing classes from the calculator. Playing around with Java, Gradle and Spring Boot versions didn&rsquo;t seem to make my situation better. But, as you might have noticed, I was &ldquo;inviting&rdquo; Spring Boot project into my calculation module. I&rsquo;m not going to pull in Spring itself, I just wanted to get the same version of JUnit and AssertJ everywhere, which this plugin could ensure. It didn&rsquo;t work (or I&rsquo;m too stupid to get it working correctly), so I had to go back to manually setting versions. Long story short: see <a href="https://github.com/jacekbilski/WebCalc/commit/460192005a3c064980ef64c4a9ad659052948a6e" target="_blank">commit 4601920</a>.</p>
-
+<p>The first step is quite big in terms of commit size but provides little more than setting up the stage. It is required though. I&rsquo;m creating a subproject in Gradle called &ldquo;app&rdquo; and I&rsquo;m moving everything in there. This module, in future, will hold only classes responsible for setting up everything, starting Spring, instantiating context, etc. See <a href="https://github.com/jacekbilski/WebCalc/commit/03e5db0bf93a36595098b1364eb2fd41266b3c3a" target="_blank">commit 03e5db0</a>
+.</p>
+<p>Now things get more complex, as I want to extract a &ldquo;calculator&rdquo; module. That one will only have classes responsible for calculations and will be free of any framework dependencies, like Spring. It will also be compiled first. While doing that I faced some serious problems with, most likely, dependency management Gradle plugin from Spring Boot. Whenever I was trying to use it in calculator module, my tests in the app module were not seeing classes from the calculator. Playing around with Java, Gradle and Spring Boot versions didn&rsquo;t seem to make my situation better. But, as you might have noticed, I was &ldquo;inviting&rdquo; Spring Boot project into my calculation module. I&rsquo;m not going to pull in Spring itself, I just wanted to get the same version of JUnit and AssertJ everywhere, which this plugin could ensure. It didn&rsquo;t work (or I&rsquo;m too stupid to get it working correctly), so I had to go back to manually setting versions. Long story short: see <a href="https://github.com/jacekbilski/WebCalc/commit/460192005a3c064980ef64c4a9ad659052948a6e" target="_blank">commit 4601920</a>
+.</p>
 <p>Enough with Gradle, right now the structure is better. I could extract also the web module, but I don&rsquo;t need it just yet, I only wanted to have calculator separated, because that&rsquo;s where I&rsquo;d focus next. First thing I want to do is to extend my test to be parametrised, so that I can easily add more test cases, like so:</p>
-
 
 
 <span id="888921d39ce95ea674351cc774c3f3afa3934451"></span>
@@ -320,9 +316,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("888921d39ce95ea674351cc774c3f3afa3934451").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I&rsquo;m adding a second test case, that would force me to stop blindly returning &ldquo;3&rdquo; from the calculator:</p>
-
 
 
 <span id="2b817d091a4e4f9ef2296c7659dc49e16e444a51"></span>
@@ -334,9 +328,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("2b817d091a4e4f9ef2296c7659dc49e16e444a51").innerHTML = diffHtml;
 </script>
 
-
 <p>Fixing this is quite easy, although I need to deal with parsing strings. At some later point in time, I&rsquo;ll probably separate parsing from calculations, but I don&rsquo;t know yet in which direction the code will go, so I&rsquo;m not doing it now.</p>
-
 
 
 <span id="d70fe86a15323b8fe248f2b6759a163bf23aa8d3"></span>
@@ -348,11 +340,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("d70fe86a15323b8fe248f2b6759a163bf23aa8d3").innerHTML = diffHtml;
 </script>
 
-
 <p>As you can see, I&rsquo;m using BigDecimals, although I don&rsquo;t need them just yet. It&rsquo;s a conscious decision, I don&rsquo;t want to rewrite all of the code once I reach a point, where I&rsquo;d need some floating point operations.</p>
-
 <p>I&rsquo;m also adding a few test cases, just to be sure, that my adding also works for bigger numbers, as well as negative ones.</p>
-
 
 
 <span id="cd95377686b605238f1dfdb391225dd9ff5b86d9"></span>
@@ -364,11 +353,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("cd95377686b605238f1dfdb391225dd9ff5b86d9").innerHTML = diffHtml;
 </script>
 
-
 <p>I used &ldquo;obvious implementation&rdquo; in the code, so no surprises here, all work.</p>
-
 <p>I&rsquo;m going to extract the calculator as a field in the test, it will help me soon.</p>
-
 
 
 <span id="1d10c7afcf8e682c6b4855c707cc070813f53ad7"></span>
@@ -380,9 +366,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("1d10c7afcf8e682c6b4855c707cc070813f53ad7").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I can add a new operation to the calculator: subtraction. As usual, I&rsquo;m starting with a test:</p>
-
 
 
 <span id="a6b796638bce46cd848b39a88d91fdfb7bd4d07b"></span>
@@ -394,9 +378,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("a6b796638bce46cd848b39a88d91fdfb7bd4d07b").innerHTML = diffHtml;
 </script>
 
-
 <p>Implementation is quite obvious if not a bit dirty:</p>
-
 
 
 <span id="1f3776d5f456902d0804dc04a20de030cc4ed388"></span>
@@ -408,9 +390,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("1f3776d5f456902d0804dc04a20de030cc4ed388").innerHTML = diffHtml;
 </script>
 
-
 <p>Again, I&rsquo;m adding a few more test cases to also test negative and longer numbers.</p>
-
 
 
 <span id="6f54b92dc0b873b408c0a5ab01aa169679a1e799"></span>
@@ -422,9 +402,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("6f54b92dc0b873b408c0a5ab01aa169679a1e799").innerHTML = diffHtml;
 </script>
 
-
 <p>So far so good. Am I sure? Not really! I was so into calculator module itself, that I didn&rsquo;t notice my integration test stopped working. But that&rsquo;s easy to fix:</p>
-
 
 
 <span id="12d76b2b0641e6a32c5127dc38dc15b4b3ee2426"></span>
@@ -436,8 +414,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("12d76b2b0641e6a32c5127dc38dc15b4b3ee2426").innerHTML = diffHtml;
 </script>
 
-
-<p>And that would be all this time. I definitely have a messy implementation of calculator itself, that I&rsquo;d need to deal with soon. After I add a few more operations, and maybe partial support for floating point operations in the next iteration, maybe it will be more clear how to clean it up. Also, the tests for addition and subtraction look worryingly similar, for multiplication and division they would also look the same. But here, although it&rsquo;s an obvious duplication I don&rsquo;t want to merge them because they&rsquo;re theoretically testing different operations. Or maybe I should? I&rsquo;ll see <a href="/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/" target="_blank">next time</a>. See you later!</p>
+<p>And that would be all this time. I definitely have a messy implementation of calculator itself, that I&rsquo;d need to deal with soon. After I add a few more operations, and maybe partial support for floating point operations in the next iteration, maybe it will be more clear how to clean it up. Also, the tests for addition and subtraction look worryingly similar, for multiplication and division they would also look the same. But here, although it&rsquo;s an obvious duplication I don&rsquo;t want to merge them because they&rsquo;re theoretically testing different operations. Or maybe I should? I&rsquo;ll see <a href="/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/">next time</a>
+. See you later!</p>
 
   </div>
   

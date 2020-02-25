@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 3 - formatting and cleanup in calculator module • On Software Engineering</title>
+<title>Iteration 3 - formatting and cleanup in calculator module • On Software Engineering</title>
 <meta name="description" content="WebCalc third iteration. I&#39;m adding multiplication and division. During that I need to deal with formatting and limiting number of digits.">
 <meta name="keywords" content="JUnit 5, testing, tests, TDD">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 3 - formatting and cleanup in calculator module"/>
+<meta name="twitter:title" content="Iteration 3 - formatting and cleanup in calculator module"/>
 <meta name="twitter:description" content="WebCalc third iteration. I&#39;m adding multiplication and division. During that I need to deal with formatting and limiting number of digits."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 3 - formatting and cleanup in calculator module" />
+<meta property="og:title" content="Iteration 3 - formatting and cleanup in calculator module" />
 <meta property="og:description" content="WebCalc third iteration. I&#39;m adding multiplication and division. During that I need to deal with formatting and limiting number of digits." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2018-10-10T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 3 - formatting and cleanup in calculator module</h1>
+    <h1>Iteration 3 - formatting and cleanup in calculator module</h1>
     
     
 <div class="post__meta">
@@ -216,10 +225,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the third iteration of WebCalc implementation. <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/" target="_blank">Previously</a> I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&rsquo;m expecting issues with the division. Once I get these things working, I&rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.</p>
-
+    <p>Welcome to the third iteration of WebCalc implementation. <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/">Previously</a>
+ I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&rsquo;m expecting issues with the division. Once I get these things working, I&rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.</p>
 <p>Multiplication is, indeed, straightforward. I copy subtraction test (which still bothers me, but I don&rsquo;t see a better solution yet) and modify it accordingly, like so:</p>
-
 
 
 <span id="07cf692dadc129d61f6154eb481f3137f5666a81"></span>
@@ -231,9 +239,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("07cf692dadc129d61f6154eb481f3137f5666a81").innerHTML = diffHtml;
 </script>
 
-
 <p>Implementation is a tiny bit more complicated because I need to replace an if there with something else. Well, I could use &lsquo;else if&rsquo;, but instead I&rsquo;ll use a switch over strings, never done that before honestly. Everything else is obvious:</p>
-
 
 
 <span id="af224dc6ab22437ceb2ce8af87a1fff178fd3885"></span>
@@ -245,9 +251,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("af224dc6ab22437ceb2ce8af87a1fff178fd3885").innerHTML = diffHtml;
 </script>
 
-
 <p>I&rsquo;m adding a few more test cases, just for completeness sake.</p>
-
 
 
 <span id="c16e7827f90bcf19eeede5a3ba71dd8d340e0527"></span>
@@ -259,11 +263,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("c16e7827f90bcf19eeede5a3ba71dd8d340e0527").innerHTML = diffHtml;
 </script>
 
-
 <p>No surprises here, implementation is correct.</p>
-
 <p>Division starts fairly simple. Yet another copy of tests and I have:</p>
-
 
 
 <span id="c9c64f7c1e05f30566c1205629f9daf5122d18fb"></span>
@@ -275,9 +276,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("c9c64f7c1e05f30566c1205629f9daf5122d18fb").innerHTML = diffHtml;
 </script>
 
-
 <p>So far the implementation can look like this:</p>
-
 
 
 <span id="186a577c5984d757353eaaf3d9cd1c50317b0e75"></span>
@@ -289,9 +288,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("186a577c5984d757353eaaf3d9cd1c50317b0e75").innerHTML = diffHtml;
 </script>
 
-
 <p>Works for now. Now it will get trickier because I want to leave a world of integers. I&rsquo;m adding a simple test case:</p>
-
 
 
 <span id="7dcbb265b2d8ba840822d57fb172096b0e552728"></span>
@@ -303,9 +300,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("7dcbb265b2d8ba840822d57fb172096b0e552728").innerHTML = diffHtml;
 </script>
 
-
 <p>It failed because of the decimal point. I&rsquo;m from Poland, currently living in Germany, and in both those countries, we&rsquo;re using comma as a decimal point, not a dot. Java, when converting BigDecimals to strings, is always using the dot. If I want to get a coma in string representation, I need to format the numbers using NumberFormat, like so:</p>
-
 
 
 <span id="5f810e80942b2abdfb8e8ccc19c3055f4893690a"></span>
@@ -317,13 +312,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("5f810e80942b2abdfb8e8ccc19c3055f4893690a").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I have a coma. Next problem to solve is rounding. The division is the first operation, that can produce infinite expansion, but I need a finite number of digits to return. I don&rsquo;t know if that&rsquo;s a good idea, but I&rsquo;ll add to the Calculator a possibility of setting max fraction digits.</p>
-
 <p>Digression, in hindsight, it&rsquo;s a bad idea and I&rsquo;ll have to fix it later, at the beginning of 4th iteration probably. Although I&rsquo;ve found it out after writing the code and during writing this article, I decided not to go back, fix it immediately and hide my failure from everybody. It happens to me all the time, and not only to me. We&rsquo;re all making mistakes, we just need to reflect on them and learn from them. It is a very important part of software engineering.</p>
-
 <p>Back to code, merely adding a test case will not be enough this time, I&rsquo;ll need to change a bit more. This is the moment, where all test methods stop looking exactly the same way, so making a copy for a division was a good decision. Now my test looks like this:</p>
-
 
 
 <span id="f7b4e66b945c0bc1f74be3d08b07111a4404fbe1"></span>
@@ -335,9 +326,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("f7b4e66b945c0bc1f74be3d08b07111a4404fbe1").innerHTML = diffHtml;
 </script>
 
-
 <p>Calculator needs to get its setMaxFractionDigits:</p>
-
 
 
 <span id="f2b3ee7b7c0f2474514ae69a46141f3072f6dfca"></span>
@@ -349,9 +338,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("f2b3ee7b7c0f2474514ae69a46141f3072f6dfca").innerHTML = diffHtml;
 </script>
 
-
 <p>So far it works. As usual, I&rsquo;m adding a few test cases to find out if I&rsquo;ve covered all cases:</p>
-
 
 
 <span id="baf1aefe2653639a44ad1e49881ae485af869443"></span>
@@ -363,9 +350,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("baf1aefe2653639a44ad1e49881ae485af869443").innerHTML = diffHtml;
 </script>
 
-
 <p>Funny enough I didn&rsquo;t. Although I was limiting max fraction digits in the division, printing number out, just by accident, was also using maximum 2 fraction digits. In the end, I didn&rsquo;t notice, that I&rsquo;ve missed something. When I asked for higher (or lower) precision, I didn&rsquo;t get what I wanted. Fix is simple:</p>
-
 
 
 <span id="811a08b0f8dc60f12cb6fee5093e25d80ea52f8b"></span>
@@ -377,9 +362,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("811a08b0f8dc60f12cb6fee5093e25d80ea52f8b").innerHTML = diffHtml;
 </script>
 
-
 <p>I&rsquo;m looking at the Calculator and I think that the eval method has grown beyond my liking. Especially this big switch is bothering me. Luckily Java has something like BinaryOperator, that I can use, so I&rsquo;m extracting a method finding out what kind of function needs to be applied to two values.</p>
-
 
 
 <span id="73934d92164a3bd9f2d854fd36d9df3aba4f333c"></span>
@@ -391,11 +374,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("73934d92164a3bd9f2d854fd36d9df3aba4f333c").innerHTML = diffHtml;
 </script>
 
-
 <p>I think the Calculator itself is now more complete, I don&rsquo;t yet see any applicable improvements. Parsing string looks like a candidate, but it would change once I start dealing with more than one operation on two numbers, so I&rsquo;m leaving it like it is. Also looking at calculator tests I still cannot figure out if I should merge adding, subtracting and multiplicating together. They seem very similar, but operations are different after all. I&rsquo;ll probably stop tormenting myself with that and leave it be. I can always return here later on and merge if that would make sense.</p>
-
 <p>It&rsquo;s time to see if something needs to be changed from the REST interface perspective. Indeed, setting max fraction digits is not handled at all, and I should probably also test division from outside, as it is quite different from all other operations implemented so far. My new test hitting the application from outside looks like this:</p>
-
 
 
 <span id="ab22b184d1475a9a3dfd095821936c1b964f0e58"></span>
@@ -407,9 +387,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("ab22b184d1475a9a3dfd095821936c1b964f0e58").innerHTML = diffHtml;
 </script>
 
-
 <p>Fixing the controller is straightforward:</p>
-
 
 
 <span id="0d0b2436b8b35754208dfa6c57d780d64844a859"></span>
@@ -421,8 +399,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("0d0b2436b8b35754208dfa6c57d780d64844a859").innerHTML = diffHtml;
 </script>
 
-
-<p>That will be all this time. <a href="/posts/webcalc-iteration-4-fixes-only/" target="_blank">Next time</a> I&rsquo;ll start by fixing handling of max fraction digits. I&rsquo;ll also stick to Calculator itself and add a possibility of doing some more complex calculations. See you next time!</p>
+<p>That will be all this time. <a href="/posts/webcalc-iteration-4-fixes-only/">Next time</a>
+ I&rsquo;ll start by fixing handling of max fraction digits. I&rsquo;ll also stick to Calculator itself and add a possibility of doing some more complex calculations. See you next time!</p>
 
   </div>
   

@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
@@ -44,7 +44,7 @@ Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were co
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -97,8 +97,16 @@ Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were co
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -197,18 +205,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; <code>tree2</code> component, but we were forced to render commandButtons instead, which looked quite awkward in some places.</p>
-
-<p>Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink. Google wasn&rsquo;t really helpful as it seemed, that no one was ever struggling with that sort of problem. I used Firebug (great Firefox extension for web developers, grab it <a href="http://getfirebug.com/" target="_blank">here</a>) to check what really Firefox was getting from a server and what really was the code it was rendering. And there was something not right, MyFaces rendered JavaScript code, that included &ldquo;oamSubmitForm&rdquo; function, but Firefox couldn&rsquo;t find it. When I looked at what Firefox was really rendering (HTML tab in Firebug), there were two blocks of JavaScript, but both empty. I Googled a little more and stumbled upon some posts regarding JavaScript code included in a page, which content type was <code>application/xhtml+xml</code>. I checked what content type I was getting from my server, and it was <code>text/xml</code>. When I&rsquo;ve added <code>&lt;jsp:directive.page contentType=&quot;text/html; charset=UTF-8&quot;/&gt;</code> to header of my page, suddenly all commandLinks started to work correctly.</p>
-
+<p>Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink. Google wasn&rsquo;t really helpful as it seemed, that no one was ever struggling with that sort of problem. I used Firebug (great Firefox extension for web developers, grab it <a href="http://getfirebug.com/" target="_blank">here</a>
+) to check what really Firefox was getting from a server and what really was the code it was rendering. And there was something not right, MyFaces rendered JavaScript code, that included &ldquo;oamSubmitForm&rdquo; function, but Firefox couldn&rsquo;t find it. When I looked at what Firefox was really rendering (HTML tab in Firebug), there were two blocks of JavaScript, but both empty. I Googled a little more and stumbled upon some posts regarding JavaScript code included in a page, which content type was <code>application/xhtml+xml</code>. I checked what content type I was getting from my server, and it was <code>text/xml</code>. When I&rsquo;ve added <code>&lt;jsp:directive.page contentType=&quot;text/html; charset=UTF-8&quot;/&gt;</code> to header of my page, suddenly all commandLinks started to work correctly.</p>
 <p>What happened? A good practice is that when you include JavaScript code in your HTML page you should use comment out all this code using HTML/XML comments: <code>&lt;!--</code> and <code>--&gt;</code>. That&rsquo;s enough when your content type is not something like <code>text/xml</code>. In that case, you need to write all JavaScript code within CDATA block so it should look like this:</p>
-
 <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
 &lt;[CDATA[
  // your code here
 ]]&gt;
 &lt;/script&gt;
 </code></pre>
-
 <p>Apparently, MyFaces doesn&rsquo;t do that. I&rsquo;ll confirm that, and if that&rsquo;s true I&rsquo;ll report a bug and provide a patch. So keep up, I&rsquo;ll tell you when that will happen, and post this patch here also.</p>
 
   </div>

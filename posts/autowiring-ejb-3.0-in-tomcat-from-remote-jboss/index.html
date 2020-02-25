@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
@@ -41,7 +41,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -94,8 +94,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -194,29 +202,19 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>To be honest I&rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean. Not funny at all.</p>
-
 <p>Now that I know Spring and it&rsquo;s <code>@Autowired</code> annotation everything seems far more usable. Even Java EE 5 has its own annotations like <code>@EJB</code>.</p>
-
 <p>So, here&rsquo;s my problem. My application is going to be used simultaneously by many users, up to several hundred at the same time. So I need to have scalable architecture. I chose EJB for the logic tier and JSF for the web tier. Of course in each of those tiers, I can use Spring for dependency injection via <code>@Autowired</code>. But then, what about EJB? Every place I&rsquo;ve looked, people were either deployed single WAR on JBoss or Glassfish, that contained EJB and all web stuff or used sophisticated XML configurations that did all the magic with injecting EJBs. I wanted something more. I didn&rsquo;t want any defining EJBs in XML, one entry per one EJB, and then, on the web side, one entry per one injection.</p>
-
 <p>Well, Spring comes in handy in such situations. So, in logic tier I have annotated session bean:</p>
-
 <pre><code>@Stateless(mappedName = &quot;sth/SessionService&quot;)
 public class SessionServiceEJB implements SessionService {
 </code></pre>
-
 <p>All that it does is saying that this is a stateless session bean (<code>SessionService</code> is its remote interface) and will be mapped in JNI under the name <code>sth/SessionService</code>.</p>
-
 <p>Then in web beans I have:</p>
-
 <pre><code>@EJB(mappedName = &quot;sth/SessionService&quot;)
 private SessionService sessionService;
 </code></pre>
-
 <p>Which means that sessionService should be injected with EJB mapped under the name <code>sth/SessionService</code>.</p>
-
 <p>As web tier is put on Tomcat, which doesn&rsquo;t understand <code>@EJB</code> annotation, I used Spring to do the magic, it understands this annotation and injects EJBs properly. But where from get those EJBs? Well, we have some really interesting features in Spring like <code>SimpleJndiBeanFactory</code>. So my application requires <code>applicationContext.xml</code> file with a bean defined something like that:</p>
-
 <pre><code>&lt;bean id=&quot;simpleJndiBeanFactory&quot; class=&quot;org.springframework.jndi.support.SimpleJndiBeanFactory&quot;&gt;
   &lt;property name=&quot;jndiEnvironment&quot;&gt;
     &lt;props&gt;
@@ -227,9 +225,7 @@ private SessionService sessionService;
   &lt;/property&gt;
 &lt;/bean&gt;
 </code></pre>
-
 <p>So what does it do? First of all, this creates a new Spring I define bean factory which will be the source of our injected EJBs. Then, in <code>jndiEnvironment</code> I define a source where this bean factory should look for EJBs.</p>
-
 <p>Primary objective completed, I can insert via Spring any EJB deployed on an application server without defining this EJB anywhere. Unfortunately, secondary objectives are not there (yet). First of all, I would like to skip this <code>mappedName</code> parameter, at least in the web tier. Second, as you can see above configuration requires JBoss, it&rsquo;s not universal. If you want to use Glassfish, Apache Geronimo or some other application server, you&rsquo;ll need to configure JNDI source by yourself. Third, there&rsquo;s <code>localhost</code> in the address, which would certainly be wrong in a production environment. But I believe that host can be configured in a different way, although I didn&rsquo;t look for any. Do you have any solutions to that?</p>
 
   </div>

@@ -12,21 +12,21 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.58.3" />
+<meta name="generator" content="Hugo 0.65.3" />
 
     
     
     
 
-<title>WebCalc iteration 8 - billing module extraction and differentiating users • On Software Engineering</title>
+<title>Iteration 8 - billing module extraction and differentiating users • On Software Engineering</title>
 <meta name="description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea.">
 <meta name="keywords" content="TDD, learning, mistakes, Spring Security, context">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WebCalc iteration 8 - billing module extraction and differentiating users"/>
+<meta name="twitter:title" content="Iteration 8 - billing module extraction and differentiating users"/>
 <meta name="twitter:description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
-<meta property="og:title" content="WebCalc iteration 8 - billing module extraction and differentiating users" />
+<meta property="og:title" content="Iteration 8 - billing module extraction and differentiating users" />
 <meta property="og:description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/" />
@@ -34,6 +34,7 @@
 <meta property="article:modified_time" content="2019-05-13T00:00:00+00:00" />
 
 
+
     
 
 
@@ -41,7 +42,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.d8e474f8dcee7b234bc8afe1479c3b44440642d23eebbb8b4977250a46484d42.css" integrity="sha256-2OR0&#43;NzueyNLyK/hR5w7REQGQtI&#43;67uLSXclCkZITUI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.e1328bd2782dc12d009c9e01c8a9883d286ee0815d48539334d945277ec599ee.css" integrity="sha256-4TKL0ngtwS0AnJ4ByKmIPShu4IFdSFOTNNlFJ37Fme4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -114,8 +115,16 @@
 		 
 			 
 				<li>
-					<a href="/posts/">
+					<a href="/posts/various/">
 						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
 					</a>
 				</li>
 			 
@@ -175,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>WebCalc iteration 8 - billing module extraction and differentiating users</h1>
+    <h1>Iteration 8 - billing module extraction and differentiating users</h1>
     
     
 <div class="post__meta">
@@ -219,23 +228,20 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the 8th iteration of WebCalc. <a href="/posts/webcalc-iteration-7-billing/" target="_blank">Previously</a> I promised to extract billing module from the app module and that&rsquo;s what I&rsquo;ll start with. To IDEs then.</p>
-
-<p>There&rsquo;s nothing really fancy about extracting this module. You can see the <a href="https://github.com/jacekbilski/WebCalc/commit/9f191153ecf616318c041547a82ba0b9a709c3d3" target="_blank">full commit 9f191153</a>, but it really boils down to creating a new module and copying <code>build.gradle</code> from calculator module, adding it to <code>settings.gradle</code>, moving <code>Billing</code> and <code>BillingShould</code> to the new module and importing new module in the app module.</p>
-
+    <p>Welcome to the 8th iteration of WebCalc. <a href="/posts/webcalc-iteration-7-billing/">Previously</a>
+ I promised to extract billing module from the app module and that&rsquo;s what I&rsquo;ll start with. To IDEs then.</p>
+<p>There&rsquo;s nothing really fancy about extracting this module. You can see the <a href="https://github.com/jacekbilski/WebCalc/commit/9f191153ecf616318c041547a82ba0b9a709c3d3" target="_blank">full commit 9f191153</a>
+, but it really boils down to creating a new module and copying <code>build.gradle</code> from calculator module, adding it to <code>settings.gradle</code>, moving <code>Billing</code> and <code>BillingShould</code> to the new module and importing new module in the app module.</p>
 <p>I&rsquo;ll also do a few upgrades while I&rsquo;m more on the technical side of things and not dealing with business code. Gradle does seem old already so I&rsquo;m:</p>
-
 <ol>
-<li>installing it with <a href="https://sdkman.io/" target="_blank">SDKMAN</a></li>
+<li>installing it with <a href="https://sdkman.io/" target="_blank">SDKMAN</a>
+</li>
 <li>and calling <code>gradle wrapper --gradle-version=5.4.1 --distribution-type=all</code> in project&rsquo;s root directory.</li>
 </ol>
-
-<p>Results are in <a href="https://github.com/jacekbilski/WebCalc/commit/6cc51b7377e14846639204f1312b6caef78668bc" target="_blank">commit 6cc51b73</a></p>
-
+<p>Results are in <a href="https://github.com/jacekbilski/WebCalc/commit/6cc51b7377e14846639204f1312b6caef78668bc" target="_blank">commit 6cc51b73</a>
+</p>
 <p>Tests are still green, so I can move on.</p>
-
 <p>Next thing to upgrade is Spring Boot, the newest version seems to be 2.1.4, so:</p>
-
 
 
 <span id="ae2d5a678e3b64d8c72d7c2e5acd71cd54c13893"></span>
@@ -247,11 +253,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("ae2d5a678e3b64d8c72d7c2e5acd71cd54c13893").innerHTML = diffHtml;
 </script>
 
-
 <p>Tests keep being green, no matter what I throw at them. As there are no other things to upgrade I can go back to delivering something to my theoretical stakeholders. This time the idea is to take users into account when billing, so if user A executes some calculations, he&rsquo;s billed, but user B is not, logical.</p>
-
-<p>Now there&rsquo;s probably no way for me to escape from having actual users, so I&rsquo;ll use what I&rsquo;ve configured Spring Security for back in <a href="/posts/webcalc-iteration-6-introducing-users/" target="_blank">iteration 6</a>. As usual, I start with a test and I need to break two APIs, <code>Controller</code>&rsquo;s and <code>Billing</code>&rsquo;s by adding a user in there. This will force me to probably rewrite half of the application and I&rsquo;m just wondering if that could have been avoided.</p>
-
+<p>Now there&rsquo;s probably no way for me to escape from having actual users, so I&rsquo;ll use what I&rsquo;ve configured Spring Security for back in <a href="/posts/webcalc-iteration-6-introducing-users/">iteration 6</a>
+. As usual, I start with a test and I need to break two APIs, <code>Controller</code>'s and <code>Billing</code>'s by adding a user in there. This will force me to probably rewrite half of the application and I&rsquo;m just wondering if that could have been avoided.</p>
 
 
 <span id="7b6f19e409d00f90cccd33447fe4457f53be2573"></span>
@@ -263,9 +267,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("7b6f19e409d00f90cccd33447fe4457f53be2573").innerHTML = diffHtml;
 </script>
 
-
 <p>I&rsquo;m not exactly introducing user object, I&rsquo;ll see if just having IDs will be enough, I hope it will. As promised, this test breaks API horribly, so I need to fix both <code>Calculator</code> and <code>Billing</code> classes.</p>
-
 
 
 <span id="1f9edf61f60ac6e331b26126e31bbd4780f26402"></span>
@@ -277,9 +279,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("1f9edf61f60ac6e331b26126e31bbd4780f26402").innerHTML = diffHtml;
 </script>
 
-
 <p>This, in turn, forces me to change both controllers and the rest of the tests. In controllers, I&rsquo;ll do a nasty thing and just pass in a <code>NULL</code>. For now, this will make the code compile and if some test will fail later on, I&rsquo;ll fix it.</p>
-
 
 
 <span id="f628697f6be7336cafa1abd11b5207d21fe36e5b"></span>
@@ -291,9 +291,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("f628697f6be7336cafa1abd11b5207d21fe36e5b").innerHTML = diffHtml;
 </script>
 
-
 <p>In the tests, I need to create some user ids and just use them.</p>
-
 
 
 <span id="15e5aeea8673d9ed580b184f67afaca5dbe366d1"></span>
@@ -305,11 +303,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("15e5aeea8673d9ed580b184f67afaca5dbe366d1").innerHTML = diffHtml;
 </script>
 
-
 <p>By the way, all those refactorings are quite easy to do with a good IDE. Now everything compiles, tests are executed and all green except my new one. I can finally start working on making it green.</p>
-
 <p>The second assertion in my test is failing, apparently user B was also billed for what user A did. No wonder, there&rsquo;s currently only a global balance, I need to change it to some map from user id to a balance. That also means, that <code>CalculatorObserver</code> would need to carry user information. Not an issue:</p>
-
 
 
 <span id="19082bac83445a4fc6eae59e7807dc9377e8340f"></span>
@@ -321,9 +316,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("19082bac83445a4fc6eae59e7807dc9377e8340f").innerHTML = diffHtml;
 </script>
 
-
 <p>One last thing, <code>Calculator</code> needs to pass <code>userId</code> to the observer call.</p>
-
 
 
 <span id="351805e7caa3c6afe186ebc4824c74d587a59c03"></span>
@@ -335,11 +328,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("351805e7caa3c6afe186ebc4824c74d587a59c03").innerHTML = diffHtml;
 </script>
 
-
 <p>I&rsquo;m done, all tests are now passing, phew. The mere amount of time I had to spend in red (having not passing tests) shows how still inexperienced I am when it comes to TDD. But we all need to learn constantly, maybe next time I would be able to avoid such a situation. Or maybe not because there&rsquo;s no other way. I&rsquo;ll see if I can get something out of this.</p>
-
 <p>What bothers me now is that internally everything works, but I have those two <code>NULL</code>s in controllers. To actually fix those I need a very similar test, but working from outside, through the REST interface. And I&rsquo;m wondering right now why I do not have such test already. It seems I did the same mistake again, I started adding a feature not from outside, I assumed I know how to implement it properly. Anyway, the test:</p>
-
 
 
 <span id="9b64c3924d5da958ec3b6aef6e15cd649edfbc4f"></span>
@@ -351,13 +341,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("9b64c3924d5da958ec3b6aef6e15cd649edfbc4f").innerHTML = diffHtml;
 </script>
 
-
 <p>I also changed the constants for username and password, because now I need two of them. When I run it, already the first assertion fails, apparently I didn&rsquo;t even charge the correct user. Yes, now I need to fix the <code>NULL</code>s in both controllers.</p>
-
 <p>It seems that I need a custom <code>UserDetailsService</code> and a custom <code>User</code> class. The reason is that I assumed that a user has an id and it is of <code>UUID</code> type. None of that is true with default Spring Boot configuration. This is getting bigger than I was hoping, but the only other choice I have is to revert those choices and I don&rsquo;t want to do that. It seems that I&rsquo;ll start growing some <code>Users</code> module, but as usual, I&rsquo;ll start adding code to the <code>app</code> module and will be extracting it later. Let&rsquo;s start with <code>User</code> class.</p>
-
 <p>Because I&rsquo;m using Spring Security, I&rsquo;m forced to make my <code>User</code> class implement <code>UserDetails</code> interface or extend directly from <code>org.springframework.security.core.userdetails.User</code>. This is creating a tight coupling between my application and Spring Security which I don&rsquo;t like. But when I create my own <code>User</code> class, even if it&rsquo;s implementing Spring&rsquo;s interfaces, I might try to limit the damage. I&rsquo;ll use composition instead of inheritance, as all good practices suggest, and just delegate what&rsquo;s necessary. I could, if need be, remove Spring Security and reimplement its API, but changes to the implementation might not be that big. By the way, I&rsquo;m starting to get the idea of why working with Spring Security is not such an easy thing.</p>
-
 
 
 <span id="646a91f0a99b555a6af01aee6d3ae7e4e5325d16"></span>
@@ -369,9 +355,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("646a91f0a99b555a6af01aee6d3ae7e4e5325d16").innerHTML = diffHtml;
 </script>
 
-
 <p>OK, <code>User</code> is not enough, I also need my own <code>UserDetailsService</code>:</p>
-
 
 
 <span id="bf2cf30ac0f4f968de3358cc4027f7851f922855"></span>
@@ -383,11 +367,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("bf2cf30ac0f4f968de3358cc4027f7851f922855").innerHTML = diffHtml;
 </script>
 
-
 <p>It contains only one user with the same username and password as previously. I also wired it up, so I should be in exactly the same place as before, let&rsquo;s run the tests to see if I&rsquo;m not lying.</p>
-
-<p>I&rsquo;m a liar, the error I&rsquo;m getting now is <code>There is no PasswordEncoder mapped for the id &quot;null&quot;</code>. That&rsquo;s unexpected. A quick check on the Internet and I know I need to specify the password as <code>{noop}9786f3gb4508c2393q7y</code>, see <a href="https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-format" target="_blank">here</a>. The fix is simple:</p>
-
+<p>I&rsquo;m a liar, the error I&rsquo;m getting now is <code>There is no PasswordEncoder mapped for the id &quot;null&quot;</code>. That&rsquo;s unexpected. A quick check on the Internet and I know I need to specify the password as <code>{noop}9786f3gb4508c2393q7y</code>, see <a href="https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-format" target="_blank">here</a>
+. The fix is simple:</p>
 
 
 <span id="73e5da543308a41c02f586d31d884fbcfd297354"></span>
@@ -399,9 +381,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("73e5da543308a41c02f586d31d884fbcfd297354").innerHTML = diffHtml;
 </script>
 
-
 <p>Now I also don&rsquo;t need default user configured in <code>application.yaml</code> file.</p>
-
 
 
 <span id="9d8b66696cadea90a55c5a8de0498b76cb7d32a7"></span>
@@ -413,11 +393,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("9d8b66696cadea90a55c5a8de0498b76cb7d32a7").innerHTML = diffHtml;
 </script>
 
-
 <p>OK, now I&rsquo;m in a position I wanted to be, all tests are green apart from my newly created one. But it is actually wrong, I should be already charging someone for doing any calculations, my new tests is only verifying that I&rsquo;m not charging the wrong users. That&rsquo;s how I end up missing important business logic by not writing proper tests. I wrote the tests for my <code>Calculator</code> class but didn&rsquo;t do that for my REST API part. And I thought I&rsquo;m doing TDD&hellip;</p>
-
 <p>I&rsquo;m adding a new REST API test, even before the currently red one, just to verify someone was charged. It&rsquo;s actually a partial copy of this new test:</p>
-
 
 
 <span id="0b562ac57ccaec6c6a4be9472113ceb7ebd242dc"></span>
@@ -429,11 +406,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("0b562ac57ccaec6c6a4be9472113ceb7ebd242dc").innerHTML = diffHtml;
 </script>
 
-
 <p>The fact that it is a partial copy suggests to me that there&rsquo;s some duplication in the tests, maybe they&rsquo;re not testing the right things, I&rsquo;ll look into it is a minute. For now, I&rsquo;m focusing on the test I just wrote. Luckily, it&rsquo;s red so I need to fix it.</p>
-
 <p>After inspecting the code a bit, to my surprise, I find out that on the application or Spring level I&rsquo;m not injecting <code>Billing</code> as an observer to <code>Calculator</code>. This is getting more and more embarrassing for me&hellip; Luckily, the fix is quite simple:</p>
-
 
 
 <span id="63e308c391b6e9765f94e0ff36a20338b6b33047"></span>
@@ -445,9 +419,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("63e308c391b6e9765f94e0ff36a20338b6b33047").innerHTML = diffHtml;
 </script>
 
-
 <p>Now things get more interesting because all my tests for billing going through the REST interface became red. The reason is simple and terrifying - the state from one test is carried over to the next test. Of course, the <code>Map</code> I have in <code>Billing</code> is not cleaned up between the tests so it carries over current balance. This is actually a good thing, in the real world I want that! In the tests though that&rsquo;s a very bad thing. As I&rsquo;m using Spring, there&rsquo;s an annotation created for such situations, <code>@DirtiesContext</code>. As each of my tests assumes a clean state, I&rsquo;ll use <code>BEFORE_EACH_TEST_METHOD</code> mode, like so:</p>
-
 
 
 <span id="f166e52d1417ded5d8bdd7e51b7cfe35865b7950"></span>
@@ -459,11 +431,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("f166e52d1417ded5d8bdd7e51b7cfe35865b7950").innerHTML = diffHtml;
 </script>
 
-
 <p>I was expecting only one of my billing tests to turn green, but two of them stopped failing. The reason is, I can use a <code>NULL</code> as a key to a <code>Map</code> in <code>Billing</code> that contains balance of each user. As I&rsquo;m passing in a <code>NULL</code> as a <code>userId</code>, my current implementation works. Not expected, but also not bad either.</p>
-
 <p>OK, I finally managed to get the whole application to a state where it should have been before I started this iteration, better late than never. I can finally try to do something with my last failing test. It&rsquo;s red because I&rsquo;m not differentiating users in any way beyond controllers, <code>userId</code> is always <code>NULL</code>. I need to get the user in both controllers, in Spring Security world it is done like so:</p>
-
 
 
 <span id="debbfa7577acfc28c5f29e9e970d246f754a7636"></span>
@@ -475,9 +444,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("debbfa7577acfc28c5f29e9e970d246f754a7636").innerHTML = diffHtml;
 </script>
 
-
 <p>Interestingly enough that doesn&rsquo;t fix my test, but after taking a closer look I noticed that I simply lack a second user. The fix is easy:</p>
-
 
 
 <span id="00edd2498fe3a50d6970c048a79860bcf5b3e391"></span>
@@ -489,11 +456,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     document.getElementById("00edd2498fe3a50d6970c048a79860bcf5b3e391").innerHTML = diffHtml;
 </script>
 
-
 <p>Finally! All tests green!</p>
-
 <p>I must admit that this iteration was a very challenging and frustrating one. And it was only my fault. Most of the problems were coming from my previous mistakes, the iteration was far bigger than it should have been, I had to add a test and complete missing implementation, and all that in the middle of working on something else. I was thinking several times about rewriting the iteration completely, fixing things first and then moving onto the actual thing I wanted to do. But again, this whole series is about learning. This iteration clearly shows how much trouble I got myself into just by forgetting testing things from outside and, in the end, missing important pieces of implementation. Plus, by actually going through all the pain, maybe I&rsquo;ll remember it better.</p>
-
 <p>Anyway, thanks for bearing with me. In the next iteration&hellip; I have no clue what I&rsquo;ll be doing. Let it be a surprise for all of us. See you next time!</p>
 
   </div>
