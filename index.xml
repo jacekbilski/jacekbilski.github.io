@@ -12,6 +12,76 @@
     
     
     <item>
+      <title>Simple made easy by Rich Hickey</title>
+      <link>https://www.bilski.tech/videos/simple_made_easy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/simple_made_easy/</guid>
+      <description>Most likely number one video on my list. I&amp;rsquo;ve seen it already at least 5 times and every single time I&amp;rsquo;m finding something new in there. A gold mine.
+I don&amp;rsquo;t want to spoil the surprise too much, but Rich makes a point that &amp;ldquo;easy&amp;rdquo; is subjective but &amp;ldquo;simple&amp;rdquo; is objective and builds on that. Consequencces are profound.
+Unfortunately I cannot embedd it here, but it&amp;rsquo;s available here: https://www.infoq.com/presentations/Simple-Made-Easy/</description>
+    </item>
+    
+    <item>
+      <title>TDD, where did it all go wrong by Ian Cooper</title>
+      <link>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</guid>
+      <description>Probably number two on my list. This video helped me greatly understand the concept of a &amp;ldquo;unit&amp;rdquo;. That in turn, combined with bounded context idea from DDD world and hexagonal architecture with its ports and adapters, changed my perspective on tests in general. I finally understood what is the scope of a unit test and how I was doing it wrong previously.
+  </description>
+    </item>
+    
+    <item>
+      <title>Improving your software by Gernot Starke</title>
+      <link>https://www.bilski.tech/videos/improving_your_software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/improving_your_software/</guid>
+      <description>It&amp;rsquo;s probably one of quite a few videos about that topic, but probably the only one publicly available that I know of. The topic is: value, as in how &amp;ldquo;business&amp;rdquo; perceives what we, engineers are doing. It&amp;rsquo;s probably the one thing that turns you from a mere code writer to a professional software engineer. At least this is how I feel now that I understand the idea. My recommendation to all developers, if you want to advance your career, learn about value, everything else are implementation details.</description>
+    </item>
+    
+    <item>
+      <title>Java Case Study by Micah Martin &amp; Robert &#34;Uncle Bob&#34; Martin</title>
+      <link>https://www.bilski.tech/videos/java_case_study/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/java_case_study/</guid>
+      <description>This is unfortunately a paid material but I believe it was worth buying. Before I&amp;rsquo;ve seen this whole series I theoretically knew what TDD is and how to do it, but I always struggled with it. Watching this series has shown me how to apply all this theoretical knowledge, put most pieces in place.
+The link: https://cleancoders.com/videos?series=java-case-study</description>
+    </item>
+    
+    <item>
+      <title>Engineering you by Martin Thompson</title>
+      <link>https://www.bilski.tech/videos/engineering_you/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/engineering_you/</guid>
+      <description>This video is about simple things, basics sometimes, yet we tend to forget about them way too often. Worth watching every now and then to remind ourselves what it means to be a software engineer.
+  </description>
+    </item>
+    
+    <item>
+      <title>Agile is dead by Pragmatic Dave Thomas</title>
+      <link>https://www.bilski.tech/videos/agile_is_dead/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/agile_is_dead/</guid>
+      <description>This video is about how original idea of &amp;ldquo;Agile&amp;rdquo; is different from what we&amp;rsquo;re usually doing on &amp;ldquo;agile&amp;rdquo; projects. And Dave, as one of the 17 who created the Manifesto for Agile Software Development, knows what he&amp;rsquo;s talking about.
+  </description>
+    </item>
+    
+    <item>
+      <title>Software, faster by Dan North</title>
+      <link>https://www.bilski.tech/videos/software_faster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/software_faster/</guid>
+      <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub , but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.
+  </description>
+    </item>
+    
+    <item>
       <title>Familiarity - friend or foe</title>
       <link>https://www.bilski.tech/posts/familiarity-friend-or-foe/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>

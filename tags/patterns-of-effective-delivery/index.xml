@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>patterns of effective delivery on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/patterns-of-effective-delivery/</link>
+    <description>Recent content in patterns of effective delivery on On Software Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="https://www.bilski.tech/tags/patterns-of-effective-delivery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Software, faster by Dan North</title>
+      <link>https://www.bilski.tech/videos/software_faster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/software_faster/</guid>
+      <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub , but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.
+  </description>
+    </item>
+    
+  </channel>
+</rss>

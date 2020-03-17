@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>value on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/value/</link>
+    <description>Recent content in value on On Software Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="https://www.bilski.tech/tags/value/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Improving your software by Gernot Starke</title>
+      <link>https://www.bilski.tech/videos/improving_your_software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/improving_your_software/</guid>
+      <description>It&amp;rsquo;s probably one of quite a few videos about that topic, but probably the only one publicly available that I know of. The topic is: value, as in how &amp;ldquo;business&amp;rdquo; perceives what we, engineers are doing. It&amp;rsquo;s probably the one thing that turns you from a mere code writer to a professional software engineer. At least this is how I feel now that I understand the idea. My recommendation to all developers, if you want to advance your career, learn about value, everything else are implementation details.</description>
+    </item>
+    
+    <item>
+      <title>Java Case Study by Micah Martin &amp; Robert &#34;Uncle Bob&#34; Martin</title>
+      <link>https://www.bilski.tech/videos/java_case_study/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/java_case_study/</guid>
+      <description>This is unfortunately a paid material but I believe it was worth buying. Before I&amp;rsquo;ve seen this whole series I theoretically knew what TDD is and how to do it, but I always struggled with it. Watching this series has shown me how to apply all this theoretical knowledge, put most pieces in place.
+The link: https://cleancoders.com/videos?series=java-case-study</description>
+    </item>
+    
+  </channel>
+</rss>

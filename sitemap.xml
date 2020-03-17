@@ -3,6 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.bilski.tech/videos/simple_made_easy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/improving_your_software/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/java_case_study/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/engineering_you/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/agile_is_dead/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/software_faster/</loc>
+  </url>
+  
+  <url>
     <loc>https://www.bilski.tech/tags/familiarity/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
@@ -348,7 +376,35 @@
   </url>
   
   <url>
+    <loc>https://www.bilski.tech/tags/agile/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/basics/</loc>
+  </url>
+  
+  <url>
     <loc>https://www.bilski.tech/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/engineering/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/patterns-of-effective-delivery/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/unit/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/value/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/videos/</loc>
   </url>
   
 </urlset>

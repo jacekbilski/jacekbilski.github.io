@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>unit on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/unit/</link>
+    <description>Recent content in unit on On Software Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="https://www.bilski.tech/tags/unit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TDD, where did it all go wrong by Ian Cooper</title>
+      <link>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</guid>
+      <description>Probably number two on my list. This video helped me greatly understand the concept of a &amp;ldquo;unit&amp;rdquo;. That in turn, combined with bounded context idea from DDD world and hexagonal architecture with its ports and adapters, changed my perspective on tests in general. I finally understood what is the scope of a unit test and how I was doing it wrong previously.
+  </description>
+    </item>
+    
+  </channel>
+</rss>

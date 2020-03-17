@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>TDD, where did it all go wrong by Ian Cooper</title>
+      <link>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</guid>
+      <description>Probably number two on my list. This video helped me greatly understand the concept of a &amp;ldquo;unit&amp;rdquo;. That in turn, combined with bounded context idea from DDD world and hexagonal architecture with its ports and adapters, changed my perspective on tests in general. I finally understood what is the scope of a unit test and how I was doing it wrong previously.
+  </description>
+    </item>
+    
+    <item>
       <title>Iteration 8 - billing module extraction and differentiating users</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</link>
       <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
