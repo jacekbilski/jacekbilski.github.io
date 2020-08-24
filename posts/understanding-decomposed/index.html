@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -154,6 +154,7 @@
 	
 	
 	
+	
 </section>
 
       </div>
@@ -207,7 +208,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 8 min read
     
 </div>
 
@@ -216,8 +217,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>I <a href="/posts/supporting-understanding-with-simplicity/">previously wrote</a>
- about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.</p>
+    <p>I <a href="/posts/supporting-understanding-with-simplicity/">previously wrote</a> about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.</p>
 <p>Despite what people might think, our main purpose as developers is not writing software, but solving problems. A code is just a means, not the goal. Nobody demands software just for the sake of it from a developer. Applications need to solve whatever problems our customers need to have solved. This point of view on why we are here also changes what software is. It ceases to be a merely different formulation of a solution that is specified somewhere, it <!-- raw HTML omitted -->is<!-- raw HTML omitted --> the solution. But this requires us to think differently about what it is we are doing, and how we’re doing it.</p>
 <p>The code is the ultimate truth, as they say. After all, this is what is executed in production, not some written specification, diagrams, JIRA tickets, or the ideas we’re keeping in our heads. The problem is, that if the code is the solution, then there are a few groups of people that need to understand it. The first one is developers, after all, we’re closest to it, we’re writing it, it’s our bread and butter, our life. The second group is the stakeholders or customers, who are defining how the systems should behave. Maybe some other groups, like operations, are also interested to understand how the system will behave, or with what other systems it interacts.</p>
 <p>Let’s do a small experiment. Below is a piece of code. Please take a look at this and try to name the algorithm that is implemented here.</p>
@@ -241,20 +241,16 @@ for (int i = 0; i &amp;lt; n; i++) {
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>Although it&rsquo;s a bit biased towards the functional way, and imperative code can definitely be improved (see discussion below the tweet), it clearly shows some benefits of using pre-existing ideas, monadic function composition in this case. Knowledge of such a technique, coming from the functional world and now being more and more adopted in the OOP world, enables not only a better separation of concerns but also more descriptive code. I&rsquo;d argue, that the functional code says more what it does, imperative code is more about how to achieve it. Because of that, the functional code is more readable and understandable; it conveys intention. And it&rsquo;s just an example, I&rsquo;m not trying to say, that functional programming is always or usually better than an object-oriented or procedural approach. But because in the functional world certain mathematical abstracts are much more present or natural, also the code can be far easier expressed in terms of those abstractions.</p>
-<p>Why is it so important to go for known things? Because they tend to &ldquo;disappear&rdquo; from the sight and leave more space for other, usually more important matters. Once we can refer to some external knowledge, our brains don&rsquo;t need to worry about that part any more. If I know what &ldquo;intersection&rdquo; from set theory means, then understanding <code>a.intersect(b);</code> is trivial. I don&rsquo;t even see the dot, the semicolon and the brackets any more. If I wrote <code>a.commonElements(b);</code>, I&rsquo;d probably force myself and others to think about or find out in the code what is meant by <code>commonElements</code>. It would be one more thing to keep in my head, in my <a href="https://en.wikipedia.org/wiki/Working_memory" target="_blank">working memory</a>
-.</p>
+<p>Why is it so important to go for known things? Because they tend to &ldquo;disappear&rdquo; from the sight and leave more space for other, usually more important matters. Once we can refer to some external knowledge, our brains don&rsquo;t need to worry about that part any more. If I know what &ldquo;intersection&rdquo; from set theory means, then understanding <code>a.intersect(b);</code> is trivial. I don&rsquo;t even see the dot, the semicolon and the brackets any more. If I wrote <code>a.commonElements(b);</code>, I&rsquo;d probably force myself and others to think about or find out in the code what is meant by <code>commonElements</code>. It would be one more thing to keep in my head, in my <a href="https://en.wikipedia.org/wiki/Working_memory" target="_blank">working memory</a>.</p>
 <p>This memory is however very small. It can keep approximately 7 &ldquo;things&rdquo; at the same time. Once we exceed our own limits, we&rsquo;re losing the whole picture, we cannot comprehend the whole problem as one any more (by the way, this is also the moment where bugs start to creep into our code). If we refer to something we already know, then those concepts don&rsquo;t need to &ldquo;take up space&rdquo; in our working memory, so it&rsquo;s easier and faster to reason about the code.</p>
 <p>A different aspect of understanding has to do with the language we&rsquo;re using. The software we&rsquo;re writing is a type of mental model. Those models try to reflect real life as much as possible or necessary. They can also have theories built around them helping us deal with real life or decide what to do. Those models and our software should be as close as possible to real life models to reduce friction between them. Any differences are bug breeding grounds, and very time consuming to work with. Every time we see parts of the code, that show inconsistencies, we need to think about whether the code indeed reflects reality, or whether it looks like it looks because we were unable to express reality in a better way.</p>
-<p>This whole idea plays very well with ubiquitous language, an integral part of <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank">Domain Driven Design</a>
-. It states, that there should be only one common language used to talk about the problem we&rsquo;re trying to solve, no matter who&rsquo;s talking to whom, developers, testers, business people, and also in the code. It makes sense; why would we want to &ldquo;translate&rdquo; between code, documentation and spoken language, after all, we&rsquo;re talking about the same things. In such translations, we&rsquo;d be losing important details, and it also takes time and effort.</p>
+<p>This whole idea plays very well with ubiquitous language, an integral part of <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank">Domain Driven Design</a>. It states, that there should be only one common language used to talk about the problem we&rsquo;re trying to solve, no matter who&rsquo;s talking to whom, developers, testers, business people, and also in the code. It makes sense; why would we want to &ldquo;translate&rdquo; between code, documentation and spoken language, after all, we&rsquo;re talking about the same things. In such translations, we&rsquo;d be losing important details, and it also takes time and effort.</p>
 <p>If such a language doesn&rsquo;t exist yet, we should create it. Or rather, like agile or extreme programming proposes, use metaphors. That way, although there&rsquo;s no language specific to the kind of problem we&rsquo;re trying to solve, there is a similar concept from which we then can borrow. This will also help in communication between people; instead of describing terms every time we need to, or giving them some artificial names, we can use terms from this other domain. Their power is, that they already have a meaning in the context we&rsquo;re interested in. It will also greatly speed up bringing new people to the project or talking about the project outside.</p>
-<p>Code written using ubiquitous language or metaphors will also reveal its intent much quicker. It&rsquo;s a very important property of a <a href="http://wiki.c2.com/?XpSimplicityRules" target="_blank">simple design</a>
-. Such design leads to quicker software development and only implementing what is actually needed. If we can split our big problem into smaller ones and properly separate the concerns, we have higher chances of being able to use ubiquitous language directly in the code, thus making it more understandable. Our code should be talking more about the actual problem it&rsquo;s trying to solve, than any technical solution it uses, like libraries, frameworks or databases.</p>
+<p>Code written using ubiquitous language or metaphors will also reveal its intent much quicker. It&rsquo;s a very important property of a <a href="http://wiki.c2.com/?XpSimplicityRules" target="_blank">simple design</a>. Such design leads to quicker software development and only implementing what is actually needed. If we can split our big problem into smaller ones and properly separate the concerns, we have higher chances of being able to use ubiquitous language directly in the code, thus making it more understandable. Our code should be talking more about the actual problem it&rsquo;s trying to solve, than any technical solution it uses, like libraries, frameworks or databases.</p>
 <p>This also might have the additional benefit of not having to write code at all. Chances are, that for any problem that is not core and unique to our business, someone already solved it, and there is a library available. If we use this library, we&rsquo;ll save ourselves the time writing and maintaining it, and we&rsquo;ll be able to focus more on important matters. It will, again, make the code more understandable, because there will be less code to understand. We should also remember, that our task is to solve problems, not to write code, and we should only work on something that differentiates our companies from the competition. This is where profit is generated, the commodity code has already been written, all companies can get it, so there&rsquo;s no real advantage here.</p>
 <p>As you can clearly see by the sheer amount of topics and concepts I mentioned in this post, it&rsquo;s not so easy to keep our code understandable. And I didn&rsquo;t even mention all of them. It also means that we can make our code difficult to read in so many ways. But I believe that it is in our common goal to make our code more readable and understandable. This not only makes working with such code easier but helps us to deliver value faster.</p>
 <p>Happy coding!</p>
-<p>Note, this article was originally posted on <a href="https://www.innoq.com/en/blog/understanding-decomposed/" target="_blank">INNOQ blog</a>
-.</p>
+<p>Note, this article was originally posted on <a href="https://www.innoq.com/en/blog/understanding-decomposed/" target="_blank">INNOQ blog</a>.</p>
 
   </div>
   
@@ -281,16 +277,7 @@ for (int i = 0; i &amp;lt; n; i++) {
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

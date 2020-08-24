@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>surprise on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/surprise/</link>
+    <description>Recent content in surprise on On Software Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.bilski.tech/tags/surprise/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Iteration 9 - custom functions</title>
+      <link>https://www.bilski.tech/posts/iteration-9-custom-functions/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/iteration-9-custom-functions/</guid>
+      <description>Welcome to the 9th iteration of WebCalc. Previously I managed to extract billing module from the app module and started differentiating users from one another. This time I&amp;rsquo;ll enable the users to define their own functions. To IDEs then.
+But first I must apologize for what I&amp;rsquo;ve done last time. I coupled my User class with Spring&amp;rsquo;s UserDetails. It&amp;rsquo;s obvious to me now, in my face even. Apparently, it wasn&amp;rsquo;t back then.</description>
+    </item>
+    
+  </channel>
+</rss>

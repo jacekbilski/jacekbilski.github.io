@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+<meta name="generator" content="Hugo 0.74.3" />
+
+    
+    
+    
+
+<title>Iteration 9 - custom functions • On Software Engineering</title>
+<meta name="description" content="In WebCalc&#39;s ninth iteration I&#39;m enabling users to define their own functions">
+<meta name="keywords" content="TDD, learning, surprise">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Iteration 9 - custom functions"/>
+<meta name="twitter:description" content="In WebCalc&#39;s ninth iteration I&#39;m enabling users to define their own functions"/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Iteration 9 - custom functions" />
+<meta property="og:description" content="In WebCalc&#39;s ninth iteration I&#39;m enabling users to define their own functions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/iteration-9-custom-functions/" />
+<meta property="article:published_time" content="2020-08-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-24T00:00:00+00:00" />
+
+
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.302e105633e7b74ff627e4a63c9fc0dc7446d15c60a7a4a2e12da987fdd9de0e.css" integrity="sha256-MC4QVjPnt0/2J&#43;SmPJ/A3HRG0Vxgp6Si4S2ph/3Z3g4=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+    
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
+<style type='text/css'>
+.d2h-wrapper {
+    color: black;
+    background: white;
+    line-height: normal;
+}
+.d2h-wrapper td {
+    padding: 0;
+    border: none;
+}
+.d2h-wrapper table {
+    margin-bottom: 0;
+}
+.d2h-file-diff {
+    overflow-x: auto;
+}
+</style>
+<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">On Software Engineering</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/various/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/videos/">
+						<span>Videos</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Iteration 9 - custom functions</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Aug 24, 2020<br/>
+    
+    <i class="fas fa-user-edit"></i> Jacek Bilski
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/tdd">tdd</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/learning">learning</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/surprise">surprise</a>
+          
+      
+    
+    
+    <br/>
+    
+        <i class="fas fa-clock"></i> 22 min read
+    
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Welcome to the 9th iteration of WebCalc. <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/">Previously</a> I managed to extract billing module from the app module and started differentiating users from one another. This time I&rsquo;ll enable the users to define their own functions. To IDEs then.</p>
+<p>But first I must apologize for what I&rsquo;ve done last time. I coupled my <code>User</code> class with Spring&rsquo;s <code>UserDetails</code>. It&rsquo;s obvious to me now, in my face even. Apparently, it wasn&rsquo;t back then. What I should have done is to create my <code>User</code> class free of any Spring influences and then create a <code>SpringUserAdapter</code> class that implements Spring&rsquo;s <code>UserDetails</code> and keeps internally an instance of my <code>User</code> class. That way my application can use <code>User</code> class wherever it needs to oblivious of Spring&rsquo;s existence, but when necessary it has a mechanism to talk to Spring in its own language. Luckily the mistake is easy to fix, though it takes a few changes, see <a href="https://github.com/jacekbilski/WebCalc/commit/5230203c61a9b9d9685bc39e54a94256567df78e" target="_blank">commit 5230203c</a>.</p>
+<p>From now on I&rsquo;ll also be skipping all upgrade information, it&rsquo;s necessary but doesn&rsquo;t bring anything in this series. Still, I&rsquo;ll be doing the upgrades. This time it was a bigger one, after upgrading Gradle I also switched to the modern plugins DSL and unified the script where possible, see <a href="https://github.com/jacekbilski/WebCalc/commit/c590bccbe80e26e05aac87508f62d3eedf80f629" target="_blank">commit c590bccb</a> if you&rsquo;re interested.</p>
+<p>Now to the actual coding exercise. At the end I want my users to be able to define their own functions. My example would be calculating the area of a circle. In reverse polish notation that would look like this: <code>^2 π *</code>. This assumes, that the radius of the circle is already on top of the stack I&rsquo;m using. To define a function like this I need one more element, functions name. I&rsquo;ll just prefix functions definition with it. Now I can write my test:</p>
+
+
+<span id="eb272473382ffbd8319076e3c0d28c19195ab5b8"></span>
+<script>
+    document.getElementById("eb272473382ffbd8319076e3c0d28c19195ab5b8").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n@@ -55,6 \u002b55,19 @@\n         .statusCode(401);\n   }\n\n\u002b  @Test\n\u002b  void canDefineAndExecuteCustomFunction() {\n\u002b    given()\n\u002b        .auth().preemptive().basic(DEFAULT_USERNAME, DEFAULT_PASSWORD)\n\u002b        .body(\u0022circle_area ^2 π *\u0022)\n\u002b    .when()\n\u002b        .put(\u0022\/define\u0022)\n\u002b    .then()\n\u002b        .statusCode(200);\n\u002b\n\u002b    assertEvalResult(\u00223 circle_area\u0022, \u002228,27\u0022);\n\u002b  }\n\u002b\n   private void setMaxFractionDigitsForSession(int maxFractionDigits, SessionFilter session) {\n     given()\n         .filter(session)\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>As expected, it fails. I&rsquo;ll be going baby steps, I&rsquo;ll try to stay almost constantly in green and only push the functionality to desired places by adding new tests. The answer to the question &ldquo;what is the simplest thing that could possibly work&rdquo; with my currently red test is this:</p>
+
+
+<span id="bbc32e14c2c709d312261105cd078eed32f9b0a9"></span>
+<script>
+    document.getElementById("bbc32e14c2c709d312261105cd078eed32f9b0a9").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -28,6 \u002b28,8 @@\n       session.setAttribute(MAX_FRACTION_DIGITS, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     Authentication auth = (Authentication) request.getUserPrincipal();\n     User user = ((SpringUserAdapter) auth.getPrincipal()).getUser();\n\u002b    if (body.equals(\u00223 circle_area\u0022))\n\u002b      return \u002228,27\u0022;\n     return calculator.eval(user.id, body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n   }\n\n@@ -35,4 \u002b37,9 @@\n   public void setMaxFractionDigits(@RequestBody String body, HttpSession session) {\n     session.setAttribute(MAX_FRACTION_DIGITS, Integer.parseInt(body));\n   }\n\u002b\n\u002b  @PutMapping(\u0022\/define\u0022)\n\u002b  public void defineCustomFunction() {\n\u002b\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>That satisfies the tests, but just them. I&rsquo;m now left with two calls that need to be passed down to the <code>Calculator</code>. The problem is that they need to go together. The only way to verify that defining custom function works is to first define a function and then do calculations with it. Otherwise, I&rsquo;d need to test some internal state of <code>Calculator</code> and thus couple my tests to the chosen implementation. That would be wrong. The test for the <code>Calculator</code> itself looks like this:</p>
+
+
+<span id="7e55e97eecc708bbe801fbbf81c924b5910035cc"></span>
+<script>
+    document.getElementById("7e55e97eecc708bbe801fbbf81c924b5910035cc").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -84,4 \u002b84,15 @@\n     String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\u002b\n\u002b  @DisplayName(\u0022Custom functions\u0022)\n\u002b  @ParameterizedTest(name = \u0022function: \u0027\u0027{0}\u0027\u0027, input: \u0027\u0027{1}\u0027\u0027, max fraction digits: \u0027\u0027{3}\u0027\u0027, expected result: \u0027\u0027{2}\u0027\u0027\u0022)\n\u002b  @CsvSource({\n\u002b      \u0022circle_area ^2 π *, 3 circle_area, \u002728,27\u0027, 2\u0022,\n\u002b  })\n\u002b  void supportDefiningAndEvaluatingCustomFunctions(String definition, String input, String expectedResult, int maxFractionDigits) {\n\u002b    calculator.defineCustomFunction(definition);\n\u002b    String result = calculator.eval(userId, input, maxFractionDigits);\n\u002b    assertThat(result).isEqualTo(expectedResult);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It doesn&rsquo;t even compile, so:</p>
+
+
+<span id="498ba279a15cc6d8f253c1dcec75e503e0b8816d"></span>
+<script>
+    document.getElementById("498ba279a15cc6d8f253c1dcec75e503e0b8816d").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -75,4 \u002b77,8 @@\n   public void addObserver(CalculatorObserver observer) {\n     this.observer = observer;\n   }\n\u002b\n\u002b  public void defineCustomFunction(String definition) {\n\u002b\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now it fails because &ldquo;circle_area&rdquo; function is not defined. No surprise here. Again, using baby steps I&rsquo;m going to hardcode the result just to make the test pass.</p>
+
+
+<span id="df73a1bc32f6fe723f8aa8b26c12928488f35bbe"></span>
+<script>
+    document.getElementById("df73a1bc32f6fe723f8aa8b26c12928488f35bbe").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -25,6 \u002b25,8 @@\n   }\n\n   public String eval(UUID userId, String input, int maxFractionDigits) {\n\u002b    if (input.equals(\u00223 circle_area\u0022))\n\u002b      return \u002228,27\u0022;\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     for (String token : tokens) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I think I can now fix the <code>CalculatorController</code> and just call <code>Calculator</code>.</p>
+
+
+<span id="44df1f154202285d6e4f4fef8679fe9fb8db081f"></span>
+<script>
+    document.getElementById("44df1f154202285d6e4f4fef8679fe9fb8db081f").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -28,8 \u002b28,6 @@\n       session.setAttribute(MAX_FRACTION_DIGITS, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     Authentication auth = (Authentication) request.getUserPrincipal();\n     User user = ((SpringUserAdapter) auth.getPrincipal()).getUser();\n-    if (body.equals(\u00223 circle_area\u0022))\n-      return \u002228,27\u0022;\n     return calculator.eval(user.id, body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n   }\n\n@@ -39,7 \u002b37,7 @@\n   }\n\n   @PutMapping(\u0022\/define\u0022)\n-  public void defineCustomFunction() {\n-\n\u002b  public void defineCustomFunction(@RequestBody String body) {\n\u002b    calculator.defineCustomFunction(body);\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I just used obvious implementation here and pushed all the responsibility to the <code>Calculator</code>. I don&rsquo;t expect to revisit the controller again in this iteration, but we&rsquo;ll see.</p>
+<p>Now the real troubles begin. If I take a look at the definition of my function, <code>^2 π *</code>, I see two issues. First of all, I don&rsquo;t have a square (<code>^2</code>) function, but even more troublesome is the fact that it takes just one argument! So far all my functions were taking 2 arguments. So refactoring is waiting ahead. The second problem I&rsquo;ll have is <code>π</code>. It&rsquo;s not a regular digit, I cannot just call <code>new BigDecimal(&quot;π&quot;)</code>. What I can do is to use a fact that Java has a constant <code>Math.PI</code> and make <code>π</code> a 0-argument function. That would align very well with what I need to do anyway with <code>^2</code> function.</p>
+<p>Like mentioned already my main problem now is that in <code>Calculator</code> my code assumes that the functions are always taking 2 arguments. Let&rsquo;s remove that assumption and let each function decide on its own how many arguments it takes. For now, I don&rsquo;t need any new tests, I&rsquo;ll be refactoring in green.</p>
+
+
+<span id="0335a080db7faa4fd76fbe4ccd08a92858a31270"></span>
+<script>
+    document.getElementById("0335a080db7faa4fd76fbe4ccd08a92858a31270").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -8,7 \u002b8,7 @@\n import java.util.Locale;\n import java.util.Stack;\n import java.util.UUID;\n-import java.util.function.BinaryOperator;\n\u002bimport java.util.function.Function;\n\n public class Calculator {\n\n@@ -34,10 \u002b34,8 @@\n         var value = parse(token);\n         stack.push(value);\n       } catch (Exception e) {\n-        var f = function(token, maxFractionDigits);\n-        var a = stack.pop();\n-        var b = stack.pop();\n-        stack.push(f.apply(b, a));\n\u002b        Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e f = function(token, maxFractionDigits);\n\u002b        stack.push(f.apply(stack));\n         if (observer != null)\n           observer.evaluated(userId, token);\n       }\n@@ -45,16 \u002b43,23 @@\n     return format(stack.pop(), maxFractionDigits);\n   }\n\n-  private BinaryOperator\u003cBigDecimal\u003e function(String function, int maxFractionDigits) {\n\u002b  private Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e function(String function, int maxFractionDigits) {\n     switch (function) {\n       case \u0022\u002b\u0022:\n-        return BigDecimal::add;\n\u002b        return stack -\u003e stack.pop().add(stack.pop());\n       case \u0022-\u0022:\n-        return BigDecimal::subtract;\n\u002b        return stack -\u003e {\n\u002b          BigDecimal a = stack.pop();\n\u002b          BigDecimal b = stack.pop();\n\u002b          return b.subtract(a);};\n       case \u0022*\u0022:\n-        return BigDecimal::multiply;\n\u002b        return stack -\u003e stack.pop().multiply(stack.pop());\n       case \u0022\/\u0022:\n-        return (v1, v2) -\u003e v1.divide(v2, maxFractionDigits, RoundingMode.HALF_UP);\n\u002b        return stack -\u003e {\n\u002b          var a = stack.pop();\n\u002b          var b = stack.pop();\n\u002b          return b.divide(a, maxFractionDigits, RoundingMode.HALF_UP);\n\u002b        };\n       default:\n         throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n     }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now all my function get the <code>Stack</code> and take whatever they need, all by themselves. That allows me to try to implement a <code>π</code> function. The test is simple:</p>
+
+
+<span id="926633c7366fb36cfd15b61f96a6d1eecb4a52a0"></span>
+<script>
+    document.getElementById("926633c7366fb36cfd15b61f96a6d1eecb4a52a0").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -85,6 \u002b85,16 @@\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n\u002b  @DisplayName(\u0022Constants\u0022)\n\u002b  @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, max fraction digits: \u0027\u0027{2}\u0027\u0027, expected result: \u0027\u0027{1}\u0027\u0027\u0022)\n\u002b  @CsvSource({\n\u002b      \u0022π, \u00273,14159\u0027, 5\u0022,\n\u002b  })\n\u002b  void constants(String input, String expectedResult, int maxFractionDigits) {\n\u002b    String result = calculator.eval(userId, input, maxFractionDigits);\n\u002b    assertThat(result).isEqualTo(expectedResult);\n\u002b  }\n\u002b\n   @DisplayName(\u0022Custom functions\u0022)\n   @ParameterizedTest(name = \u0022function: \u0027\u0027{0}\u0027\u0027, input: \u0027\u0027{1}\u0027\u0027, max fraction digits: \u0027\u0027{3}\u0027\u0027, expected result: \u0027\u0027{2}\u0027\u0027\u0022)\n   @CsvSource({\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>The implementation even simpler:</p>
+
+
+<span id="2c48dffd0c5f5999a76f6d9bc71180efc45127bd"></span>
+<script>
+    document.getElementById("2c48dffd0c5f5999a76f6d9bc71180efc45127bd").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -60,6 \u002b60,8 @@\n           var b = stack.pop();\n           return b.divide(a, maxFractionDigits, RoundingMode.HALF_UP);\n         };\n\u002b      case \u0022π\u0022:\n\u002b        return stack -\u003e BigDecimal.valueOf(Math.PI);\n       default:\n         throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n     }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Square function comes next, it&rsquo;s also trivial:</p>
+
+
+<span id="9fbd18740561097ff27d73c336dcbb83c4475ea4"></span>
+<script>
+    document.getElementById("9fbd18740561097ff27d73c336dcbb83c4475ea4").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -62,6 \u002b62,8 @@\n         };\n       case \u0022π\u0022:\n         return stack -\u003e BigDecimal.valueOf(Math.PI);\n\u002b      case \u0022^2\u0022:\n\u002b        return stack -\u003e stack.pop().pow(2);\n       default:\n         throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n     }\nIndex: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -95,6 \u002b95,19 @@\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n\u002b  @DisplayName(\u0022Square\u0022)\n\u002b  @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, expected result: \u0027\u0027{1}\u0027\u0027\u0022)\n\u002b  @CsvSource({\n\u002b      \u00220 ^2, 0\u0022,\n\u002b      \u00222 ^2, 4\u0022,\n\u002b      \u0022-3 ^2, 9\u0022,\n\u002b      \u0022\u00274,2 ^2\u0027, \u002717,64\u0027\u0022\n\u002b  })\n\u002b  void square(String input, String expectedResult) {\n\u002b    String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    assertThat(result).isEqualTo(expectedResult);\n\u002b  }\n\u002b\n   @DisplayName(\u0022Custom functions\u0022)\n   @ParameterizedTest(name = \u0022function: \u0027\u0027{0}\u0027\u0027, input: \u0027\u0027{1}\u0027\u0027, max fraction digits: \u0027\u0027{3}\u0027\u0027, expected result: \u0027\u0027{2}\u0027\u0027\u0022)\n   @CsvSource({\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I have now all the individual pieces I need to calculate my <code>circle_area</code> function. I&rsquo;m also getting an actual definition of <code>circle_area</code> function through <code>defineCustomFunction</code>. I could now replace <code>circle_area</code> in the input string with the definition, and it should work.</p>
+
+
+<span id="abfa8a176c23f542bb2101c15f72b5867f0d651b"></span>
+<script>
+    document.getElementById("abfa8a176c23f542bb2101c15f72b5867f0d651b").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -18,6 \u002b18,8 @@\n\n   private CalculatorObserver observer;\n\n\u002b  private String customFunction = \u0022\u0022;\n\u002b\n   public Calculator() {\n     formatter = DecimalFormat.getNumberInstance(Locale.GERMANY);\n     if (formatter instanceof DecimalFormat)\n@@ -25,8 \u002b27,7 @@\n   }\n\n   public String eval(UUID userId, String input, int maxFractionDigits) {\n-    if (input.equals(\u00223 circle_area\u0022))\n-      return \u002228,27\u0022;\n\u002b    input = input.replace(\u0022circle_area\u0022, customFunction);\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     for (String token : tokens) {\n@@ -88,6 \u002b89,6 @@\n   }\n\n   public void defineCustomFunction(String definition) {\n-\n\u002b    customFunction = definition.replace(\u0022circle_area \u0022, \u0022\u0022);\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Indeed, it does the trick. However, now my integration test failed. After digging deeper I found out, that my <code>CalculatorController.defineCustomFunction()</code> function is getting as a parameter this: <code>circle_area ^2 ? *</code>, it looks like <code>π</code> character it not passed through properly. I must say it&rsquo;s interesting and unexpected.</p>
+<p>The error took a bit of time to be found, but is, as usual, on me. What I did wrong this time is forgetting to set character encoding in Rest Assured. By default, it uses &ldquo;ISO-8859-1&rdquo; which doesn&rsquo;t contain <code>π</code>. The fix is easy:</p>
+
+
+<span id="27c14e25b8d5f19e0ae7012998c8fb8c614d4fef"></span>
+<script>
+    document.getElementById("27c14e25b8d5f19e0ae7012998c8fb8c614d4fef").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/CalculatorRestApiShould.java\n@@ -59,6 \u002b59,7 @@\n   void canDefineAndExecuteCustomFunction() {\n     given()\n         .auth().preemptive().basic(DEFAULT_USERNAME, DEFAULT_PASSWORD)\n\u002b        .contentType(\u0022text\/plain; charset=UTF-8\u0022)\n         .body(\u0022circle_area ^2 π *\u0022)\n     .when()\n         .put(\u0022\/define\u0022)\n@@ -72,6 \u002b73,7 @@\n     given()\n         .filter(session)\n         .auth().preemptive().basic(DEFAULT_USERNAME, DEFAULT_PASSWORD)\n\u002b        .contentType(\u0022text\/plain; charset=UTF-8\u0022)\n         .body(maxFractionDigits)\n     .when()\n         .put(\u0022\/maxFractionDigits\u0022)\n@@ -87,6 \u002b89,7 @@\n     given()\n         .filter(session)\n         .auth().preemptive().basic(DEFAULT_USERNAME, DEFAULT_PASSWORD)\n\u002b        .contentType(\u0022text\/plain; charset=UTF-8\u0022)\n         .body(expression)\n     .when()\n         .post(\u0022\/eval\u0022)\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>To push me further with defining and using custom functions I need another example of a function. This follows <a href="https://blog.wingman-sw.com/tdd-guided-by-zombies" target="_blank">ZOMBIES</a> approach, I support currently just one custom function and now I want to support many. To keep it simple the function with its definition would be <code>square_area ^2</code>:</p>
+
+
+<span id="a734ef6e3a5566ee9c1ee35452333ad5f8910754"></span>
+<script>
+    document.getElementById("a734ef6e3a5566ee9c1ee35452333ad5f8910754").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -5,7 \u002b5,9 @@\n import java.text.DecimalFormat;\n import java.text.NumberFormat;\n import java.text.ParseException;\n\u002bimport java.util.HashMap;\n import java.util.Locale;\n\u002bimport java.util.Map;\n import java.util.Stack;\n import java.util.UUID;\n import java.util.function.Function;\n@@ -18,7 \u002b20,7 @@\n\n   private CalculatorObserver observer;\n\n-  private String customFunction = \u0022\u0022;\n\u002b  private final Map\u003cString, String\u003e customFunctions = new HashMap\u003c\u003e();\n\n   public Calculator() {\n     formatter = DecimalFormat.getNumberInstance(Locale.GERMANY);\n@@ -27,7 \u002b29,9 @@\n   }\n\n   public String eval(UUID userId, String input, int maxFractionDigits) {\n-    input = input.replace(\u0022circle_area\u0022, customFunction);\n\u002b    for (Map.Entry\u003cString, String\u003e entry : customFunctions.entrySet()) {\n\u002b      input = input.replace(entry.getKey(), entry.getValue());\n\u002b    }\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     for (String token : tokens) {\n@@ -89,6 \u002b93,7 @@\n   }\n\n   public void defineCustomFunction(String definition) {\n-    customFunction = definition.replace(\u0022circle_area \u0022, \u0022\u0022);\n\u002b    var nameEnd = definition.indexOf(\u0022 \u0022);\n\u002b    customFunctions.put(definition.substring(0, nameEnd), definition.substring(nameEnd \u002b 1));\n   }\n }\nIndex: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -112,6 \u002b112,7 @@\n   @ParameterizedTest(name = \u0022function: \u0027\u0027{0}\u0027\u0027, input: \u0027\u0027{1}\u0027\u0027, max fraction digits: \u0027\u0027{3}\u0027\u0027, expected result: \u0027\u0027{2}\u0027\u0027\u0022)\n   @CsvSource({\n       \u0022circle_area ^2 π *, 3 circle_area, \u002728,27\u0027, 2\u0022,\n\u002b      \u0022square_area ^2, 3 square_area, 9, 2\u0022,\n   })\n   void supportDefiningAndEvaluatingCustomFunctions(String definition, String input, String expectedResult, int maxFractionDigits) {\n     calculator.defineCustomFunction(definition);\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It now works, but I don&rsquo;t like the solution. It&rsquo;s not only about that it&rsquo;s wrong. If I&rsquo;d define two functions and in one I&rsquo;d use the other, successful calculation would then depend on the order in which <code>customFunctions</code> would return me the entries. There&rsquo;s something else. But let&rsquo;s first try to create a test for the scenario I described.</p>
+
+
+<span id="0efccdaa81808fa03b92cf3782a35ce5f3fb04e3"></span>
+<script>
+    document.getElementById("0efccdaa81808fa03b92cf3782a35ce5f3fb04e3").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -1,6 \u002b1,7 @@\n package com.webcalc.calculator;\n\n import org.junit.jupiter.api.DisplayName;\n\u002bimport org.junit.jupiter.api.Test;\n import org.junit.jupiter.params.ParameterizedTest;\n import org.junit.jupiter.params.provider.CsvSource;\n\n@@ -119,4 \u002b120,12 @@\n     String result = calculator.eval(userId, input, maxFractionDigits);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\u002b\n\u002b  @Test\n\u002b  void handleNestingOfCustomFunctions() {\n\u002b    calculator.defineCustomFunction(\u0022f1 \u002b\u0022);\n\u002b    calculator.defineCustomFunction(\u0022f2 f1\u0022);\n\u002b    String result = calculator.eval(userId, \u00221 2 3 4 f1 f2 f1\u0022, 0);\n\u002b    assertThat(result).isEqualTo(\u002210\u0022);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It fails, I was right, and I need to do something about it.</p>
+<p>What bothers me is that there&rsquo;s currently no way of executing partial computation. Let&rsquo;s take an example: <code>2 3 + circle_area 3 *</code>. If I had ignored replacing a function name with its definition, after applying a few steps I would arrive at a place where I&rsquo;d have <code>5</code> on the stack, and I&rsquo;d have <code>circle_area 3 *</code> still to process. It is now that I&rsquo;d like to take the definition of <code>circle_area</code> and calculate it using the stack I got so far. I do not seem to have a function in my <code>Calculator</code> class that could do it.</p>
+<p>After looking closely at my <code>eval</code> function I can see that it does two things. One is parsing and tokenizing the input, creating a new stack and formatting the result, so it&rsquo;s translating between input/output format and the structures I need inside <code>Calculator</code>. The other one is looping through the tokens and performing the actual computation. I always knew that there&rsquo;s something wrong with it. It looks to me that if I separate those two responsibilities, I should get a function I need.</p>
+
+
+<span id="9a46c0c935e4ca68acf76c26de22f6f42f9ca53e"></span>
+<script>
+    document.getElementById("9a46c0c935e4ca68acf76c26de22f6f42f9ca53e").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -34,6 \u002b34,11 @@\n     }\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n\u002b    eval(userId, stack, tokens, maxFractionDigits);\n\u002b    return format(stack.pop(), maxFractionDigits);\n\u002b  }\n\u002b\n\u002b  private void eval(UUID userId, Stack\u003cBigDecimal\u003e stack, String[] tokens, int maxFractionDigits) {\n     for (String token : tokens) {\n       try {\n         var value = parse(token);\n@@ -45,7 \u002b50,6 @@\n           observer.evaluated(userId, token);\n       }\n     }\n-    return format(stack.pop(), maxFractionDigits);\n   }\n\n   private Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e function(String function, int maxFractionDigits) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It looks better, but the number of parameters I had to pass worries me a bit. I&rsquo;ll try to deal with that later. I can finally stop replacing function names with their definitions and just try to evaluate them once I encounter them, like so:</p>
+
+
+<span id="e09f522c88bf116e38fe382564d45516ac8a2170"></span>
+<script>
+    document.getElementById("e09f522c88bf116e38fe382564d45516ac8a2170").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -29,9 \u002b29,6 @@\n   }\n\n   public String eval(UUID userId, String input, int maxFractionDigits) {\n-    for (Map.Entry\u003cString, String\u003e entry : customFunctions.entrySet()) {\n-      input = input.replace(entry.getKey(), entry.getValue());\n-    }\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     eval(userId, stack, tokens, maxFractionDigits);\n@@ -44,10 \u002b41,14 @@\n         var value = parse(token);\n         stack.push(value);\n       } catch (Exception e) {\n-        Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e f = function(token, maxFractionDigits);\n-        stack.push(f.apply(stack));\n-        if (observer != null)\n-          observer.evaluated(userId, token);\n\u002b        if (customFunctions.containsKey(token)) {\n\u002b          eval(userId, stack, customFunctions.get(token).split(\u0022 \u0022), maxFractionDigits);\n\u002b        } else {\n\u002b          Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e f = function(token, maxFractionDigits);\n\u002b          stack.push(f.apply(stack));\n\u002b          if (observer != null)\n\u002b            observer.evaluated(userId, token);\n\u002b        }\n       }\n     }\n   }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It looks far better now, I&rsquo;m using custom function only if I encounter them, and the problem with the order of replacing names with definitions of custom functions is gone, the test verifying that is green.</p>
+<p>I believe I have now a fully functioning system with the support of defining custom functions. Time to <a href="https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast" target="_blank">make it right</a>. Let&rsquo;s start with something small. All functions take their parameters from the stack by themselves, but they let someone else put the result back on the stack, that&rsquo;s not really correct.</p>
+
+
+<span id="134bd76af295830b2f46e439d1cba11b566e3b69"></span>
+<script>
+    document.getElementById("134bd76af295830b2f46e439d1cba11b566e3b69").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -10,7 \u002b10,7 @@\n import java.util.Map;\n import java.util.Stack;\n import java.util.UUID;\n-import java.util.function.Function;\n\u002bimport java.util.function.Consumer;\n\n public class Calculator {\n\n@@ -44,39 \u002b44,46 @@\n         if (customFunctions.containsKey(token)) {\n           eval(userId, stack, customFunctions.get(token).split(\u0022 \u0022), maxFractionDigits);\n         } else {\n-          Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e f = function(token, maxFractionDigits);\n-          stack.push(f.apply(stack));\n-          if (observer != null)\n\u002b          function(token, maxFractionDigits).accept(stack);\n\u002b          if (observer != null) {\n             observer.evaluated(userId, token);\n\u002b          }\n         }\n       }\n     }\n   }\n\n-  private Function\u003cStack\u003cBigDecimal\u003e, BigDecimal\u003e function(String function, int maxFractionDigits) {\n-    switch (function) {\n-      case \u0022\u002b\u0022:\n-        return stack -\u003e stack.pop().add(stack.pop());\n-      case \u0022-\u0022:\n-        return stack -\u003e {\n-          BigDecimal a = stack.pop();\n-          BigDecimal b = stack.pop();\n-          return b.subtract(a);};\n-      case \u0022*\u0022:\n-        return stack -\u003e stack.pop().multiply(stack.pop());\n-      case \u0022\/\u0022:\n-        return stack -\u003e {\n-          var a = stack.pop();\n-          var b = stack.pop();\n-          return b.divide(a, maxFractionDigits, RoundingMode.HALF_UP);\n-        };\n-      case \u0022π\u0022:\n-        return stack -\u003e BigDecimal.valueOf(Math.PI);\n-      case \u0022^2\u0022:\n-        return stack -\u003e stack.pop().pow(2);\n-      default:\n-        throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n-    }\n\u002b  private Consumer\u003cStack\u003cBigDecimal\u003e\u003e function(String function, int maxFractionDigits) {\n\u002b    return stack -\u003e {\n\u002b      BigDecimal result;\n\u002b      switch (function) {\n\u002b        case \u0022\u002b\u0022:\n\u002b          result = stack.pop().add(stack.pop());\n\u002b          break;\n\u002b        case \u0022-\u0022:\n\u002b          var a = stack.pop();\n\u002b          var b = stack.pop();\n\u002b          result = b.subtract(a);\n\u002b          break;\n\u002b        case \u0022*\u0022:\n\u002b          result = stack.pop().multiply(stack.pop());\n\u002b          break;\n\u002b        case \u0022\/\u0022:\n\u002b          var c = stack.pop();\n\u002b          var d = stack.pop();\n\u002b          result = d.divide(c, maxFractionDigits, RoundingMode.HALF_UP);\n\u002b          break;\n\u002b        case \u0022π\u0022:\n\u002b          result = BigDecimal.valueOf(Math.PI);\n\u002b          break;\n\u002b        case \u0022^2\u0022:\n\u002b          result = stack.pop().pow(2);\n\u002b          break;\n\u002b        default:\n\u002b          throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n\u002b      }\n\u002b      stack.push(result);\n\u002b    };\n   }\n\n   private BigDecimal parse(String string) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>The second thing that bothers me for some time already is the inner <code>eval</code>. Specifically, each token can be one of a number, a predefined function or a custom function. There should be a switch or a polymorphic call, but I have a combination of a <code>try</code>/<code>catch</code> and an <code>if</code>. My first attempt with an enum:</p>
+
+
+<span id="959297f0d6635ca4209cb404117e4b02a7751dc4"></span>
+<script>
+    document.getElementById("959297f0d6635ca4209cb404117e4b02a7751dc4").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -16,13 \u002b16,13 @@\n\n   static final int DEFAULT_MAX_FRACTION_DIGITS = 2;\n\n-  private final NumberFormat formatter;\n\u002b  private static final NumberFormat formatter;\n\n   private CalculatorObserver observer;\n\n   private final Map\u003cString, String\u003e customFunctions = new HashMap\u003c\u003e();\n\n-  public Calculator() {\n\u002b  static {\n     formatter = DecimalFormat.getNumberInstance(Locale.GERMANY);\n     if (formatter instanceof DecimalFormat)\n       ((DecimalFormat) formatter).setParseBigDecimal(true);\n@@ -95,7 \u002b95,7 @@\n   }\n\n   private String format(BigDecimal result, int maxFractionDigits) {\n-    NumberFormat formatter = (NumberFormat) this.formatter.clone();\n\u002b    NumberFormat formatter = (NumberFormat) Calculator.formatter.clone();\n     formatter.setMaximumFractionDigits(maxFractionDigits);\n     return formatter.format(result);\n   }\n@@ -108,4 \u002b108,23 @@\n     var nameEnd = definition.indexOf(\u0022 \u0022);\n     customFunctions.put(definition.substring(0, nameEnd), definition.substring(nameEnd \u002b 1));\n   }\n\u002b\n\u002b  private enum TokenType {\n\u002b    NUMBER,\n\u002b    PREDEFINED_FUNCTION,\n\u002b    CUSTOM_FUNCTION,\n\u002b    ;\n\u002b\n\u002b    private TokenType detect(Map\u003cString, String\u003e customFunctions, String token) {\n\u002b      if (customFunctions.containsKey(token)) {\n\u002b        return TokenType.CUSTOM_FUNCTION;\n\u002b      }\n\u002b      try {\n\u002b        formatter.parse(token);\n\u002b        return TokenType.NUMBER;\n\u002b      } catch (Exception ignored) {\n\u002b        return TokenType.PREDEFINED_FUNCTION;\n\u002b      }\n\u002b    }\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I didn&rsquo;t even use the <code>TokenType</code> yet, but I already don&rsquo;t like where this is going. <code>detect</code> required me already to:</p>
+<ol>
+<li>pass <code>customFunctions</code> map into it,</li>
+<li>make <code>formatter</code> static,</li>
+<li>duplicate logic from <code>parse</code> function.</li>
+</ol>
+<p>All three together smell of <a href="https://refactoring.guru/smells/feature-envy" target="_blank">feature envy</a>, they refer back to <code>Calculator</code> class itself too often. Besides, my code is now <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself#DRY_vs_WET_solutions" target="_blank">WET</a>. I could try to DRY it out a bit, but looking at it I&rsquo;m getting an idea of a better approach.</p>
+
+
+<span id="22d3db02127c74f4a53c35f4b154177f4339eab3"></span>
+<script>
+    document.getElementById("22d3db02127c74f4a53c35f4b154177f4339eab3").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -37,17 \u002b37,17 @@\n\n   private void eval(UUID userId, Stack\u003cBigDecimal\u003e stack, String[] tokens, int maxFractionDigits) {\n     for (String token : tokens) {\n-      try {\n-        var value = parse(token);\n-        stack.push(value);\n-      } catch (Exception e) {\n-        if (customFunctions.containsKey(token)) {\n-          eval(userId, stack, customFunctions.get(token).split(\u0022 \u0022), maxFractionDigits);\n-        } else {\n-          function(token, maxFractionDigits).accept(stack);\n-          if (observer != null) {\n-            observer.evaluated(userId, token);\n-          }\n\u002b      var tokenType = getTokenType(token);\n\u002b      if (tokenType instanceof Number) {\n\u002b        stack.push(((Number) tokenType).number);\n\u002b      }\n\u002b      if (tokenType instanceof CustomFunction) {\n\u002b        eval(userId, stack, ((CustomFunction) tokenType).def.split(\u0022 \u0022), maxFractionDigits);\n\u002b      }\n\u002b      if (tokenType instanceof PredefinedFunction) {\n\u002b        function(((PredefinedFunction) tokenType).f, maxFractionDigits).accept(stack);\n\u002b        if (observer != null) {\n\u002b          observer.evaluated(userId, token);\n         }\n       }\n     }\n@@ -108,4 \u002b108,41 @@\n     var nameEnd = definition.indexOf(\u0022 \u0022);\n     customFunctions.put(definition.substring(0, nameEnd), definition.substring(nameEnd \u002b 1));\n   }\n\u002b\n\u002b  private TokenType getTokenType(String token) {\n\u002b    if (customFunctions.containsKey(token)) {\n\u002b      return new CustomFunction(customFunctions.get(token));\n\u002b    }\n\u002b    try {\n\u002b      return new Number(parse(token));\n\u002b    } catch (Exception ignored) {\n\u002b      return new PredefinedFunction(token);\n\u002b    }\n\u002b  }\n\u002b\n\u002b  private interface TokenType {}\n\u002b\n\u002b  private static class Number implements TokenType {\n\u002b    final BigDecimal number;\n\u002b\n\u002b    Number(BigDecimal number) {\n\u002b      this.number = number;\n\u002b    }\n\u002b  }\n\u002b\n\u002b  private static class PredefinedFunction implements TokenType {\n\u002b    final String f;\n\u002b\n\u002b    PredefinedFunction(String f) {\n\u002b      this.f = f;\n\u002b    }\n\u002b  }\n\u002b\n\u002b  private static class CustomFunction implements TokenType {\n\u002b    final String def;\n\u002b\n\u002b    CustomFunction(String def) {\n\u002b      this.def = def;\n\u002b    }\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now <code>eval()</code> looks absolutely hideous, but you probably already know where I&rsquo;m going with that. I also didn&rsquo;t get rid of this <code>if</code>/<code>try</code>/<code>catch</code> combination, but at least it doesn&rsquo;t pollute <code>eval</code> function. What <code>TokenType</code> needs now is a method, that will take everything that is necessary for all three implementations to do their jobs. Then all the statements from <code>if</code>s will go to their respective classes. But before I could do that I need one more thing. There seem to be three objects constantly being passed around together: <code>stack</code>, <code>userId</code> and <code>maxFractionDigits</code>. They seem to form some <code>EvaluationContext</code>.</p>
+
+
+<span id="1a5d926c9ae1e0a4191fe566a1d0a5f9ca104e25"></span>
+<script>
+    document.getElementById("1a5d926c9ae1e0a4191fe566a1d0a5f9ca104e25").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -31,58 \u002b31,59 @@\n   public String eval(UUID userId, String input, int maxFractionDigits) {\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n-    eval(userId, stack, tokens, maxFractionDigits);\n\u002b    EvaluationContext ctx = new EvaluationContext(userId, maxFractionDigits, stack);\n\u002b    eval(ctx, tokens);\n     return format(stack.pop(), maxFractionDigits);\n   }\n\n-  private void eval(UUID userId, Stack\u003cBigDecimal\u003e stack, String[] tokens, int maxFractionDigits) {\n\u002b  private void eval(EvaluationContext ctx, String[] tokens) {\n     for (String token : tokens) {\n       var tokenType = getTokenType(token);\n       if (tokenType instanceof Number) {\n-        stack.push(((Number) tokenType).number);\n\u002b        ctx.stack.push(((Number) tokenType).number);\n       }\n       if (tokenType instanceof CustomFunction) {\n-        eval(userId, stack, ((CustomFunction) tokenType).def.split(\u0022 \u0022), maxFractionDigits);\n\u002b        eval(ctx, ((CustomFunction) tokenType).def.split(\u0022 \u0022));\n       }\n       if (tokenType instanceof PredefinedFunction) {\n-        function(((PredefinedFunction) tokenType).f, maxFractionDigits).accept(stack);\n\u002b        function(((PredefinedFunction) tokenType).f).accept(ctx);\n         if (observer != null) {\n-          observer.evaluated(userId, token);\n\u002b          observer.evaluated(ctx.userId, token);\n         }\n       }\n     }\n   }\n\n-  private Consumer\u003cStack\u003cBigDecimal\u003e\u003e function(String function, int maxFractionDigits) {\n-    return stack -\u003e {\n\u002b  private Consumer\u003cEvaluationContext\u003e function(String function) {\n\u002b    return ctx -\u003e {\n       BigDecimal result;\n       switch (function) {\n         case \u0022\u002b\u0022:\n-          result = stack.pop().add(stack.pop());\n\u002b          result = ctx.stack.pop().add(ctx.stack.pop());\n           break;\n         case \u0022-\u0022:\n-          var a = stack.pop();\n-          var b = stack.pop();\n\u002b          var a = ctx.stack.pop();\n\u002b          var b = ctx.stack.pop();\n           result = b.subtract(a);\n           break;\n         case \u0022*\u0022:\n-          result = stack.pop().multiply(stack.pop());\n\u002b          result = ctx.stack.pop().multiply(ctx.stack.pop());\n           break;\n         case \u0022\/\u0022:\n-          var c = stack.pop();\n-          var d = stack.pop();\n-          result = d.divide(c, maxFractionDigits, RoundingMode.HALF_UP);\n\u002b          var c = ctx.stack.pop();\n\u002b          var d = ctx.stack.pop();\n\u002b          result = d.divide(c, ctx.maxFractionDigits, RoundingMode.HALF_UP);\n           break;\n         case \u0022π\u0022:\n           result = BigDecimal.valueOf(Math.PI);\n           break;\n         case \u0022^2\u0022:\n-          result = stack.pop().pow(2);\n\u002b          result = ctx.stack.pop().pow(2);\n           break;\n         default:\n           throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n       }\n-      stack.push(result);\n\u002b      ctx.stack.push(result);\n     };\n   }\n\n@@ -120,6 \u002b121,18 @@\n     }\n   }\n\n\u002b  private static class EvaluationContext {\n\u002b    final UUID userId;\n\u002b    final int maxFractionDigits;\n\u002b    final Stack\u003cBigDecimal\u003e stack;\n\u002b\n\u002b    private EvaluationContext(UUID userId, int maxFractionDigits, Stack\u003cBigDecimal\u003e stack) {\n\u002b      this.userId = userId;\n\u002b      this.maxFractionDigits = maxFractionDigits;\n\u002b      this.stack = stack;\n\u002b    }\n\u002b  }\n\u002b\n   private interface TokenType {}\n\n   private static class Number implements TokenType {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now I can change all implementations of <code>TokenType</code> and add an <code>apply</code> function. I&rsquo;m following Java naming convention from <code>Function</code> interface here.</p>
+
+
+<span id="a6ff16497a28495d577f6c1ba2340fd2495438ae"></span>
+<script>
+    document.getElementById("a6ff16497a28495d577f6c1ba2340fd2495438ae").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -37,21 \u002b37,8 @@\n   }\n\n   private void eval(EvaluationContext ctx, String[] tokens) {\n-    for (String token : tokens) {\n-      var tokenType = getTokenType(token);\n-      if (tokenType instanceof Number) {\n-        ctx.stack.push(((Number) tokenType).number);\n-      }\n-      if (tokenType instanceof CustomFunction) {\n-        eval(ctx, ((CustomFunction) tokenType).def.split(\u0022 \u0022));\n-      }\n-      if (tokenType instanceof PredefinedFunction) {\n-        function(((PredefinedFunction) tokenType).f).accept(ctx);\n-        if (observer != null) {\n-          observer.evaluated(ctx.userId, token);\n-        }\n-      }\n-    }\n\u002b    for (String token : tokens)\n\u002b      getTokenType(token).apply(ctx);\n   }\n\n   private Consumer\u003cEvaluationContext\u003e function(String function) {\n@@ -133,29 \u002b120,49 @@\n     }\n   }\n\n-  private interface TokenType {}\n\u002b  private interface TokenType {\n\u002b    void apply(EvaluationContext ctx);\n\u002b  }\n\n   private static class Number implements TokenType {\n-    final BigDecimal number;\n\u002b    private final BigDecimal number;\n\n     Number(BigDecimal number) {\n       this.number = number;\n     }\n\u002b\n\u002b    @Override\n\u002b    public void apply(EvaluationContext ctx) {\n\u002b      ctx.stack.push(number);\n\u002b    }\n   }\n\n-  private static class PredefinedFunction implements TokenType {\n-    final String f;\n\u002b  private class PredefinedFunction implements TokenType {\n\u002b    private final String f;\n\n     PredefinedFunction(String f) {\n       this.f = f;\n     }\n\u002b\n\u002b    @Override\n\u002b    public void apply(EvaluationContext ctx) {\n\u002b      function(f).accept(ctx);\n\u002b      if (observer != null) {\n\u002b        observer.evaluated(ctx.userId, f);\n\u002b      }\n\u002b    }\n   }\n\n-  private static class CustomFunction implements TokenType {\n\u002b  private class CustomFunction implements TokenType {\n     final String def;\n\n     CustomFunction(String def) {\n       this.def = def;\n     }\n\u002b\n\u002b    @Override\n\u002b    public void apply(EvaluationContext ctx) {\n\u002b      eval(ctx, def.split(\u0022 \u0022));\n\u002b    }\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now it looks far better, <code>if</code> series trying to figure out the class is gone along with class casting. Now it looks like <code>function</code> belongs to the <code>PredefinedFunction</code> class and <code>parse</code> to the <code>Number</code> class, let&rsquo;s move them.</p>
+
+
+<span id="4ea44bcf4301f45c5a3976d9c87f0e5ca396d494"></span>
+<script>
+    document.getElementById("4ea44bcf4301f45c5a3976d9c87f0e5ca396d494").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -41,47 \u002b41,6 @@\n       getTokenType(token).apply(ctx);\n   }\n\n-  private Consumer\u003cEvaluationContext\u003e function(String function) {\n-    return ctx -\u003e {\n-      BigDecimal result;\n-      switch (function) {\n-        case \u0022\u002b\u0022:\n-          result = ctx.stack.pop().add(ctx.stack.pop());\n-          break;\n-        case \u0022-\u0022:\n-          var a = ctx.stack.pop();\n-          var b = ctx.stack.pop();\n-          result = b.subtract(a);\n-          break;\n-        case \u0022*\u0022:\n-          result = ctx.stack.pop().multiply(ctx.stack.pop());\n-          break;\n-        case \u0022\/\u0022:\n-          var c = ctx.stack.pop();\n-          var d = ctx.stack.pop();\n-          result = d.divide(c, ctx.maxFractionDigits, RoundingMode.HALF_UP);\n-          break;\n-        case \u0022π\u0022:\n-          result = BigDecimal.valueOf(Math.PI);\n-          break;\n-        case \u0022^2\u0022:\n-          result = ctx.stack.pop().pow(2);\n-          break;\n-        default:\n-          throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n-      }\n-      ctx.stack.push(result);\n-    };\n-  }\n-\n-  private BigDecimal parse(String string) {\n-    try {\n-      return (BigDecimal) formatter.parse(string);\n-    } catch (ParseException e) {\n-      throw new RuntimeException(\u0022Cannot recognize a number: \u0027\u0022 \u002b string \u002b \u0022\u0027\u0022, e);\n-    }\n-  }\n-\n   private String format(BigDecimal result, int maxFractionDigits) {\n     NumberFormat formatter = (NumberFormat) this.formatter.clone();\n     formatter.setMaximumFractionDigits(maxFractionDigits);\n@@ -102,7 \u002b61,7 @@\n       return new CustomFunction(customFunctions.get(token));\n     }\n     try {\n-      return new Number(parse(token));\n\u002b      return new Number(token);\n     } catch (Exception ignored) {\n       return new PredefinedFunction(token);\n     }\n@@ -124,17 \u002b83,25 @@\n     void apply(EvaluationContext ctx);\n   }\n\n-  private static class Number implements TokenType {\n\u002b  private class Number implements TokenType {\n     private final BigDecimal number;\n\n-    Number(BigDecimal number) {\n-      this.number = number;\n\u002b    Number(String number) {\n\u002b      this.number = parse(number);\n     }\n\n     @Override\n     public void apply(EvaluationContext ctx) {\n       ctx.stack.push(number);\n     }\n\u002b\n\u002b    private BigDecimal parse(String string) {\n\u002b      try {\n\u002b        return (BigDecimal) formatter.parse(string);\n\u002b      } catch (ParseException e) {\n\u002b        throw new RuntimeException(\u0022Cannot recognize a number: \u0027\u0022 \u002b string \u002b \u0022\u0027\u0022, e);\n\u002b      }\n\u002b    }\n   }\n\n   private class PredefinedFunction implements TokenType {\n@@ -151,6 \u002b118,39 @@\n         observer.evaluated(ctx.userId, f);\n       }\n     }\n\u002b\n\u002b    private Consumer\u003cEvaluationContext\u003e function(String function) {\n\u002b      return ctx -\u003e {\n\u002b        BigDecimal result;\n\u002b        switch (function) {\n\u002b          case \u0022\u002b\u0022:\n\u002b            result = ctx.stack.pop().add(ctx.stack.pop());\n\u002b            break;\n\u002b          case \u0022-\u0022:\n\u002b            var a = ctx.stack.pop();\n\u002b            var b = ctx.stack.pop();\n\u002b            result = b.subtract(a);\n\u002b            break;\n\u002b          case \u0022*\u0022:\n\u002b            result = ctx.stack.pop().multiply(ctx.stack.pop());\n\u002b            break;\n\u002b          case \u0022\/\u0022:\n\u002b            var c = ctx.stack.pop();\n\u002b            var d = ctx.stack.pop();\n\u002b            result = d.divide(c, ctx.maxFractionDigits, RoundingMode.HALF_UP);\n\u002b            break;\n\u002b          case \u0022π\u0022:\n\u002b            result = BigDecimal.valueOf(Math.PI);\n\u002b            break;\n\u002b          case \u0022^2\u0022:\n\u002b            result = ctx.stack.pop().pow(2);\n\u002b            break;\n\u002b          default:\n\u002b            throw new RuntimeException(\u0022Unsupported function: \u0022 \u002b function);\n\u002b        }\n\u002b        ctx.stack.push(result);\n\u002b      };\n\u002b    }\n   }\n\n   private class CustomFunction implements TokenType {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>One last tiny thing. Custom functions are still kept as full strings and are tokenized on every execution. I don&rsquo;t like that.</p>
+
+
+<span id="52d802af949bd0ad97bc0428a6b1c8aaac33d33e"></span>
+<script>
+    document.getElementById("52d802af949bd0ad97bc0428a6b1c8aaac33d33e").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -5,6 \u002b5,7 @@\n import java.text.DecimalFormat;\n import java.text.NumberFormat;\n import java.text.ParseException;\n\u002bimport java.util.Arrays;\n import java.util.HashMap;\n import java.util.Locale;\n import java.util.Map;\n@@ -20,7 \u002b21,7 @@\n\n   private CalculatorObserver observer;\n\n-  private final Map\u003cString, String\u003e customFunctions = new HashMap\u003c\u003e();\n\u002b  private final Map\u003cString, String[]\u003e customFunctions = new HashMap\u003c\u003e();\n\n   public Calculator() {\n     formatter = DecimalFormat.getNumberInstance(Locale.GERMANY);\n@@ -52,8 \u002b53,8 @@\n   }\n\n   public void defineCustomFunction(String definition) {\n-    var nameEnd = definition.indexOf(\u0022 \u0022);\n-    customFunctions.put(definition.substring(0, nameEnd), definition.substring(nameEnd \u002b 1));\n\u002b    var tokens = definition.trim().split(\u0022 \u0022);\n\u002b    customFunctions.put(tokens[0], Arrays.copyOfRange(tokens, 1, tokens.length));\n   }\n\n   private TokenType getTokenType(String token) {\n@@ -154,15 \u002b155,15 @@\n   }\n\n   private class CustomFunction implements TokenType {\n-    final String def;\n\u002b    final String[] def;\n\n-    CustomFunction(String def) {\n\u002b    CustomFunction(String[] def) {\n       this.def = def;\n     }\n\n     @Override\n     public void apply(EvaluationContext ctx) {\n-      eval(ctx, def.split(\u0022 \u0022));\n\u002b      eval(ctx, def);\n     }\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now I&rsquo;m satisfied and all my tests are still green, good. A small comment, all those refactorings I did are to my liking. They seem to be going slightly into the direction of functional programming. It&rsquo;s honestly a matter of taste. The problems with the design I was trying to fix were also not critical, I could live with them in the code. In real life, I&rsquo;d probably do some of them, but later, once they really start to bug me. But as this series is about learning and showing how to do things, taking care of the design, etc. I decided to do all those refactorings. The tests helped me a lot, at no point in time I was worried that I would break something without noticing.</p>
+<p>That&rsquo;s it this time. In the next iteration, I&rsquo;ll try to look into Java libraries. That was also one of my goal for this series. I might not have that much code yet, but it should be enough to try and build the project using libraries. That also means that I&rsquo;ll not be really coding, only messing around with building the project. See you next time!</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+
+
+    
+
+
+
+    </body>
+</html>

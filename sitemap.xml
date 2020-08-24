@@ -31,17 +31,62 @@
   </url>
   
   <url>
+    <loc>https://www.bilski.tech/posts/iteration-9-custom-functions/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/learning/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/posts/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/series/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/surprise/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/tdd/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/series/webcalc/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/posts/webcalc/</loc>
+    <lastmod>2020-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.bilski.tech/tags/familiarity/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.bilski.tech/posts/familiarity-friend-or-foe/</loc>
-    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/posts/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -56,11 +101,6 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/tags/</loc>
-    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.bilski.tech/tags/context/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
   </url>
@@ -71,42 +111,12 @@
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/tags/learning/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.bilski.tech/tags/mistakes/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.bilski.tech/series/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/spring/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.bilski.tech/tags/spring-security/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/tdd/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/series/webcalc/</loc>
-    <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/posts/webcalc/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -137,11 +147,6 @@
   
   <url>
     <loc>https://www.bilski.tech/about/</loc>
-    <lastmod>2019-01-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/</loc>
     <lastmod>2019-01-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -202,6 +207,11 @@
   
   <url>
     <loc>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</loc>
+    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.bilski.tech/tags/spring/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   

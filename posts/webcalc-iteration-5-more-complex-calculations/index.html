@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -61,7 +61,7 @@
     
 
     
-<link href='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.css' rel='stylesheet' type='text/css'/>
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
 <style type='text/css'>
 .d2h-wrapper {
     color: black;
@@ -79,7 +79,7 @@
     overflow-x: auto;
 }
 </style>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.js' type='text/javascript'></script>
+<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
 
 
 </head>
@@ -175,6 +175,7 @@
 	
 	
 	
+	
 </section>
 
       </div>
@@ -225,7 +226,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 6 min read
     
 </div>
 
@@ -234,23 +235,19 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome everyone to the fifth iteration of WebCalc. <a href="/posts/webcalc-iteration-4-fixes-only/">Previously</a>
- I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like <code>1+2+3</code>. To IDE then!</p>
-<p>But first, let&rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call <code>gradle wrapper --gradle-version=5.0 --distribution-type=all</code> and that&rsquo;s it, see <a href="https://github.com/jacekbilski/WebCalc/commit/14c17dc3deddc5219f50aa5c27da7926ea61a3fc" target="_blank">commit 14c17dc3</a>
-.</p>
-<p>The second thing is this possible bug in Spring Boot Gradle plugin I was complaining about previously. I did some investigation and, although there might be something not exactly right with this plugin, the problem is actually how I&rsquo;m using both that and dependency-management plugins. I should have done RFTM long time ago. Knowing how to do it properly I can now just import spring-boot-dependencies BOM and have all versions in all modules in sync, see <a href="https://github.com/jacekbilski/WebCalc/commit/2de6a84c8a0ca48364e39e73b9da990ab093c576" target="_blank">commit 2de6a84c</a>
-. I must admit though that I&rsquo;m still not sure 100% if that&rsquo;s the correct way, especially given that two ways of applying plugins in Gradle do not merely differ in syntax.</p>
+    <p>Welcome everyone to the fifth iteration of WebCalc. <a href="/posts/webcalc-iteration-4-fixes-only/">Previously</a> I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like <code>1+2+3</code>. To IDE then!</p>
+<p>But first, let&rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call <code>gradle wrapper --gradle-version=5.0 --distribution-type=all</code> and that&rsquo;s it, see <a href="https://github.com/jacekbilski/WebCalc/commit/14c17dc3deddc5219f50aa5c27da7926ea61a3fc" target="_blank">commit 14c17dc3</a>.</p>
+<p>The second thing is this possible bug in Spring Boot Gradle plugin I was complaining about previously. I did some investigation and, although there might be something not exactly right with this plugin, the problem is actually how I&rsquo;m using both that and dependency-management plugins. I should have done RFTM long time ago. Knowing how to do it properly I can now just import spring-boot-dependencies BOM and have all versions in all modules in sync, see <a href="https://github.com/jacekbilski/WebCalc/commit/2de6a84c8a0ca48364e39e73b9da990ab093c576" target="_blank">commit 2de6a84c</a>. I must admit though that I&rsquo;m still not sure 100% if that&rsquo;s the correct way, especially given that two ways of applying plugins in Gradle do not merely differ in syntax.</p>
 <p>Short mental detour. Outside of this project, I&rsquo;m recently trying to find a balance between two aspects of developing software: delivering business value and good engineering. On one hand, I have a feeling, that we&rsquo;re too focused on technical details, like using the newest and the most hype technology there is, but providing very little actual value to our stakeholders. On the other hand, we can be so focused on the business value that we are ignoring good engineering practices like keeping cohesion high and coupling low. Not many conclusions yet, but I believe, that we should keep our tools reasonably up-to-date. In order to not spend too much time on that, we need to know how to use them properly and not to couple them too tightly to everything else. That&rsquo;s why I allowed myself to go for all those improvements and fixes lately. Happy to discuss if someone feels like.</p>
 <p>Having technical issues out of the way, I can again focus on the code. First, I noticed, that some tests use helper methods I created, some are not. That&rsquo;s easy to fix:</p>
 
 
 <span id="fcb2d0ba16445a2f0f45dd0a5ec85abf3bd6511c"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -14,32 \x2b14,14 @@\n\n   @Test\n   void invokesWebCalcRestApi() {\n-    given()\n-        .body(\x221 2 \x2b\x22)\n-    .when()\n-        .post(\x22\/eval\x22)\n-    .then()\n-        .body(equalTo(\x223\x22));\n\x2b    assertEvalResult(\x221 2 \x2b\x22, \x223\x22);\n   }\n\n   @Test\n   void settingMaxFractionDigits() {\n     SessionFilter session = new SessionFilter();\n-    given()\n-        .filter(session)\n-        .body(\x225\x22)\n-    .when()\n-        .put(\x22\/maxFractionDigits\x22)\n-    .then()\n-        .statusCode(200);\n-\n-    given()\n-        .filter(session)\n-        .body(\x228 7 \/\x22)\n-    .when()\n-        .post(\x22\/eval\x22)\n-    .then()\n-        .body(equalTo(\x221,14286\x22));\n\x2b    setMaxFractionDigitsForSession(5, session);\n\x2b    assertEvalResultForSession(\x228 7 \/\x22, \x221,14286\x22, session);\n   }\n\n   @Test\n@@ -65,6 \x2b47,10 @@\n         .statusCode(200);\n   }\n\n\x2b  private void assertEvalResult(String expression, String expectedResult) {\n\x2b    assertEvalResultForSession(expression, expectedResult, new SessionFilter());\n\x2b  }\n\x2b\n   private void assertEvalResultForSession(String expression, String expectedResult, SessionFilter session) {\n     given()\n         .filter(session)\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("fcb2d0ba16445a2f0f45dd0a5ec85abf3bd6511c").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -14,32 \u002b14,14 @@\n\n   @Test\n   void invokesWebCalcRestApi() {\n-    given()\n-        .body(\u00221 2 \u002b\u0022)\n-    .when()\n-        .post(\u0022\/eval\u0022)\n-    .then()\n-        .body(equalTo(\u00223\u0022));\n\u002b    assertEvalResult(\u00221 2 \u002b\u0022, \u00223\u0022);\n   }\n\n   @Test\n   void settingMaxFractionDigits() {\n     SessionFilter session = new SessionFilter();\n-    given()\n-        .filter(session)\n-        .body(\u00225\u0022)\n-    .when()\n-        .put(\u0022\/maxFractionDigits\u0022)\n-    .then()\n-        .statusCode(200);\n-\n-    given()\n-        .filter(session)\n-        .body(\u00228 7 \/\u0022)\n-    .when()\n-        .post(\u0022\/eval\u0022)\n-    .then()\n-        .body(equalTo(\u00221,14286\u0022));\n\u002b    setMaxFractionDigitsForSession(5, session);\n\u002b    assertEvalResultForSession(\u00228 7 \/\u0022, \u00221,14286\u0022, session);\n   }\n\n   @Test\n@@ -65,6 \u002b47,10 @@\n         .statusCode(200);\n   }\n\n\u002b  private void assertEvalResult(String expression, String expectedResult) {\n\u002b    assertEvalResultForSession(expression, expectedResult, new SessionFilter());\n\u002b  }\n\u002b\n   private void assertEvalResultForSession(String expression, String expectedResult, SessionFilter session) {\n     given()\n         .filter(session)\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("fcb2d0ba16445a2f0f45dd0a5ec85abf3bd6511c").innerHTML = diffHtml;
 </script>
 
 <p>Finally, I can make some progress in terms of functionality. My goal is to have a possibility of calculating expressions like <code>1+2+3</code>. This time, however, I&rsquo;ll start not by writing a test. To make it pass I&rsquo;d need to spend quite some time, but I don&rsquo;t want to be &ldquo;in the red&rdquo; for too long. I&rsquo;m using reverse Polish notation and there&rsquo;s a known algorithm how to do calculations using it. I&rsquo;ll go for obvious implementation. I&rsquo;ll also do it &ldquo;first make the change easy, then make the easy change&rdquo; way. The first step would be to start using Stack in Calculator and keep all current tests green, like so:</p>
@@ -258,11 +255,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="6a03314ba3a58bca5e20c4c3d31a5b5d2c3fdd82"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\x2b\x2b\x2b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -6,6 \x2b6,7 @@\n import java.text.NumberFormat;\n import java.text.ParseException;\n import java.util.Locale;\n\x2bimport java.util.Stack;\n import java.util.function.BinaryOperator;\n\n public class Calculator {\n@@ -22,11 \x2b23,14 @@\n\n   String eval(String input, int maxFractionDigits) {\n     String[] tokens = input.split(\x22 \x22);\n-    BigDecimal v1 = parse(tokens[0]);\n-    BigDecimal v2 = parse(tokens[1]);\n-    BinaryOperator\x3cbigdecimal\x3e f = function(tokens[2], maxFractionDigits);\n-    BigDecimal result = f.apply(v1, v2);\n-    return format(result, maxFractionDigits);\n\x2b    var stack = new Stack\x3cbigdecimal\x3e();\n\x2b    stack.push(parse(tokens[0]));\n\x2b    stack.push(parse(tokens[1]));\n\x2b    var f = function(tokens[2], maxFractionDigits);\n\x2b    var a = stack.pop();\n\x2b    var b = stack.pop();\n\x2b    stack.push(f.apply(b, a));\n\x2b    return format(stack.pop(), maxFractionDigits);\n   }\n\n   private BinaryOperator\x3cbigdecimal\x3e function(String function, int maxFractionDigits) {\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("6a03314ba3a58bca5e20c4c3d31a5b5d2c3fdd82").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -6,6 \u002b6,7 @@\n import java.text.NumberFormat;\n import java.text.ParseException;\n import java.util.Locale;\n\u002bimport java.util.Stack;\n import java.util.function.BinaryOperator;\n\n public class Calculator {\n@@ -22,11 \u002b23,14 @@\n\n   String eval(String input, int maxFractionDigits) {\n     String[] tokens = input.split(\u0022 \u0022);\n-    BigDecimal v1 = parse(tokens[0]);\n-    BigDecimal v2 = parse(tokens[1]);\n-    BinaryOperator\u003cbigdecimal\u003e f = function(tokens[2], maxFractionDigits);\n-    BigDecimal result = f.apply(v1, v2);\n-    return format(result, maxFractionDigits);\n\u002b    var stack = new Stack\u003cbigdecimal\u003e();\n\u002b    stack.push(parse(tokens[0]));\n\u002b    stack.push(parse(tokens[1]));\n\u002b    var f = function(tokens[2], maxFractionDigits);\n\u002b    var a = stack.pop();\n\u002b    var b = stack.pop();\n\u002b    stack.push(f.apply(b, a));\n\u002b    return format(stack.pop(), maxFractionDigits);\n   }\n\n   private BinaryOperator\u003cbigdecimal\u003e function(String function, int maxFractionDigits) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("6a03314ba3a58bca5e20c4c3d31a5b5d2c3fdd82").innerHTML = diffHtml;
 </script>
 
 <p>I just used for the first time <code>var</code> keyword. It feels like I&rsquo;m giving up on type safety, but I&rsquo;m also removing a few characters from the code, so the rest should theoretically be more &ldquo;meaningful&rdquo;. I&rsquo;ll see where that goes, maybe it&rsquo;s not a bad idea after all.</p>
@@ -271,11 +267,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="83284c6f22388e9f85d6ea44dacbc6f644f32877"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -37,6 \x2b37,11 @@\n     assertEvalResultForSession(expression, \x221,14286\x22, session2);\n   }\n\n\x2b  @Test\n\x2b  void canDoComplexCalculations() {\n\x2b    assertEvalResult(\x221 2 3 \x2b \x2b\x22, \x226\x22);\n\x2b  }\n\x2b\n   private void setMaxFractionDigitsForSession(int maxFractionDigits, SessionFilter session) {\n     given()\n         .filter(session)\nIndex: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\x2b\x2b\x2b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -66,4 \x2b66,14 @@\n     String result = calculator.eval(input, maxFractionDigits);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\x2b\n\x2b  @DisplayName(\x22Complex calculations\x22)\n\x2b  @ParameterizedTest(name = \x22input: \x27\x27{0}\x27\x27, expected result: \x27\x27{1}\x27\x27\x22)\n\x2b  @CsvSource({\n\x2b      \x221 2 3 \x2b \x2b, 6\x22,\n\x2b  })\n\x2b  void complexCalculations(String input, String expectedResult) {\n\x2b    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\x2b    assertThat(result).isEqualTo(expectedResult);\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("83284c6f22388e9f85d6ea44dacbc6f644f32877").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -37,6 \u002b37,11 @@\n     assertEvalResultForSession(expression, \u00221,14286\u0022, session2);\n   }\n\n\u002b  @Test\n\u002b  void canDoComplexCalculations() {\n\u002b    assertEvalResult(\u00221 2 3 \u002b \u002b\u0022, \u00226\u0022);\n\u002b  }\n\u002b\n   private void setMaxFractionDigitsForSession(int maxFractionDigits, SessionFilter session) {\n     given()\n         .filter(session)\nIndex: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -66,4 \u002b66,14 @@\n     String result = calculator.eval(input, maxFractionDigits);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\u002b\n\u002b  @DisplayName(\u0022Complex calculations\u0022)\n\u002b  @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, expected result: \u0027\u0027{1}\u0027\u0027\u0022)\n\u002b  @CsvSource({\n\u002b      \u00221 2 3 \u002b \u002b, 6\u0022,\n\u002b  })\n\u002b  void complexCalculations(String input, String expectedResult) {\n\u002b    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    assertThat(result).isEqualTo(expectedResult);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("83284c6f22388e9f85d6ea44dacbc6f644f32877").innerHTML = diffHtml;
 </script>
 
 <p>I created two tests, one on REST API level and one unit test. They verify exactly the same behaviour, but on different levels. REST is what I&rsquo;m actually after, but unit tests let me work much faster and get the feedback earlier.</p>
@@ -284,11 +279,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="d90e93c750640d1d99df4b541ed3f3fd55d4f940"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\x2b\x2b\x2b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -24,12 \x2b24,17 @@\n   String eval(String input, int maxFractionDigits) {\n     String[] tokens = input.split(\x22 \x22);\n     var stack = new Stack\x3cbigdecimal\x3e();\n-    stack.push(parse(tokens[0]));\n-    stack.push(parse(tokens[1]));\n-    var f = function(tokens[2], maxFractionDigits);\n-    var a = stack.pop();\n-    var b = stack.pop();\n-    stack.push(f.apply(b, a));\n\x2b    for (String token : tokens) {\n\x2b      try {\n\x2b        var value = parse(token);\n\x2b        stack.push(value);\n\x2b      } catch (Exception e) {\n\x2b        var f = function(token, maxFractionDigits);\n\x2b        var a = stack.pop();\n\x2b        var b = stack.pop();\n\x2b        stack.push(f.apply(b, a));\n\x2b      }\n\x2b    }\n     return format(stack.pop(), maxFractionDigits);\n   }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("d90e93c750640d1d99df4b541ed3f3fd55d4f940").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -24,12 \u002b24,17 @@\n   String eval(String input, int maxFractionDigits) {\n     String[] tokens = input.split(\u0022 \u0022);\n     var stack = new Stack\u003cbigdecimal\u003e();\n-    stack.push(parse(tokens[0]));\n-    stack.push(parse(tokens[1]));\n-    var f = function(tokens[2], maxFractionDigits);\n-    var a = stack.pop();\n-    var b = stack.pop();\n-    stack.push(f.apply(b, a));\n\u002b    for (String token : tokens) {\n\u002b      try {\n\u002b        var value = parse(token);\n\u002b        stack.push(value);\n\u002b      } catch (Exception e) {\n\u002b        var f = function(token, maxFractionDigits);\n\u002b        var a = stack.pop();\n\u002b        var b = stack.pop();\n\u002b        stack.push(f.apply(b, a));\n\u002b      }\n\u002b    }\n     return format(stack.pop(), maxFractionDigits);\n   }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("d90e93c750640d1d99df4b541ed3f3fd55d4f940").innerHTML = diffHtml;
 </script>
 
 <p>I&rsquo;m relying in here on exceptions to differentiate between numbers and functions, which I&rsquo;m not entirely fond of, but it&rsquo;s enough to make my tests green. In a real world that would probably be not enough and I&rsquo;d need to revisit this place later on.</p>
@@ -297,16 +291,14 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="9fcc50c3688ea01fa7a356e5d21429061a92964a"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\x2b\x2b\x2b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -71,6 \x2b71,10 @@\n   @ParameterizedTest(name = \x22input: \x27\x27{0}\x27\x27, expected result: \x27\x27{1}\x27\x27\x22)\n   @CsvSource({\n       \x221 2 3 \x2b \x2b, 6\x22,\n\x2b      \x222 3 4 \x2b *, 14\x22,\n\x2b      \x22\x273,2 2,8 2 \/ -\x27, \x271,8\x27\x22,\n\x2b      \x221 2 3 4 5 * * * *, 120\x22,\n\x2b      \x221 2 \x2b 3 *, 9\x22,\n   })\n   void complexCalculations(String input, String expectedResult) {\n     String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("9fcc50c3688ea01fa7a356e5d21429061a92964a").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -71,6 \u002b71,10 @@\n   @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, expected result: \u0027\u0027{1}\u0027\u0027\u0022)\n   @CsvSource({\n       \u00221 2 3 \u002b \u002b, 6\u0022,\n\u002b      \u00222 3 4 \u002b *, 14\u0022,\n\u002b      \u0022\u00273,2 2,8 2 \/ -\u0027, \u00271,8\u0027\u0022,\n\u002b      \u00221 2 3 4 5 * * * *, 120\u0022,\n\u002b      \u00221 2 \u002b 3 *, 9\u0022,\n   })\n   void complexCalculations(String input, String expectedResult) {\n     String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("9fcc50c3688ea01fa7a356e5d21429061a92964a").innerHTML = diffHtml;
 </script>
 
 <p>Looks good, I cannot find a use case, where my implementation would fail. I&rsquo;m sure you can figure something out, like trying to use all memory.</p>
-<p>That would be all for this time. I think I have enough of my &ldquo;business logic&rdquo; and can go to more tricky parts like users, security and billing. That&rsquo;s the part where I&rsquo;ll be going into the unknown myself. See you <a href="/posts/webcalc-iteration-6-introducing-users/">there</a>
-!</p>
+<p>That would be all for this time. I think I have enough of my &ldquo;business logic&rdquo; and can go to more tricky parts like users, security and billing. That&rsquo;s the part where I&rsquo;ll be going into the unknown myself. See you <a href="/posts/webcalc-iteration-6-introducing-users/">there</a>!</p>
 
   </div>
   
@@ -333,16 +325,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

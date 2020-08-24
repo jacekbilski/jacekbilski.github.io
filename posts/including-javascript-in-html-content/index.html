@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -157,6 +157,7 @@ Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were co
 	
 	
 	
+	
 </section>
 
       </div>
@@ -207,7 +208,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 2 min read
     
 </div>
 
@@ -217,8 +218,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; <code>tree2</code> component, but we were forced to render commandButtons instead, which looked quite awkward in some places.</p>
-<p>Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink. Google wasn&rsquo;t really helpful as it seemed, that no one was ever struggling with that sort of problem. I used Firebug (great Firefox extension for web developers, grab it <a href="http://getfirebug.com/" target="_blank">here</a>
-) to check what really Firefox was getting from a server and what really was the code it was rendering. And there was something not right, MyFaces rendered JavaScript code, that included &ldquo;oamSubmitForm&rdquo; function, but Firefox couldn&rsquo;t find it. When I looked at what Firefox was really rendering (HTML tab in Firebug), there were two blocks of JavaScript, but both empty. I Googled a little more and stumbled upon some posts regarding JavaScript code included in a page, which content type was <code>application/xhtml+xml</code>. I checked what content type I was getting from my server, and it was <code>text/xml</code>. When I&rsquo;ve added <code>&lt;jsp:directive.page contentType=&quot;text/html; charset=UTF-8&quot;/&gt;</code> to header of my page, suddenly all commandLinks started to work correctly.</p>
+<p>Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink. Google wasn&rsquo;t really helpful as it seemed, that no one was ever struggling with that sort of problem. I used Firebug (great Firefox extension for web developers, grab it <a href="http://getfirebug.com/" target="_blank">here</a>) to check what really Firefox was getting from a server and what really was the code it was rendering. And there was something not right, MyFaces rendered JavaScript code, that included &ldquo;oamSubmitForm&rdquo; function, but Firefox couldn&rsquo;t find it. When I looked at what Firefox was really rendering (HTML tab in Firebug), there were two blocks of JavaScript, but both empty. I Googled a little more and stumbled upon some posts regarding JavaScript code included in a page, which content type was <code>application/xhtml+xml</code>. I checked what content type I was getting from my server, and it was <code>text/xml</code>. When I&rsquo;ve added <code>&lt;jsp:directive.page contentType=&quot;text/html; charset=UTF-8&quot;/&gt;</code> to header of my page, suddenly all commandLinks started to work correctly.</p>
 <p>What happened? A good practice is that when you include JavaScript code in your HTML page you should use comment out all this code using HTML/XML comments: <code>&lt;!--</code> and <code>--&gt;</code>. That&rsquo;s enough when your content type is not something like <code>text/xml</code>. In that case, you need to write all JavaScript code within CDATA block so it should look like this:</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
 &lt;[CDATA[
@@ -253,16 +253,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

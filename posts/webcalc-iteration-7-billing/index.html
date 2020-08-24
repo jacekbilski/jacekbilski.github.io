@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -61,7 +61,7 @@
     
 
     
-<link href='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.css' rel='stylesheet' type='text/css'/>
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
 <style type='text/css'>
 .d2h-wrapper {
     color: black;
@@ -79,7 +79,7 @@
     overflow-x: auto;
 }
 </style>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.js' type='text/javascript'></script>
+<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
 
 
 </head>
@@ -175,6 +175,7 @@
 	
 	
 	
+	
 </section>
 
       </div>
@@ -228,7 +229,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 7 min read
     
 </div>
 
@@ -237,19 +238,17 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the 7th iteration of WebCalc. <a href="/posts/webcalc-iteration-6-introducing-users/">Previously</a>
- I scratched a surface of users and security in order to start working on billing. In retrospective, I don&rsquo;t think I needed any user and Spring Security at all for billing to work, at least not in the first phase. Luckily, their introduction didn&rsquo;t require much and should not actually hurt. The plan for this iteration is to get the billing as far as possible in terms of functionality. To keep iterations shorter, I&rsquo;ll restrict myself from extracting billing module this time, that&rsquo;s the current plan for 8th iteration.</p>
+    <p>Welcome to the 7th iteration of WebCalc. <a href="/posts/webcalc-iteration-6-introducing-users/">Previously</a> I scratched a surface of users and security in order to start working on billing. In retrospective, I don&rsquo;t think I needed any user and Spring Security at all for billing to work, at least not in the first phase. Luckily, their introduction didn&rsquo;t require much and should not actually hurt. The plan for this iteration is to get the billing as far as possible in terms of functionality. To keep iterations shorter, I&rsquo;ll restrict myself from extracting billing module this time, that&rsquo;s the current plan for 8th iteration.</p>
 <p>Last time I only managed to get one simple test working, charging one unit of something for calculating a sum. I didn&rsquo;t specify what kind of unit is it, but it&rsquo;s of less importance. What I&rsquo;m currently thinking about is that I should not have added anything to the balance just yet, just count how many times sum was called and only when the balance is checked, calculate something. This would work better if my billing plans were a bit sophisticated and said: &ldquo;I charge 1 Eurocent per 1000 additions&rdquo;. I will probably not go in there, I think that there are no interesting problems to solve, it wouldn&rsquo;t contribute to the idea I have for this series. And if I&rsquo;m wrong, I can always go and fix. After all my tests are checking the balance after executing some calculations, not that I have some intermediate data or how am I doing things. That&rsquo;s important in the tests, the should verify the final outcome, not how we do things.</p>
 <p>Enough talking, time to start coding. For now, I have a very simple test with just one operation. Let&rsquo;s add one with two operations and verify, that it still works, like so:</p>
 
 
 <span id="4b02949ec8f376f3f3ee77b4afd22f40c0894ae9"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -27,9 \x2b27,17 @@\n   }\n\n   @Test\n-  void returnBalanceOfOne_afterCalculatingOneSum() {\n\x2b  void returnBalanceOfOne_afterCalculatingOneAddition() {\n     calculator.eval(\x221 2 \x2b\x22, 0);\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\x2b\n\x2b  @Test\n\x2b  void returnBalanceOfTwo_afterCalculatingTwoAdditions() {\n\x2b    calculator.eval(\x221 2 \x2b\x22, 0);\n\x2b    calculator.eval(\x221 2 \x2b\x22, 0);\n\x2b    BigDecimal balance = billing.getBalance();\n\x2b    assertThat(balance).isEqualByComparingTo(new BigDecimal(\x222\x22));\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("4b02949ec8f376f3f3ee77b4afd22f40c0894ae9").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -27,9 \u002b27,17 @@\n   }\n\n   @Test\n-  void returnBalanceOfOne_afterCalculatingOneSum() {\n\u002b  void returnBalanceOfOne_afterCalculatingOneAddition() {\n     calculator.eval(\u00221 2 \u002b\u0022, 0);\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\u002b\n\u002b  @Test\n\u002b  void returnBalanceOfTwo_afterCalculatingTwoAdditions() {\n\u002b    calculator.eval(\u00221 2 \u002b\u0022, 0);\n\u002b    calculator.eval(\u00221 2 \u002b\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance();\n\u002b    assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00222\u0022));\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("4b02949ec8f376f3f3ee77b4afd22f40c0894ae9").innerHTML = diffHtml;
 </script>
 
 <p>It works. What about multiplication?</p>
@@ -257,11 +256,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="7de02e6654e5b0af40f9d38daf8f4536e4dee41c"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -40,4 \x2b40,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\x222\x22));\n   }\n\x2b\n\x2b  @Test\n\x2b  void returnBalanceOfFive_afterCalculatingOneMultiplication() {\n\x2b    calculator.eval(\x223 2 *\x22, 0);\n\x2b    BigDecimal balance = billing.getBalance();\n\x2b    assertThat(balance).isEqualByComparingTo(new BigDecimal(\x225\x22));\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("7de02e6654e5b0af40f9d38daf8f4536e4dee41c").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -40,4 \u002b40,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00222\u0022));\n   }\n\u002b\n\u002b  @Test\n\u002b  void returnBalanceOfFive_afterCalculatingOneMultiplication() {\n\u002b    calculator.eval(\u00223 2 *\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance();\n\u002b    assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00225\u0022));\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("7de02e6654e5b0af40f9d38daf8f4536e4dee41c").innerHTML = diffHtml;
 </script>
 
 <p>That doesn&rsquo;t work. Fix requires a few changes because I was very minimalistic about my implementation last time:</p>
@@ -269,11 +267,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="6d709281d7d84e2913cddcf372deec57d4c99060"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\x2b\x2b\x2b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -13,7 \x2b13,10 @@\n   }\n\n   @Override\n-  public void evaluated() {\n-    balance = balance.add(BigDecimal.ONE);\n\x2b  public void evaluated(String function) {\n\x2b    if (\x22\x2b\x22.equals(function))\n\x2b      balance = balance.add(BigDecimal.ONE);\n\x2b    else\n\x2b      balance = balance.add(new BigDecimal(\x225\x22));\n   }\n }\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\x2b\x2b\x2b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -36,7 \x2b36,7 @@\n         var b = stack.pop();\n         stack.push(f.apply(b, a));\n         if (observer != null)\n-          observer.evaluated();\n\x2b          observer.evaluated(token);\n       }\n     }\n     return format(stack.pop(), maxFractionDigits);\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n\x2b\x2b\x2b calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n@@ -1,5 \x2b1,5 @@\n package com.webcalc.calculator;\n\n public interface CalculatorObserver {\n-  void evaluated();\n\x2b  void evaluated(String function);\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("6d709281d7d84e2913cddcf372deec57d4c99060").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -13,7 \u002b13,10 @@\n   }\n\n   @Override\n-  public void evaluated() {\n-    balance = balance.add(BigDecimal.ONE);\n\u002b  public void evaluated(String function) {\n\u002b    if (\u0022\u002b\u0022.equals(function))\n\u002b      balance = balance.add(BigDecimal.ONE);\n\u002b    else\n\u002b      balance = balance.add(new BigDecimal(\u00225\u0022));\n   }\n }\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -36,7 \u002b36,7 @@\n         var b = stack.pop();\n         stack.push(f.apply(b, a));\n         if (observer != null)\n-          observer.evaluated();\n\u002b          observer.evaluated(token);\n       }\n     }\n     return format(stack.pop(), maxFractionDigits);\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n@@ -1,5 \u002b1,5 @@\n package com.webcalc.calculator;\n\n public interface CalculatorObserver {\n-  void evaluated();\n\u002b  void evaluated(String function);\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("6d709281d7d84e2913cddcf372deec57d4c99060").innerHTML = diffHtml;
 </script>
 
 <p>OK, multiplication works. Do I need a test for two multiplications? I don&rsquo;t think so, it would work. I can check some crazy combinations later on after I implement all basic operations. Time for subtraction:</p>
@@ -281,11 +278,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="7fd7fa8d3c8d64040a13c2c05910214ef2ee0d56"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\x2b\x2b\x2b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -14,9 \x2b14,14 @@\n\n   @Override\n   public void evaluated(String function) {\n-    if (\x22\x2b\x22.equals(function))\n-      balance = balance.add(BigDecimal.ONE);\n-    else\n-      balance = balance.add(new BigDecimal(\x225\x22));\n\x2b    switch (function) {\n\x2b      case \x22\x2b\x22:\n\x2b      case \x22-\x22:\n\x2b        balance = balance.add(BigDecimal.ONE);\n\x2b        break;\n\x2b      case \x22*\x22:\n\x2b        balance = balance.add(new BigDecimal(\x225\x22));\n\x2b        break;\n\x2b    }\n   }\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -47,4 \x2b47,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\x225\x22));\n   }\n\x2b\n\x2b  @Test\n\x2b  void returnBalanceOfOne_afterCalculatingOneSubtraction() {\n\x2b    calculator.eval(\x223 3 -\x22, 0);\n\x2b    BigDecimal balance = billing.getBalance();\n\x2b    assertThat(balance).isEqualByComparingTo(ONE);\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("7fd7fa8d3c8d64040a13c2c05910214ef2ee0d56").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -14,9 \u002b14,14 @@\n\n   @Override\n   public void evaluated(String function) {\n-    if (\u0022\u002b\u0022.equals(function))\n-      balance = balance.add(BigDecimal.ONE);\n-    else\n-      balance = balance.add(new BigDecimal(\u00225\u0022));\n\u002b    switch (function) {\n\u002b      case \u0022\u002b\u0022:\n\u002b      case \u0022-\u0022:\n\u002b        balance = balance.add(BigDecimal.ONE);\n\u002b        break;\n\u002b      case \u0022*\u0022:\n\u002b        balance = balance.add(new BigDecimal(\u00225\u0022));\n\u002b        break;\n\u002b    }\n   }\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -47,4 \u002b47,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00225\u0022));\n   }\n\u002b\n\u002b  @Test\n\u002b  void returnBalanceOfOne_afterCalculatingOneSubtraction() {\n\u002b    calculator.eval(\u00223 3 -\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance();\n\u002b    assertThat(balance).isEqualByComparingTo(ONE);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("7fd7fa8d3c8d64040a13c2c05910214ef2ee0d56").innerHTML = diffHtml;
 </script>
 
 <p>I could go on with multiple <code>if ... else</code> statements, but switch is probably a bit more readable.</p>
@@ -301,11 +297,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="5c064d62bb99081c293feb651a0fc8cd69cbb038"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\x2b\x2b\x2b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -4,9 \x2b4,13 @@\n\n import java.math.BigDecimal;\n\n\x2bimport static java.math.BigDecimal.ONE;\n\x2bimport static java.math.BigDecimal.TEN;\n\x2bimport static java.math.BigDecimal.ZERO;\n\x2b\n public class Billing implements CalculatorObserver {\n\n-  private BigDecimal balance = BigDecimal.ZERO;\n\x2b  private BigDecimal balance = ZERO;\n\n   public BigDecimal getBalance() {\n     return balance;\n@@ -17,11 \x2b21,14 @@\n     switch (function) {\n       case \x22\x2b\x22:\n       case \x22-\x22:\n-        balance = balance.add(BigDecimal.ONE);\n\x2b        balance = balance.add(ONE);\n         break;\n       case \x22*\x22:\n         balance = balance.add(new BigDecimal(\x225\x22));\n         break;\n\x2b      case \x22\/\x22:\n\x2b        balance = balance.add(TEN);\n\x2b        break;\n     }\n   }\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -7,6 \x2b7,7 @@\n import java.math.BigDecimal;\n\n import static java.math.BigDecimal.ONE;\n\x2bimport static java.math.BigDecimal.TEN;\n import static java.math.BigDecimal.ZERO;\n import static org.assertj.core.api.Assertions.assertThat;\n\n@@ -54,4 \x2b55,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\x2b\n\x2b  @Test\n\x2b  void returnBalanceOfTen_afterCalculatingOneDivision() {\n\x2b    calculator.eval(\x225 2.5 \/\x22, 2);\n\x2b    BigDecimal balance = billing.getBalance();\n\x2b    assertThat(balance).isEqualByComparingTo(TEN);\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("5c064d62bb99081c293feb651a0fc8cd69cbb038").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -4,9 \u002b4,13 @@\n\n import java.math.BigDecimal;\n\n\u002bimport static java.math.BigDecimal.ONE;\n\u002bimport static java.math.BigDecimal.TEN;\n\u002bimport static java.math.BigDecimal.ZERO;\n\u002b\n public class Billing implements CalculatorObserver {\n\n-  private BigDecimal balance = BigDecimal.ZERO;\n\u002b  private BigDecimal balance = ZERO;\n\n   public BigDecimal getBalance() {\n     return balance;\n@@ -17,11 \u002b21,14 @@\n     switch (function) {\n       case \u0022\u002b\u0022:\n       case \u0022-\u0022:\n-        balance = balance.add(BigDecimal.ONE);\n\u002b        balance = balance.add(ONE);\n         break;\n       case \u0022*\u0022:\n         balance = balance.add(new BigDecimal(\u00225\u0022));\n         break;\n\u002b      case \u0022\/\u0022:\n\u002b        balance = balance.add(TEN);\n\u002b        break;\n     }\n   }\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -7,6 \u002b7,7 @@\n import java.math.BigDecimal;\n\n import static java.math.BigDecimal.ONE;\n\u002bimport static java.math.BigDecimal.TEN;\n import static java.math.BigDecimal.ZERO;\n import static org.assertj.core.api.Assertions.assertThat;\n\n@@ -54,4 \u002b55,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\u002b\n\u002b  @Test\n\u002b  void returnBalanceOfTen_afterCalculatingOneDivision() {\n\u002b    calculator.eval(\u00225 2.5 \/\u0022, 2);\n\u002b    BigDecimal balance = billing.getBalance();\n\u002b    assertThat(balance).isEqualByComparingTo(TEN);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("5c064d62bb99081c293feb651a0fc8cd69cbb038").innerHTML = diffHtml;
 </script>
 
 <p>Now I have all tests green, but those were quite simple. Let&rsquo;s add something more complex. This time I will parameterize the test, similar to <code>CalculatorShould</code> tests:</p>
@@ -313,11 +308,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="34625d739b495d0caca278ee30794df829ef551c"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/build.gradle\n===================================================================\n--- app\/build.gradle\n\x2b\x2b\x2b app\/build.gradle\n@@ -15,6 \x2b15,7 @@\n   }\n   testImplementation(\x22io.rest-assured:rest-assured\x22)\n   testImplementation(\x22org.junit.jupiter:junit-jupiter-api\x22)\n\x2b  testImplementation(\x22org.junit.jupiter:junit-jupiter-params\x22)\n   testRuntime(\x22org.junit.jupiter:junit-jupiter-engine\x22)\n   testImplementation(\x22org.assertj:assertj-core\x22)\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -2,7 \x2b2,10 @@\n\n import com.webcalc.calculator.Calculator;\n import org.junit.jupiter.api.BeforeEach;\n\x2bimport org.junit.jupiter.api.DisplayName;\n import org.junit.jupiter.api.Test;\n\x2bimport org.junit.jupiter.params.ParameterizedTest;\n\x2bimport org.junit.jupiter.params.provider.CsvSource;\n\n import java.math.BigDecimal;\n\n@@ -62,4 \x2b65,18 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(TEN);\n   }\n\x2b\n\x2b  @DisplayName(\x22Bill complex operations\x22)\n\x2b  @ParameterizedTest(name = \x22input: \x27\x27{0}\x27\x27, expected balance: \x27\x27{1}\x27\x27\x22)\n\x2b  @CsvSource({\n\x2b      \x221 2 *, 5\x22,\n\x2b      \x221 3 0 * \x2b, 6\x22,\n\x2b      \x22-1 -1 12 \x2b -, 2\x22,\n\x2b      \x223 6 2 \/ *, 15\x22,\n\x2b  })\n\x2b  void complexBilling(String input, BigDecimal expectedBalance) {\n\x2b    calculator.eval(input, 2);\n\x2b    BigDecimal balance = billing.getBalance();\n\x2b    assertThat(balance).isEqualByComparingTo(expectedBalance);\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("34625d739b495d0caca278ee30794df829ef551c").innerHTML = Diff2Html.html(
+        "Index: app\/build.gradle\n===================================================================\n--- app\/build.gradle\n\u002b\u002b\u002b app\/build.gradle\n@@ -15,6 \u002b15,7 @@\n   }\n   testImplementation(\u0022io.rest-assured:rest-assured\u0022)\n   testImplementation(\u0022org.junit.jupiter:junit-jupiter-api\u0022)\n\u002b  testImplementation(\u0022org.junit.jupiter:junit-jupiter-params\u0022)\n   testRuntime(\u0022org.junit.jupiter:junit-jupiter-engine\u0022)\n   testImplementation(\u0022org.assertj:assertj-core\u0022)\n }\nIndex: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -2,7 \u002b2,10 @@\n\n import com.webcalc.calculator.Calculator;\n import org.junit.jupiter.api.BeforeEach;\n\u002bimport org.junit.jupiter.api.DisplayName;\n import org.junit.jupiter.api.Test;\n\u002bimport org.junit.jupiter.params.ParameterizedTest;\n\u002bimport org.junit.jupiter.params.provider.CsvSource;\n\n import java.math.BigDecimal;\n\n@@ -62,4 \u002b65,18 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(TEN);\n   }\n\u002b\n\u002b  @DisplayName(\u0022Bill complex operations\u0022)\n\u002b  @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, expected balance: \u0027\u0027{1}\u0027\u0027\u0022)\n\u002b  @CsvSource({\n\u002b      \u00221 2 *, 5\u0022,\n\u002b      \u00221 3 0 * \u002b, 6\u0022,\n\u002b      \u0022-1 -1 12 \u002b -, 2\u0022,\n\u002b      \u00223 6 2 \/ *, 15\u0022,\n\u002b  })\n\u002b  void complexBilling(String input, BigDecimal expectedBalance) {\n\u002b    calculator.eval(input, 2);\n\u002b    BigDecimal balance = billing.getBalance();\n\u002b    assertThat(balance).isEqualByComparingTo(expectedBalance);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("34625d739b495d0caca278ee30794df829ef551c").innerHTML = diffHtml;
 </script>
 
 <p>OK, single <code>eval</code> calls, even with multiple operations inside, are working. Just in case I&rsquo;m also adding balance calculations over multiple <code>eval</code> calls:</p>
@@ -325,11 +319,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="08f486659e5323f781ca395fe3f2543e4a2e4d2f"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\x2b\x2b\x2b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -73,9 \x2b73,12 @@\n       \x221 3 0 * \x2b, 6\x22,\n       \x22-1 -1 12 \x2b -, 2\x22,\n       \x223 6 2 \/ *, 15\x22,\n\x2b      \x222 3 \x2b ; 8 2 2 \/ \/, 21\x22,\n   })\n   void complexBilling(String input, BigDecimal expectedBalance) {\n-    calculator.eval(input, 2);\n\x2b    for (String i : input.split(\x22;\x22)) {\n\x2b      calculator.eval(i, 2);\n\x2b    }\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(expectedBalance);\n   }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("08f486659e5323f781ca395fe3f2543e4a2e4d2f").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -73,9 \u002b73,12 @@\n       \u00221 3 0 * \u002b, 6\u0022,\n       \u0022-1 -1 12 \u002b -, 2\u0022,\n       \u00223 6 2 \/ *, 15\u0022,\n\u002b      \u00222 3 \u002b ; 8 2 2 \/ \/, 21\u0022,\n   })\n   void complexBilling(String input, BigDecimal expectedBalance) {\n-    calculator.eval(input, 2);\n\u002b    for (String i : input.split(\u0022;\u0022)) {\n\u002b      calculator.eval(i, 2);\n\u002b    }\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(expectedBalance);\n   }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("08f486659e5323f781ca395fe3f2543e4a2e4d2f").innerHTML = diffHtml;
 </script>
 
 <p>Surprisingly, it doesn&rsquo;t work. It has nothing to do with an error in <code>Calculator</code> or <code>Billing</code>, but apparently, I never sanitized my input! That&rsquo;s a <em>huge</em> security hole and I might need to revisit either <code>Calculator</code> or <code>CalculatorController</code> later on for some more thorough checks. For now a simple <code>trim</code> will suffice:</p>
@@ -337,16 +330,14 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="973ff00196ca71850efec6cdec5acebb27561b61"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\x2b\x2b\x2b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -24,7 \x2b24,7 @@\n   }\n\n   public String eval(String input, int maxFractionDigits) {\n-    String[] tokens = input.split(\x22 \x22);\n\x2b    String[] tokens = input.trim().split(\x22 \x22);\n     var stack = new Stack\x3cBigDecimal\x3e();\n     for (String token : tokens) {\n       try {\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("973ff00196ca71850efec6cdec5acebb27561b61").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -24,7 \u002b24,7 @@\n   }\n\n   public String eval(String input, int maxFractionDigits) {\n-    String[] tokens = input.split(\u0022 \u0022);\n\u002b    String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     for (String token : tokens) {\n       try {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("973ff00196ca71850efec6cdec5acebb27561b61").innerHTML = diffHtml;
 </script>
 
-<p>As for now I only support 4 operations, calculating a balance is complete. Those two switch statements I was talking about previously will become a problem once I decide to add more functions. I would then need to remember to change both places, so I&rsquo;m making now a mental note to myself to go there some other time and see if I can somehow make it more robust. <code>Calculator</code> will complain about not knowing the operation I want to have evaluated, but billing will just ignore it an not charge anything, I certainly don&rsquo;t want to do that!</p>
-<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/">next time</a>
- after I extract the billing module from <code>app</code>. See you there!</p>
+<p>As for now I only support 4 operations, calculating a balance is complete. Those two switch statements I was talking about previously will become a problem once I decide to add more functions. I would then need to remember to change both places, so I&rsquo;m making now a mental note to myself to go there some other time and see if I can somehow make it more robust. <code>Calculator</code> will complain about not knowing the operation I want to have evaluated, but billing will just ignore it and not charge anything, I certainly don&rsquo;t want to do that!</p>
+<p>From a billing perspective preparing a more complex statement about what all those charges were for would probably be required. The current implementation is not supporting that. I have also hardcoded all prices in the code, certainly not a sustainable decision. But as promised last time, I&rsquo;ll keep the iterations shorter, so I&rsquo;ll finish this one here. I&rsquo;ll go back to business logic <a href="/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/">next time</a> after I extract the billing module from <code>app</code>. See you there!</p>
 
   </div>
   
@@ -373,16 +364,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

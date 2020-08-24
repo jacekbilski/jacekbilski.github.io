@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -160,6 +160,7 @@ Long term development speed First and foremost I understand my main responsibili
 	
 	
 	
+	
 </section>
 
       </div>
@@ -213,7 +214,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 7 min read
     
 </div>
 
@@ -239,44 +240,24 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h3 id="code-quality">Code quality</h3>
 <p>Although a quality code is much more pleasant to work with than all those &ldquo;big balls of mud&rdquo;, it&rsquo;s not a goal on its own, it&rsquo;s a way of reaching goals mentioned above. Luckily enough there are already standards or rules for code quality.</p>
 <h3 id="industry-standards">Industry standards</h3>
-<p>Some time ago our industry finally started creating standards. Those standards are all those rules like <a href="https://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29" target="_blank">SOLID</a>
-, <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a>
-, <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank">KISS</a>
- or <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" target="_blank">YAGNI</a>
-, techniques like <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD</a>
- or <a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">BDD</a>
- or &ldquo;templates&rdquo; like <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank">design patterns</a>
- or <a href="http://alistair.cockburn.us/Hexagonal&#43;architecture" target="_blank">hexagonal architecture</a>
- / <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">clean architecture</a>
-. I believe, that although nobody proved them to be correct (yet), they&rsquo;re being referred to by many developers as something that enables them to develop faster and with better quality. Also, up until now, I haven&rsquo;t found any other set of rules or guides, that would be as complete as the things mentioned before. People are reporting, that other approaches or principles are working for them, but usually, no one else is supporting such claims or is supporting them partially, they&rsquo;re more of exceptions than rules. They also don&rsquo;t form a system, that is they can&rsquo;t be put together and applied all at once, they will probably contradict one another in a few places.</p>
-<p>I admit it&rsquo;s homework for me to try to find out how good those standards are, do they really provide what they promise and are they really the only way. For now, they work for me, but I might be subject to <a href="https://en.wikipedia.org/wiki/Confirmation_bias" target="_blank">confirmation bias</a>
- and be missing other, important points of view or approaches. But do expect more detailed, in-depth, filled with hard data and fewer beliefs posts soon.</p>
+<p>Some time ago our industry finally started creating standards. Those standards are all those rules like <a href="https://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29" target="_blank">SOLID</a>, <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a>, <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank">KISS</a> or <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" target="_blank">YAGNI</a>, techniques like <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD</a> or <a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">BDD</a> or &ldquo;templates&rdquo; like <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank">design patterns</a> or <a href="http://alistair.cockburn.us/Hexagonal&#43;architecture" target="_blank">hexagonal architecture</a> / <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">clean architecture</a>. I believe, that although nobody proved them to be correct (yet), they&rsquo;re being referred to by many developers as something that enables them to develop faster and with better quality. Also, up until now, I haven&rsquo;t found any other set of rules or guides, that would be as complete as the things mentioned before. People are reporting, that other approaches or principles are working for them, but usually, no one else is supporting such claims or is supporting them partially, they&rsquo;re more of exceptions than rules. They also don&rsquo;t form a system, that is they can&rsquo;t be put together and applied all at once, they will probably contradict one another in a few places.</p>
+<p>I admit it&rsquo;s homework for me to try to find out how good those standards are, do they really provide what they promise and are they really the only way. For now, they work for me, but I might be subject to <a href="https://en.wikipedia.org/wiki/Confirmation_bias" target="_blank">confirmation bias</a> and be missing other, important points of view or approaches. But do expect more detailed, in-depth, filled with hard data and fewer beliefs posts soon.</p>
 <h3 id="mindset">Mindset</h3>
 <p>The right mindset is required to have a code of good quality. But code quality is not something that can be achieved, it can only be asymptotically approached. What can be achieved is a code of good enough quality. Moreover, as ideas, languages and tools evolve, untouched code, even if of good quality yesterday, will be of worse quality tomorrow.</p>
-<p>Quality degradation starts always the same way, explained by <a href="https://en.wikipedia.org/wiki/Broken_windows_theory" target="_blank">broken windows theory</a>
-. In short: once someone consciously ignores or violates quality, an exception is created, that others are likely to follow. Eventually, exceptions become regular behaviour, because they&rsquo;re &ldquo;easier&rdquo;.</p>
-<p>All this makes code quality a thing, that we need to fight for all the time, every single time we touch the code. By separating the tasks related to improving quality we risk, that we will not get the time for them. There is actually a place for those tasks in a regular development process: refactoring step in TDD/BDD cycle. It is as important as the other two, but quite often forgotten. One can also apply <a href="http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule" target="_blank">boy scout rule</a>
- and always commit code with even only a bit better quality that was checked out, even when this particular piece of code wasn&rsquo;t touched during feature implementation.</p>
-<p>The ideas mentioned here are also mentioned in <a href="http://manifesto.softwarecraftsmanship.org/" target="_blank">Software Craftsmanship Manifesto</a>
-. They&rsquo;re also part of a forming software professionalism movement or definition.</p>
+<p>Quality degradation starts always the same way, explained by <a href="https://en.wikipedia.org/wiki/Broken_windows_theory" target="_blank">broken windows theory</a>. In short: once someone consciously ignores or violates quality, an exception is created, that others are likely to follow. Eventually, exceptions become regular behaviour, because they&rsquo;re &ldquo;easier&rdquo;.</p>
+<p>All this makes code quality a thing, that we need to fight for all the time, every single time we touch the code. By separating the tasks related to improving quality we risk, that we will not get the time for them. There is actually a place for those tasks in a regular development process: refactoring step in TDD/BDD cycle. It is as important as the other two, but quite often forgotten. One can also apply <a href="http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule" target="_blank">boy scout rule</a> and always commit code with even only a bit better quality that was checked out, even when this particular piece of code wasn&rsquo;t touched during feature implementation.</p>
+<p>The ideas mentioned here are also mentioned in <a href="http://manifesto.softwarecraftsmanship.org/" target="_blank">Software Craftsmanship Manifesto</a>. They&rsquo;re also part of a forming software professionalism movement or definition.</p>
 <h3 id="its-nothing-new">It&rsquo;s nothing new</h3>
-<p>All or most of the things mentioned above are not new, most of them can be found in <a href="http://agilemanifesto.org/principles.html" target="_blank">agile principles</a>
- that were formulated in 2001. Even ideas expressed in Agile Manifesto are not new, see for example below for the NATO report. A. J. Perlis in 1968 said, “A software system can best be designed if the testing is interlaced with the design instead of being used after the design”, so TDD wasn&rsquo;t discovered in 2003 by Kent Beck, it was more &ldquo;rediscovered&rdquo;, see <a href="https://www.quora.com/Why-does-Kent-Beck-refer-to-the-rediscovery-of-test-driven-development" target="_blank">discussion here</a>
-.</p>
+<p>All or most of the things mentioned above are not new, most of them can be found in <a href="http://agilemanifesto.org/principles.html" target="_blank">agile principles</a> that were formulated in 2001. Even ideas expressed in Agile Manifesto are not new, see for example below for the NATO report. A. J. Perlis in 1968 said, “A software system can best be designed if the testing is interlaced with the design instead of being used after the design”, so TDD wasn&rsquo;t discovered in 2003 by Kent Beck, it was more &ldquo;rediscovered&rdquo;, see <a href="https://www.quora.com/Why-does-Kent-Beck-refer-to-the-rediscovery-of-test-driven-development" target="_blank">discussion here</a>.</p>
 <h3 id="exceptions">Exceptions</h3>
 <p>Unfortunately, the World is not perfect and from time to time we&rsquo;re asked to do something fast in short term. There are cases, where such requests are valid, for example, the law has changed and we need to adapt our systems before an externally set deadline, or a problem occurred, that we couldn&rsquo;t foresee, the company is losing money and we need to react immediately. In such cases, we should be cutting some corners to deal with the situation, but we should also take care to bring the quality back after the issue has been dealt with.</p>
 <h3 id="a-few-additional-notes-from-me">A few additional notes from me</h3>
-<p>As mentioned above I&rsquo;m not fighting for clean code just for its own sake, for me, it&rsquo;s a way of ultimately being able to deliver fast consistently. It&rsquo;s one of <a href="http://agilemanifesto.org/principles.html" target="_blank">Agile Manifesto&rsquo;s principles</a>
-: &ldquo;Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.&quot;. Out of all rules of clean code, currently mostly discussed and stressed, in my humble opinion, are the separation of concerns (a.k.a. single responsibility principle) and simplicity.</p>
-<p>This post is far from being complete, I tried to focus on the most basic problems. But remember this: <a href="https://groups.google.com/forum/#!msg/comp.lang.c&#43;&#43;/rYCO5yn4lXw/oITtSkZOtoUJ" target="_blank">always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live</a>
-.</p>
-<p>BTW, this post was simultaneously posted on two blogs: <a href="http://tech.zooplus.com/" target="_blank">Zooplus Tech Blog</a>
- and <a href="/">my private one</a>
-. Please feel free to go to the other one and check it out!</p>
+<p>As mentioned above I&rsquo;m not fighting for clean code just for its own sake, for me, it&rsquo;s a way of ultimately being able to deliver fast consistently. It&rsquo;s one of <a href="http://agilemanifesto.org/principles.html" target="_blank">Agile Manifesto&rsquo;s principles</a>: &ldquo;Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.&rdquo;. Out of all rules of clean code, currently mostly discussed and stressed, in my humble opinion, are the separation of concerns (a.k.a. single responsibility principle) and simplicity.</p>
+<p>This post is far from being complete, I tried to focus on the most basic problems. But remember this: <a href="https://groups.google.com/forum/#!msg/comp.lang.c&#43;&#43;/rYCO5yn4lXw/oITtSkZOtoUJ" target="_blank">always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live</a>.</p>
+<p>BTW, this post was simultaneously posted on two blogs: <a href="http://tech.zooplus.com/" target="_blank">Zooplus Tech Blog</a> and <a href="/">my private one</a>. Please feel free to go to the other one and check it out!</p>
 <h3 id="further-links">Further links</h3>
 <h4 id="software-engineering--professionalism">Software engineering / professionalism</h4>
-<p><a href="http://homepages.cs.ncl.ac.uk/brian.randell/NATO/nato1968.PDF" target="_blank">NATO Software Engineering Conference report</a>
- - although the conference was held in 1968, it contains things like:</p>
+<p><a href="http://homepages.cs.ncl.ac.uk/brian.randell/NATO/nato1968.PDF" target="_blank">NATO Software Engineering Conference report</a> - although the conference was held in 1968, it contains things like:</p>
 <ul>
 <li>description of an iterative process of writing software,</li>
 <li>a statement, that the best systems are written by small groups,</li>
@@ -284,39 +265,27 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </ul>
 <h4 id="total-cost-of-ownership">Total cost of ownership</h4>
 <ul>
-<li><a href="http://galorath.com/wp-content/uploads/2014/08/software_total_ownership_costs-development_is_only_job_one.pdf" target="_blank">http://galorath.com/wp-content/uploads/2014/08/software_total_ownership_costs-development_is_only_job_one.pdf</a>
-</li>
-<li><a href="http://java.uom.gr/~chaikalis/frequently-forgotten-fundamental-facts-about-software-engineering/" target="_blank">http://java.uom.gr/~chaikalis/frequently-forgotten-fundamental-facts-about-software-engineering/</a>
-</li>
-<li><a href="http://www.irahul.com/2005/10/software-development-vs-software.html" target="_blank">http://www.irahul.com/2005/10/software-development-vs-software.html</a>
-</li>
-<li><a href="http://stackoverflow.com/questions/3477706/development-cost-versus-maintenance-cost" target="_blank">http://stackoverflow.com/questions/3477706/development-cost-versus-maintenance-cost</a>
-</li>
-<li><a href="https://www.linkedin.com/pulse/20141203004038-26267525-software-maintenance-costs-part-3" target="_blank">https://www.linkedin.com/pulse/20141203004038-26267525-software-maintenance-costs-part-3</a>
-</li>
-<li><a href="https://en.wikipedia.org/wiki/Software_maintenance" target="_blank">https://en.wikipedia.org/wiki/Software_maintenance</a>
-</li>
+<li><a href="http://galorath.com/wp-content/uploads/2014/08/software_total_ownership_costs-development_is_only_job_one.pdf" target="_blank">http://galorath.com/wp-content/uploads/2014/08/software_total_ownership_costs-development_is_only_job_one.pdf</a></li>
+<li><a href="http://java.uom.gr/~chaikalis/frequently-forgotten-fundamental-facts-about-software-engineering/" target="_blank">http://java.uom.gr/~chaikalis/frequently-forgotten-fundamental-facts-about-software-engineering/</a></li>
+<li><a href="http://www.irahul.com/2005/10/software-development-vs-software.html" target="_blank">http://www.irahul.com/2005/10/software-development-vs-software.html</a></li>
+<li><a href="http://stackoverflow.com/questions/3477706/development-cost-versus-maintenance-cost" target="_blank">http://stackoverflow.com/questions/3477706/development-cost-versus-maintenance-cost</a></li>
+<li><a href="https://www.linkedin.com/pulse/20141203004038-26267525-software-maintenance-costs-part-3" target="_blank">https://www.linkedin.com/pulse/20141203004038-26267525-software-maintenance-costs-part-3</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Software_maintenance" target="_blank">https://en.wikipedia.org/wiki/Software_maintenance</a></li>
 </ul>
 <h4 id="simplicity">Simplicity</h4>
 <ul>
-<li><a href="http://shaffner.us/cs/papers/tarpit.pdf" target="_blank">Out of the tar pit</a>
- - scientific paper focused on complexity and how to handle accidental one</li>
+<li><a href="http://shaffner.us/cs/papers/tarpit.pdf" target="_blank">Out of the tar pit</a> - scientific paper focused on complexity and how to handle accidental one</li>
 </ul>
 <h4 id="videos--presentations-to-watch">Videos / presentations to watch</h4>
 <ul>
-<li><a href="https://www.infoq.com/presentations/engineer-practices-techniques" target="_blank">Engineering You by Martin Thompson</a>
- - mostly about mindset, but also mentions other things like readability</li>
-<li><a href="http://www.infoq.com/presentations/Simple-Made-Easy" target="_blank">Simple made easy by Rich Hickey</a>
- - mostly about simplicity</li>
-<li><a href="http://vimeo.com/68375232" target="_blank">TDD, where did it all go wrong?</a>
- - how very wrong we&rsquo;re sometimes thinking about TDD</li>
+<li><a href="https://www.infoq.com/presentations/engineer-practices-techniques" target="_blank">Engineering You by Martin Thompson</a> - mostly about mindset, but also mentions other things like readability</li>
+<li><a href="http://www.infoq.com/presentations/Simple-Made-Easy" target="_blank">Simple made easy by Rich Hickey</a> - mostly about simplicity</li>
+<li><a href="http://vimeo.com/68375232" target="_blank">TDD, where did it all go wrong?</a> - how very wrong we&rsquo;re sometimes thinking about TDD</li>
 </ul>
 <h4 id="books-to-read">Books to read</h4>
 <ul>
-<li><a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=pd_sim_14_3?ie=UTF8" target="_blank">The Pragmatic Programmer: From Journeyman to Master</a>
-</li>
-<li><a href="https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073/ref=pd_sim_14_5?ie=UTF8" target="_blank">The Clean Coder: A Code of Conduct for Professional Programmers</a>
-</li>
+<li><a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=pd_sim_14_3?ie=UTF8" target="_blank">The Pragmatic Programmer: From Journeyman to Master</a></li>
+<li><a href="https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073/ref=pd_sim_14_5?ie=UTF8" target="_blank">The Clean Coder: A Code of Conduct for Professional Programmers</a></li>
 </ul>
 
   </div>
@@ -344,16 +313,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

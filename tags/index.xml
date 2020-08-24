@@ -6,10 +6,37 @@
     <description>Recent content in Tags on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 08 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>learning</title>
+      <link>https://www.bilski.tech/tags/learning/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>surprise</title>
+      <link>https://www.bilski.tech/tags/surprise/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/surprise/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TDD</title>
+      <link>https://www.bilski.tech/tags/tdd/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/tdd/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>familiarity</title>
@@ -39,15 +66,6 @@
     </item>
     
     <item>
-      <title>learning</title>
-      <link>https://www.bilski.tech/tags/learning/</link>
-      <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>mistakes</title>
       <link>https://www.bilski.tech/tags/mistakes/</link>
       <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
@@ -57,29 +75,11 @@
     </item>
     
     <item>
-      <title>Spring</title>
-      <link>https://www.bilski.tech/tags/spring/</link>
-      <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Spring Security</title>
       <link>https://www.bilski.tech/tags/spring-security/</link>
       <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/tags/spring-security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>TDD</title>
-      <link>https://www.bilski.tech/tags/tdd/</link>
-      <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/tdd/</guid>
       <description></description>
     </item>
     
@@ -170,6 +170,15 @@
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/tags/understanding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://www.bilski.tech/tags/spring/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/spring/</guid>
       <description></description>
     </item>
     

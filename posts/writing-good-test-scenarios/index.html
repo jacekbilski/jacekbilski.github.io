@@ -12,24 +12,24 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
     
 
 <title>Writing good test scenarios • On Software Engineering</title>
-<meta name="description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo; . Now it&rsquo;s time to continue.
+<meta name="description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo;. Now it&rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &ldquo;avoid unnecessary information&rdquo;, &ldquo;don&rsquo;t include implementation details&rdquo; or &ldquo;don&rsquo;t repeat yourself in different scenarios&rdquo;. This time I&rsquo;d like to dig deeper and present results of discussions we had in the team.">
 <meta name="keywords" content="BDD, Cucumber, features, test scenarios, tests">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Writing good test scenarios"/>
-<meta name="twitter:description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo; . Now it&rsquo;s time to continue.
+<meta name="twitter:description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo;. Now it&rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &ldquo;avoid unnecessary information&rdquo;, &ldquo;don&rsquo;t include implementation details&rdquo; or &ldquo;don&rsquo;t repeat yourself in different scenarios&rdquo;. This time I&rsquo;d like to dig deeper and present results of discussions we had in the team."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
 <meta property="og:title" content="Writing good test scenarios" />
-<meta property="og:description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo; . Now it&rsquo;s time to continue.
+<meta property="og:description" content="On my current company&rsquo;s blog I posted some time ago part one of &ldquo;writing good tests&rdquo;. Now it&rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &ldquo;avoid unnecessary information&rdquo;, &ldquo;don&rsquo;t include implementation details&rdquo; or &ldquo;don&rsquo;t repeat yourself in different scenarios&rdquo;. This time I&rsquo;d like to dig deeper and present results of discussions we had in the team." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/writing-good-test-scenarios/" />
@@ -157,6 +157,7 @@ Last time I just barely scratched the topic of writing test scenarios. I briefly
 	
 	
 	
+	
 </section>
 
       </div>
@@ -213,7 +214,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 8 min read
     
 </div>
 
@@ -222,14 +223,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>On my <a href="http://tech.zooplus.com/" target="_blank">current company&rsquo;s blog</a>
- I posted some time ago <a href="http://tech.zooplus.com/writing-acceptance-tests-the-right-way/" target="_blank">part one of &ldquo;writing good tests&rdquo;</a>
-. Now it&rsquo;s time to continue.</p>
+    <p>On my <a href="http://tech.zooplus.com/" target="_blank">current company&rsquo;s blog</a> I posted some time ago <a href="http://tech.zooplus.com/writing-acceptance-tests-the-right-way/" target="_blank">part one of &ldquo;writing good tests&rdquo;</a>. Now it&rsquo;s time to continue.</p>
 <p>Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &ldquo;avoid unnecessary information&rdquo;, &ldquo;don&rsquo;t include implementation details&rdquo; or &ldquo;don&rsquo;t repeat yourself in different scenarios&rdquo;. This time I&rsquo;d like to dig deeper and present results of discussions we had in the team.</p>
-<p>Note: Like I mentioned last time we&rsquo;re developing our applications <a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">Behaviour Driven Development</a>
- way using <a href="http://cucumber.io/" target="_blank">Cucumber</a>
-. I&rsquo;m sometimes referring to how scenarios are written for Cucumber in <a href="https://github.com/cucumber/cucumber/wiki/Gherkin" target="_blank">Gherkin</a>
- format, so please make sure you have at least a rough idea about it.</p>
+<p>Note: Like I mentioned last time we&rsquo;re developing our applications <a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">Behaviour Driven Development</a> way using <a href="http://cucumber.io/" target="_blank">Cucumber</a>. I&rsquo;m sometimes referring to how scenarios are written for Cucumber in <a href="https://github.com/cucumber/cucumber/wiki/Gherkin" target="_blank">Gherkin</a> format, so please make sure you have at least a rough idea about it.</p>
 <h3 id="purpose">Purpose</h3>
 <p>Scenarios serve two purposes:</p>
 <ul>
@@ -267,8 +263,7 @@ Then the cart contains the article with the given quantity</p>
 <p>Like mentioned before, all implementation details need to be abstracted away from scenarios. It&rsquo;s not part of a business requirement that, for example, something should be saved into the database. If implementation team would decide to use different technical means of achieving the same goal, like persistence, then the test based on the scenario would be &ldquo;red&rdquo;, but actually, the business goal would be achieved. This will give the team much more freedom to solve technical problems as they see fit and also change the implementation if necessary, but still, make sure that the features are working.</p>
 <p>Of course, sometimes requirements are to save something to the database. Such requirements should not be coming from &ldquo;business&rdquo; though, but might from other &ldquo;technical&rdquo; teams like operations. For purely technical modules those DB details will actually be THE thing that needs to be verified. In all those cases such technical details can and must be mentioned in scenarios themselves.</p>
 <h3 id="exhaustiveness">Exhaustiveness</h3>
-<p>Scenarios should be <a href="https://en.wikipedia.org/wiki/MECE_principle" target="_blank">MECE</a>
- (mutually exclusive, collectively exhaustive): they need to cover all business requirements, including seemingly obvious ones. There should always be test scenarios for business error cases, meaning cases where something wrong is expected to happen and then such scenarios need to specify what to do.</p>
+<p>Scenarios should be <a href="https://en.wikipedia.org/wiki/MECE_principle" target="_blank">MECE</a> (mutually exclusive, collectively exhaustive): they need to cover all business requirements, including seemingly obvious ones. There should always be test scenarios for business error cases, meaning cases where something wrong is expected to happen and then such scenarios need to specify what to do.</p>
 <h3 id="simplicity">Simplicity</h3>
 <p>Scenarios should be as simple as possible. Any unnecessary information or data makes tests more difficult to understand and obscures their purpose. Test scenarios serve also as specification, so if something doesn&rsquo;t influence the feature, don&rsquo;t mention it.</p>
 <h3 id="completeness">Completeness</h3>
@@ -278,8 +273,7 @@ Then the cart contains the article with the given quantity</p>
 <h3 id="other-useful-hints">Other useful hints</h3>
 <p>Test scenarios should be completely separated from any names or identifiers used in production. So &ldquo;country 1&rdquo; is preferred over &ldquo;Germany&rdquo;. This would give additional benefit of making sure, that no such name or id was hardcoded inside the code. It would also ensure, that the feature is generic and can be applied to another entity (so no fixed features for, say, country Germany, but a generic feature that can be enabled for Germany).</p>
 <p>Similar to previous advice, hardcoded numbers or values should be avoided, because they&rsquo;re usually obscuring real purpose or condition. So it&rsquo;s better to replace something like &ldquo;given operation takes more than 30 seconds&rdquo; with &ldquo;given operation times out&rdquo;. It will make test scenarios independent from configuration parameters. This would also violate DRY principle (don&rsquo;t repeat yourself).</p>
-<p>All test scenarios for one feature should be kept together, in one file if feasible. Otherwise, it&rsquo;s a <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principle</a>
- violation, things related to each other should be kept together.</p>
+<p>All test scenarios for one feature should be kept together, in one file if feasible. Otherwise, it&rsquo;s a <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principle</a> violation, things related to each other should be kept together.</p>
 <p>Scenarios should be written in such a way, that they can be read &ldquo;in English&rdquo; (or whatever language you&rsquo;re using), technical forms should be avoided if possible. For example &ldquo;user adds an article to cart&rdquo; is better than &ldquo;user clicks &lsquo;add&rsquo; button&rdquo;.</p>
 <p>Scenario summary should be both precise and concise. One line, not so long, should be the target size.</p>
 <p>Use passive voice in scenario summaries. So &ldquo;user is logged in after providing valid credentials&rdquo; is probably easier to read than something like &ldquo;when the user provides valid credentials then he/she is logged in&rdquo;.</p>
@@ -287,9 +281,7 @@ Then the cart contains the article with the given quantity</p>
 <h3 id="summary">Summary</h3>
 <p>Like mentioned in the beginning the hints above are results of many discussions we had in the team. We have found it difficult to write those scenarios, sometimes it was taking a similar amount of time than actually implementing those features. That&rsquo;s why I&rsquo;m sharing this, maybe someone else could use it and avoid lengthy (and heated) discussions.</p>
 <p>I do not pretend to say, that this is the only way to do it. It works for us™, YMMV. I&rsquo;d be extremely happy to also get some hints from others, so if you&rsquo;d like to add something in here or you disagree with what I&rsquo;ve written above, feel free to leave a comment.</p>
-<p>BTW, this post was simultaneously posted on two blogs: <a href="http://tech.zooplus.com/writing-good-tests-part-2/" target="_blank">Zooplus Tech Blog</a>
- and <a href="/">my private one</a>
-. Please feel free to go to the other one and check it out!</p>
+<p>BTW, this post was simultaneously posted on two blogs: <a href="http://tech.zooplus.com/writing-good-tests-part-2/" target="_blank">Zooplus Tech Blog</a> and <a href="/">my private one</a>. Please feel free to go to the other one and check it out!</p>
 
   </div>
   
@@ -316,16 +308,7 @@ Then the cart contains the article with the given quantity</p>
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

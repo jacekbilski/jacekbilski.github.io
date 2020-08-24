@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -61,7 +61,7 @@
     
 
     
-<link href='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.css' rel='stylesheet' type='text/css'/>
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
 <style type='text/css'>
 .d2h-wrapper {
     color: black;
@@ -79,7 +79,7 @@
     overflow-x: auto;
 }
 </style>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/diff2html/2.7.0/diff2html.min.js' type='text/javascript'></script>
+<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
 
 
 </head>
@@ -175,6 +175,7 @@
 	
 	
 	
+	
 </section>
 
       </div>
@@ -231,7 +232,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 5 min read
     
 </div>
 
@@ -240,24 +241,20 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Welcome to the first iteration of WebCalc implementation. In my <a href="/posts/project-webcalc-motivation-and-plan/">previous post</a>
- I just explained my motivations and goals for this project. This time I&rsquo;ll do some actual coding. Although in the end, I&rsquo;ll try to have something &ldquo;business&rdquo; related, I guess most of the time I&rsquo;ll spend wiring things up. To the keyboard then.</p>
+    <p>Welcome to the first iteration of WebCalc implementation. In my <a href="/posts/project-webcalc-motivation-and-plan/">previous post</a> I just explained my motivations and goals for this project. This time I&rsquo;ll do some actual coding. Although in the end, I&rsquo;ll try to have something &ldquo;business&rdquo; related, I guess most of the time I&rsquo;ll spend wiring things up. To the keyboard then.</p>
 <h3 id="goal">Goal</h3>
 <p>I want to have a very first and simple test working: adding 1 to 2. It will go to the REST interface so that it would force me to wire up everything to get an application available over HTTP/2. This would clearly be an integration test. Below that, I&rsquo;ll have my unit tests.</p>
 <h3 id="a-bit-of-infrastructure">A bit of infrastructure</h3>
-<p>The easiest way to start a Spring Boot project is to visit <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>
-. I chose a Gradle project with the newest version of Spring Boot, Java 10 and Reactive Web. This should get me started simple. See <a href="https://github.com/jacekbilski/WebCalc/commit/fb831f9224abbac1b8b57f2fc122de2e5f3a89c7" target="_blank">commit fb831f9</a>
-.</p>
+<p>The easiest way to start a Spring Boot project is to visit <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>. I chose a Gradle project with the newest version of Spring Boot, Java 10 and Reactive Web. This should get me started simple. See <a href="https://github.com/jacekbilski/WebCalc/commit/fb831f9224abbac1b8b57f2fc122de2e5f3a89c7" target="_blank">commit fb831f9</a>.</p>
 <p>One thing, that I need to fix almost immediately, was removing JUnit 4 and plugging in JUnit 5. Nothing difficult, but it would be nicer to have a boot started with JUnit 5 already. So build.gradle changes:</p>
 
 
 <span id="4ef5c539ecd7fb29c44480f7e0f1056e678e8136"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: build.gradle\n===================================================================\n--- build.gradle\n\x2b\x2b\x2b build.gradle\n@@ -28,6 \x2b28,24 @@\n\n dependencies {\n   compile(\x27org.springframework.boot:spring-boot-starter-webflux\x27)\n-  testCompile(\x27org.springframework.boot:spring-boot-starter-test\x27)\n-  testCompile(\x27io.projectreactor:reactor-test\x27)\n\x2b  testCompile(\x27org.springframework.boot:spring-boot-starter-test\x27) {\n\x2b    exclude group: \x22junit\x22, module: \x22junit\x22\n\x2b  }\n\x2b  testCompile(\x27org.junit.jupiter:junit-jupiter-api:5.2.0\x27)\n\x2b  testRuntime(\x27org.junit.jupiter:junit-jupiter-engine:5.2.0\x27)\n\x2b  testCompile(\x27io.projectreactor:reactor-test\x27) {\n\x2b    exclude group: \x22junit\x22, module: \x22junit\x22\n\x2b  }\n\x2b}\n\x2b\n\x2btest {\n\x2b  useJUnitPlatform()\n\x2b\n\x2b  testLogging {\n\x2b    events \x22passed\x22, \x22skipped\x22, \x22failed\x22\n\x2b  }\n\x2b\n\x2b  reports {\n\x2b    html.enabled = true\n\x2b  }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("4ef5c539ecd7fb29c44480f7e0f1056e678e8136").innerHTML = Diff2Html.html(
+        "Index: build.gradle\n===================================================================\n--- build.gradle\n\u002b\u002b\u002b build.gradle\n@@ -28,6 \u002b28,24 @@\n\n dependencies {\n   compile(\u0027org.springframework.boot:spring-boot-starter-webflux\u0027)\n-  testCompile(\u0027org.springframework.boot:spring-boot-starter-test\u0027)\n-  testCompile(\u0027io.projectreactor:reactor-test\u0027)\n\u002b  testCompile(\u0027org.springframework.boot:spring-boot-starter-test\u0027) {\n\u002b    exclude group: \u0022junit\u0022, module: \u0022junit\u0022\n\u002b  }\n\u002b  testCompile(\u0027org.junit.jupiter:junit-jupiter-api:5.2.0\u0027)\n\u002b  testRuntime(\u0027org.junit.jupiter:junit-jupiter-engine:5.2.0\u0027)\n\u002b  testCompile(\u0027io.projectreactor:reactor-test\u0027) {\n\u002b    exclude group: \u0022junit\u0022, module: \u0022junit\u0022\n\u002b  }\n\u002b}\n\u002b\n\u002btest {\n\u002b  useJUnitPlatform()\n\u002b\n\u002b  testLogging {\n\u002b    events \u0022passed\u0022, \u0022skipped\u0022, \u0022failed\u0022\n\u002b  }\n\u002b\n\u002b  reports {\n\u002b    html.enabled = true\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("4ef5c539ecd7fb29c44480f7e0f1056e678e8136").innerHTML = diffHtml;
 </script>
 
 <p>Now I need to change the test because it&rsquo;s using old infrastructure.</p>
@@ -265,28 +262,23 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="6c6eff9528d0889befb5bd049756608ec554e6ff"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n\x2b\x2b\x2b src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n@@ -1,15 \x2b1,15 @@\n package com.webcalc.app;\n\n-import org.junit.Test;\n-import org.junit.runner.RunWith;\n\x2bimport org.junit.jupiter.api.Test;\n\x2bimport org.junit.jupiter.api.extension.ExtendWith;\n import org.springframework.boot.test.context.SpringBootTest;\n-import org.springframework.test.context.junit4.SpringRunner;\n\x2bimport org.springframework.test.context.junit.jupiter.SpringExtension;\n\n-@RunWith(SpringRunner.class)\n\x2b@ExtendWith(SpringExtension.class)\n @SpringBootTest\n-public class WebCalcApplicationTests {\n\x2bclass WebCalcApplicationTests {\n\n   @Test\n-  public void contextLoads() {\n\x2b  void contextLoads() {\n   }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("6c6eff9528d0889befb5bd049756608ec554e6ff").innerHTML = Diff2Html.html(
+        "Index: src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n\u002b\u002b\u002b src\/test\/java\/com\/webcalc\/app\/WebCalcApplicationTests.java\n@@ -1,15 \u002b1,15 @@\n package com.webcalc.app;\n\n-import org.junit.Test;\n-import org.junit.runner.RunWith;\n\u002bimport org.junit.jupiter.api.Test;\n\u002bimport org.junit.jupiter.api.extension.ExtendWith;\n import org.springframework.boot.test.context.SpringBootTest;\n-import org.springframework.test.context.junit4.SpringRunner;\n\u002bimport org.springframework.test.context.junit.jupiter.SpringExtension;\n\n-@RunWith(SpringRunner.class)\n\u002b@ExtendWith(SpringExtension.class)\n @SpringBootTest\n-public class WebCalcApplicationTests {\n\u002bclass WebCalcApplicationTests {\n\n   @Test\n-  public void contextLoads() {\n\u002b  void contextLoads() {\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("6c6eff9528d0889befb5bd049756608ec554e6ff").innerHTML = diffHtml;
 </script>
 
 <h3 id="first-test">First test</h3>
-<p>Now I can write my first test. As I don&rsquo;t have anything so far, I need to start completely from outside, so through my REST interface (an idea of a <a href="https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton/" target="_blank">walking skeleton</a>
-). I also need to decide how this interface would look like. Let&rsquo;s say, that my endpoint will be responding to GET requests on URL &ldquo;/eval&rdquo;. Let&rsquo;s also say, that, to keep it simple, I&rsquo;ll not be using JSON, XML or anything, I&rsquo;ll be using good old &ldquo;text/plain&rdquo;. Just for the fun of it, and to avoid weird parsing issues, I&rsquo;ll be expecting my input to be using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">reverse Polish notation</a>
-. Last decision: to actually test my application from outside I&rsquo;ll be using <a href="http://rest-assured.io/" target="_blank">REST Assured</a>
-.</p>
+<p>Now I can write my first test. As I don&rsquo;t have anything so far, I need to start completely from outside, so through my REST interface (an idea of a <a href="https://codeclimate.com/blog/kickstart-your-next-project-with-a-walking-skeleton/" target="_blank">walking skeleton</a>). I also need to decide how this interface would look like. Let&rsquo;s say, that my endpoint will be responding to GET requests on URL &ldquo;/eval&rdquo;. Let&rsquo;s also say, that, to keep it simple, I&rsquo;ll not be using JSON, XML or anything, I&rsquo;ll be using good old &ldquo;text/plain&rdquo;. Just for the fun of it, and to avoid weird parsing issues, I&rsquo;ll be expecting my input to be using <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">reverse Polish notation</a>. Last decision: to actually test my application from outside I&rsquo;ll be using <a href="http://rest-assured.io/" target="_blank">REST Assured</a>.</p>
 <p>OK, from now on, there should be more coding and less talking. First, I need to import REST Assured:</p>
 
 
 <span id="d871041097223858d2212bbe2b2bb54a68777f83"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: build.gradle\n===================================================================\n--- build.gradle\n\x2b\x2b\x2b build.gradle\n@@ -31,6 \x2b31,7 @@\n     testCompile(\x27org.springframework.boot:spring-boot-starter-test\x27) {\n         exclude group: \x22junit\x22, module: \x22junit\x22\n     }\n\x2b    testCompile(\x27io.rest-assured:rest-assured:3.1.1\x27)\n     testCompile(\x27org.junit.jupiter:junit-jupiter-api:5.2.0\x27)\n     testRuntime(\x27org.junit.jupiter:junit-jupiter-engine:5.2.0\x27)\n     testCompile(\x27io.projectreactor:reactor-test\x27) {\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("d871041097223858d2212bbe2b2bb54a68777f83").innerHTML = Diff2Html.html(
+        "Index: build.gradle\n===================================================================\n--- build.gradle\n\u002b\u002b\u002b build.gradle\n@@ -31,6 \u002b31,7 @@\n     testCompile(\u0027org.springframework.boot:spring-boot-starter-test\u0027) {\n         exclude group: \u0022junit\u0022, module: \u0022junit\u0022\n     }\n\u002b    testCompile(\u0027io.rest-assured:rest-assured:3.1.1\u0027)\n     testCompile(\u0027org.junit.jupiter:junit-jupiter-api:5.2.0\u0027)\n     testRuntime(\u0027org.junit.jupiter:junit-jupiter-engine:5.2.0\u0027)\n     testCompile(\u0027io.projectreactor:reactor-test\u0027) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("d871041097223858d2212bbe2b2bb54a68777f83").innerHTML = diffHtml;
 </script>
 
 <p>I can finally write my first test:</p>
@@ -294,11 +286,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="b14da14b180429afae0c306c8997139fa8561b69"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\x2b\x2b\x2b src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -0,0 \x2b1,19 @@\n\x2bpackage com.webcalc.integration_tests;\n\x2b\n\x2bimport org.junit.jupiter.api.Test;\n\x2b\n\x2bimport static io.restassured.RestAssured.given;\n\x2bimport static org.hamcrest.Matchers.equalTo;\n\x2b\n\x2bclass RestApiTest {\n\x2b\n\x2b  @Test\n\x2b  void invokesWebCalcRestApi() {\n\x2b    given()\n\x2b        .body(\x221 2 \x2b\x22)\n\x2b    .when()\n\x2b        .post(\x22\/eval\x22)\n\x2b    .then()\n\x2b        .body(equalTo(\x223\x22));\n\x2b  }\n\x2b}\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("b14da14b180429afae0c306c8997139fa8561b69").innerHTML = Diff2Html.html(
+        "Index: src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\u002b\u002b\u002b src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -0,0 \u002b1,19 @@\n\u002bpackage com.webcalc.integration_tests;\n\u002b\n\u002bimport org.junit.jupiter.api.Test;\n\u002b\n\u002bimport static io.restassured.RestAssured.given;\n\u002bimport static org.hamcrest.Matchers.equalTo;\n\u002b\n\u002bclass RestApiTest {\n\u002b\n\u002b  @Test\n\u002b  void invokesWebCalcRestApi() {\n\u002b    given()\n\u002b        .body(\u00221 2 \u002b\u0022)\n\u002b    .when()\n\u002b        .post(\u0022\/eval\u0022)\n\u002b    .then()\n\u002b        .body(equalTo(\u00223\u0022));\n\u002b  }\n\u002b}\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("b14da14b180429afae0c306c8997139fa8561b69").innerHTML = diffHtml;
 </script>
 
 <p>It fails miserably, as expected. After reading Spring documentation a bit I can see, that using WebFlux is probably overkill, so I&rsquo;m going back and replacing it with good old SpringMVC. As the most basic things like controllers are common to both stacks, if I were to switch later on to WebFlux, it would probably take me very little time.</p>
@@ -306,11 +297,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="3279a4277b3adcde49eb2fe924e709aa3fa118e1"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: build.gradle\n===================================================================\n--- build.gradle\n\x2b\x2b\x2b build.gradle\n@@ -27,16 \x2b27,13 @@\n }\n\n dependencies {\n-    compile(\x27org.springframework.boot:spring-boot-starter-webflux\x27)\n\x2b    compile(\x27org.springframework.boot:spring-boot-starter-web\x27)\n     testCompile(\x27org.springframework.boot:spring-boot-starter-test\x27) {\n         exclude group: \x22junit\x22, module: \x22junit\x22\n     }\n     testCompile(\x27io.rest-assured:rest-assured:3.1.1\x27)\n     testCompile(\x27org.junit.jupiter:junit-jupiter-api:5.2.0\x27)\n     testRuntime(\x27org.junit.jupiter:junit-jupiter-engine:5.2.0\x27)\n-    testCompile(\x27io.projectreactor:reactor-test\x27) {\n-        exclude group: \x22junit\x22, module: \x22junit\x22\n-    }\n }\n\n test {\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("3279a4277b3adcde49eb2fe924e709aa3fa118e1").innerHTML = Diff2Html.html(
+        "Index: build.gradle\n===================================================================\n--- build.gradle\n\u002b\u002b\u002b build.gradle\n@@ -27,16 \u002b27,13 @@\n }\n\n dependencies {\n-    compile(\u0027org.springframework.boot:spring-boot-starter-webflux\u0027)\n\u002b    compile(\u0027org.springframework.boot:spring-boot-starter-web\u0027)\n     testCompile(\u0027org.springframework.boot:spring-boot-starter-test\u0027) {\n         exclude group: \u0022junit\u0022, module: \u0022junit\u0022\n     }\n     testCompile(\u0027io.rest-assured:rest-assured:3.1.1\u0027)\n     testCompile(\u0027org.junit.jupiter:junit-jupiter-api:5.2.0\u0027)\n     testRuntime(\u0027org.junit.jupiter:junit-jupiter-engine:5.2.0\u0027)\n-    testCompile(\u0027io.projectreactor:reactor-test\u0027) {\n-        exclude group: \u0022junit\u0022, module: \u0022junit\u0022\n-    }\n }\n\n test {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("3279a4277b3adcde49eb2fe924e709aa3fa118e1").innerHTML = diffHtml;
 </script>
 
 <p>If I take a look at test results, the problem there is, there&rsquo;s nobody listening on localhost:8080.</p>
@@ -321,11 +311,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 <span id="c8e1b937d968a0e87d0c8a0a77114690babd5a86"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\x2b\x2b\x2b src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -1,10 \x2b1,14 @@\n package com.webcalc.integration_tests;\n\n\x2bimport com.webcalc.app.WebCalcApplication;\n import org.junit.jupiter.api.Test;\n\x2bimport org.springframework.boot.test.context.SpringBootTest;\n\n import static io.restassured.RestAssured.given;\n import static org.hamcrest.Matchers.equalTo;\n\n\x2b@SpringBootTest(classes = WebCalcApplication.class,\n\x2b    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)\n class RestApiTest {\n\n   @Test\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("c8e1b937d968a0e87d0c8a0a77114690babd5a86").innerHTML = Diff2Html.html(
+        "Index: src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n===================================================================\n--- src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n\u002b\u002b\u002b src\/test\/java\/com\/webcalc\/integration_tests\/RestApiTest.java\n@@ -1,10 \u002b1,14 @@\n package com.webcalc.integration_tests;\n\n\u002bimport com.webcalc.app.WebCalcApplication;\n import org.junit.jupiter.api.Test;\n\u002bimport org.springframework.boot.test.context.SpringBootTest;\n\n import static io.restassured.RestAssured.given;\n import static org.hamcrest.Matchers.equalTo;\n\n\u002b@SpringBootTest(classes = WebCalcApplication.class,\n\u002b    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)\n class RestApiTest {\n\n   @Test\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("c8e1b937d968a0e87d0c8a0a77114690babd5a86").innerHTML = diffHtml;
 </script>
 
 <p>The application was started, it listens on port 8080, but nobody responds to request to &ldquo;/eval&rdquo;.</p>
@@ -340,11 +329,10 @@ Expected: &quot;3&quot;
 
 <span id="948c588f74ff8bcd1590a685d61b6c7681bd85c0"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n\x2b\x2b\x2b src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n@@ -2,8 \x2b2,10 @@\n\n import org.springframework.boot.SpringApplication;\n import org.springframework.boot.autoconfigure.SpringBootApplication;\n\x2bimport org.springframework.context.annotation.ComponentScan;\n\n @SpringBootApplication\n\x2b@ComponentScan(\x22com.webcalc\x22)\n public class WebCalcApplication {\n\n   public static void main(String[] args) {\nIndex: src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\x2b\x2b\x2b src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -0,0 \x2b1,12 @@\n\x2bpackage com.webcalc.calculator;\n\x2b\n\x2bimport org.springframework.web.bind.annotation.PostMapping;\n\x2bimport org.springframework.web.bind.annotation.RestController;\n\x2b\n\x2b@RestController\n\x2bpublic class CalculatorController {\n\x2b\n\x2b  @PostMapping(\x22\/eval\x22)\n\x2b  public void calculate() {\n\x2b  }\n\x2b}\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("948c588f74ff8bcd1590a685d61b6c7681bd85c0").innerHTML = Diff2Html.html(
+        "Index: src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n\u002b\u002b\u002b src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n@@ -2,8 \u002b2,10 @@\n\n import org.springframework.boot.SpringApplication;\n import org.springframework.boot.autoconfigure.SpringBootApplication;\n\u002bimport org.springframework.context.annotation.ComponentScan;\n\n @SpringBootApplication\n\u002b@ComponentScan(\u0022com.webcalc\u0022)\n public class WebCalcApplication {\n\n   public static void main(String[] args) {\nIndex: src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -0,0 \u002b1,12 @@\n\u002bpackage com.webcalc.calculator;\n\u002b\n\u002bimport org.springframework.web.bind.annotation.PostMapping;\n\u002bimport org.springframework.web.bind.annotation.RestController;\n\u002b\n\u002b@RestController\n\u002bpublic class CalculatorController {\n\u002b\n\u002b  @PostMapping(\u0022\/eval\u0022)\n\u002b  public void calculate() {\n\u002b  }\n\u002b}\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("948c588f74ff8bcd1590a685d61b6c7681bd85c0").innerHTML = diffHtml;
 </script>
 
 <p>Now it looks far better, I got an answer, but not the correct one. That&rsquo;s easy.</p>
@@ -352,16 +340,14 @@ Expected: &quot;3&quot;
 
 <span id="a1ea5047bec747a0327b1575e09b59c80f71c3b3"></span>
 <script>
-    var diffHtml = Diff2Html.getPrettyHtml(
-        "Index: src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\x2b\x2b\x2b src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -7,6 \x2b7,7 @@\n public class CalculatorController {\n\n   @PostMapping(\x22\/eval\x22)\n-  public void calculate() {\n\x2b  public String calculate() {\n\x2b    return \x223\x22;\n   }\n }\n",
-        {inputFormat: 'diff', showFiles: false, matching: 'word', outputFormat: 'line-by-line'}
+    document.getElementById("a1ea5047bec747a0327b1575e09b59c80f71c3b3").innerHTML = Diff2Html.html(
+        "Index: src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -7,6 \u002b7,7 @@\n public class CalculatorController {\n\n   @PostMapping(\u0022\/eval\u0022)\n-  public void calculate() {\n\u002b  public String calculate() {\n\u002b    return \u00223\u0022;\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
     );
-    document.getElementById("a1ea5047bec747a0327b1575e09b59c80f71c3b3").innerHTML = diffHtml;
 </script>
 
 <p>Tada! First test green.</p>
-<p>That&rsquo;s it this time, <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/">next time</a>
- I&rsquo;ll go deeper into the application and separate web part from calculations. See you soon!</p>
+<p>That&rsquo;s it this time, <a href="/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/">next time</a> I&rsquo;ll go deeper into the application and separate web part from calculations. See you soon!</p>
 
   </div>
   
@@ -388,16 +374,7 @@ Expected: &quot;3&quot;
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

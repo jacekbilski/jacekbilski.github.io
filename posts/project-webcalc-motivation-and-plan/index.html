@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -155,6 +155,7 @@
 	
 	
 	
+	
 </section>
 
       </div>
@@ -217,7 +218,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 7 min read
     
 </div>
 
@@ -232,15 +233,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <ol>
 <li>I want to really show, that everything I was talking about (plus other things I didn&rsquo;t mention so far) are actually doable. As Linus Torvalds puts it: &ldquo;Talk is cheap, show me the code&rdquo;.</li>
 <li>There are multiple technologies, that I never had a chance to actually try out like Java above 8 including modules, JUnit 5, Spring 5 with reactive web stack and HTTP/2 or Kafka.</li>
-<li>I&rsquo;ve known theoretically both <a href="http://alistair.cockburn.us/Hexagonal&#43;architecture" target="_blank">hexagonal architecture</a>
- and <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank">domain driven design</a>
- and I&rsquo;d like to apply them somewhere.</li>
+<li>I&rsquo;ve known theoretically both <a href="http://alistair.cockburn.us/Hexagonal&#43;architecture" target="_blank">hexagonal architecture</a> and <a href="https://en.wikipedia.org/wiki/Domain-driven_design" target="_blank">domain driven design</a> and I&rsquo;d like to apply them somewhere.</li>
 <li>I&rsquo;d like to find out if things, that I was doing so far in a specific way, could be done better with design patterns. I have no clue if I&rsquo;ll find such functionalities, but I&rsquo;ll try to keep my eyes open.</li>
 <li>When working with Spring applications, it&rsquo;s very easy to let Spring go too deep into the application itself. I think I know what Uncle Bob means when he talks about &ldquo;the main partition&rdquo;, but I want to finally write an app this way to prove, that it&rsquo;s actually possible. Also, my wife is now struggling with testing of a legacy application that&rsquo;s using Spring Security, so I also want to find out how to test such applications properly.</li>
 <li>Whenever I&rsquo;m looking for some examples of how to use something, they&rsquo;re very simple, covering only the basics, and, quite often, providing very little value, especially when I&rsquo;m struggling with putting together two different technologies. So I thought I&rsquo;ll create a sample project putting together a few things, show how they work together (or against each other) in a much bigger and comprehensive &ldquo;example&rdquo;. I will also be &ldquo;recording&rdquo; changes to the code in git so you can follow the commits to see how the system was evolving.</li>
-<li>I&rsquo;ve seen video series from Robert C. Martin and Sandro Mancuso <a href="https://cleancoders.com/videos/comparativeDesign" target="_blank">&ldquo;London vs. Chicago&rdquo;</a>
- and, honestly, I see some serious flaws in both their approaches (which they both also acknowledge). London school of TDD (outside-in with a lot of mocking) seems to me like it would, later on, prevent any refactoring, because every interaction between components is mocked and thus fixed. Chicago school of TDD (inside-out) seems to be avoiding this problem, but then the amount of speculation about what might come worries me. By the way, both of them agree to those points and provide ways of mitigating those issues. But, having watched an excellent video from Ian Cooper <a href="https://vimeo.com/68375232" target="_blank">&ldquo;TDD, where did it all go wrong&rdquo;</a>
-, I&rsquo;d like to see how Kent Beck&rsquo;s style TDD can this be done in practice and if this approach would lead to a different code (and issues most likely).</li>
+<li>I&rsquo;ve seen video series from Robert C. Martin and Sandro Mancuso <a href="https://cleancoders.com/videos/comparativeDesign" target="_blank">&ldquo;London vs. Chicago&rdquo;</a> and, honestly, I see some serious flaws in both their approaches (which they both also acknowledge). London school of TDD (outside-in with a lot of mocking) seems to me like it would, later on, prevent any refactoring, because every interaction between components is mocked and thus fixed. Chicago school of TDD (inside-out) seems to be avoiding this problem, but then the amount of speculation about what might come worries me. By the way, both of them agree to those points and provide ways of mitigating those issues. But, having watched an excellent video from Ian Cooper <a href="https://vimeo.com/68375232" target="_blank">&ldquo;TDD, where did it all go wrong&rdquo;</a>, I&rsquo;d like to see how Kent Beck&rsquo;s style TDD can this be done in practice and if this approach would lead to a different code (and issues most likely).</li>
 </ol>
 <h3 id="the-app-itself">The app itself</h3>
 <p>As this is actually the least important thing in my endeavour, I&rsquo;ll keep it simple. It will be a calculator with a REST interface. It will support a few basic operations like addition or multiplication, maybe a few standard functions like trigonometry, not much. It will be available to only registered users as a paid service so it will need to have things like authentication, user management and billing. Users might also belong to a bigger organisation like research institute. That would allow us to bill the organisations, not individuals.</p>
@@ -264,14 +261,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>There&rsquo;s a bit of speculation above, I don&rsquo;t know how many modules I&rsquo;ll end up with. I also don&rsquo;t know how many domain models I&rsquo;ll have in the end, but most likely it will equal the number of modules. All this I expect to emerge by itself from the code.</p>
 <p>One more thing, even though I&rsquo;ll have multiple modules, I will not be creating microservices. I&rsquo;m not too fond of them, because quite often they create much more problems than they actually solve. Plus this project is far too small to get any benefit from such architecture. But, having separate modules I could easily go that way if I needed to.</p>
 <h3 id="what-can-you-expect">What can you expect</h3>
-<p>I&rsquo;ll try to post regularly. The current plan is, that each post will cover one <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">&ldquo;tomato&rdquo;</a>
-, so 20 minutes of working with code. I&rsquo;ll show you the code and changes I&rsquo;m introducing. I&rsquo;ll also try to explain my thinking, why am I doing the things I&rsquo;m doing, and why in such a way. Like mentioned before, I&rsquo;ll not be going too deep into explanations, just referring to a concept.</p>
-<p>You can also follow the <a href="https://github.com/jacekbilski/WebCalc" target="_blank">code on GitHub</a>
-, where I&rsquo;ll be pushing all the changes in small chunks.</p>
+<p>I&rsquo;ll try to post regularly. The current plan is, that each post will cover one <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">&ldquo;tomato&rdquo;</a>, so 20 minutes of working with code. I&rsquo;ll show you the code and changes I&rsquo;m introducing. I&rsquo;ll also try to explain my thinking, why am I doing the things I&rsquo;m doing, and why in such a way. Like mentioned before, I&rsquo;ll not be going too deep into explanations, just referring to a concept.</p>
+<p>You can also follow the <a href="https://github.com/jacekbilski/WebCalc" target="_blank">code on GitHub</a>, where I&rsquo;ll be pushing all the changes in small chunks.</p>
 <p>So far I&rsquo;m not planning any videos or screencasts, but if need be, I&rsquo;ll think about them.</p>
 <h3 id="without-further-ado">Without further ado&hellip;</h3>
-<p>That&rsquo;s about it for an introduction. In <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/">next part</a>
- I&rsquo;ll get my hands dirty by starting actual implementation. Hope to see you there!</p>
+<p>That&rsquo;s about it for an introduction. In <a href="/posts/webcalc-iteration-1-setting-up-with-one-test/">next part</a> I&rsquo;ll get my hands dirty by starting actual implementation. Hope to see you there!</p>
 
   </div>
   
@@ -298,16 +292,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

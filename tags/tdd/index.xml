@@ -6,7 +6,7 @@
     <description>Recent content in TDD on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.bilski.tech/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,13 +22,23 @@
     </item>
     
     <item>
+      <title>Iteration 9 - custom functions</title>
+      <link>https://www.bilski.tech/posts/iteration-9-custom-functions/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/iteration-9-custom-functions/</guid>
+      <description>Welcome to the 9th iteration of WebCalc. Previously I managed to extract billing module from the app module and started differentiating users from one another. This time I&amp;rsquo;ll enable the users to define their own functions. To IDEs then.
+But first I must apologize for what I&amp;rsquo;ve done last time. I coupled my User class with Spring&amp;rsquo;s UserDetails. It&amp;rsquo;s obvious to me now, in my face even. Apparently, it wasn&amp;rsquo;t back then.</description>
+    </item>
+    
+    <item>
       <title>Iteration 8 - billing module extraction and differentiating users</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</link>
       <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</guid>
       <description>Welcome to the 8th iteration of WebCalc. Previously I promised to extract billing module from the app module and that&amp;rsquo;s what I&amp;rsquo;ll start with. To IDEs then.
-There&amp;rsquo;s nothing really fancy about extracting this module. You can see the full commit 9f191153 , but it really boils down to creating a new module and copying build.gradle from calculator module, adding it to settings.gradle, moving Billing and BillingShould to the new module and importing new module in the app module.</description>
+There&amp;rsquo;s nothing really fancy about extracting this module. You can see the full commit 9f191153, but it really boils down to creating a new module and copying build.gradle from calculator module, adding it to settings.gradle, moving Billing and BillingShould to the new module and importing new module in the app module.</description>
     </item>
     
     <item>

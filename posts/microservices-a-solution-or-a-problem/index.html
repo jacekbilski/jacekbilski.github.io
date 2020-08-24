@@ -12,7 +12,7 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.67.1" />
+<meta name="generator" content="Hugo 0.74.3" />
 
     
     
@@ -157,6 +157,7 @@ Integration One of the good things about microservices is, that they&rsquo;re si
 	
 	
 	
+	
 </section>
 
       </div>
@@ -210,7 +211,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> length: 
+        <i class="fas fa-clock"></i> 3 min read
     
 </div>
 
@@ -229,8 +230,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h3 id="testing">Testing</h3>
 <p>Testing single microservice is a dream coming true. But how do you test your services with integration with other? If your service depends on 3 other microservices how do you set up your test environment? Using real services might be difficult if they also have some dependencies. Are other teams providing &ldquo;mock&rdquo; implementations, that behave like real ones, but have no dependencies or requirements themselves? It takes effort and also creates a risk, that those &ldquo;mocks&rdquo; will not behave the same way in some corner cases.</p>
 <h3 id="middle-ground">Middle ground</h3>
-<p>My team is currently trying a different approach. For our product, we have created quite a few small modules with clearly defined dependencies (we follow <a href="https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">clean architecture</a>
- approach) that we, later on, combine in a larger &ldquo;monolith&rdquo;. Each module serves a single purpose and might be viewed as a &ldquo;microservice&rdquo;, but all of them are still packaged into a bigger executable and deployed as such. Each module has its own release cycle, but only the final executable module, that has no other responsibility than putting together all modules in specific versions into a working application, is being deployed when desired. I admit, we merely started with this approach, but it already proved very flexible when we were refactoring and moving code around. Of course, this is not solving all issues you might run into with microservices, it also brings back some problems from past, but currently, it works for us.</p>
+<p>My team is currently trying a different approach. For our product, we have created quite a few small modules with clearly defined dependencies (we follow <a href="https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">clean architecture</a> approach) that we, later on, combine in a larger &ldquo;monolith&rdquo;. Each module serves a single purpose and might be viewed as a &ldquo;microservice&rdquo;, but all of them are still packaged into a bigger executable and deployed as such. Each module has its own release cycle, but only the final executable module, that has no other responsibility than putting together all modules in specific versions into a working application, is being deployed when desired. I admit, we merely started with this approach, but it already proved very flexible when we were refactoring and moving code around. Of course, this is not solving all issues you might run into with microservices, it also brings back some problems from past, but currently, it works for us.</p>
 
   </div>
   
@@ -257,16 +257,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
         
     
 
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-    
-    
-    <script type="text/javascript">
-        
-        hljs.initHighlightingOnLoad();
-    </script>
-    
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
 
 
 

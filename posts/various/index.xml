@@ -47,7 +47,7 @@ Despite what people might think, our main purpose as developers is not writing s
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
-      <description>Some time ago, my colleague Joy Clark wrote about simplicity . I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
+      <description>Some time ago, my colleague Joy Clark wrote about simplicity. I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
 What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</description>
     </item>
     
@@ -77,7 +77,7 @@ Long term development speed First and foremost I understand my main responsibili
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/writing-good-test-scenarios/</guid>
-      <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo; . Now it&amp;rsquo;s time to continue.
+      <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo;. Now it&amp;rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &amp;ldquo;avoid unnecessary information&amp;rdquo;, &amp;ldquo;don&amp;rsquo;t include implementation details&amp;rdquo; or &amp;ldquo;don&amp;rsquo;t repeat yourself in different scenarios&amp;rdquo;. This time I&amp;rsquo;d like to dig deeper and present results of discussions we had in the team.</description>
     </item>
     
