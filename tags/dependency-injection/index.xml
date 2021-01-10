@@ -6,11 +6,7 @@
     <description>Recent content in dependency injection on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 20 Jun 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/dependency-injection/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 20 Jun 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/dependency-injection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autowiring EJB 3.0 in Tomcat from remote JBoss</title>
       <link>https://www.bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>

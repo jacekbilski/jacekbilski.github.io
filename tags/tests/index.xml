@@ -6,11 +6,7 @@
     <description>Recent content in tests on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/tests/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/tests/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TDD, where did it all go wrong by Ian Cooper</title>
       <link>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</link>

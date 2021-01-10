@@ -6,11 +6,7 @@
     <description>Recent content in monolith on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 04 Jul 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/monolith/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 04 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/monolith/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Microservices - a solution or a problem?</title>
       <link>https://www.bilski.tech/posts/microservices-a-solution-or-a-problem/</link>

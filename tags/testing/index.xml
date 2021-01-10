@@ -6,11 +6,7 @@
     <description>Recent content in testing on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/testing/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 7 - billing</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</link>

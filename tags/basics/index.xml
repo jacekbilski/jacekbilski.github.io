@@ -5,11 +5,7 @@
     <link>https://www.bilski.tech/tags/basics/</link>
     <description>Recent content in basics on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    
-	<atom:link href="https://www.bilski.tech/tags/basics/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-gb</language><atom:link href="https://www.bilski.tech/tags/basics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Engineering you by Martin Thompson</title>
       <link>https://www.bilski.tech/videos/engineering_you/</link>

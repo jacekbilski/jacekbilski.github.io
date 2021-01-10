@@ -6,11 +6,7 @@
     <description>Recent content in Spring on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/spring/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 2 - actual calculations and modules separation</title>
       <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>

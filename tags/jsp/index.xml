@@ -6,11 +6,7 @@
     <description>Recent content in JSP on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 23 Jul 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 23 Jul 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/jsp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>More on MyFaces and ContentType</title>
       <link>https://www.bilski.tech/posts/more-on-myfaces-and-contenttype/</link>

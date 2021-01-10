@@ -5,11 +5,7 @@
     <link>https://www.bilski.tech/tags/value/</link>
     <description>Recent content in value on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    
-	<atom:link href="https://www.bilski.tech/tags/value/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-gb</language><atom:link href="https://www.bilski.tech/tags/value/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving your software by Gernot Starke</title>
       <link>https://www.bilski.tech/videos/improving_your_software/</link>

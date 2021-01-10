@@ -6,11 +6,7 @@
     <description>Recent content in craftsmanship on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.bilski.tech/tags/craftsmanship/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/craftsmanship/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Motivation and plan</title>
       <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
