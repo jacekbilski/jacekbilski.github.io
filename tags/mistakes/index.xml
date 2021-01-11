@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 13 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/mistakes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 8 - billing module extraction and differentiating users</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-8-billing-module-extraction-and-differentiating-users/</link>
       <pubDate>Mon, 13 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-8-billing-module-extraction-and-differentiating-users/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-8-billing-module-extraction-and-differentiating-users/</guid>
       <description>Welcome to the 8th iteration of WebCalc. Previously I promised to extract billing module from the app module and that&amp;rsquo;s what I&amp;rsquo;ll start with. To IDEs then.
 There&amp;rsquo;s nothing really fancy about extracting this module. You can see the full commit 9f191153, but it really boils down to creating a new module and copying build.gradle from calculator module, adding it to settings.gradle, moving Billing and BillingShould to the new module and importing new module in the app module.</description>
     </item>

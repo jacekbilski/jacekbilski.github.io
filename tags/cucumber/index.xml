@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 16 Aug 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/cucumber/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writing good test scenarios</title>
-      <link>https://www.bilski.tech/posts/writing-good-test-scenarios/</link>
+      <link>https://www.bilski.tech/posts/random/writing-good-test-scenarios/</link>
       <pubDate>Tue, 16 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/writing-good-test-scenarios/</guid>
+      <guid>https://www.bilski.tech/posts/random/writing-good-test-scenarios/</guid>
       <description>On my current company&amp;rsquo;s blog I posted some time ago part one of &amp;ldquo;writing good tests&amp;rdquo;. Now it&amp;rsquo;s time to continue.
 Last time I just barely scratched the topic of writing test scenarios. I briefly gave only a few hints like &amp;ldquo;avoid unnecessary information&amp;rdquo;, &amp;ldquo;don&amp;rsquo;t include implementation details&amp;rdquo; or &amp;ldquo;don&amp;rsquo;t repeat yourself in different scenarios&amp;rdquo;. This time I&amp;rsquo;d like to dig deeper and present results of discussions we had in the team.</description>
     </item>

@@ -9,20 +9,20 @@
     <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 5 - more complex calculations</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-5-more-complex-calculations/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-5-more-complex-calculations/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-5-more-complex-calculations/</guid>
       <description>Welcome everyone to the fifth iteration of WebCalc. Previously I only managed to fix a few issues with the code and upgrade Java, Spring Boot and Gradle. This time I&amp;rsquo;ll get back to adding new functionalities and add a possibility to do more complex calculations like 1+2+3. To IDE then!
 But first, let&amp;rsquo;s deal with some technical issues. One is upgrading Gradle to stable version 5.0. Having installed it locally on my machine, I can just call gradle wrapper --gradle-version=5.</description>
     </item>
     
     <item>
       <title>Iteration 2 - actual calculations and modules separation</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</guid>
       <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
 But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
     </item>

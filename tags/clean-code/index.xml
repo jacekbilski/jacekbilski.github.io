@@ -9,20 +9,20 @@
     <lastBuildDate>Tue, 04 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Motivation and plan</title>
-      <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
+      <link>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</guid>
       <description>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&amp;rsquo;ll do almost the opposite, I&amp;rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&amp;rsquo;ll not be discussing them, just applying.
 Motivation There are many reasons I want to do this:</description>
     </item>
     
     <item>
       <title>What do I believe in</title>
-      <link>https://www.bilski.tech/posts/what-do-i-believe-in/</link>
+      <link>https://www.bilski.tech/posts/random/what-do-i-believe-in/</link>
       <pubDate>Wed, 02 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/what-do-i-believe-in/</guid>
+      <guid>https://www.bilski.tech/posts/random/what-do-i-believe-in/</guid>
       <description>Below are my guiding principles, that are the basis of what, how and why am I doing with regards to software development.
 Long term development speed First and foremost I understand my main responsibility as delivering value as fast as possible in the long term. By delivering value I mean adding, changing or removing features, that &amp;ldquo;business&amp;rdquo; requested, but also things like:
  improving processes around me, both technical, like application deployment, and business, like simplifying stock management, proposing and introducing new techniques and technologies whenever I feel that they will improve things, sharing knowledge within and outside of the team (blog, mentoring, pair/crowd programming, etc.</description>
@@ -30,10 +30,10 @@ Long term development speed First and foremost I understand my main responsibili
     
     <item>
       <title>Code quality as a winning factor</title>
-      <link>https://www.bilski.tech/posts/code-quality-as-a-winning-factor/</link>
+      <link>https://www.bilski.tech/posts/random/code-quality-as-a-winning-factor/</link>
       <pubDate>Fri, 21 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/code-quality-as-a-winning-factor/</guid>
+      <guid>https://www.bilski.tech/posts/random/code-quality-as-a-winning-factor/</guid>
       <description>Software development seems to me like the only discipline where practitioners can get away with producing crap. If you&amp;rsquo;re a doctor and you screw up surgery or treatment, in the worst case you will kill your patient, in the best you will not make his/her situation worse. If you&amp;rsquo;re a bridge builder and you&amp;rsquo;ll make a mistake during construction, in the worst case the bridge will collapse killing people, in the best case, the bridge will be usable only after adding some additional support to it.</description>
     </item>
     

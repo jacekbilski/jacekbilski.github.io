@@ -9,40 +9,40 @@
     <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 2 - actual calculations and modules separation</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</guid>
       <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
 But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
     </item>
     
     <item>
       <title>Iteration 1 - setting up with one test</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-1-setting-up-with-one-test/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-1-setting-up-with-one-test/</guid>
       <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
 Goal I want to have a very first and simple test working: adding 1 to 2.</description>
     </item>
     
     <item>
       <title>Motivation and plan</title>
-      <link>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</link>
+      <link>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</link>
       <pubDate>Tue, 04 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/project-webcalc-motivation-and-plan/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</guid>
       <description>My previous posts were rather theoretical, a lot of philosophy, very little code. This time I&amp;rsquo;ll do almost the opposite, I&amp;rsquo;ll be actually writing a little system before your eyes, so there will be a lot of code. I will be referring to some concepts I was writing about previously, but this time I&amp;rsquo;ll not be discussing them, just applying.
 Motivation There are many reasons I want to do this:</description>
     </item>
     
     <item>
       <title>Autowiring EJB 3.0 in Tomcat from remote JBoss</title>
-      <link>https://www.bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>
+      <link>https://www.bilski.tech/posts/random/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</link>
       <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</guid>
+      <guid>https://www.bilski.tech/posts/random/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</guid>
       <description>To be honest I&amp;rsquo;ve never fully understood EJB 2.x or written an application using that specification. Well, I&amp;rsquo;ve written some EJBs, but it was just following an example of different EJB in the same project. Even though we used Spring at that time nothing seemed simple and straightforward. Every time I wanted to use an EJB I had to modify several XML files to be able to inject EJB into some bean.</description>
     </item>
     

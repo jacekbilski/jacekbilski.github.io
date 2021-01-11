@@ -9,48 +9,48 @@
     <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/junit-5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Iteration 7 - billing</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-7-billing/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-7-billing/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-7-billing/</guid>
       <description>Welcome to the 7th iteration of WebCalc. Previously I scratched a surface of users and security in order to start working on billing. In retrospective, I don&amp;rsquo;t think I needed any user and Spring Security at all for billing to work, at least not in the first phase. Luckily, their introduction didn&amp;rsquo;t require much and should not actually hurt. The plan for this iteration is to get the billing as far as possible in terms of functionality.</description>
     </item>
     
     <item>
       <title>Iteration 6 - introducing users</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-6-introducing-users/</link>
       <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-6-introducing-users/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-6-introducing-users/</guid>
       <description>Welcome to the 6th iteration of WebCalc. Previously I was dealing mostly with adding some more complex calculations. Like I mentioned there already, I think that I have already enough business logic to start moving into other areas like billing or user management. I also said that I&amp;rsquo;d be going into the unknown. Up until now, I had a rough idea of how to do things, now I don&amp;rsquo;t, I&amp;rsquo;ll be exploring a lot.</description>
     </item>
     
     <item>
       <title>Iteration 3 - formatting and cleanup in calculator module</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-3-formatting-and-cleanup-in-calculator-module/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-3-formatting-and-cleanup-in-calculator-module/</guid>
       <description>Welcome to the third iteration of WebCalc implementation. Previously I managed to get only basic operations working, namely addition and subtraction. This time I want to go further and add multiplication and division. Whereas multiplication should be pretty straightforward, I&amp;rsquo;m expecting issues with the division. Once I get these things working, I&amp;rsquo;ll see if I can improve the design of calculator itself and the tests. To IDE then.
 Multiplication is, indeed, straightforward.</description>
     </item>
     
     <item>
       <title>Iteration 2 - actual calculations and modules separation</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-2-actual-calculations-and-modules-separation/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</guid>
       <description>Welcome to the second iteration of WebCalc implementation. Last time I managed only to get a basic construct working and only in a very crude way. Always returning &amp;ldquo;3&amp;rdquo; from a controller is hardly a proper solution. This time I&amp;rsquo;ll separate the app module from calculation one and then I&amp;rsquo;ll start digging into actual calculations.
 But first, looking at Gradle files I&amp;rsquo;ve noticed a few unnecessary things. One thing is, that I&amp;rsquo;m specifying explicit versions for JUnit and REST-Assured, which, having Spring Boot, is not necessary.</description>
     </item>
     
     <item>
       <title>Iteration 1 - setting up with one test</title>
-      <link>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</link>
+      <link>https://www.bilski.tech/posts/webcalc/iteration-1-setting-up-with-one-test/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/webcalc-iteration-1-setting-up-with-one-test/</guid>
+      <guid>https://www.bilski.tech/posts/webcalc/iteration-1-setting-up-with-one-test/</guid>
       <description>Welcome to the first iteration of WebCalc implementation. In my previous post I just explained my motivations and goals for this project. This time I&amp;rsquo;ll do some actual coding. Although in the end, I&amp;rsquo;ll try to have something &amp;ldquo;business&amp;rdquo; related, I guess most of the time I&amp;rsquo;ll spend wiring things up. To the keyboard then.
 Goal I want to have a very first and simple test working: adding 1 to 2.</description>
     </item>

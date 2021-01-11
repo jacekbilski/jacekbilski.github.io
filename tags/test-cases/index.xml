@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/test-cases/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Testing is storytelling</title>
-      <link>https://www.bilski.tech/posts/testing-is-storytelling/</link>
+      <link>https://www.bilski.tech/posts/random/testing-is-storytelling/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/testing-is-storytelling/</guid>
+      <guid>https://www.bilski.tech/posts/random/testing-is-storytelling/</guid>
       <description>While working with a customer, I recently saw a test, that looked like this: throw a big XML (&amp;gt;10kB) at a function, get another XML of similar size back and compare it with a pre-recorded one. The test is green if they&amp;rsquo;re equal. I guess, at the very minimum, it serves a purpose of detecting issues. The problem is that it cannot do much more.
 What such a test is not providing are hints as to what the problem is when it fails.</description>
     </item>

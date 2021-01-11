@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+<meta name="generator" content="Hugo 0.80.0" />
+
+    
+    
+    
+
+<title>Iteration 8 - billing module extraction and differentiating users • On Software Engineering</title>
+<meta name="description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea.">
+<meta name="keywords" content="TDD, learning, mistakes, Spring Security, context">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Iteration 8 - billing module extraction and differentiating users"/>
+<meta name="twitter:description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea."/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Iteration 8 - billing module extraction and differentiating users" />
+<meta property="og:description" content="In WebCalc&#39;s eighth iteration I&#39;m fixing mistakes I made previously while trying, at the same time, introduce differentiation of users - bad idea." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/webcalc/iteration-8-billing-module-extraction-and-differentiating-users/" />
+<meta property="article:published_time" content="2019-05-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-05-13T00:00:00+00:00" /><meta property="og:see_also" content="https://www.bilski.tech/posts/webcalc/iteration-9-custom-functions/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/webcalc/iteration-7-billing/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/webcalc/iteration-6-introducing-users/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/webcalc/iteration-5-more-complex-calculations/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/webcalc/iteration-4-fixes-only/" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.b8adef8528195fe856aad24e3bbc9a24b16c8d2689168d9ba8dd6f91efb0fb03.css" integrity="sha256-uK3vhSgZX&#43;hWqtJOO7yaJLFsjSaJFo2bqN1vke&#43;w&#43;wM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+    
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
+<style type='text/css'>
+.d2h-wrapper {
+    color: black;
+    background: white;
+    line-height: normal;
+}
+.d2h-wrapper td {
+    padding: 0;
+    border: none;
+}
+.d2h-wrapper table {
+    margin-bottom: 0;
+}
+.d2h-file-diff {
+    overflow-x: auto;
+}
+</style>
+<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
+
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">
+        
+          On Software Engineering
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/random/">
+						<span>Random Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/videos/">
+						<span>Videos</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Iteration 8 - billing module extraction and differentiating users</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> May 13, 2019<br/>
+    
+    <i class="fas fa-user-edit"></i> Jacek Bilski
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/tdd">tdd</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/learning">learning</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/mistakes">mistakes</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/spring-security">spring security</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/context">context</a>
+          
+      
+    
+    
+    <br/>
+    
+        <i class="fas fa-clock"></i> 15 min read
+    
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Welcome to the 8th iteration of WebCalc. <a href="/posts/webcalc/iteration-7-billing/">Previously</a> I promised to extract billing module from the app module and that&rsquo;s what I&rsquo;ll start with. To IDEs then.</p>
+<p>There&rsquo;s nothing really fancy about extracting this module. You can see the <a href="https://github.com/jacekbilski/WebCalc/commit/9f191153ecf616318c041547a82ba0b9a709c3d3" target="_blank">full commit 9f191153</a>, but it really boils down to creating a new module and copying <code>build.gradle</code> from calculator module, adding it to <code>settings.gradle</code>, moving <code>Billing</code> and <code>BillingShould</code> to the new module and importing new module in the app module.</p>
+<p>I&rsquo;ll also do a few upgrades while I&rsquo;m more on the technical side of things and not dealing with business code. Gradle does seem old already so I&rsquo;m:</p>
+<ol>
+<li>installing it with <a href="https://sdkman.io/" target="_blank">SDKMAN</a></li>
+<li>and calling <code>gradle wrapper --gradle-version=5.4.1 --distribution-type=all</code> in project&rsquo;s root directory.</li>
+</ol>
+<p>Results are in <a href="https://github.com/jacekbilski/WebCalc/commit/6cc51b7377e14846639204f1312b6caef78668bc" target="_blank">commit 6cc51b73</a></p>
+<p>Tests are still green, so I can move on.</p>
+<p>Next thing to upgrade is Spring Boot, the newest version seems to be 2.1.4, so:</p>
+
+
+<span id="ae2d5a678e3b64d8c72d7c2e5acd71cd54c13893"></span>
+<script>
+    document.getElementById("ae2d5a678e3b64d8c72d7c2e5acd71cd54c13893").innerHTML = Diff2Html.html(
+        "Index: build.gradle\n===================================================================\n--- build.gradle\n\u002b\u002b\u002b build.gradle\n@@ -1,6 \u002b1,6 @@\n buildscript {\n   ext {\n-    springBootVersion = \u00222.1.1.RELEASE\u0022\n\u002b    springBootVersion = \u00222.1.4.RELEASE\u0022\n   }\n   repositories {\n     mavenCentral()\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Tests keep being green, no matter what I throw at them. As there are no other things to upgrade I can go back to delivering something to my theoretical stakeholders. This time the idea is to take users into account when billing, so if user A executes some calculations, he&rsquo;s billed, but user B is not, logical.</p>
+<p>Now there&rsquo;s probably no way for me to escape from having actual users, so I&rsquo;ll use what I&rsquo;ve configured Spring Security for back in <a href="/posts/webcalc/iteration-6-introducing-users/">iteration 6</a>. As usual, I start with a test and I need to break two APIs, <code>Controller</code>&rsquo;s and <code>Billing</code>&rsquo;s by adding a user in there. This will force me to probably rewrite half of the application and I&rsquo;m just wondering if that could have been avoided.</p>
+
+
+<span id="7b6f19e409d00f90cccd33447fe4457f53be2573"></span>
+<script>
+    document.getElementById("7b6f19e409d00f90cccd33447fe4457f53be2573").innerHTML = Diff2Html.html(
+        "Index: billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -8,6 \u002b8,7 @@\n import org.junit.jupiter.params.provider.CsvSource;\n\n import java.math.BigDecimal;\n\u002bimport java.util.UUID;\n\n import static java.math.BigDecimal.ONE;\n import static java.math.BigDecimal.TEN;\n@@ -19,6 \u002b20,9 @@\n   private final Billing billing = new Billing();\n   private final Calculator calculator = new Calculator();\n\n\u002b  private UUID userA = UUID.randomUUID();\n\u002b  private UUID userB = UUID.randomUUID();\n\u002b\n   @BeforeEach\n   void setUp() {\n     calculator.addObserver(billing);\n@@ -82,4 \u002b86,11 @@\n     BigDecimal balance = billing.getBalance();\n     assertThat(balance).isEqualByComparingTo(expectedBalance);\n   }\n\u002b\n\u002b  @Test\n\u002b  void billOnlyUserA_whenAIsCalculating() {\n\u002b    calculator.eval(userA, \u00221 2 \u002b\u0022, 0);\n\u002b    assertThat(billing.getBalance(userA)).isEqualByComparingTo(ONE);\n\u002b    assertThat(billing.getBalance(userB)).isEqualByComparingTo(ZERO);\n\u002b  }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I&rsquo;m not exactly introducing user object, I&rsquo;ll see if just having IDs will be enough, I hope it will. As promised, this test breaks API horribly, so I need to fix both <code>Calculator</code> and <code>Billing</code> classes.</p>
+
+
+<span id="1f9edf61f60ac6e331b26126e31bbd4780f26402"></span>
+<script>
+    document.getElementById("1f9edf61f60ac6e331b26126e31bbd4780f26402").innerHTML = Diff2Html.html(
+        "Index: billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\u002b\u002b\u002b billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -3,6 \u002b3,7 @@\n import com.webcalc.calculator.CalculatorObserver;\n\n import java.math.BigDecimal;\n\u002bimport java.util.UUID;\n\n import static java.math.BigDecimal.ONE;\n import static java.math.BigDecimal.TEN;\n@@ -12,7 \u002b13,7 @@\n\n   private BigDecimal balance = ZERO;\n\n-  public BigDecimal getBalance() {\n\u002b  public BigDecimal getBalance(UUID userId) {\n     return balance;\n   }\n\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -7,6 \u002b7,7 @@\n import java.text.ParseException;\n import java.util.Locale;\n import java.util.Stack;\n\u002bimport java.util.UUID;\n import java.util.function.BinaryOperator;\n\n public class Calculator {\n@@ -23,7 \u002b24,7 @@\n       ((DecimalFormat) formatter).setParseBigDecimal(true);\n   }\n\n-  public String eval(String input, int maxFractionDigits) {\n\u002b  public String eval(UUID userId, String input, int maxFractionDigits) {\n     String[] tokens = input.trim().split(\u0022 \u0022);\n     var stack = new Stack\u003cBigDecimal\u003e();\n     for (String token : tokens) {\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>This, in turn, forces me to change both controllers and the rest of the tests. In controllers, I&rsquo;ll do a nasty thing and just pass in a <code>NULL</code>. For now, this will make the code compile and if some test will fail later on, I&rsquo;ll fix it.</p>
+
+
+<span id="f628697f6be7336cafa1abd11b5207d21fe36e5b"></span>
+<script>
+    document.getElementById("f628697f6be7336cafa1abd11b5207d21fe36e5b").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n@@ -14,6 \u002b14,6 @@\n\n   @GetMapping(\u0022\/balance\u0022)\n   public String getBalance() {\n-    return billing.getBalance().toPlainString();\n\u002b    return billing.getBalance(null).toPlainString();\n   }\n }\nIndex: app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -22,7 \u002b22,7 @@\n   public String calculate(@RequestBody String body, HttpSession session) {\n     if (session.getAttribute(MAX_FRACTION_DIGITS) == null)\n       session.setAttribute(MAX_FRACTION_DIGITS, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n-    return calculator.eval(body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n\u002b    return calculator.eval(null, body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n   }\n\n   @PutMapping(\u0022\/maxFractionDigits\u0022)\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>In the tests, I need to create some user ids and just use them.</p>
+
+
+<span id="15e5aeea8673d9ed580b184f67afaca5dbe366d1"></span>
+<script>
+    document.getElementById("15e5aeea8673d9ed580b184f67afaca5dbe366d1").innerHTML = Diff2Html.html(
+        "Index: billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n===================================================================\n--- billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n\u002b\u002b\u002b billing\/src\/test\/java\/com\/webcalc\/billing\/BillingShould.java\n@@ -30,43 \u002b30,43 @@\n\n   @Test\n   void returnBalanceZero_whenNoCalculationsWereDone() {\n-    BigDecimal balance = billing.getBalance();\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(ZERO);\n   }\n\n   @Test\n   void returnBalanceOfOne_afterCalculatingOneAddition() {\n-    calculator.eval(\u00221 2 \u002b\u0022, 0);\n-    BigDecimal balance = billing.getBalance();\n\u002b    calculator.eval(userA, \u00221 2 \u002b\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\n   @Test\n   void returnBalanceOfTwo_afterCalculatingTwoAdditions() {\n-    calculator.eval(\u00221 2 \u002b\u0022, 0);\n-    calculator.eval(\u00221 2 \u002b\u0022, 0);\n-    BigDecimal balance = billing.getBalance();\n\u002b    calculator.eval(userA, \u00221 2 \u002b\u0022, 0);\n\u002b    calculator.eval(userA, \u00221 2 \u002b\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00222\u0022));\n   }\n\n   @Test\n   void returnBalanceOfFive_afterCalculatingOneMultiplication() {\n-    calculator.eval(\u00223 2 *\u0022, 0);\n-    BigDecimal balance = billing.getBalance();\n\u002b    calculator.eval(userA, \u00223 2 *\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(new BigDecimal(\u00225\u0022));\n   }\n\n   @Test\n   void returnBalanceOfOne_afterCalculatingOneSubtraction() {\n-    calculator.eval(\u00223 3 -\u0022, 0);\n-    BigDecimal balance = billing.getBalance();\n\u002b    calculator.eval(userA, \u00223 3 -\u0022, 0);\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(ONE);\n   }\n\n   @Test\n   void returnBalanceOfTen_afterCalculatingOneDivision() {\n-    calculator.eval(\u00225 2.5 \/\u0022, 2);\n-    BigDecimal balance = billing.getBalance();\n\u002b    calculator.eval(userA, \u00225 2.5 \/\u0022, 2);\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(TEN);\n   }\n\n@@ -81,9 \u002b81,9 @@\n   })\n   void complexBilling(String input, BigDecimal expectedBalance) {\n     for (String i : input.split(\u0022;\u0022)) {\n-      calculator.eval(i, 2);\n\u002b      calculator.eval(userA, i, 2);\n     }\n-    BigDecimal balance = billing.getBalance();\n\u002b    BigDecimal balance = billing.getBalance(userA);\n     assertThat(balance).isEqualByComparingTo(expectedBalance);\n   }\n\nIndex: calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n===================================================================\n--- calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n\u002b\u002b\u002b calculator\/src\/test\/java\/com\/webcalc\/calculator\/CalculatorShould.java\n@@ -4,12 \u002b4,16 @@\n import org.junit.jupiter.params.ParameterizedTest;\n import org.junit.jupiter.params.provider.CsvSource;\n\n\u002bimport java.util.UUID;\n\u002b\n import static org.assertj.core.api.Assertions.assertThat;\n\n class CalculatorShould {\n\n   private final Calculator calculator = new Calculator();\n\n\u002b  private final UUID userId = UUID.randomUUID();\n\u002b\n   @DisplayName(\u0022Sum\u0022)\n   @ParameterizedTest(name = \u0022input: \u0027\u0027{0}\u0027\u0027, expected result: \u0027\u0027{1}\u0027\u0027\u0022)\n   @CsvSource({\n@@ -20,7 \u002b24,7 @@\n       \u0022\u00271,2 3,4 \u002b\u0027, \u00274,6\u0027\u0022,\n   })\n   void sum(String input, String expectedResult) {\n-    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n@@ -33,7 \u002b37,7 @@\n       \u0022\u00271,2 0,5 -\u0027, \u00270,7\u0027\u0022,\n   })\n   void subtract(String input, String expectedResult) {\n-    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n@@ -48,7 \u002b52,7 @@\n       \u0022\u00273,333 4,444 *\u0027, \u002714,81\u0027\u0022,\n   })\n   void multiply(String input, String expectedResult) {\n-    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n@@ -63,7 \u002b67,7 @@\n       \u00223 2 \/, 2, 0\u0022,\n   })\n   void divide(String input, String expectedResult, int maxFractionDigits) {\n-    String result = calculator.eval(input, maxFractionDigits);\n\u002b    String result = calculator.eval(userId, input, maxFractionDigits);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n\n@@ -77,7 \u002b81,7 @@\n       \u00221 2 \u002b 3 *, 9\u0022,\n   })\n   void complexCalculations(String input, String expectedResult) {\n-    String result = calculator.eval(input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n\u002b    String result = calculator.eval(userId, input, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n     assertThat(result).isEqualTo(expectedResult);\n   }\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>By the way, all those refactorings are quite easy to do with a good IDE. Now everything compiles, tests are executed and all green except my new one. I can finally start working on making it green.</p>
+<p>The second assertion in my test is failing, apparently user B was also billed for what user A did. No wonder, there&rsquo;s currently only a global balance, I need to change it to some map from user id to a balance. That also means, that <code>CalculatorObserver</code> would need to carry user information. Not an issue:</p>
+
+
+<span id="19082bac83445a4fc6eae59e7807dc9377e8340f"></span>
+<script>
+    document.getElementById("19082bac83445a4fc6eae59e7807dc9377e8340f").innerHTML = Diff2Html.html(
+        "Index: billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n===================================================================\n--- billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n\u002b\u002b\u002b billing\/src\/main\/java\/com\/webcalc\/billing\/Billing.java\n@@ -3,6 \u002b3,8 @@\n import com.webcalc.calculator.CalculatorObserver;\n\n import java.math.BigDecimal;\n\u002bimport java.util.HashMap;\n\u002bimport java.util.Map;\n import java.util.UUID;\n\n import static java.math.BigDecimal.ONE;\n@@ -11,24 \u002b13,25 @@\n\n public class Billing implements CalculatorObserver {\n\n-  private BigDecimal balance = ZERO;\n\u002b  private Map\u003cUUID, BigDecimal\u003e balance = new HashMap\u003c\u003e();\n\n   public BigDecimal getBalance(UUID userId) {\n-    return balance;\n\u002b    return balance.getOrDefault(userId, ZERO);\n   }\n\n   @Override\n-  public void evaluated(String function) {\n\u002b  public void evaluated(UUID userId, String function) {\n\u002b    balance.putIfAbsent(userId, ZERO);\n     switch (function) {\n       case \u0022\u002b\u0022:\n       case \u0022-\u0022:\n-        balance = balance.add(ONE);\n\u002b        balance.merge(userId, ONE, BigDecimal::add);\n         break;\n       case \u0022*\u0022:\n-        balance = balance.add(new BigDecimal(\u00225\u0022));\n\u002b        balance.merge(userId, new BigDecimal(\u00225\u0022), BigDecimal::add);\n         break;\n       case \u0022\/\u0022:\n-        balance = balance.add(TEN);\n\u002b        balance.merge(userId, TEN, BigDecimal::add);\n         break;\n     }\n   }\nIndex: calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorObserver.java\n@@ -1,5 \u002b1,7 @@\n package com.webcalc.calculator;\n\n\u002bimport java.util.UUID;\n\u002b\n public interface CalculatorObserver {\n-  void evaluated(String function);\n\u002b  void evaluated(UUID userId, String function);\n }\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>One last thing, <code>Calculator</code> needs to pass <code>userId</code> to the observer call.</p>
+
+
+<span id="351805e7caa3c6afe186ebc4824c74d587a59c03"></span>
+<script>
+    document.getElementById("351805e7caa3c6afe186ebc4824c74d587a59c03").innerHTML = Diff2Html.html(
+        "Index: calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n===================================================================\n--- calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n\u002b\u002b\u002b calculator\/src\/main\/java\/com\/webcalc\/calculator\/Calculator.java\n@@ -37,7 \u002b37,7 @@\n         var b = stack.pop();\n         stack.push(f.apply(b, a));\n         if (observer != null)\n-          observer.evaluated(token);\n\u002b          observer.evaluated(userId, token);\n       }\n     }\n     return format(stack.pop(), maxFractionDigits);\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I&rsquo;m done, all tests are now passing, phew. The mere amount of time I had to spend in red (having not passing tests) shows how still inexperienced I am when it comes to TDD. But we all need to learn constantly, maybe next time I would be able to avoid such a situation. Or maybe not because there&rsquo;s no other way. I&rsquo;ll see if I can get something out of this.</p>
+<p>What bothers me now is that internally everything works, but I have those two <code>NULL</code>s in controllers. To actually fix those I need a very similar test, but working from outside, through the REST interface. And I&rsquo;m wondering right now why I do not have such test already. It seems I did the same mistake again, I started adding a feature not from outside, I assumed I know how to implement it properly. Anyway, the test:</p>
+
+
+<span id="9b64c3924d5da958ec3b6aef6e15cd649edfbc4f"></span>
+<script>
+    document.getElementById("9b64c3924d5da958ec3b6aef6e15cd649edfbc4f").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n@@ -11,13 \u002b11,39 @@\n     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)\n class BillingApiShould {\n\n-  private static final String DEFAULT_USERNAME = \u0022mmustermann\u0022;\n-  private static final String DEFAULT_PASSWORD = \u00229786f3gb4508c2393q7y\u0022;\n\u002b  private static final String USER1_NAME = \u0022mmustermann\u0022;\n\u002b  private static final String USER1_PASS = \u00229786f3gb4508c2393q7y\u0022;\n\u002b\n\u002b  private static final String USER2_NAME = \u0022user2_name\u0022;\n\u002b  private static final String USER2_PASS = \u0022user2_pass\u0022;\n\n   @Test\n   void returnsZeroWhenNoCalculationsDone() {\n     given()\n-        .auth().preemptive().basic(DEFAULT_USERNAME, DEFAULT_PASSWORD)\n\u002b        .auth().preemptive().basic(USER1_NAME, USER1_PASS)\n\u002b    .when()\n\u002b        .get(\u0022\/balance\u0022)\n\u002b    .then()\n\u002b        .body(equalTo(\u00220\u0022));\n\u002b  }\n\u002b\n\u002b  @Test\n\u002b  void chargeOnlyUser1_when1IsCalculating() {\n\u002b    given()\n\u002b        .auth().preemptive().basic(USER1_NAME, USER1_PASS)\n\u002b        .body(\u00221 2 \u002b\u0022)\n\u002b    .when()\n\u002b        .post(\u0022\/eval\u0022);\n\u002b\n\u002b    given()\n\u002b        .auth().preemptive().basic(USER1_NAME, USER1_PASS)\n\u002b    .when()\n\u002b        .get(\u0022\/balance\u0022)\n\u002b    .then()\n\u002b        .body(equalTo(\u00221\u0022));\n\u002b\n\u002b    given()\n\u002b        .auth().preemptive().basic(USER2_NAME, USER2_PASS)\n     .when()\n         .get(\u0022\/balance\u0022)\n     .then()\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I also changed the constants for username and password, because now I need two of them. When I run it, already the first assertion fails, apparently I didn&rsquo;t even charge the correct user. Yes, now I need to fix the <code>NULL</code>s in both controllers.</p>
+<p>It seems that I need a custom <code>UserDetailsService</code> and a custom <code>User</code> class. The reason is that I assumed that a user has an id and it is of <code>UUID</code> type. None of that is true with default Spring Boot configuration. This is getting bigger than I was hoping, but the only other choice I have is to revert those choices and I don&rsquo;t want to do that. It seems that I&rsquo;ll start growing some <code>Users</code> module, but as usual, I&rsquo;ll start adding code to the <code>app</code> module and will be extracting it later. Let&rsquo;s start with <code>User</code> class.</p>
+<p>Because I&rsquo;m using Spring Security, I&rsquo;m forced to make my <code>User</code> class implement <code>UserDetails</code> interface or extend directly from <code>org.springframework.security.core.userdetails.User</code>. This is creating a tight coupling between my application and Spring Security which I don&rsquo;t like. But when I create my own <code>User</code> class, even if it&rsquo;s implementing Spring&rsquo;s interfaces, I might try to limit the damage. I&rsquo;ll use composition instead of inheritance, as all good practices suggest, and just delegate what&rsquo;s necessary. I could, if need be, remove Spring Security and reimplement its API, but changes to the implementation might not be that big. By the way, I&rsquo;m starting to get the idea of why working with Spring Security is not such an easy thing.</p>
+
+
+<span id="646a91f0a99b555a6af01aee6d3ae7e4e5325d16"></span>
+<script>
+    document.getElementById("646a91f0a99b555a6af01aee6d3ae7e4e5325d16").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/user\/User.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/user\/User.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/user\/User.java\n@@ -0,0 \u002b1,58 @@\n\u002bpackage com.webcalc.user;\n\u002b\n\u002bimport org.springframework.security.core.GrantedAuthority;\n\u002bimport org.springframework.security.core.userdetails.UserDetails;\n\u002b\n\u002bimport java.util.Collection;\n\u002bimport java.util.UUID;\n\u002b\n\u002bpublic class User implements UserDetails {\n\u002b\n\u002b  public final UUID id;\n\u002b\n\u002b  private final UserDetails springSecUser;\n\u002b\n\u002b  public User(UUID id, String username, String password) {\n\u002b    this.id = id;\n\u002b    springSecUser = org.springframework.security.core.userdetails.User.builder()\n\u002b        .username(username)\n\u002b        .password(password)\n\u002b        .roles()\n\u002b        .build();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public Collection\u003c? extends GrantedAuthority\u003e getAuthorities() {\n\u002b    return springSecUser.getAuthorities();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public String getPassword() {\n\u002b    return springSecUser.getPassword();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public String getUsername() {\n\u002b    return springSecUser.getUsername();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public boolean isAccountNonExpired() {\n\u002b    return springSecUser.isAccountNonExpired();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public boolean isAccountNonLocked() {\n\u002b    return springSecUser.isAccountNonLocked();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public boolean isCredentialsNonExpired() {\n\u002b    return springSecUser.isCredentialsNonExpired();\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public boolean isEnabled() {\n\u002b    return springSecUser.isEnabled();\n\u002b  }\n\u002b}\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>OK, <code>User</code> is not enough, I also need my own <code>UserDetailsService</code>:</p>
+
+
+<span id="bf2cf30ac0f4f968de3358cc4027f7851f922855"></span>
+<script>
+    document.getElementById("bf2cf30ac0f4f968de3358cc4027f7851f922855").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n@@ -0,0 \u002b1,25 @@\n\u002bpackage com.webcalc.user;\n\u002b\n\u002bimport org.springframework.security.core.userdetails.UserDetails;\n\u002bimport org.springframework.security.core.userdetails.UserDetailsService;\n\u002bimport org.springframework.security.core.userdetails.UsernameNotFoundException;\n\u002b\n\u002bimport java.util.HashMap;\n\u002bimport java.util.Map;\n\u002bimport java.util.UUID;\n\u002b\n\u002bpublic class WebCalcUserDetailsService implements UserDetailsService {\n\u002b\n\u002b  private static final Map\u003cString, User\u003e users = new HashMap\u003c\u003e();\n\u002b\n\u002b  static {\n\u002b    users.put(\u0022mmustermann\u0022, new User(UUID.randomUUID(), \u0022mmustermann\u0022, \u00229786f3gb4508c2393q7y\u0022));\n\u002b  }\n\u002b\n\u002b  @Override\n\u002b  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {\n\u002b    if (users.containsKey(username))\n\u002b      return users.get(username);\n\u002b    throw new UsernameNotFoundException(\u0022User unknown\u0022);\n\u002b  }\n\u002b}\nIndex: app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n@@ -2,6 \u002b2,7 @@\n\n import com.webcalc.billing.Billing;\n import com.webcalc.calculator.Calculator;\n\u002bimport com.webcalc.user.WebCalcUserDetailsService;\n import org.springframework.boot.SpringApplication;\n import org.springframework.boot.autoconfigure.SpringBootApplication;\n import org.springframework.context.annotation.Bean;\n@@ -9,6 \u002b10,7 @@\n import org.springframework.context.annotation.Configuration;\n import org.springframework.security.config.annotation.web.builders.HttpSecurity;\n import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;\n\u002bimport org.springframework.security.core.userdetails.UserDetailsService;\n\n @SpringBootApplication\n @ComponentScan(\u0022com.webcalc\u0022)\n@@ -28,6 \u002b30,11 @@\n     return new Billing();\n   }\n\n\u002b  @Bean\n\u002b  public UserDetailsService userDetailsService() {\n\u002b    return new WebCalcUserDetailsService();\n\u002b  }\n\u002b\n   @Configuration\n   protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {\n\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>It contains only one user with the same username and password as previously. I also wired it up, so I should be in exactly the same place as before, let&rsquo;s run the tests to see if I&rsquo;m not lying.</p>
+<p>I&rsquo;m a liar, the error I&rsquo;m getting now is <code>There is no PasswordEncoder mapped for the id &quot;null&quot;</code>. That&rsquo;s unexpected. A quick check on the Internet and I know I need to specify the password as <code>{noop}9786f3gb4508c2393q7y</code>, see <a href="https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-format" target="_blank">here</a>. The fix is simple:</p>
+
+
+<span id="73e5da543308a41c02f586d31d884fbcfd297354"></span>
+<script>
+    document.getElementById("73e5da543308a41c02f586d31d884fbcfd297354").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n@@ -13,7 \u002b13,7 @@\n   private static final Map\u003cString, User\u003e users = new HashMap\u003c\u003e();\n\n   static {\n-    users.put(\u0022mmustermann\u0022, new User(UUID.randomUUID(), \u0022mmustermann\u0022, \u00229786f3gb4508c2393q7y\u0022));\n\u002b    users.put(\u0022mmustermann\u0022, new User(UUID.randomUUID(), \u0022mmustermann\u0022, \u0022{noop}9786f3gb4508c2393q7y\u0022));\n   }\n\n   @Override\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now I also don&rsquo;t need default user configured in <code>application.yaml</code> file.</p>
+
+
+<span id="9d8b66696cadea90a55c5a8de0498b76cb7d32a7"></span>
+<script>
+    document.getElementById("9d8b66696cadea90a55c5a8de0498b76cb7d32a7").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/resources\/application.yaml\n===================================================================\n--- app\/src\/test\/resources\/application.yaml\n\u002b\u002b\u002b app\/src\/test\/resources\/application.yaml\n@@ -1,3 \u002b0,0 @@\n-spring.security.user:\n-  name: mmustermann\n-  password: 9786f3gb4508c2393q7y\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>OK, now I&rsquo;m in a position I wanted to be, all tests are green apart from my newly created one. But it is actually wrong, I should be already charging someone for doing any calculations, my new tests is only verifying that I&rsquo;m not charging the wrong users. That&rsquo;s how I end up missing important business logic by not writing proper tests. I wrote the tests for my <code>Calculator</code> class but didn&rsquo;t do that for my REST API part. And I thought I&rsquo;m doing TDD&hellip;</p>
+<p>I&rsquo;m adding a new REST API test, even before the currently red one, just to verify someone was charged. It&rsquo;s actually a partial copy of this new test:</p>
+
+
+<span id="0b562ac57ccaec6c6a4be9472113ceb7ebd242dc"></span>
+<script>
+    document.getElementById("0b562ac57ccaec6c6a4be9472113ceb7ebd242dc").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n@@ -27,6 \u002b27,22 @@\n         .body(equalTo(\u00220\u0022));\n   }\n\n\u002b  @Test\n\u002b  void chargeUser1_when1IsCalculating() {\n\u002b    given()\n\u002b        .auth().preemptive().basic(USER1_NAME, USER1_PASS)\n\u002b        .body(\u00221 2 \u002b\u0022)\n\u002b    .when()\n\u002b        .post(\u0022\/eval\u0022);\n\u002b\n\u002b    given()\n\u002b        .auth().preemptive().basic(USER1_NAME, USER1_PASS)\n\u002b    .when()\n\u002b        .get(\u0022\/balance\u0022)\n\u002b    .then()\n\u002b        .body(equalTo(\u00221\u0022));\n\u002b  }\n\u002b\n   @Test\n   void chargeOnlyUser1_when1IsCalculating() {\n     given()\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>The fact that it is a partial copy suggests to me that there&rsquo;s some duplication in the tests, maybe they&rsquo;re not testing the right things, I&rsquo;ll look into it is a minute. For now, I&rsquo;m focusing on the test I just wrote. Luckily, it&rsquo;s red so I need to fix it.</p>
+<p>After inspecting the code a bit, to my surprise, I find out that on the application or Spring level I&rsquo;m not injecting <code>Billing</code> as an observer to <code>Calculator</code>. This is getting more and more embarrassing for me&hellip; Luckily, the fix is quite simple:</p>
+
+
+<span id="63e308c391b6e9765f94e0ff36a20338b6b33047"></span>
+<script>
+    document.getElementById("63e308c391b6e9765f94e0ff36a20338b6b33047").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/app\/WebCalcApplication.java\n@@ -26,8 \u002b26,10 @@\n   }\n\n   @Bean\n-  public Billing billing() {\n-    return new Billing();\n\u002b  public Billing billing(Calculator calculator) {\n\u002b    Billing billing = new Billing();\n\u002b    calculator.addObserver(billing);\n\u002b    return billing;\n   }\n\n   @Bean\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Now things get more interesting because all my tests for billing going through the REST interface became red. The reason is simple and terrifying - the state from one test is carried over to the next test. Of course, the <code>Map</code> I have in <code>Billing</code> is not cleaned up between the tests so it carries over current balance. This is actually a good thing, in the real world I want that! In the tests though that&rsquo;s a very bad thing. As I&rsquo;m using Spring, there&rsquo;s an annotation created for such situations, <code>@DirtiesContext</code>. As each of my tests assumes a clean state, I&rsquo;ll use <code>BEFORE_EACH_TEST_METHOD</code> mode, like so:</p>
+
+
+<span id="f166e52d1417ded5d8bdd7e51b7cfe35865b7950"></span>
+<script>
+    document.getElementById("f166e52d1417ded5d8bdd7e51b7cfe35865b7950").innerHTML = Diff2Html.html(
+        "Index: app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n===================================================================\n--- app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n\u002b\u002b\u002b app\/src\/test\/java\/com\/webcalc\/integration_tests\/BillingApiShould.java\n@@ -3,12 \u002b3,14 @@\n import com.webcalc.app.WebCalcApplication;\n import org.junit.jupiter.api.Test;\n import org.springframework.boot.test.context.SpringBootTest;\n\u002bimport org.springframework.test.annotation.DirtiesContext;\n\n import static io.restassured.RestAssured.given;\n import static org.hamcrest.Matchers.equalTo;\n\n @SpringBootTest(classes = WebCalcApplication.class,\n     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)\n\u002b@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)\n class BillingApiShould {\n\n   private static final String USER1_NAME = \u0022mmustermann\u0022;\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>I was expecting only one of my billing tests to turn green, but two of them stopped failing. The reason is, I can use a <code>NULL</code> as a key to a <code>Map</code> in <code>Billing</code> that contains balance of each user. As I&rsquo;m passing in a <code>NULL</code> as a <code>userId</code>, my current implementation works. Not expected, but also not bad either.</p>
+<p>OK, I finally managed to get the whole application to a state where it should have been before I started this iteration, better late than never. I can finally try to do something with my last failing test. It&rsquo;s red because I&rsquo;m not differentiating users in any way beyond controllers, <code>userId</code> is always <code>NULL</code>. I need to get the user in both controllers, in Spring Security world it is done like so:</p>
+
+
+<span id="debbfa7577acfc28c5f29e9e970d246f754a7636"></span>
+<script>
+    document.getElementById("debbfa7577acfc28c5f29e9e970d246f754a7636").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/billing\/BillingController.java\n@@ -1,8 \u002b1,12 @@\n package com.webcalc.billing;\n\n\u002bimport com.webcalc.user.User;\n\u002bimport org.springframework.security.core.Authentication;\n import org.springframework.web.bind.annotation.GetMapping;\n import org.springframework.web.bind.annotation.RestController;\n\n\u002bimport javax.servlet.http.HttpServletRequest;\n\u002b\n @RestController\n public class BillingController {\n\n@@ -13,7 \u002b17,8 @@\n   }\n\n   @GetMapping(\u0022\/balance\u0022)\n-  public String getBalance() {\n-    return billing.getBalance(null).toPlainString();\n\u002b  public String getBalance(HttpServletRequest request) {\n\u002b    Authentication auth = (Authentication) request.getUserPrincipal();\n\u002b    return billing.getBalance(((User) auth.getPrincipal()).id).toPlainString();\n   }\n }\nIndex: app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/calculator\/CalculatorController.java\n@@ -1,10 \u002b1,13 @@\n package com.webcalc.calculator;\n\n\u002bimport com.webcalc.user.User;\n\u002bimport org.springframework.security.core.Authentication;\n import org.springframework.web.bind.annotation.PostMapping;\n import org.springframework.web.bind.annotation.PutMapping;\n import org.springframework.web.bind.annotation.RequestBody;\n import org.springframework.web.bind.annotation.RestController;\n\n\u002bimport javax.servlet.http.HttpServletRequest;\n import javax.servlet.http.HttpSession;\n\n @RestController\n@@ -19,10 \u002b22,11 @@\n   }\n\n   @PostMapping(\u0022\/eval\u0022)\n-  public String calculate(@RequestBody String body, HttpSession session) {\n\u002b  public String calculate(@RequestBody String body, HttpSession session, HttpServletRequest request) {\n     if (session.getAttribute(MAX_FRACTION_DIGITS) == null)\n       session.setAttribute(MAX_FRACTION_DIGITS, Calculator.DEFAULT_MAX_FRACTION_DIGITS);\n-    return calculator.eval(null, body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n\u002b    Authentication auth = (Authentication) request.getUserPrincipal();\n\u002b    return calculator.eval(((User) auth.getPrincipal()).id, body, (Integer) session.getAttribute(MAX_FRACTION_DIGITS));\n   }\n\n   @PutMapping(\u0022\/maxFractionDigits\u0022)\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Interestingly enough that doesn&rsquo;t fix my test, but after taking a closer look I noticed that I simply lack a second user. The fix is easy:</p>
+
+
+<span id="00edd2498fe3a50d6970c048a79860bcf5b3e391"></span>
+<script>
+    document.getElementById("00edd2498fe3a50d6970c048a79860bcf5b3e391").innerHTML = Diff2Html.html(
+        "Index: app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n===================================================================\n--- app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n\u002b\u002b\u002b app\/src\/main\/java\/com\/webcalc\/user\/WebCalcUserDetailsService.java\n@@ -14,6 \u002b14,7 @@\n\n   static {\n     users.put(\u0022mmustermann\u0022, new User(UUID.randomUUID(), \u0022mmustermann\u0022, \u0022{noop}9786f3gb4508c2393q7y\u0022));\n\u002b    users.put(\u0022user2_name\u0022, new User(UUID.randomUUID(), \u0022user2_name\u0022, \u0022{noop}user2_pass\u0022));\n   }\n\n   @Override\n",
+        {drawFileList: false, matching: 'lines', outputFormat: 'line-by-line'}
+    );
+</script>
+
+<p>Finally! All tests green!</p>
+<p>I must admit that this iteration was a very challenging and frustrating one. And it was only my fault. Most of the problems were coming from my previous mistakes, the iteration was far bigger than it should have been, I had to add a test and complete missing implementation, and all that in the middle of working on something else. I was thinking several times about rewriting the iteration completely, fixing things first and then moving onto the actual thing I wanted to do. But again, this whole series is about learning. This iteration clearly shows how much trouble I got myself into just by forgetting testing things from outside and, in the end, missing important pieces of implementation. Plus, by actually going through all the pain, maybe I&rsquo;ll remember it better.</p>
+<p>Anyway, thanks for bearing with me. In the <a href="/posts/webcalc/iteration-9-custom-functions/">next iteration</a>&hellip; I have no clue what I&rsquo;ll be doing. Let it be a surprise for all of us. See you next time!</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

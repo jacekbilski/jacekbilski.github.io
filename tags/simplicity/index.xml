@@ -20,30 +20,30 @@ Unfortunately I cannot embedd it here, but it&amp;rsquo;s available here: https:
     
     <item>
       <title>Familiarity - friend or foe</title>
-      <link>https://www.bilski.tech/posts/familiarity-friend-or-foe/</link>
+      <link>https://www.bilski.tech/posts/random/familiarity-friend-or-foe/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/familiarity-friend-or-foe/</guid>
+      <guid>https://www.bilski.tech/posts/random/familiarity-friend-or-foe/</guid>
       <description>Familiarity seems like a good thing, you know the thing, how to deal with it, what to expect and where problems might be hiding. But more and more I see its dark side.
 Some time ago I was working on a legacy system. It was very complex and fragile, most developers didn&amp;rsquo;t want to have anything to do with it. We knew the time would come when we would need to touch the core of this monster, so we wrote some tests and started slowly cleaning it up.</description>
     </item>
     
     <item>
       <title>Understanding decomposed</title>
-      <link>https://www.bilski.tech/posts/understanding-decomposed/</link>
+      <link>https://www.bilski.tech/posts/random/understanding-decomposed/</link>
       <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/understanding-decomposed/</guid>
+      <guid>https://www.bilski.tech/posts/random/understanding-decomposed/</guid>
       <description>I previously wrote about simplicity and how it helps to understand software code. In that post, I already mentioned the use of concepts like set theory. I’d like to expand on this and show how to boost readability of code.
 Despite what people might think, our main purpose as developers is not writing software, but solving problems. A code is just a means, not the goal. Nobody demands software just for the sake of it from a developer.</description>
     </item>
     
     <item>
       <title>Supporting understanding with simplicity</title>
-      <link>https://www.bilski.tech/posts/supporting-understanding-with-simplicity/</link>
+      <link>https://www.bilski.tech/posts/random/supporting-understanding-with-simplicity/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/posts/supporting-understanding-with-simplicity/</guid>
+      <guid>https://www.bilski.tech/posts/random/supporting-understanding-with-simplicity/</guid>
       <description>Some time ago, my colleague Joy Clark wrote about simplicity. I&amp;rsquo;ve also approached this topic once before. I&amp;rsquo;d like to follow up on both articles and show how simplicity can boost our understanding of software. I will also propose that we look at other disciplines to see if and how simplicity affects them. Maybe we can benefit from their experience.
 What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</description>
     </item>
