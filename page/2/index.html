@@ -24,7 +24,7 @@
 <meta property="og:description" content="Jacek Bilski&#39;s thoughts about software engineering and how to improve it" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.bilski.tech/" />
-<meta property="og:updated_time" content="2020-08-24T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-10-22T00:00:00+00:00" />
 
 
     
@@ -115,6 +115,14 @@
 		 
 			 
 				<li>
+					<a href="/posts/testing_primer/">
+						<span>Testing Primer</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
 					<a href="/videos/">
 						<span>Videos</span>
 					</a>
@@ -182,6 +190,69 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   <div class="post-list">
     
     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/random/testing-is-storytelling/" >Testing is storytelling</a>
+        </span>
+        <span class="item__date">
+          Oct 25, 2018
+        </span>
+        <span >
+        
+        Tests do not only exist to verify the absence of known bugs. They&#39;re also documenting the expected behaviour of a system. Moreover, they&#39;re showing developers how to use code.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/random/testing-is-storytelling/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/webcalc/iteration-3-formatting-and-cleanup-in-calculator-module/" >Iteration 3 - formatting and cleanup in calculator module</a>
+        </span>
+        <span class="item__date">
+          Oct 10, 2018
+        </span>
+        <span >
+        
+        WebCalc third iteration. I&#39;m adding multiplication and division. During that I need to deal with formatting and limiting number of digits.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/webcalc/iteration-3-formatting-and-cleanup-in-calculator-module/">➦</a>
+        
+        </div>
+        
+     
+      
+        
+      
+      <div class="post-list__item">
+        <span class="item__title--big">
+          <a href="/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/" >Iteration 2 - actual calculations and modules separation</a>
+        </span>
+        <span class="item__date">
+          Sep 21, 2018
+        </span>
+        <span >
+        
+        WebCalc second iteration. I now have two Gradle subprojects and clearly separated calculator module. It now can actually add and subtract.
+        
+        </span>
+        
+          ... <a class="read-more-symbol" href="/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/">➦</a>
+        
+        </div>
+        
+     
       
         
       
@@ -329,72 +400,6 @@ Last time I just barely scratched the topic of writing test scenarios. I briefly
         </span>
         
           ... <a class="read-more-symbol" href="/posts/random/writing-good-test-scenarios/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/random/microservices-a-solution-or-a-problem/" >Microservices - a solution or a problem?</a>
-        </span>
-        <span class="item__date">
-          Jul 4, 2016
-        </span>
-        <span >
-        
-        Microservices seem to be everywhere, everybody is talking about them, writing and consuming them. For a good reason, they can solve a lot of problems like scaling, high availability, independent developability, etc. But are they really THE solution to our problems? Do we always remember their costs?
-Integration One of the good things about microservices is, that they&rsquo;re simple. Each one should be easy to understand even by a new person joining a team.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/random/microservices-a-solution-or-a-problem/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/random/more-on-myfaces-and-contenttype/" >More on MyFaces and ContentType</a>
-        </span>
-        <span class="item__date">
-          Jul 23, 2009
-        </span>
-        <span >
-        
-        I&rsquo;ve dug some more, debugged some more and know a little more. The whole problem with Apache MyFaces and ContentType comes from the awful idea that there is more than one moment, when, for a single request, resulting ContentType is evaluated.
-MyFaces looks at Accept HTTP header, which, in my case, states text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8. MyFaces goes through that list and picks first entry which it understands, in my case that&rsquo;s text/html. It doesn&rsquo;t really matter, that next entry application/xhtml+xml is what I would really want, &ldquo;text/html&rdquo; was first.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/random/more-on-myfaces-and-contenttype/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/posts/random/including-javascript-in-html-content/" >Including JavaScript in HTML content</a>
-        </span>
-        <span class="item__date">
-          Jul 7, 2009
-        </span>
-        <span >
-        
-        For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks' tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
-Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/posts/random/including-javascript-in-html-content/">➦</a>
         
         </div>
         

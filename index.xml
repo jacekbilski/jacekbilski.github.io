@@ -6,7 +6,7 @@
     <description>Recent content on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple made easy by Rich Hickey</title>
       <link>https://www.bilski.tech/videos/simple_made_easy/</link>
@@ -75,6 +75,38 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       <guid>https://www.bilski.tech/videos/software_faster/</guid>
       <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub, but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.
   </description>
+    </item>
+    
+    <item>
+      <title>Tests Granularity</title>
+      <link>https://www.bilski.tech/posts/testing_primer/tests-granularity/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/tests-granularity/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry.
+In two previous posts (see below) we discussed the benefits of automated tests and the properties of a good test. So far we were trying to avoid differentiating the tests in any way. This time we want to address one way how tests can be classified: tests granularity.
+Previous posts:
+ Why You Should Write Automated Tests Anatomy of a Good Test  What is granularity?</description>
+    </item>
+    
+    <item>
+      <title>Anatomy of a Good Test</title>
+      <link>https://www.bilski.tech/posts/testing_primer/anatomy-of-a-good-test/</link>
+      <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/anatomy-of-a-good-test/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry.
+In our last post, we focused on why we should write tests and what value they provide. This time we will go far more technical and take a look at a single test. We will show what makes a test a good one and describe desired and unwanted properties. Interestingly enough, all those properties hold, no matter how isolated or integrated the test is.</description>
+    </item>
+    
+    <item>
+      <title>Why You Should Write Automated Tests</title>
+      <link>https://www.bilski.tech/posts/testing_primer/why-you-should-write-automated-tests/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/why-you-should-write-automated-tests/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry.
+This blog post gives an overview of the most common benefits gained by writing automated tests. It starts in a place where most of the projects we’ve seen so far are: tests are written as a last step of the development process. Then it shows additional benefits that could be gained if we all gave the tests a bit more focus and care.</description>
     </item>
     
     <item>

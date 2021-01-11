@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+<meta name="generator" content="Hugo 0.80.0" />
+
+    
+    
+    
+
+<title>Anatomy of a Good Test • On Software Engineering</title>
+<meta name="description" content="In our last post, we focused on why we should write tests and what value they provide. This time we will go far more technical and take a look at a single test. We will show what makes a test a good one and describe desired and unwanted properties. Interestingly enough, all those properties hold, no matter how isolated or integrated the test is. This already gives us a hint that all tests are alike, we should remember that. Unfortunately, as the topic is very broad, we will have to skip some aspects that play a role when we’re talking about test suites. We will get back to them in one of our next posts.">
+<meta name="keywords" content="tests, testing, automated testing, test granularity, test pyramid">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Anatomy of a Good Test"/>
+<meta name="twitter:description" content="In our last post, we focused on why we should write tests and what value they provide. This time we will go far more technical and take a look at a single test. We will show what makes a test a good one and describe desired and unwanted properties. Interestingly enough, all those properties hold, no matter how isolated or integrated the test is. This already gives us a hint that all tests are alike, we should remember that. Unfortunately, as the topic is very broad, we will have to skip some aspects that play a role when we’re talking about test suites. We will get back to them in one of our next posts."/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Anatomy of a Good Test" />
+<meta property="og:description" content="In our last post, we focused on why we should write tests and what value they provide. This time we will go far more technical and take a look at a single test. We will show what makes a test a good one and describe desired and unwanted properties. Interestingly enough, all those properties hold, no matter how isolated or integrated the test is. This already gives us a hint that all tests are alike, we should remember that. Unfortunately, as the topic is very broad, we will have to skip some aspects that play a role when we’re talking about test suites. We will get back to them in one of our next posts." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/testing_primer/anatomy-of-a-good-test/" />
+<meta property="article:published_time" content="2020-09-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-23T00:00:00+00:00" /><meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/tests-granularity/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/why-you-should-write-automated-tests/" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.b8adef8528195fe856aad24e3bbc9a24b16c8d2689168d9ba8dd6f91efb0fb03.css" integrity="sha256-uK3vhSgZX&#43;hWqtJOO7yaJLFsjSaJFo2bqN1vke&#43;w&#43;wM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">
+        
+          On Software Engineering
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/random/">
+						<span>Random Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/testing_primer/">
+						<span>Testing Primer</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/videos/">
+						<span>Videos</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Anatomy of a Good Test</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Sep 23, 2020<br/>
+    
+    
+    <i class="fas fa-user-edit"></i>
+    
+        Torsten Mandry, Jacek Bilski
+    
+    <br/>
+    
+    
+    
+    
+      
+      
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/tests">tests</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/testing">testing</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/automated-testing">automated testing</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/test-granularity">test granularity</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/test-pyramid">test pyramid</a>
+          
+      
+    
+    
+    <br/>
+    
+        <i class="fas fa-clock"></i> 26 min read
+    
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Note, this post was originally published on <a href="https://www.innoq.com/en/blog/anatomy-of-a-good-test/" target="_blank">INNOQ blog</a> together with <a href="https://torstenmandry.github.io/" target="_blank">Torsten Mandry</a>.</p>
+<p>In our <a href="/posts/testing_primer/why-you-should-write-automated-tests/">last post</a>, we focused on why we should write tests and what value they provide.
+This time we will go far more technical and take a look at a single test.
+We will show what makes a test a good one and describe desired and unwanted properties.
+Interestingly enough, all those properties hold, no matter how isolated or integrated the test is.
+This already gives us a hint that all tests are alike, we should remember that.
+Unfortunately, as the topic is very broad, we will have to skip some aspects that play a role when we’re talking about test suites.
+We will get back to them in one of our next posts.</p>
+<p>This is a follow up to our <a href="/posts/testing_primer/why-you-should-write-automated-tests/">first post on testing</a>.</p>
+<h3 id="desired-properties">Desired properties</h3>
+<p>What makes a test a good (or bad) one?
+Obviously, each test has a purpose to fulfill.
+In our last post we talked about some of them: prevent regression, verify correctness, document behavior.
+As writing tests requires some effort we want to gain as much benefit as possible in return.
+On the other hand, we don’t want the tests to hinder the evolution of our system.
+How do we achieve this?</p>
+<p>There’s a saying that you should take care of your test code the same way and to the same degree as your production code.
+It is true, it is part of your codebase, comparable in size, why would you treat your tests like a second-class citizen.
+For production code we have various sets of rules that try to guide us toward better design like Don’t Repeat Yourself, You Ain’t Gonna Need It, the SOLID principles, Tell, Don’t Ask, aim for high cohesion and low coupling, etc.
+Do we have something similar, but specific to the tests?
+It turns out that we do.
+Kent Beck, <a href="https://www.quora.com/Why-does-Kent-Beck-refer-to-the-rediscovery-of-test-driven-development-Whats-the-history-of-test-driven-development-before-Kent-Becks-rediscovery" target="_blank">(re-)discoverer of Test Driven Development</a> and a <a href="https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864" target="_blank">proponent of <code>test &amp;&amp; commit || rollback</code> method</a>, created a <a href="https://medium.com/@kentbeck_7670/programmer-test-principles-d01c064d7934" target="_blank">set of principles</a> that should guide us when writing tests.
+They state that each test should be:</p>
+<ul>
+<li>fast</li>
+<li>deterministic</li>
+<li>predictive</li>
+<li>sensitive to changes in behavior</li>
+<li>insensitive to changes in structure</li>
+<li>cheap to write, read, and maintain.</li>
+</ul>
+<p>We would like to explicitly add another one here: focused.
+It can be derived from the principles Kent wrote, but we tend to forget about it too often.
+Let’s take a closer look at each of those properties.</p>
+<h4 id="fast">Fast</h4>
+<p>This almost goes without saying.
+Nobody wants to wait until their tests are executed.
+The longer the tests take to finish the higher the chances that we as the developers will get distracted while waiting for them.
+Each test execution gives us feedback about what we just added or changed in the production code.
+The sooner we get that feedback, the better.
+Longer execution times might also lead to executing the tests more rarely.
+First, we would be talking about minutes, then about hours, maybe even days.
+The longer the period between test executions, the more bad things we might have done to the production code.
+It would also be increasingly difficult to find the problem if the tests become red.</p>
+<p>Of course, the bigger our system grows, the more tests we will have, and the longer it will take to execute them all.
+We do not need to always run all the tests.
+We can limit ourselves to only those tests that are related directly to the production code we’re working on.
+If we run all the tests only every now and then it should still be OK, we would catch problems early enough.</p>
+<h4 id="deterministic">Deterministic</h4>
+<p>One of the worst things that can happen to a test is that it becomes “flaky”.
+Most of the time it is green, but sometimes it fails for no obvious reasons.
+If we run it again, it will most likely pass.
+If we have such a test, can we trust it?
+Does it help us detect undesired situations?
+Maybe we just learn to ignore it and release the application even if it is red (“Nah, it just fails sometimes, nothing important”).
+But how will we find out if it started failing for a <em>good</em> reason?
+Would we react and do something about it?
+How long would it take for us to notice that the test is not “flaky” anymore, but plainly red?</p>
+<p>Also, chances are that such tests will get either deleted or ignored by the testing framework.
+After all, they’re just annoyances and sometimes block the release (“We’ll have a look at it later and activate it again”).
+But by doing so you create a hole in your test suite, you allow bugs to creep in, you cannot say anymore “all tests are green, release it!”.</p>
+<p>No, we need each test to tell us precisely if we have a problem in our software or not.
+We must be 100% sure that whenever at least one test has failed, there’s an issue somewhere and we should fix it immediately.
+It should be out of the question if it can be ignored.</p>
+<h4 id="predictive">Predictive</h4>
+<p>When we shift our focus from a single test to the complete suite of tests of one component or even of our overall system, the tests should provide confidence that everything is working as expected.
+If all the tests are green then it should be fine to release and deploy the system.
+This requires that we have written all the necessary tests in a way that they effectively prevent any critical bugs.
+If, after the deployment, it turns out that something is broken, that’s a clear sign that there’s at least one test missing or not effective enough.</p>
+<h4 id="sensitive-to-changes-in-behavior">Sensitive to changes in behavior</h4>
+<p>The behavior of a system is what’s important.
+The end-user is not interested in how a feature is implemented.
+She/he wants to be sure that it behaves as desired.
+So, our tests should focus on this behavior and ensure that it is correct and stable.
+If the behavior changes, we have to adapt the tests to reflect the new behavior.
+On the other hand, if the behavior of a component/system does not change, there should be no reason to change the corresponding tests.</p>
+<h4 id="insensitive-to-changes-in-structure">Insensitive to changes in structure</h4>
+<p>The previous statement sounds quite simple and clear: if the behavior does not change the test should not change as well.
+But, what about structural changes?
+Let’s say we completely refactor our component, throw away internal classes, and introduce new ones.
+As long as we do not change the behavior of the component, the tests should run without adapting them.</p>
+<p>This is probably the most common issue with our tests, they’re coupled not only to the behavior of our software but also to the implementation details.
+But, as stated already, the important thing is that your application <em>is</em> solving the business problem.
+<em>How</em> it is solving it, is not.
+If your tests depend on the “how”, you lose the possibility of refactoring.
+By definition, refactoring is changing the structure of your software without affecting the behavior.
+But tests will now be standing in your way, they will fail not only when the solution would be wrong, but also when the solution is right but achieved differently.
+Of course, we can adapt the tests along with the refactoring, but in this case we lose the guarantee that our refactoring really did not change the behavior.</p>
+<h4 id="cheap-to-write-read-and-maintain">Cheap to write, read and maintain</h4>
+<p>Tests should be helping us, not slow us down.
+If a test is difficult to write, it will probably be skipped.
+Yet we established already that it is a good idea to have automated tests.
+But if the costs are too high it might honestly be a good idea to avoid them.
+You would need to balance it with executing some manual testing later on.
+Depending on the context this could be a better approach.
+But the actual solution is to write our system in such a way that it is easy to test automatically.
+We&rsquo;ll deep dive into that topic some other time.</p>
+<p>Tests also need to be easy to read.
+If a test fails we should immediately see what it is about, find the production code it is testing, and fix the problem.
+If the tests are not that readable, we will be wasting time trying to understand what they&rsquo;re testing.
+In this case, they also won&rsquo;t serve well as documentation.</p>
+<p>Changing them also needs to be easy and fast.
+It would be bad if any change in the behavior of our application would require us to spend more time on tests than on the production code.
+Again, if using a tool that should be helping us is taking more time than it saves, it is of little help.</p>
+<h4 id="focused">Focused</h4>
+<p>Like we mentioned already, each test should be about one thing, and it should be very visible about which one.
+This goes hand in hand with better readability or insensitivity to changes in structure.
+In the test, we should see only the details important to a certain desired behavior.
+Everything else should be hidden and abstracted away.</p>
+<p>That doesn&rsquo;t mean that there only has to be a single assert per test.
+Multiple asserts are perfectly fine as long as they are verifying a single concept.
+For example, asserting that a function returning a list indeed returned a list that is not null, has a length of 1, and that it contains a particular element sounds to us like a reasonable thing to do.</p>
+<h4 id="context">Context</h4>
+<p>Although all the points above are true and we should be striving towards them, it is usually not possible to get all of them at the same time.
+We will have to accept trade-offs.
+Therefore, we need to decide which of the principles are more and which are less important in the context of our test.</p>
+<p>For example, imagine you want to test your overall system as a black box, not caring about its internal structure.
+To do this you write some end-2-end tests that do involve network calls.
+Those tests will be harder to write and will need a little longer to finish.
+They might even fail sometimes because of some glitch in the network or some other application that was not available for a short time.</p>
+<p>Even a much more isolated test can take some time when you, for example, are testing some complex algorithm that just requires a few seconds to produce a result.</p>
+<p>If it&rsquo;s important in your context that your complete suite of tests runs within just a couple of seconds, then you will probably have to write more isolated tests focussing on smaller parts of your system.
+Doing this, you let your tests drill-down into the internals of your system which violates the &lsquo;insensitive to changes in structure&rsquo; principle.
+That&rsquo;s not necessarily a big problem as long as you are sure that you only rely on those parts of the structure that are very unlikely to change in the future.</p>
+<p>As with many of the decisions that we as software developers have to make: it depends.
+We just need to bear in our minds that each sacrifice here will cost us somehow, so each such decision needs to be a conscious one.</p>
+<h3 id="basic-structure-of-a-test">Basic structure of a test</h3>
+<p>We&rsquo;ve spent quite a while talking about the theory.
+Time to get our hands dirty and look at some code.
+Let&rsquo;s assume we&rsquo;re working on some webshop application and we&rsquo;re looking at the following test for one of our central components, the shopping cart:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShoppingCartTest</span> <span style="color:#f92672">{</span>
+
+   <span style="color:#a6e22e">@Test</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> InsufficientUnitsInStockException <span style="color:#f92672">{</span>
+       var stock <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Stock<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       var article1 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+       var currentUser <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>CurrentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+       var priceCalculator <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>PriceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+           <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">));</span>
+       var shippingCalculator <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>ShippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">)))</span>
+           <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+       var shoppingCart <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ShoppingCart<span style="color:#f92672">(</span>stock<span style="color:#f92672">,</span> currentUser<span style="color:#f92672">,</span> 
+           priceCalculator<span style="color:#f92672">,</span> shippingCalculator<span style="color:#f92672">);</span>
+       shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+       var article2 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
+       when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+           <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+       when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">)))</span>
+           <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+       shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 3<span style="color:#f92672">);</span>
+       verify<span style="color:#f92672">(</span>stock<span style="color:#f92672">).</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">);</span>
+       verify<span style="color:#f92672">(</span>stock<span style="color:#f92672">).</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">);</span>
+       verify<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">,</span> times<span style="color:#f92672">(</span>2<span style="color:#f92672">)).</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">();</span>
+       verify<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+       verify<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+       verify<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">));</span>
+       verify<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">));</span>
+       assertEquals<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> 
+           shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>22<span style="color:#f92672">.</span><span style="color:#a6e22e">50</span><span style="color:#f92672">),</span> 
+           shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">subtotalAmount</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">shippingAmount</span><span style="color:#f92672">());</span>
+       assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>35<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">totalAmount</span><span style="color:#f92672">());</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>This example is written in Java using the <a href="https://junit.org/junit5/" target="_blank">JUnit 5 Test Framework</a> as well as the <a href="https://site.mockito.org/" target="_blank">Mockito</a> library for stubbing and verifying the invocation of dependencies.
+However, the programming language and libraries are not relevant for what we want to explain.
+We hope that our choice will not prevent anyone from understanding our examples.
+You can find the <a href="https://github.com/innoq/automated-testing-samples" target="_blank">complete example project on Github</a>.</p>
+<p>What do you think about this test?
+What does it test?
+Well, the class is named <code>ShoppingCartTest</code> and the test method is named <code>add</code>, so it seems to test adding an item to the shopping cart, right?
+But what exactly does it test?
+That&rsquo;s somehow hidden within the vast amount of code.</p>
+<p>If you would have to change something in the shopping cart and this test would get red due to your changes, what would you do?
+Revert your changes, move your story back to the todo column of your scrum board, go home and hope that tomorrow somebody else will pull it?
+What if all your teammates did the same before you?
+Let&rsquo;s accept the challenge and try to convert it into something more readable.</p>
+<p>If you look at the test a little closer you will find out that it seems to follow some structure.
+Although we tried our best to make it as bad as possible (yes, that&rsquo;s all we were able to manage) it&rsquo;s still visible and every test follows it.
+It&rsquo;s the <a href="http://wiki.c2.com/?ArrangeActAssert" target="_blank">AAA structure</a>: <em>arrange, act, assert</em>.
+You might also know it as <em>given, when, then</em>.
+We will come to this form a little later.</p>
+<p>The first couple of lines create some objects and values.
+That&rsquo;s the <em>arrange</em> phase.
+It initializes the component under test (the <code>ShoppingCart</code>), sets up some desired state on which the test will be based, and creates some test data (here two articles to add).</p>
+<p>Next follows the <em>act</em> phase.
+It triggers the behavior that should be tested, usually by calling the corresponding method of the component.
+In our case, these are the two <code>shoppingCart.add</code> statements.
+They are somehow split by some other arrange statements, so we actually have an arrange-act-arrange-act-assert structure here.</p>
+<p>After the second <code>add</code> statement, a couple of <code>verify</code> and <code>assertEquals</code> statements follow.
+This is the <em>assert</em> phase of the test.
+It verifies if the action triggered in the <em>act</em> phase produced the expected outcomes.
+Those can be direct when the function returns a value.
+They can also be indirect when the state of the system changes.</p>
+<p>For the sake of completeness, there can also be a final <em>annihilate</em> phase, which is used to clean up resources after the test was executed.
+In our example we do not initialize anything that has to be cleaned up afterward, so we can skip this phase.</p>
+<p>Every test should follow this structure.
+Sometimes, no explicit <em>arrange</em> phase is needed.
+Sometimes, <em>act</em> and <em>assert</em> are combined in one line of code.
+There might even be tests that do not contain any <em>assert</em> because all they expect is that no exception is thrown.
+But overall, those are the three (or four) different phases that are needed to form a test.</p>
+<p>Let&rsquo;s do a first step to improve our test by moving some lines of code to clearly separate those three phases and make them immediately visible.
+We can also improve the order of the <em>arrange</em> statements by grouping corresponding statements.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTwoArticles</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> InsufficientUnitsInStockException <span style="color:#f92672">{</span>
+   <span style="color:#75715e">// arrange
+</span><span style="color:#75715e"></span>   var article1 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   var article2 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+
+   var stock <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Stock<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+   when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
+
+   var currentUser <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>CurrentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   when<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+
+   var priceCalculator <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>PriceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">));</span>
+   when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+
+   var shippingCalculator <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>ShippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">)))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+   when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">)))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+
+   var shoppingCart <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ShoppingCart<span style="color:#f92672">(</span>stock<span style="color:#f92672">,</span> currentUser<span style="color:#f92672">,</span> 
+       priceCalculator<span style="color:#f92672">,</span> shippingCalculator<span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// act
+</span><span style="color:#75715e"></span>   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 3<span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// assert
+</span><span style="color:#75715e"></span>   verify<span style="color:#f92672">(</span>stock<span style="color:#f92672">).</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">);</span>
+   verify<span style="color:#f92672">(</span>stock<span style="color:#f92672">).</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">);</span>
+   verify<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">,</span> times<span style="color:#f92672">(</span>2<span style="color:#f92672">)).</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">();</span>
+   verify<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+   verify<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+   verify<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">));</span>
+   verify<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">).</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">));</span>
+
+   assertEquals<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>22<span style="color:#f92672">.</span><span style="color:#a6e22e">50</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">subtotalAmount</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">shippingAmount</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>35<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">totalAmount</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>It&rsquo;s already much better, isn&rsquo;t it?
+Just by adding a few empty lines and comments we improved the readability and are now able to understand much better (and faster) what this test does.
+To make it even more explicit, we also adjusted the name of the test (method) to clearly state what it tests.
+But we can do even more.</p>
+<h3 id="hide-irrelevant-details">Hide irrelevant details</h3>
+<p>One thing that disturbs us is that this function is quite long, more than 30 lines of code.
+Reading and understanding it will take time.
+Another problem is, that the implementation mixes core aspects of the test with necessary but uninteresting stuff.
+It will take even more time to tell one from the other.
+It might even be impossible to do.
+How should you tell if a particular line of code adds an important detail to the test or is just required by a component you need?</p>
+<p>The first thing we can do to reduce the size of the method and thereby improve readability is to pull the initialization and wiring of the <code>ShoppingCart</code> and its dependencies up as a generic fixture of the test class.
+Chances are that there will be more test methods in this class that require the same fixture.
+Having the dependencies defined as class members also has another advantage which we will see in a moment.</p>
+<p>In our example, we use the Mockito JUnit 5 Extension to be able to create and inject mocks via some annotations.
+That&rsquo;s just a kind of syntactic sugar and not everybody likes it.
+Initializing the mocks explicitly is also fine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@ExtendWith</span><span style="color:#f92672">(</span>MockitoExtension<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShoppingCartTest</span> <span style="color:#f92672">{</span>
+   <span style="color:#a6e22e">@Mock</span> Stock stock<span style="color:#f92672">;</span>
+   <span style="color:#a6e22e">@Mock</span> CurrentUser currentUser<span style="color:#f92672">;</span>
+   <span style="color:#a6e22e">@Mock</span> PriceCalculator priceCalculator<span style="color:#f92672">;</span>
+   <span style="color:#a6e22e">@Mock</span> ShippingCalculator shippingCalculator<span style="color:#f92672">;</span>
+
+   <span style="color:#a6e22e">@InjectMocks</span> ShoppingCart shoppingCart<span style="color:#f92672">;</span>
+   <span style="color:#f92672">...</span>
+</code></pre></div><p>The next thing that catches our eyes is the block of <code>verify</code> statements.
+That&rsquo;s the Mockito way of verifying that a certain method of a mock was called.
+So, these statements test the implementation (the internal structure) of our <code>ShoppingCart</code>, and nothing else.
+As explained before, we don&rsquo;t want to do this.
+We can just remove those statements.
+However, we still need to stub the desired responses of those mocks in the <em>arrange</em> phase to run our test.
+So, it still relies on the internal structure.
+We will later come to this point.</p>
+<p>Having done this, let&rsquo;s look at the different groups of <em>arrange</em> statements, one by one, to see what we can improve here.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var article1 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+var article2 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+
+when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
+
+when<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">);</span>
+
+when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">));</span>
+when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">GOLD</span><span style="color:#f92672">))</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+
+when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">)))</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">)))</span>
+   <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">));</span>
+</code></pre></div><p>The first group creates our two articles to add.
+We mock them, so there&rsquo;s not much we can simplify.
+We could initialize them on class level, as well, just as we did it with the dependencies.
+But, that would not make it much better, so we keep it as it is for the moment.</p>
+<p>The second group sets up a desired state of the <code>Stock</code> dependency.
+The <code>ShoppingCart</code> seems to check the availability of the articles before it adds them.
+The test assumes that both articles are available, otherwise it would expect an <code>InsufficientUnitsInStockException</code> to be thrown, as the signature of the test method indicates.
+In the <em>act</em> phase, we add one unit of article 1 and three units of article 2.
+It should also be fine if more units are available.
+So, the exact number of available articles is not relevant, at least not for this test.
+We can hide those irrelevant details and move them into a helper method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">setupAvailableInStock<span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> article2<span style="color:#f92672">);</span>
+</code></pre></div><p>The helper method not only hides the concrete number of units available, it also hides the technical details of how to configure the Mockito mock. By having the mocks as class members we can directly access them without passing them as arguments.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setupAvailableInStock</span><span style="color:#f92672">(</span>Article<span style="color:#f92672">...</span> articles<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>articles<span style="color:#f92672">).</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>article <span style="color:#f92672">-&gt;</span> 
+       when<span style="color:#f92672">(</span>stock<span style="color:#f92672">.</span><span style="color:#a6e22e">availableUnits</span><span style="color:#f92672">(</span>article<span style="color:#f92672">)).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>9999<span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>As already said, the test does not expect an <code>InsufficientUnitsInStockException</code> to be thrown.
+Probably, there are some other tests that verify the behavior of the <code>ShoppingCart</code> if we try to add unavailable articles.
+In our test, the concrete exception type is completely irrelevant.
+By changing the test method signature to throw a generic <code>Exception</code> we can also hide this irrelevant detail that might distract from the actual test case. This also removes an (unnecessary) binding to an implementation detail which might change in the future.</p>
+<p>The next two groups of <em>arrange</em> statements seem to depend on each other.
+The first group/statement configures the <code>CurrentUser</code> to return the <code>customerStatus</code> <code>GOLD</code>.
+The next statements configure the <code>PriceCalculator</code> to return the values <code>9.95</code> and <code>7.5</code> as calculated prices for the two articles if the <code>customerStatus</code> is <code>GOLD</code>.
+It looks like the concrete customer status is also not relevant for the test.
+All that the test depends on is that the <code>PriceCalculator</code> returns the defined prices, whatever customer status the current user has.
+We can extract another helper method to set up the prices for each article.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">setupCalculatedPrice<span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">);</span>
+setupCalculatedPrice<span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+</code></pre></div><p>The helper method uses the Mockito argument matcher <code>any(CustomerStatus.class)</code> to represent the &lsquo;whatever customer status&rsquo; part.
+It also hides the technical details of creating the <code>BigDecimal</code> instance that is returned, so the test itself can be more concise and readable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setupCalculatedPrice</span><span style="color:#f92672">(</span>Article article<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> price<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   when<span style="color:#f92672">(</span>priceCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculatePrice</span><span style="color:#f92672">(</span>eq<span style="color:#f92672">(</span>article<span style="color:#f92672">),</span> any<span style="color:#f92672">(</span>CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>price<span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now, setting up the <code>CurrentUser</code> to return a customer status is no longer relevant for our test.
+Although, it still has to be done to make the test run (to be honest, we could configure the <code>PriceCalculator</code> mock to accept a <code>nullable(CustomerStatus.class)</code> and everything would be fine, but that would be cheating).
+We can add a fixture method annotated with <code>@BeforeEach</code> to our test case and let JUnit ensure that this setup is executed before every single test in this class.
+We use the <code>CustomerStatus</code> <code>REGULAR</code> instead of <code>GOLD</code> because it&rsquo;s not relevant which status we use and the special status <code>GOLD</code> would pretend the opposite.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@BeforeEach</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setupCurrentUser</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+   when<span style="color:#f92672">(</span>currentUser<span style="color:#f92672">.</span><span style="color:#a6e22e">customerStatus</span><span style="color:#f92672">())</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>CustomerStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">REGULAR</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>The last group of <em>arrange</em> statements configures the <code>ShippingCalculator</code> to return the shipping amount of <code>3.5</code> if the subtotal amount is <code>9.95</code> or <code>32.45</code>.
+Why those two amounts?
+Well, the first one is the price of the first article.
+We add this article with a quantity of one, so that should also be the subtotal amount of the <code>ShoppingCart</code> at this point in time.
+Knowing this, the second amount has to be the (expected) subtotal amount of the <code>ShoppingCart</code> after adding the second article with a quantity of three.
+It turns out that only the second amount is relevant to the test.
+If the <code>ShippingCalculator</code> would return any other amount after adding the first article, nobody would care.
+At least not our test.
+It only verifies the shipping amount after adding both articles.
+But, removing the first statement leads to a nasty <code>NullPointerException</code> because the <code>ShoppingCart</code> expects at least any <code>BigDecimal</code> value after adding the first article.
+All in all, this seems to be very similar to the <em>arrange</em> statements we already improved.
+Hiding the technical details into another helper method seems to be a good idea.
+In this case, the concrete value of <code>3.5</code> is relevant for the test because it is expected in the asserts.
+So we define the value in the test and pass it to the helper method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">setupShippingAmount<span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+</code></pre></div><p>The helper method does not care about the concrete subtotal amount.
+It uses the <code>any(BigDecimal.class)</code> matcher and configures the <code>ShippingCalculator</code> to return the given shipping amount for whatever subtotal amount is provided.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setupShippingAmount</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> amount<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   when<span style="color:#f92672">(</span>shippingCalculator<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateShipping</span><span style="color:#f92672">(</span>any<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)))</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>amount<span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>After all these refactorings our test method has even more improved:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+   <span style="color:#75715e">// arrange
+</span><span style="color:#75715e"></span>   var article1 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   var article2 <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Article<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+   setupAvailableInStock<span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> article2<span style="color:#f92672">);</span>
+   setupCalculatedPrice<span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">);</span>
+   setupCalculatedPrice<span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+   setupShippingAmount<span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// act
+</span><span style="color:#75715e"></span>   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 3<span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// assert
+</span><span style="color:#75715e"></span>   assertEquals<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>22<span style="color:#f92672">.</span><span style="color:#a6e22e">50</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">subtotalAmount</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">shippingAmount</span><span style="color:#f92672">());</span>
+   assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>35<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">totalAmount</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now, what about setting up all the mocks.
+We moved all those statements to helper methods, but they still exist and make our test sensitive to structural changes, right?
+Is there a way to fix this?
+The answer is quite obvious: don&rsquo;t mock those internal components, use their real implementations, instead.
+Of course, that would mean that you would test those components as well and the unit under test becomes bigger.
+This often leads to a more complex <em>arrange</em> phase because those components might depend on others as well, and so on.
+Implementing and executing those tests might take more time because of the more complex setup.
+So, yes, you can do it, but this comes with some costs.
+As we said before, it&rsquo;s a trade-off between the different principles.</p>
+<p>By extracting the setup of those mocks into helper methods, we already did one step towards reducing the coupling of the tests to the implementation.
+There will usually be a couple of tests that use the same helper methods and so whenever we change the internal structure and break one of these methods, we only have to fix it in one place, and not in every single test.
+We could go one step further and bundle all the helper methods to set up one component into a facade that can be used by all test classes that need to mock this component.
+Although, as long as we want to test components in an isolated way, we will not be able to completely remove the coupling.
+We should therefore think twice about how small (or big) the units that we want to test should be.
+We will dive deeper into this topic in one of our next posts.</p>
+<h3 id="make-it-a-specification">Make it a Specification</h3>
+<p>Compared to where we started with our test we could already be quite satisfied with what we achieved.
+But, there&rsquo;s almost always a way to make it even better.</p>
+<p>In our last post, we said that tests can also operate as a documentation or specification of the system under test.
+We also noted that we think it&rsquo;s possible to write those tests in a way that even non-developers, like the stakeholders of our system, would be able to read and understand them.
+Let us show you what we meant.</p>
+<p>First, let&rsquo;s have a second look at the name of the test.
+We already changed it to <code>addTwoArticles</code>, but that mainly describes the <em>act</em> phase and you still have to look at the implementation to see what exactly it does.
+A stakeholder is probably also (maybe even more) interested in the expected outcome (covered by the <em>assert</em> phase).
+The outcome might be different depending on the concrete scenario that is tested (mainly defined by the <em>arrange</em> phase).
+In a specification you would probably find a sentence like the following to describe the tested behavior:</p>
+<blockquote>
+<p>If two articles with different prices and quantities are added to an empty shopping cart, then the subtotal amount and total amount of the shopping cart is calculated.</p>
+</blockquote>
+<p>That&rsquo;s quite long and does not even cover all that is tested (what about the availability or the shipping amount?).
+This might be a sign that our test covers too much behavior and we should split it into two or even more separate tests.
+In our example, working with cheap and fast mocks, that would probably be a good idea.
+In the case of an end-2-end test, where setup and execution often are much more expensive, it could have been a conscious decision to bundle all this in one test.
+Anyway, we can at least make the test name a little more concrete:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> should_calculate_subtotal_and_total_amount_ <span style="color:#960050;background-color:#1e0010">\</span>  
+        if_two_items_with_different_prices_and_quantities_are_added<span style="color:#f92672">()</span> 
+        <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+   <span style="color:#f92672">...</span>
+</code></pre></div><p>Named like this, it refers to our unit under test, the <code>ShoppingCart</code>, already specified by the name of the test class, and describes one concrete part of its behavior (calculating the amounts) in a given situation (adding two articles).
+This style of naming test methods originates from the behavior-driven development (BDD) methodology <a href="https://dannorth.net/introducing-bdd/" target="_blank">introduced by Dan North</a>.
+This methodology focuses on describing and verifying the behavior (not the implementation) of a system, using a kind of ubiquitous language that is shared by business and technical people.</p>
+<p>Above, we use the snake_case notation, because it&rsquo;s better readable in our eyes.
+However, not every developer likes underscores in method names.
+Other forms (e.g. CamelCase) are also fine, as well as using comments or other language features (in other languages like Kotlin or Groovy you can have method names that contain spaces, just to have it said ;) ).
+Naming tests does not differ much from naming anything else in software development - it&rsquo;s a field of its own.
+We will come back to this topic in another post.</p>
+<p>What we could also adapt from BDD is another terminology for the structural phases of a test.
+Instead of <em>arrange/act/assert</em> BDD uses the terms <em>given/when/then</em> which allow formulating tests (specifications) in a more natural language.
+In our example, this could be</p>
+<blockquote>
+<p><strong>given</strong> an article with price 9.95, available in stock<br>
+and an article with price 7.5, available in stock<br>
+and a shipping amount of 3.5</p>
+<p><strong>when</strong> I add the first article with quantity 1<br>
+and I add the second article with quantity 3</p>
+<p><strong>then</strong> the subtotal amount of the shopping cart is 32.45<br>
+and the shipping amount of the shopping cart is 3.5<br>
+and the total amount of the shopping cart is 35.95</p>
+</blockquote>
+<p>That reads pretty good, doesn&rsquo;t it?.
+But we still have to use programming syntax to implement our test, so how does this help?
+One option would be to use BDD tools like <a href="https://jbehave.org/" target="_blank">JBehave</a> or <a href="https://cucumber.io/" target="_blank">Cucumber</a> to map this plain text specification to the different parts of test implementation that can be executed.
+But that&rsquo;s not the only way we can go.
+We can get quite close to this format by developing a kind of DSL using techniques like a fluent API and the builder pattern.
+We don&rsquo;t want to go to much into the details in this post, but here&rsquo;s how our test could also look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> should_calculate_subtotal_and_total_amount_ <span style="color:#960050;background-color:#1e0010">\</span> 
+   if_two_items_with_different_prices_and_quantities_are_added<span style="color:#f92672">()</span> 
+   <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+   <span style="color:#75715e">// given
+</span><span style="color:#75715e"></span>   Article article1 <span style="color:#f92672">=</span> givenAnArticle<span style="color:#f92672">()</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">withPrice</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">)</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">availableInStock</span><span style="color:#f92672">()</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">andGetIt</span><span style="color:#f92672">();</span>
+   Article article2 <span style="color:#f92672">=</span> givenAnArticle<span style="color:#f92672">()</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">withPrice</span><span style="color:#f92672">(</span>7<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">)</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">availableInStock</span><span style="color:#f92672">()</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">andGetIt</span><span style="color:#f92672">();</span>
+   givenShippingAmount<span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// when
+</span><span style="color:#75715e"></span>   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+   shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">,</span> 3<span style="color:#f92672">);</span>
+
+   <span style="color:#75715e">// then
+</span><span style="color:#75715e"></span>   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">containsNumberOfItems</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">containsItemFor</span><span style="color:#f92672">(</span>article1<span style="color:#f92672">)</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">withQuantity</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">withAmount</span><span style="color:#f92672">(</span>9<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">);</span>
+   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">containsItemFor</span><span style="color:#f92672">(</span>article2<span style="color:#f92672">)</span>
+       <span style="color:#f92672">.</span><span style="color:#a6e22e">withQuantity</span><span style="color:#f92672">(</span>3<span style="color:#f92672">).</span><span style="color:#a6e22e">withAmount</span><span style="color:#f92672">(</span>22<span style="color:#f92672">.</span><span style="color:#a6e22e">50</span><span style="color:#f92672">);</span>
+   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">hasSubtotalAmount</span><span style="color:#f92672">(</span>32<span style="color:#f92672">.</span><span style="color:#a6e22e">45</span><span style="color:#f92672">);</span>
+   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">hasShippingAmount</span><span style="color:#f92672">(</span>3<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">);</span>
+   assertThat<span style="color:#f92672">(</span>shoppingCart<span style="color:#f92672">).</span><span style="color:#a6e22e">hasTotalAmount</span><span style="color:#f92672">(</span>35<span style="color:#f92672">.</span><span style="color:#a6e22e">95</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Written like this, even non-technical people should be able to understand what happens.
+As you can see we can do almost the same in the when-block by adding some custom asserts (we use <a href="https://assertj.github.io/doc/" target="_blank">AssertJ</a> in this example).
+If you&rsquo;re interested in the implementation of this DSL you will also find it in the <a href="https://github.com/innoq/automated-testing-samples" target="_blank">complete sources on Github</a>.</p>
+<p>Just to make it clear: We don&rsquo;t say that every test has to be written that way to make it &lsquo;good&rsquo;.
+We just wanted to show how it could be written to make it clear and understandable.
+It might look like doing this for each test has to be a big overhead.
+Our experience shows that, after some trials (and of course also errors), the evolving project-specific test framework helps writing new tests very easily and quickly.
+In non-trivial projects, the effort usually pays off after some time.
+But, as usual, think about what makes sense in your context.
+We would like to encourage you to try it yourself and share your experience.</p>
+<h3 id="summary">Summary</h3>
+<p>In this post, we started with mentioning principles that should help us create good tests like being fast or insensitivity to structure changes.
+We briefly discussed why those principles are important and how they help the overall software.</p>
+<p>After that, we presented a way of structuring the tests so that they become much more readable and understandable.
+Such tests clearly say what they&rsquo;re about and hide all the things that are not relevant.
+They&rsquo;re also much shorter so working with them takes much less time.
+With some extra care, they can become so good and clear that even non-technical people can read them.</p>
+<p>That&rsquo;s not everything we can do to improve tests.
+Some topics we merely mentioned but didn&rsquo;t provide many details.
+For example, creating test data deserves a separate post, and we will probably find time to write one, soon.</p>
+<p>Yet, in our next post we will first tackle a much more difficult and important topic: tests granularity, so how small or big should the part of the system be that I want to test.
+Until next time!</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
