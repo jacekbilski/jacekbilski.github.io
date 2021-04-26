@@ -6,7 +6,17 @@
     <description>Recent content in Random posts on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 08 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/posts/random/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/posts/random/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Familiarity - friend or foe (part 2)</title>
+      <link>https://www.bilski.tech/posts/random/familiarity-friend-or-foe-part-2/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/random/familiarity-friend-or-foe-part-2/</guid>
+      <description>The first part of this post was not really meant to be a first part of, possibly, a longer series. Yet, I seem to have found another case where things that we know and ways how we work might be preventing us from finding other solutions, possibly better.
+Some time ago I joined a new project. I was supposed to start working on a new application that would, later on, be taken over by a team I was part of.</description>
+    </item>
+    
     <item>
       <title>Familiarity - friend or foe</title>
       <link>https://www.bilski.tech/posts/random/familiarity-friend-or-foe/</link>
