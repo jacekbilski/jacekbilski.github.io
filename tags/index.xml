@@ -6,7 +6,43 @@
     <description>Recent content in Tags on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>simplicity</title>
+      <link>https://www.bilski.tech/tags/simplicity/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/simplicity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://www.bilski.tech/tags/spring/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testability</title>
+      <link>https://www.bilski.tech/tags/testability/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/testability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://www.bilski.tech/tags/testing/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/testing/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>expressiveness</title>
       <link>https://www.bilski.tech/tags/expressiveness/</link>
@@ -53,15 +89,6 @@
     </item>
     
     <item>
-      <title>testing</title>
-      <link>https://www.bilski.tech/tags/testing/</link>
-      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>tests</title>
       <link>https://www.bilski.tech/tags/tests/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
@@ -94,15 +121,6 @@
       <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/tags/tdd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>simplicity</title>
-      <link>https://www.bilski.tech/tags/simplicity/</link>
-      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/simplicity/</guid>
       <description></description>
     </item>
     
@@ -202,15 +220,6 @@
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/tags/understanding/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spring</title>
-      <link>https://www.bilski.tech/tags/spring/</link>
-      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/spring/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+<meta name="generator" content="Hugo 0.85.0" />
+
+    
+    
+    
+
+<title>Spring-less testing • On Software Engineering</title>
+<meta name="description" content="Spring is a great project, it helps a lot with common, usually mundane, tasks. But it&#39;s not always unicorns and rainbows. Too much Spring in tests can cause a few issues like long execution time and fragility. Here, I&#39;m showing how to avoid such pitfalls.">
+<meta name="keywords" content="testing, testability, simplicity, Spring">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring-less testing"/>
+<meta name="twitter:description" content="Spring is a great project, it helps a lot with common, usually mundane, tasks. But it&#39;s not always unicorns and rainbows. Too much Spring in tests can cause a few issues like long execution time and fragility. Here, I&#39;m showing how to avoid such pitfalls."/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Spring-less testing" />
+<meta property="og:description" content="Spring is a great project, it helps a lot with common, usually mundane, tasks. But it&#39;s not always unicorns and rainbows. Too much Spring in tests can cause a few issues like long execution time and fragility. Here, I&#39;m showing how to avoid such pitfalls." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/random/spring-less-testing/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-20T00:00:00+00:00" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.302e105633e7b74ff627e4a63c9fc0dc7446d15c60a7a4a2e12da987fdd9de0e.css" integrity="sha256-MC4QVjPnt0/2J&#43;SmPJ/A3HRG0Vxgp6Si4S2ph/3Z3g4=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">
+        
+          On Software Engineering
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/random/">
+						<span>Random Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/testing_primer/">
+						<span>Testing Primer</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/videos/">
+						<span>Videos</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Spring-less testing</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 20, 2021<br/>
+    
+    
+    <i class="fas fa-user-edit"></i>
+    
+        Jacek Bilski
+    
+    <br/>
+    
+    
+    
+    
+      
+      
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/testing">testing</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/testability">testability</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/simplicity">simplicity</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/spring">spring</a>
+          
+      
+    
+    
+    <br/>
+    
+        <i class="fas fa-clock"></i> 10 min read
+    
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h3 id="foreword">Foreword</h3>
+<p>This article was originally posted on <a href="https://www.innoq.com/en/blog/springless-testing/" target="_blank">INNOQ blog</a>.</p>
+<p>After it was published it caused a bit of a discussion on <a href="https://twitter.com/jacek_bilski/status/989807566241886208" target="_blank">Twitter</a> (even the creator of Spring Framework, Rod Johnson, replied) but also internally in the company (sorry, not public). The reason is, I believe, I&rsquo;ve failed to clearly state my intention right from the start. My goal when writing this post always was to say: whenever you can write a test for your application <em>without</em> using Spring, you should do it exatly this way. Moreover, if you can write your code in such a way that it doesn&rsquo;t require Spring to run, you should favour such style (i.e. use constructor injection instead of <code>@Autowired</code>, <code>@Resource</code> or <code>@Inject</code> annotations). It makes your life easier when you write tests for your application. Yet, too often I see Spring all over the tests, including unit ones. This post was meant to show the downsides of this approach: mainly slower execution time and unnecessary dependencies creeping into the tests.</p>
+<p>Below is the original post.</p>
+<h3 id="the-problem">The problem</h3>
+<p>Spring is a great project, it helps a lot with common, usually mundane, tasks. One of the best features is, of course, dependency injection. It is very easy to use, too. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>And that’s about it, once you instantiate your application context properly, you’ll get your <code>foo</code> bean with its dependency injected automatically. When you use Spring Boot, then one simple annotation, <code>@SpringBootApplication</code>, is all that’s required.</p>
+<p>I&rsquo;ll show how a Spring application can evolve and how Spring&rsquo;s presence can influence testability. I’ll do it the TDD way, as this will show the evolution of the application quite well. It will also show, how I can start running into problems very early on. I’ll also be using JUnit5, AssertJ and Mockito whenever necessary.</p>
+<p>I’ll write a simple application that does <em>foo</em>. Ever wondered what it does? As far as I know, foo is equal to <code>1</code> if bar is true, else it is equal to <code>2</code>. The details of bar are not important.</p>
+<h3 id="first-steps---the-spring-way">First steps - The Spring way</h3>
+<p>I started with <a href="http://start.spring.io" target="_blank">Spring Initializer</a> and I got myself an application skeleton, so I have something I can actually execute, and thus get a working Spring <code>ApplicationContext</code>. You can check the full source code on <a href="https://github.com/jacekbilski/springless-testing" target="_blank">GitHub</a> and the commits history will more or less reflect what’s happening in here.</p>
+<p>I’ll be spending most of the time in two classes: <code>Foo</code> and <code>FooTest</code>. A first, trivial test will probably look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBar_return1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>The test looks good, but I have to get this <code>foo</code> from somewhere. Since I have no clue where it comes from, I’ll just declare it as a test class field</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Foo foo<span style="color:#f92672">;</span>
+</code></pre></div><p>The IDE stopped complaining about the <code>foo</code> part, now it&rsquo;s complaining about <code>apply</code>. Look at the implementation, aka &ldquo;the simplest thing that could possibly work&rdquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> 1<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>As expected, when I try to execute the test, I get a NullPointerException. The test has no idea of Spring, ApplicationContext is not started, and there’s nobody to inject <code>Foo</code> bean into the test. Let’s fix this by adding some annotations to the test:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@ContextConfiguration</span><span style="color:#f92672">(</span>classes <span style="color:#f92672">=</span> DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ExtendWith</span><span style="color:#f92672">(</span>SpringExtension<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FooTest</span> <span style="color:#f92672">{</span>
+</code></pre></div><p>I also annotate the <code>foo</code> field with <code>@Resource</code> to let Spring know I want it injected:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Resource</span>
+<span style="color:#66d9ef">private</span> Foo foo<span style="color:#f92672">;</span>
+</code></pre></div><p>Almost there, but a &ldquo;No qualifying bean of type &lsquo;com.example.demo.Foo&rsquo; available&rdquo; comes up this time. So I annotate <code>Foo</code> with <code>@Component</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+</code></pre></div><p>Now it’s working. Execution time is also not that bad, 71ms on my machine, so I can move on.</p>
+<p>My tests are running within Spring <code>ApplicationContext</code> and can use all of its power. Now I need to verify that, if <code>bar</code> is false, then <code>foo</code> returns the 2. Test:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifNotBar_return2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Last time, I cheated and ignored <code>bar</code> completely. This time, the test looks exactly the same like the first one, but I&rsquo;m expecting the <code>foo</code> to behave differently, based on <code>bar</code> results. That forces me to include <code>bar</code> and also ensure, that it will be returning what I want. I guess it&rsquo;s time to invite some mocking framework, like Mockito. Now the tests should look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@ContextConfiguration</span><span style="color:#f92672">(</span>classes <span style="color:#f92672">=</span> DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ExtendWith</span><span style="color:#f92672">(</span>SpringExtension<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FooTest</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> Foo foo<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@MockBean</span>
+    <span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBar_return1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+        assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifNotBar_return2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+        assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Also, I need a <code>Bar</code> class now:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bar</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Tests are executing properly, but the second one is obviously failing. Let&rsquo;s fix it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">?</span> 1 <span style="color:#f92672">:</span> 2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now the tests are green and are taking around 1.45 seconds to execute.</p>
+<h3 id="first-steps---the-spring-less-way">First steps - The Spring-less way</h3>
+<p>So far, I developed the tests in a fashion that I very often see. Let&rsquo;s try to achieve the same thing in a different way and then compare both approaches. I&rsquo;ll be refactoring the code trying to get rid of Spring as much as possible.</p>
+<p>Actually, the only thing that Spring currently provides is dependencies. There are two places that use it: <code>bar</code> is injected into <code>foo</code> and <code>foo</code> along with <code>bar</code> are injected into the test class. The first one we can fix by switching to constructor injection. Later on, this will enable us to inject dependencies manually.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+
+    Foo<span style="color:#f92672">(</span>Bar bar<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">bar</span> <span style="color:#f92672">=</span> bar<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">?</span> 1 <span style="color:#f92672">:</span> 2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>As new versions of Spring can figure out automatically that they should use the constructor injection, we don&rsquo;t even need an annotation. The tests work now, so we can move on.</p>
+<p>To eliminate the injection of <code>foo</code> and <code>bar</code> into the test class is actually really simple. We instantiate them manually:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Bar bar <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Bar<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+<span style="color:#66d9ef">private</span> Foo foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span>bar<span style="color:#f92672">);</span>
+</code></pre></div><p>Tests are still green. They stay that way even if I remove Spring annotations from the test class. So, I don&rsquo;t need Spring for testing any more. Now the whole test class looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FooTest</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Bar bar <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Bar<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> Foo foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span>bar<span style="color:#f92672">);</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBar_return1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+        assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifNotBar_return2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+        assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>If I execute it, it&rsquo;s all green and done in around 0.66s.</p>
+<h3 id="comparing-two-approaches">Comparing two approaches</h3>
+<p>Getting rid of Spring in my tests saved me around 0.8 seconds per run (all times taken from the Gradle output and averaged over a few runs, variation was minimal). It might not seem like much, but please think about what it might mean for any &ldquo;real&rdquo; project.</p>
+<p>Currently, my <code>ApplicationContext</code> is ridiculously small, only two classes. In real projects we might have hundreds or thousands of them. Then, starting the context might take some time, and if we run our tests often, we&rsquo;d already be wasting minutes every day, just waiting. We could shorten the time by avoiding the initialization of things we don&rsquo;t need (like databases). But then the tests get more complicated, because we need to control which parts of our application are &ldquo;real&rdquo; and which need to be mocked.</p>
+<p>Another issue that is not showing up yet, is cascading dependencies (a common problem with all examples: they&rsquo;re usually too simple to show a full problem or a solution). Following this path would make our tests depend on things we don&rsquo;t really need or care about. If some dependencies of our dependencies suddenly change their behaviour, we might find ourselves wondering why our tests turned red, although nothing has changed on our side. Now, our code indirectly depends on much more than we&rsquo;d like.</p>
+<p>Let&rsquo;s try to see if I can push this little example a little further, so it starts showing this second problem.</p>
+<h3 id="adding-a-second-dependency---the-spring-less-way">Adding a second dependency - The Spring-less way</h3>
+<p>Now my business logic gets slightly more complicated. Before I check if <code>bar</code> is true, I need to check if <code>baz</code> is above 10. If it is, I apply the old logic, if not, I return 0 immediately.</p>
+<p>This time I&rsquo;ll start with a &ldquo;Spring-less&rdquo; way. Because the logic has changed, I will need to change at least some of my existing tests. Let&rsquo;s start with a first one:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBazAbove10AndBar_return1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    when<span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>12<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>I need to provide <code>baz</code>, so in <code>FooTest</code> this happens:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Baz baz <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Baz<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</code></pre></div><p>I&rsquo;ll fake it again and don&rsquo;t even inject <code>baz</code> into <code>foo</code>, and the test will still pass.</p>
+<p>Time for fixing the second test:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBazAbove10AndNotBar_return2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    when<span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>12<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>As before, the only changes I made are the name of the test and mocking <code>baz</code>&rsquo;s behaviour. Still no changes to production code needed, the tests pass. To finally force myself to use <code>baz</code> in <code>foo</code>, I need to write a new test:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBazNotAbove10_return0</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    when<span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>This one fails. I cannot run away from adding a new dependency in <code>foo</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">private</span> Baz baz<span style="color:#f92672">;</span>
+
+Foo<span style="color:#f92672">(</span>Bar bar<span style="color:#f92672">,</span> Baz baz<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">baz</span> <span style="color:#f92672">=</span> baz<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">bar</span> <span style="color:#f92672">=</span> bar<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now, the fix is quite simple:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 10<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>bar<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()</span> <span style="color:#f92672">?</span> 1 <span style="color:#f92672">:</span> 2<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">else</span>
+        <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>All three tests are now green and are executing in around 0,7 seconds.</p>
+<h3 id="adding-a-second-dependency---the-spring-way">Adding a second dependency - The Spring way</h3>
+<p>There are honestly no changes to the spring-less way, apart from a few annotations here and there. Both implementation and tests look exactly the same, apart from one small thing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FooTest</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> Foo foo<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@MockBean</span>
+    <span style="color:#66d9ef">private</span> Bar bar<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@MockBean</span>
+    <span style="color:#66d9ef">private</span> Baz baz<span style="color:#f92672">;</span>
+</code></pre></div><p>But that is also no surprise. Tests are still executed in around 1.45 seconds.</p>
+<h3 id="simplifying">Simplifying</h3>
+<p>Now, I&rsquo;ll do a small trick on the spring-less code. So far <code>foo</code>, <code>bar</code> and <code>baz</code> were defined on a class level, outside of the test method. I&rsquo;ll pull all three into my last test method and see if some interesting possibilities will present themselves.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBazNotAbove10_return0</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    Bar bar <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Bar<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    Baz baz <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Baz<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    Foo foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span>bar<span style="color:#f92672">,</span> baz<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>It seems, I don&rsquo;t need to care about what <code>bar</code> is doing. Can I remove it completely from the picture? Yes, I can!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ifBazNotAbove10_return0</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    Baz baz <span style="color:#f92672">=</span> mock<span style="color:#f92672">(</span>Baz<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+    Foo foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Foo<span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> baz<span style="color:#f92672">);</span>
+    when<span style="color:#f92672">(</span>baz<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">thenReturn</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> foo<span style="color:#f92672">.</span><span style="color:#a6e22e">apply</span><span style="color:#f92672">();</span>
+    assertThat<span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Passing in null is OK in here, as I&rsquo;ll never reach a piece of code, that actually tries to do something with it.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Would it be possible to do such a trick on tests with Spring? Not really. And that is exactly where the problem starts to surface. Dependencies start to creep into our tests. All of a sudden we find ourselves in a situation where some dependency, far away from a piece of code we&rsquo;re testing, changes its behaviour and affects our tests. In any project with a reasonably large <code>ApplicationContext</code>, tests written this way now depend on half of the whole codebase. It also means, that in order to run the tests, Spring needs to initialize the whole context, no matter how big it is.</p>
+<p>By removing Spring from the picture, we make those problems go away. There&rsquo;s no more magic around where my dependencies are coming from or how many are there. We have full control over it and can provide only what&rsquo;s necessary. This also has the additional benefit, that we&rsquo;re very explicit as to what influences our test.</p>
+<p>Having said all that, Spring is not bad and also necessary! Sooner or later, you will need to write a test that starts the whole <code>ApplicationContext</code>, for example, just to see if it can start. Or to see if you&rsquo;ve connected a few beans correctly and they can interact with each other. Just not every single test needs to be a Spring one. Unit tests should definitely be Spring-free. Yet I see, time and again, that most tests are using Spring. Make yours and your fellow colleagues' life easier and only use Spring when necessary.</p>
+<p>Happy coding!</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

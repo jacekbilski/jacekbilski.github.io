@@ -6,7 +6,17 @@
     <description>Recent content in Random posts on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/posts/random/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/posts/random/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring-less testing</title>
+      <link>https://www.bilski.tech/posts/random/spring-less-testing/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/random/spring-less-testing/</guid>
+      <description>Foreword This article was originally posted on INNOQ blog.
+After it was published it caused a bit of a discussion on Twitter (even the creator of Spring Framework, Rod Johnson, replied) but also internally in the company (sorry, not public). The reason is, I believe, I&amp;rsquo;ve failed to clearly state my intention right from the start. My goal when writing this post always was to say: whenever you can write a test for your application without using Spring, you should do it exatly this way.</description>
+    </item>
+    
     <item>
       <title>Familiarity - friend or foe (part 2)</title>
       <link>https://www.bilski.tech/posts/random/familiarity-friend-or-foe-part-2/</link>

@@ -1,470 +1,284 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.bilski.tech/videos/simple_made_easy/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/improving_your_software/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/java_case_study/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/engineering_you/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/agile_is_dead/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/software_faster/</loc>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://www.bilski.tech/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/random/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/simplicity/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/spring/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/random/spring-less-testing/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/testability/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/testing/</loc>
+    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.bilski.tech/tags/expressiveness/</loc>
     <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/familiarity/</loc>
     <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/familiarity-friend-or-foe-part-2/</loc>
     <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/</loc>
-    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/posts/</loc>
-    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/posts/random/</loc>
-    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/</loc>
-    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/automated-testing/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/series/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/test-granularity/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/test-pyramid/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/testing/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/series/testing_primer/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/tests/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/tests-granularity/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/anatomy-of-a-good-test/</loc>
     <lastmod>2020-09-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/why-you-should-write-automated-tests/</loc>
     <lastmod>2020-08-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-9-custom-functions/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/learning/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/surprise/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/tdd/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/series/webcalc/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/</loc>
     <lastmod>2020-08-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/familiarity-friend-or-foe/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/simplicity/</loc>
-    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/context/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-8-billing-module-extraction-and-differentiating-users/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/mistakes/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/spring-security/</loc>
     <lastmod>2019-05-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-7-billing/</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/junit-5/</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-6-introducing-users/</loc>
     <lastmod>2019-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/about/</loc>
     <lastmod>2019-01-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/software-craftsman/</loc>
     <lastmod>2019-01-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/software-engineer/</loc>
     <lastmod>2019-01-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/gradle/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-5-more-complex-calculations/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/obvious-implementation/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-4-fixes-only/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/programming/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/test-cases/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/testing-is-storytelling/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/understanding/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-3-formatting-and-cleanup-in-calculator-module/</loc>
     <lastmod>2018-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-2-actual-calculations-and-modules-separation/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.bilski.tech/tags/spring/</loc>
-    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/spring-boot/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/integration-tests/</loc>
     <lastmod>2018-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/iteration-1-setting-up-with-one-test/</loc>
     <lastmod>2018-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/clean-code/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/craftsmanship/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/software-development/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/code-readability/</loc>
     <lastmod>2018-06-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/understanding-decomposed/</loc>
     <lastmod>2018-06-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/complexity/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/supporting-understanding-with-simplicity/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/code-quality/</loc>
     <lastmod>2016-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/fast-development/</loc>
     <lastmod>2016-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/what-do-i-believe-in/</loc>
     <lastmod>2016-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/code-quality-as-a-winning-factor/</loc>
     <lastmod>2016-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/responsibility/</loc>
     <lastmod>2016-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/bdd/</loc>
     <lastmod>2016-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/cucumber/</loc>
     <lastmod>2016-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/features/</loc>
     <lastmod>2016-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/test-scenarios/</loc>
     <lastmod>2016-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/writing-good-test-scenarios/</loc>
     <lastmod>2016-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/clean-architecture/</loc>
     <lastmod>2016-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/microservices/</loc>
     <lastmod>2016-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/microservices-a-solution-or-a-problem/</loc>
     <lastmod>2016-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/monolith/</loc>
     <lastmod>2016-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/jsp/</loc>
     <lastmod>2009-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/more-on-myfaces-and-contenttype/</loc>
     <lastmod>2009-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/myfaces/</loc>
     <lastmod>2009-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/including-javascript-in-html-content/</loc>
     <lastmod>2009-07-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/javascript/</loc>
     <lastmod>2009-07-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/xml/</loc>
     <lastmod>2009-07-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/posts/random/autowiring-ejb-3.0-in-tomcat-from-remote-jboss/</loc>
     <lastmod>2009-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/dependency-injection/</loc>
     <lastmod>2009-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/ejb3/</loc>
     <lastmod>2009-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/agile/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/basics/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/engineering/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/patterns-of-effective-delivery/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/unit/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/tags/value/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.bilski.tech/videos/</loc>
   </url>
-  
 </urlset>
