@@ -6,7 +6,43 @@
     <description>Recent content in Tags on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>automated testing</title>
+      <link>https://www.bilski.tech/tags/automated-testing/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/automated-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software quality</title>
+      <link>https://www.bilski.tech/tags/software-quality/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/software-quality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://www.bilski.tech/tags/testing/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tests</title>
+      <link>https://www.bilski.tech/tags/tests/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/tags/tests/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>simplicity</title>
       <link>https://www.bilski.tech/tags/simplicity/</link>
@@ -35,11 +71,11 @@
     </item>
     
     <item>
-      <title>testing</title>
-      <link>https://www.bilski.tech/tags/testing/</link>
-      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      <title>test strategy</title>
+      <link>https://www.bilski.tech/tags/test-strategy/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.bilski.tech/tags/testing/</guid>
+      <guid>https://www.bilski.tech/tags/test-strategy/</guid>
       <description></description>
     </item>
     
@@ -62,15 +98,6 @@
     </item>
     
     <item>
-      <title>automated testing</title>
-      <link>https://www.bilski.tech/tags/automated-testing/</link>
-      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/automated-testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>test granularity</title>
       <link>https://www.bilski.tech/tags/test-granularity/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
@@ -85,15 +112,6 @@
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/tags/test-pyramid/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tests</title>
-      <link>https://www.bilski.tech/tags/tests/</link>
-      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.bilski.tech/tags/tests/</guid>
       <description></description>
     </item>
     

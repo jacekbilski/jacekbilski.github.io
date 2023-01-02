@@ -6,7 +6,7 @@
     <description>Recent content on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple made easy by Rich Hickey</title>
       <link>https://www.bilski.tech/videos/simple_made_easy/</link>
@@ -24,8 +24,7 @@ Unfortunately I cannot embedd it here, but it&amp;rsquo;s available here: https:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/videos/tdd_where_did_it_all_go_wrong/</guid>
-      <description>Probably number two on my list. This video helped me greatly understand the concept of a &amp;ldquo;unit&amp;rdquo;. That in turn, combined with bounded context idea from DDD world and hexagonal architecture with its ports and adapters, changed my perspective on tests in general. I finally understood what is the scope of a unit test and how I was doing it wrong previously.
-  </description>
+      <description>Probably number two on my list. This video helped me greatly understand the concept of a &amp;ldquo;unit&amp;rdquo;. That in turn, combined with bounded context idea from DDD world and hexagonal architecture with its ports and adapters, changed my perspective on tests in general. I finally understood what is the scope of a unit test and how I was doing it wrong previously.</description>
     </item>
     
     <item>
@@ -53,8 +52,7 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/videos/engineering_you/</guid>
-      <description>This video is about simple things, basics sometimes, yet we tend to forget about them way too often. Worth watching every now and then to remind ourselves what it means to be a software engineer.
-  </description>
+      <description>This video is about simple things, basics sometimes, yet we tend to forget about them way too often. Worth watching every now and then to remind ourselves what it means to be a software engineer.</description>
     </item>
     
     <item>
@@ -63,8 +61,7 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/videos/agile_is_dead/</guid>
-      <description>This video is about how original idea of &amp;ldquo;Agile&amp;rdquo; is different from what we&amp;rsquo;re usually doing on &amp;ldquo;agile&amp;rdquo; projects. And Dave, as one of the 17 who created the Manifesto for Agile Software Development, knows what he&amp;rsquo;s talking about.
-  </description>
+      <description>This video is about how original idea of &amp;ldquo;Agile&amp;rdquo; is different from what we&amp;rsquo;re usually doing on &amp;ldquo;agile&amp;rdquo; projects. And Dave, as one of the 17 who created the Manifesto for Agile Software Development, knows what he&amp;rsquo;s talking about.</description>
     </item>
     
     <item>
@@ -73,8 +70,17 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/videos/software_faster/</guid>
-      <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub, but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.
-  </description>
+      <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub, but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.</description>
+    </item>
+    
+    <item>
+      <title>Tests organization and naming</title>
+      <link>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry and Theo Pack.
+As our system grows, so will our test suites. For our production code, we have learned techniques to keep it maintainable. For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names. We want to achieve the same for our tests. One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test.</description>
     </item>
     
     <item>
@@ -85,6 +91,16 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       <guid>https://www.bilski.tech/posts/random/spring-less-testing/</guid>
       <description>Foreword This article was originally posted on INNOQ blog.
 After it was published it caused a bit of a discussion on Twitter (even the creator of Spring Framework, Rod Johnson, replied) but also internally in the company (sorry, not public). The reason is, I believe, I&amp;rsquo;ve failed to clearly state my intention right from the start. My goal when writing this post always was to say: whenever you can write a test for your application without using Spring, you should do it exatly this way.</description>
+    </item>
+    
+    <item>
+      <title>Test Strategy</title>
+      <link>https://www.bilski.tech/posts/testing_primer/test-strategy/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/test-strategy/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry and Theo Pack.
+In our previous posts, we focused on why and how we write tests. In most of our projects, there will be many of those tests. In the last post about tests granularity, we additionally stated that there usually will be different kinds of tests, on different levels of granularity. That leads to our next topic: which kinds of tests do we need and what is the ideal mix of them?</description>
     </item>
     
     <item>
@@ -105,8 +121,8 @@ Some time ago I joined a new project. I was supposed to start working on a new a
       <guid>https://www.bilski.tech/posts/testing_primer/tests-granularity/</guid>
       <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry.
 In two previous posts (see below) we discussed the benefits of automated tests and the properties of a good test. So far we were trying to avoid differentiating the tests in any way. This time we want to address one way how tests can be classified: tests granularity.
-Previous posts:
- Why You Should Write Automated Tests Anatomy of a Good Test  What is granularity?</description>
+All posts in this series:
+Why You Should Write Automated Tests Anatomy of a Good Test This post: Tests Granularity Test Strategy Tests Organization and Naming What is granularity?</description>
     </item>
     
     <item>
@@ -286,7 +302,7 @@ What&amp;rsquo;s all the fuss about? Why do we even talk about simplicity?</desc
       <guid>https://www.bilski.tech/posts/random/what-do-i-believe-in/</guid>
       <description>Below are my guiding principles, that are the basis of what, how and why am I doing with regards to software development.
 Long term development speed First and foremost I understand my main responsibility as delivering value as fast as possible in the long term. By delivering value I mean adding, changing or removing features, that &amp;ldquo;business&amp;rdquo; requested, but also things like:
- improving processes around me, both technical, like application deployment, and business, like simplifying stock management, proposing and introducing new techniques and technologies whenever I feel that they will improve things, sharing knowledge within and outside of the team (blog, mentoring, pair/crowd programming, etc.</description>
+improving processes around me, both technical, like application deployment, and business, like simplifying stock management, proposing and introducing new techniques and technologies whenever I feel that they will improve things, sharing knowledge within and outside of the team (blog, mentoring, pair/crowd programming, etc.</description>
     </item>
     
     <item>
@@ -334,7 +350,7 @@ MyFaces looks at Accept HTTP header, which, in my case, states text/html,applica
       <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/random/including-javascript-in-html-content/</guid>
-      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&#39; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&amp;rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
 Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &amp;ldquo;oamSubmitForm is not defined&amp;rdquo; after clicking a commandLink.</description>
     </item>
     

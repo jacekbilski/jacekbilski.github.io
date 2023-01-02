@@ -16,11 +16,38 @@
   </url><url>
     <loc>https://www.bilski.tech/videos/software_faster/</loc>
   </url><url>
+    <loc>https://www.bilski.tech/tags/automated-testing/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.bilski.tech/</loc>
-    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/posts/</loc>
-    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/series/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/software-quality/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/testing/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/testing_primer/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/series/testing_primer/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/tests/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</loc>
+    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/posts/random/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
@@ -34,14 +61,14 @@
     <loc>https://www.bilski.tech/posts/random/spring-less-testing/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.bilski.tech/tags/</loc>
-    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.bilski.tech/tags/testability/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.bilski.tech/tags/testing/</loc>
-    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
+    <loc>https://www.bilski.tech/tags/test-strategy/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/testing_primer/test-strategy/</loc>
+    <lastmod>2021-07-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/tags/expressiveness/</loc>
     <lastmod>2021-04-26T00:00:00+00:00</lastmod>
@@ -52,25 +79,10 @@
     <loc>https://www.bilski.tech/posts/random/familiarity-friend-or-foe-part-2/</loc>
     <lastmod>2021-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.bilski.tech/tags/automated-testing/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/series/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.bilski.tech/tags/test-granularity/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/tags/test-pyramid/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/posts/testing_primer/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/series/testing_primer/</loc>
-    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/tags/tests/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/tests-granularity/</loc>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="author" content="Jacek Bilski">
+
+    
+    
+    
+
+<title>Tests organization and naming • On Software Engineering</title>
+<meta name="description" content="As our system grows, so will our test suites. For our production code, we have learned techniques to keep it maintainable. For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names. We want to achieve the same for our tests. One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test. We also want to understand as quickly as possible what the test is for and what might be the reason for a failing test.">
+<meta name="keywords" content="tests, testing, automated testing, software quality">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tests organization and naming"/>
+<meta name="twitter:description" content="As our system grows, so will our test suites. For our production code, we have learned techniques to keep it maintainable. For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names. We want to achieve the same for our tests. One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test. We also want to understand as quickly as possible what the test is for and what might be the reason for a failing test."/>
+<meta name="twitter:site" content="@jacek_bilski"/>
+
+<meta property="og:title" content="Tests organization and naming" />
+<meta property="og:description" content="As our system grows, so will our test suites. For our production code, we have learned techniques to keep it maintainable. For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names. We want to achieve the same for our tests. One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test. We also want to understand as quickly as possible what the test is for and what might be the reason for a failing test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-22T00:00:00+00:00" />
+<meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/test-strategy/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/tests-granularity/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/anatomy-of-a-good-test/" /><meta property="og:see_also" content="https://www.bilski.tech/posts/testing_primer/why-you-should-write-automated-tests/" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.302e105633e7b74ff627e4a63c9fc0dc7446d15c60a7a4a2e12da987fdd9de0e.css" integrity="sha256-MC4QVjPnt0/2J&#43;SmPJ/A3HRG0Vxgp6Si4S2ph/3Z3g4=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://www.bilski.tech/">
+        
+          On Software Engineering
+        
+        </a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://www.bilski.tech/img/jacek.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Jacek Bilski&#39;s thoughts about software engineering and how to improve it 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">On Software Engineering</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/random/">
+						<span>Random Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/webcalc/">
+						<span>WebCalc</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/testing_primer/">
+						<span>Testing Primer</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/videos/">
+						<span>Videos</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About Me</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/jacek_bilski" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/jacekbilski" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/jacek-bilski" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://www.xing.com/profile/Jacek_Bilski3" rel="me"><i class="fab fa-xing fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Tests organization and naming</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 22, 2021<br/>
+    
+    
+    <i class="fas fa-user-edit"></i>
+    
+        Torsten Mandry, Theo Pack, Jacek Bilski
+    
+    <br/>
+    
+    
+    
+    
+      
+      
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/tests">tests</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/testing">testing</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/automated-testing">automated testing</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/software-quality">software quality</a>
+          
+      
+    
+    
+    <br/>
+    
+        <i class="fas fa-clock"></i> 19 min read
+    
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Note, this post was originally published on <a href="https://www.innoq.com/en/blog/tests-organization-and-naming/" target="_blank">INNOQ blog</a> together with <a href="https://torstenmandry.github.io/" target="_blank">Torsten Mandry</a> and <a href="https://furikuri.net/" target="_blank">Theo Pack</a>.</p>
+<p>As our system grows, so will our test suites.
+For our production code, we have learned techniques to keep it maintainable.
+For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names.
+We want to achieve the same for our tests.
+One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test.
+We also want to understand as quickly as possible what the test is for and what might be the reason for a failing test.</p>
+<p>All posts in this series:</p>
+<ul>
+<li><a href="/posts/testing_primer/why-you-should-write-automated-tests/">Why You Should Write Automated Tests</a></li>
+<li><a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a Good Test</a></li>
+<li><a href="/posts/testing_primer/tests-granularity/">Tests Granularity</a></li>
+<li><a href="/posts/testing_primer/test-strategy/">Test Strategy</a></li>
+<li>This post: Tests Organization and Naming</li>
+</ul>
+<h3 id="consistency">Consistency</h3>
+<p>Before we come to the actual topics of this post, we would like to stress one important attribute that is cross-cutting through almost everything: consistency.</p>
+<p>A high level of consistency in a project ensures increased confidence and allows us to efficiently develop and maintain our system.
+This applies not only to the productive code but also to our tests.
+With a consistent project structure, developers immediately know where to find existing parts or to add new parts.
+In terms of tests that especially means that if a test file or method does not exist at the expected place, the corresponding feature or aspect is probably not yet covered by a test.</p>
+<p>A lack of consistency can lead to a situation where test suites become more and more confusing and unmaintainable over time.
+The team no longer has an overview of which tests exist and which do not.
+They would have to search for usages of the suspicious method to find existing tests that call it.
+If those tests can not be understood immediately, a developer will probably ignore them and add a new one.
+If there’s no clear idea which aspect of the system should be tested in which way and at which place, developers will decide individually, from case to case.
+Over time, this will lead to lots of tests that redundantly verify the same aspects/behaviour, most probably in different ways.
+This will make the situation even worse.
+In the worst case, the team ends up with a huge number of tests they have to maintain, but with only very little confidence in those tests because the functionality they cover is unclear.
+Failing tests might be ignored or disabled because no one knows what they test and why they fail.
+The tests no longer provide any value but only maintenance costs.</p>
+<p>The same principles we naturally respect for our production code are also relevant for our test code: We need to have a common understanding of how we want to organize, structure, implement, and consistently name our tests, to keep them understandable and maintainable over time.</p>
+<p>One thing we would like to emphasize here is: consistency beats everything else.
+Regardless of the quality of individual decisions, following them consistently will always help us to keep the overview.
+It will be much easier to find our ways with a suboptimal organization that is consistent than with one where each test has a, maybe really good, but individual place for itself.
+The same is true for other aspects like naming, test structure, etc.
+Consistency simply reduces the cognitive load on the people working with the tests.</p>
+<h3 id="organization">Organization</h3>
+<p>In larger projects with many tests of different types, finding a specific test can easily become a challenge of its own.
+We all remember situations where we noticed some strange behaviour of our system and asked ourselves:
+Shouldn’t there be a test to verify this?
+Where is it?
+Along with the decision, which test types we want to have, we have to decide how to organize them, so that it&rsquo;s clear where each test is located.</p>
+<h4 id="location">Location</h4>
+<p>There are different approaches to where we want to place our tests.
+We have to consider, do we want the tests close to the actual production code (for example in Go tests are often stored in the same directory) or do we need to keep them completely separate from the production code, like in a separate project.
+How can we distribute and place the tests within a project or directory?
+We can try to group tests by technical characteristics (for example by the type of tests, so that isolated, performance and E2E tests are managed separately).
+But we can also group them based on the domain and functionality.
+Deciding which approach is right for the project depends on the test types and what we need to test, as well as the technical context and the chosen tools, where and how certain types of tests are usually stored.</p>
+<p>It&rsquo;s probably a good idea to decide that the closer the tests are to the code, so must be their location.
+In other words, the tests need to be cohesive with other tests, but also with the production code.
+Isolated tests, focused on specific classes or modules, are usually dependent on the structure of the production code.
+Such tests, also called white-box tests, should be kept in the same module or package as the code they’re testing.
+For more grey- or black-box tests, far less reliant or completely ignorant of the structure of the production code, locating them right beside the code might make less sense.
+Those tests also usually do not focus on the functionality/responsibility of certain classes or modules.
+For example, performance tests should not need to have any clue about the internals of the system and its modules, they merely need to know how to interact with it.
+A different example would be architecture tests, written for example in <a href="https://www.archunit.org/" target="_blank">ArchUnit</a>.
+Although they’re very much interested in the structure of the code, they&rsquo;re also not “local” to certain components, but cross-cutting through the system as a whole.
+We could put such tests even into a separate module within a system’s code repository.</p>
+<p>Sometimes the languages or test frameworks provide a standard layout, where to place the tests.
+It is usually a good idea to follow the standard, as the developers will find a familiar structure across projects.
+But such layouts might collide with our preferred structure.
+So we should ask ourselves whether the given layout is suitable for our project or if we need a custom one.
+Here we have to decide whether the benefits of the individual structure outweigh the advantages of a standard layout (for example, certain tools would have to be reconfigured if we use a custom layout).
+Again, consistency is extremely important.
+If we decide to go for a non-standard layout, and therefore make our code inconsistent with the majority of other projects, the benefits should outweigh this inconsistency by a big margin.</p>
+<p>Regardless of how and where tests are stored and maintained, defining and documenting this is an important part of the <a href="/posts/testing_primer/test-strategy/">testing strategy</a>.</p>
+<h4 id="test-class-structure">Test class structure</h4>
+<p>In the case of tests, just like with the production code, a uniform and consistent structure helps us to navigate quickly within the file, but it can also provide us with valuable information at first glance.
+For example, if we always define all external dependencies to other classes as a block, we can see directly in the test class which other classes we need to prepare for our test.
+The same goes for setup and teardown functions.
+They’re usually kept above tests themselves and give us an idea of what happens before and after each test is executed.
+On the other hand, all helper functions we mentioned in <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a good test</a> post should go after the tests (or in separate files to be re-used by other tests), they only help the tests to clearly express what they’re about.</p>
+<p>Even within a single test file, it might be necessary to group tests if they relate to different aspects of tested functionality.
+One option - maybe the most intuitive one - is to group the tests by the different methods or functions of the unit under test.
+So, for example, have a group of tests for the <code>add</code> method and another group for the <code>remove</code> method of our ShoppingCart.
+Other options would be to group them by their initial state (e.g. one group for testing an empty shopping cart, one for testing a shopping cart with items) or by the expected outcome (e.g. initializing a new shopping cart and removing the last item from it both lead to an empty shopping cart).
+Depending on the characteristics of the unit under test one option makes more sense, others less.
+Some testing frameworks support grouping and nesting the tests.
+If ours doesn&rsquo;t, we need to find a good way of doing that ourselves.
+One option is, to have multiple test files/classes for one unit under test, e.g. one test file per method/aspect to be tested.</p>
+<p>An example of a file structure for unit tests can look like this.
+In this example, the developer knows directly where the objects in the class are initialized.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShoppingCartTest</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Class under test
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> ShoppingCart shoppingCart<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Dependencies for unit under test
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> PriceCalculator priceCalculator<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Methods for initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@BeforeEach</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Methods for clean up
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@AfterEach</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cleanUp</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Tests Methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Nested</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddingItems</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTwoItems</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Nested</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemovingItems</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">removeSingleItem</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Assert methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">assertItemInShoppingCart</span><span style="color:#f92672">(...)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">...</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Other helper methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> Article <span style="color:#a6e22e">createArticle</span><span style="color:#f92672">(...)</span> <span style="color:#f92672">{...}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="naming">Naming</h3>
+<blockquote>
+<p>“There are only two hard things in Computer Science: cache invalidation and naming things.”</p>
+<p>&ndash; Phil Karlton</p>
+</blockquote>
+<p>Naming plays an extremely important role in software development.
+Good naming helps us to understand what is happening in the code and what is its responsibility.
+It also serves as a support to understand the domain (ideally the names reflect the language of the domain).</p>
+<h4 id="functional-tests">Functional tests</h4>
+<p>When we talk about the use of tests, we have one question in mind.
+What functionality is being tested here?
+Answering this question helps us to identify which test needs to be adapted when we change existing functionality.
+But it also helps us to recognise at first glance which functionality no longer works correctly if one of the tests fails and we see the test name in red letters.</p>
+<p>We were mentioning putting tests in good locations.
+But how do we differentiate locations like folders or packages?
+By their names!
+And this is our starting point.
+It is, of course, not limited to tests, but names of all the higher-level structures like modules, packages, etc. influence our understanding.
+The name of a module or package already defines the context of our tests.</p>
+<p>At this level, consistency with the production code is very important.
+Let&rsquo;s again take our example from the post <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a Good Test</a>.
+We want to test our cart functionality.
+The <code>ShoppingCart</code> itself is in the package <code>com.innoq.shop.cart</code>.
+The most natural place for our test is then the same package.
+Any other would be very confusing to anyone unfamiliar with the code.</p>
+<p>At the next level, the class or file name should tell us which aspect of the package, module or overall system is being tested.
+Depending on the test, the file name does not always have to include the component names, like <code>ShoppingCartTest</code>.
+Especially for more complex tests that check the interaction of several components, naming the test class is no longer trivial.
+In the best case, terms already exist for certain processes in the domain (e.g. for features or use cases), which can then be adopted.</p>
+<p>Naming specific test methods is even more difficult.
+Whereas for packages or classes we could get away with simply naming them after the aspect we&rsquo;re testing, the methods need to tell us exactly what we&rsquo;re testing.
+The goal is to be able to tell exactly what is wrong in our system once we get a report from our tests with some failures.
+Usually, our tools will tell us which tests failed using their method names or some short descriptions we provide.
+Those method names or descriptions should be expressive enough to say what is being tested, they also need to be distinct enough for us not to confuse two tests.
+At the same time, they need to be short enough to still be readable.</p>
+<p>Let&rsquo;s look again at our example from the post <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a Good Test</a>.
+In the post, we want to test the behaviour of our ShoppingCart when we add two items.
+The simplest way to name this test would be to just name it after the method that is tested.
+In our <code>ShoppingCartTest</code> example we would name the test method <code>add</code>.
+This way, the test name indicates clearly which method is tested.
+But nothing more.
+We would have to look into the test code to identify how the method is tested, what aspects are verified, what are the starting conditions, etc.
+Moreover, for non-trivial methods, having one test usually is not sufficient to test every desired behaviour.
+So we would have to find other test names, anyway.</p>
+<p>That&rsquo;s why in our <code>ShoppingCartTest</code> we have named the test <code>addTwoArticles</code>.
+If the test <code>addTwoArticles</code> fails, but the test <code>addOneArticle</code> was successful, we probably have a problem when we add more than one article to our shopping cart.
+If we have chosen good names for our tests and can be confident that the tests are testing exactly what we say they are testing, then we would ideally not have to look at the test code at all and could focus directly on the actual <code>ShoppingCart</code> implementation.</p>
+<p>The name <code>addTwoArticles</code> seems quite expressive.
+If it fails we would know where to look for a bug, especially after seeing <code>addOneArticle</code> succeeded.
+Still, the name could become not expressive enough once we introduce some &ldquo;special&rdquo; articles, requiring special handling by the cart.
+We would then maybe need to rename <code>addTwoArticles</code> to <code>addTwoRegularArticles</code> and add a new test <code>addOneRegularAndOneSpecialArticle</code>.
+Unfortunately, good names are not given forever, they will need to evolve along with the system.</p>
+<h4 id="naming-styles">Naming styles</h4>
+<p>For different types of tests, the names can also be structured differently.
+Most often, we see <em>scenario</em>-based naming patterns that briefly describe the scenario that is tested.
+For example <code>addNull</code> or <code>addMultiple</code> or, a little more precisely, <code>addTwoArticles</code>.
+Following this kind of naming scheme, we immediately understand what scenario is tested.
+Although, we still have to look into the test code to see how it is tested and which aspects are verified.</p>
+<p>The most precise (but also most unusual) naming pattern seems to be to take a full <em>specification</em> sentence as a test name.
+We briefly mentioned this pattern in the <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a Good Test</a> post</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">calculates_subtotal_and_total_amount_if_two_items_with_different_prices_and_quantities_are_added</span><span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Formulating it this way, our test method name tells us exactly what it is about.
+In this concrete example, the test name implicitly refers to the name of the class under test (<code>ShoppingCart</code>) which is indicated by the name of the test class (<code>ShoppingCartTest</code>) the test is located in.
+Together, all of its test methods describe how this class behaves (ShoppingCart calculates subtotal and total amount &hellip;).
+Sometimes, this reference is included more explicitly like in <code>it_calculates_…</code> or even <code>ShoppingCart_calculates_…</code>.
+In the JavaScript world test tools like <a href="https://jasmine.github.io/" target="_blank">Jasmine</a> or <a href="https://www.cypress.io/" target="_blank">Cypress</a> are specially designed to use this kind of naming pattern.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#39;ShoppingCart&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;calculates subtotal and total amount \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    if two items with different prices and quantities are added&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>There’s also a more uncertain form of test names we regularly see, which uses the prefix <code>should</code> (e.g. <code>should calculate …</code>).
+For example, in Cypress assertions start with <code>.should(...)</code>.
+Besides the fact that it sounds like we&rsquo;re not sure if those assertions will succeed, we don&rsquo;t see any value in using this form.
+As the prefix is used everywhere, it becomes just noise that nobody cares about.</p>
+<p>With tools like <a href="https://cucumber.io/" target="_blank">Cucumber</a>, we&rsquo;re completely free to formulate our test scenarios as we see fit.
+Such tools completely separate the text of a scenario from the implementation executing test code.
+Such tools may help us express better our expectations at the cost of more effort required to write such working tests.
+Also, those tools enable us to write scenarios in a BDD way using given&hellip;when&hellip;then.
+We covered that in more detail in our <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a good test</a> post.</p>
+<p>Another aspect that should be considered when naming tests is the distinction between a technical and a functional formulation.
+We already mentioned in our previous posts, that we always prefer to focus on the functionality rather than on technical details.
+Let&rsquo;s illustrate what we mean by taking a very simple example: calling <code>isValid()</code> on an address.
+For better illustration, we will choose the expressive specification form in our example, although we see this rather rarely in projects.
+The same distinction should be observable in other naming styles as well, though.</p>
+<p>We start with a technical formulation, because that&rsquo;s the form we often see in projects:</p>
+<pre tabindex="0"><code>isValid_returns_false_when_called_on_an_address_with_missing_street()
+</code></pre><p>The reason why we often see this kind of formulation probably is that it directly reflects the implementation of the test, so the separate steps that are executed to verify this behaviour:</p>
+<ul>
+<li>create an address instance that contains no street</li>
+<li>call isValid() on that address</li>
+<li>assert that result is false</li>
+</ul>
+<p>In this test name, we refer to a lot of technical details</p>
+<ul>
+<li>the method name <code>isValid</code></li>
+<li>the fact that the method &ldquo;returns&rdquo; something</li>
+<li>the fact that the method &ldquo;is called&rdquo;</li>
+<li>the primitive value <code>false</code> (and implicit its type <code>boolean</code>) that is returned</li>
+<li>and maybe some more</li>
+</ul>
+<p>We can hide all this and focus on the functional aspect that is covered by this method by formulating it in another way:</p>
+<pre tabindex="0"><code>an_address_with_missing_street_is_invalid()
+</code></pre><p>We still test the same behaviour and the test name still describes it very clearly.
+But there are no technical details in the name.
+It&rsquo;s purely the functional aspect that is described.
+We might say that&rsquo;s also a question of preference which form to choose.
+But, in this case, it&rsquo;s a little more.
+All those technical aspects might change over time.
+Imagine that you decide that the <code>isValid</code> method should no longer return a primitive boolean value but a result object instead.
+The functional test name can stay exactly the same in that case because the functional aspect did not change.
+It&rsquo;s the technical implementation that changes and so the test that describes those technical details has to be renamed to reflect the new implementation.
+Now, one could say &ldquo;it&rsquo;s only renaming, that&rsquo;s easily done&rdquo;.
+Yes, that&rsquo;s true, but no compiler would force us to change a test name.
+Chances are high that in those cases, we only adapt the test implementation and leave the method name as it is, which leads to misleading and simply wrong test names.
+And last but not least, the functional form is usually much shorter.</p>
+<p>You might have noticed that we changed another detail in the specification test name: we switched from the usual camelCase to the snake_case format.
+Although it&rsquo;s rather unusual in the Java world, in our eyes it improves the readability of those long method names a lot.
+Depending on the language and tools we use, we might even be able to use spaces within the test names like with Jasmine or Cypress in the JavaScript world, or with languages like Kotlin or Groovy.
+Other languages are less flexible when it comes to naming tests.
+The Go language, for example, expects the prefix <code>Test</code> for unit tests.
+Again, we have to respect the constraints of the tools or languages we use and find valid options to formulate our tests (names) as expressively as possible.</p>
+<p>The main reason why the test name in the previous example is getting very long is that the test verifies several details.
+Looking at the full test implementation in the <a href="/posts/testing_primer/anatomy-of-a-good-test/">Anatomy of a Good Test</a> post we can see multiple asserts</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">9.95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">).</span><span style="color:#a6e22e">quantity</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">22.50</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">).</span><span style="color:#a6e22e">amount</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">32.45</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">subtotalAmount</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">3.5</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">shippingAmount</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span>BigDecimal<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#ae81ff">35.95</span><span style="color:#f92672">),</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">totalAmount</span><span style="color:#f92672">());</span>
+</span></span></code></pre></div><p>There are details verified by this test that are not even included in the proposed name like the number of items and their quantity.
+The more details a test covers, the harder it becomes to include all those in an extensive specification test name.
+So for more integrated component or end-2-end tests, we will usually have to fall back to the scenario-based naming pattern.</p>
+<p>For other types of tests, for example, performance tests, scenario-based names are often used as well.
+Sometimes, expressive naming does not seem to be so important because the number of tests is manageable (for example, some projects have only one performance test, which simulates a normal day for the entire platform).
+Nevertheless, at least initially, it is worthwhile for all test types to think about this carefully.</p>
+<h4 id="failure-messages">Failure Messages</h4>
+<p>We also want to have a brief look at the messages we get if a test fails.
+Although it is not really a naming topic, it supplements the name of the test and addresses the problem of &ldquo;what to do when a specific test becomes red&rdquo;.
+For very focused tests, that only verify a single aspect and with expressive names, we can probably ignore those messages.
+The name of the failing test already tells us what&rsquo;s going on.
+But for tests with a broader focus, that verify (assert) several things the failure messages have to tell us which of those did not match the expectation.</p>
+<p>In most test frameworks, the default failure message of an assertion at least says what was expected and was actually found.
+For example, the default failure message of the JUnit 5 <code>assertEquals</code> assertion looks as follows:</p>
+<pre tabindex="0"><code>org.opentest4j.AssertionFailedError:
+Expected :2
+Actual   :0
+
+&lt;Stack trace&gt;
+</code></pre><p>I got this from our <code>addTwoArticles</code> test.
+Knowing that, could you tell what exactly was going wrong?
+Obviously not.
+Neither the test nor the failure message gives us a clear hint.
+We have to jump into the test implementation, to the line we find somewhere in the stack trace below the failure message, to see what exactly was asserted.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+</span></span></code></pre></div><p>By adding a short description of the assertion we can improve the failure message a lot.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>assertEquals<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">,</span> shoppingCart<span style="color:#f92672">.</span><span style="color:#a6e22e">items</span><span style="color:#f92672">().</span><span style="color:#a6e22e">size</span><span style="color:#f92672">(),</span> <span style="color:#e6db74">&#34;Number of items in ShoppingCart&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div><pre tabindex="0"><code>org.opentest4j.AssertionFailedError: Number of items in ShoppingCart ==&gt;
+Expected :2
+Actual   :0
+</code></pre><p>Now, we immediately see what&rsquo;s the problem and can directly jump to our <code>ShoppingCart</code> implementation to analyze and fix it.</p>
+<p>Depending on the test framework and maybe additional libraries we use we might get better or worse default failure messages.
+Not only for the failure message, it&rsquo;s a good idea to see a test fail while we&rsquo;re implementing it.
+In this case, we can verify if the resulting failure message along with the name of the test tells us what the problem is.
+If not, we should think about improving the test to get a more precise failure message.</p>
+<p>Always keep in mind: the test that we currently write might fail in a couple of months, maybe right before an important release, and we might be the ones that have to fix it.</p>
+<h3 id="summary">Summary</h3>
+<p>Organizing all the tests for our systems is a difficult problem.
+Such an organization needs to help us understand what tests we have, and where they are.
+Naming the tests is probably even more difficult.
+Names should be expressive enough to tell us what functionalities our system already provides.
+They also need to provide us with as much information as possible when they turn red.
+The same goes for failure messages.
+In addition, we need to keep all of the above consistent and cohesive, also with the production code.
+All that requires a lot of attention, but can greatly help us work with the code.</p>
+<p>Many thanks to Joachim Praetorius for his feedback and suggestions to improve this post.</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <script src="https://utteranc.es/client.js"
+        repo="jacekbilski/jacekbilski.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" integrity="sha384-ZbbbT1gw3joYkKRqh0kWyRp32UAvdqkpbLedQJSlnI8iLQcFVxaGyrOgOJiDQTTR" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

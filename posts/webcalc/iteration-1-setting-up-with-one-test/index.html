@@ -11,7 +11,6 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.85.0" />
 
     
     
@@ -66,8 +65,8 @@
     
 
     
-<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/css/diff2html.min.css'/>
-<style type='text/css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html@3.4.22/bundles/css/diff2html.min.css" integrity="sha256-xwYc1UFy0EG7nsdLymiAp5ZU8MyErM6P33sMGDxuwMw=" crossorigin="anonymous">
+<style>
 .d2h-wrapper {
     color: black;
     background: white;
@@ -84,7 +83,7 @@
     overflow-x: auto;
 }
 </style>
-<script src='https://cdn.jsdelivr.net/npm/diff2html@3.1.12/bundles/js/diff2html.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/diff2html@3.4.22/bundles/js/diff2html.min.js" integrity="sha256-l4waRyoxJlOfErhA1uwFmuXdFLJRQTOAsbd7uIc3+aQ=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -258,7 +257,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     <br/>
     
-        <i class="fas fa-clock"></i> 5 min read
+        <i class="fas fa-clock"></i> 3 min read
     
 </div>
 
@@ -330,7 +329,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </script>
 
 <p>If I take a look at test results, the problem there is, there&rsquo;s nobody listening on localhost:8080.</p>
-<pre><code>java.net.ConnectException: Connection refused (Connection refused)
+<pre tabindex="0"><code>java.net.ConnectException: Connection refused (Connection refused)
 </code></pre><p>As the application actually didn&rsquo;t even start, it&rsquo;s not a wonder. Let&rsquo;s fix that.</p>
 
 
@@ -343,11 +342,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </script>
 
 <p>The application was started, it listens on port 8080, but nobody responds to request to &ldquo;/eval&rdquo;.</p>
-<pre><code>java.lang.AssertionError: 1 expectation failed.
-Response body doesn't match expectation.
-Expected: &quot;3&quot;
-  Actual: {&quot;timestamp&quot;:&quot;2018-09-04T06:44:17.247+0000&quot;,&quot;status&quot;:404,
-     &quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No message available&quot;,&quot;path&quot;:&quot;/eval&quot;}
+<pre tabindex="0"><code>java.lang.AssertionError: 1 expectation failed.
+Response body doesn&#39;t match expectation.
+Expected: &#34;3&#34;
+  Actual: {&#34;timestamp&#34;:&#34;2018-09-04T06:44:17.247+0000&#34;,&#34;status&#34;:404,
+     &#34;error&#34;:&#34;Not Found&#34;,&#34;message&#34;:&#34;No message available&#34;,&#34;path&#34;:&#34;/eval&#34;}
 </code></pre><p>I need a controller.</p>
 
 

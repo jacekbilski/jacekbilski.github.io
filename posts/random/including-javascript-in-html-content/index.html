@@ -11,24 +11,23 @@
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="author" content="Jacek Bilski">
-<meta name="generator" content="Hugo 0.85.0" />
 
     
     
     
 
 <title>Including JavaScript in HTML content • On Software Engineering</title>
-<meta name="description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&#39; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+<meta name="description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
 Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink.">
 <meta name="keywords" content="JavaScript, MyFaces, XML">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Including JavaScript in HTML content"/>
-<meta name="twitter:description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&#39; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+<meta name="twitter:description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
 Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink."/>
 <meta name="twitter:site" content="@jacek_bilski"/>
 
 <meta property="og:title" content="Including JavaScript in HTML content" />
-<meta property="og:description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&#39; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+<meta property="og:description" content="For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
 Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.bilski.tech/posts/random/including-javascript-in-html-content/" /><meta property="article:section" content="posts" />
@@ -243,15 +242,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks' <code>tree2</code> component, but we were forced to render commandButtons instead, which looked quite awkward in some places.</p>
+    <p>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&rsquo; <code>tree2</code> component, but we were forced to render commandButtons instead, which looked quite awkward in some places.</p>
 <p>Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &ldquo;oamSubmitForm is not defined&rdquo; after clicking a commandLink. Google wasn&rsquo;t really helpful as it seemed, that no one was ever struggling with that sort of problem. I used Firebug (great Firefox extension for web developers, grab it <a href="http://getfirebug.com/" target="_blank">here</a>) to check what really Firefox was getting from a server and what really was the code it was rendering. And there was something not right, MyFaces rendered JavaScript code, that included &ldquo;oamSubmitForm&rdquo; function, but Firefox couldn&rsquo;t find it. When I looked at what Firefox was really rendering (HTML tab in Firebug), there were two blocks of JavaScript, but both empty. I Googled a little more and stumbled upon some posts regarding JavaScript code included in a page, which content type was <code>application/xhtml+xml</code>. I checked what content type I was getting from my server, and it was <code>text/xml</code>. When I&rsquo;ve added <code>&lt;jsp:directive.page contentType=&quot;text/html; charset=UTF-8&quot;/&gt;</code> to header of my page, suddenly all commandLinks started to work correctly.</p>
 <p>What happened? A good practice is that when you include JavaScript code in your HTML page you should use comment out all this code using HTML/XML comments: <code>&lt;!--</code> and <code>--&gt;</code>. That&rsquo;s enough when your content type is not something like <code>text/xml</code>. In that case, you need to write all JavaScript code within CDATA block so it should look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
-<span style="color:#f92672">&lt;</span>[<span style="color:#a6e22e">CDATA</span>[
- <span style="color:#75715e">// your code here
-</span><span style="color:#75715e"></span>]]<span style="color:#f92672">&gt;</span>
-&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><p>Apparently, MyFaces doesn&rsquo;t do that. I&rsquo;ll confirm that, and if that&rsquo;s true I&rsquo;ll report a bug and provide a patch. So keep up, I&rsquo;ll tell you when that will happen, and post this patch here also.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>[<span style="color:#a6e22e">CDATA</span>[
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// your code here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>]]<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>Apparently, MyFaces doesn&rsquo;t do that. I&rsquo;ll confirm that, and if that&rsquo;s true I&rsquo;ll report a bug and provide a patch. So keep up, I&rsquo;ll tell you when that will happen, and post this patch here also.</p>
 
   </div>
   

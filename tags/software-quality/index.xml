@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software quality on On Software Engineering</title>
+    <link>https://www.bilski.tech/tags/software-quality/</link>
+    <description>Recent content in software quality on On Software Engineering</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/software-quality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tests organization and naming</title>
+      <link>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry and Theo Pack.
+As our system grows, so will our test suites. For our production code, we have learned techniques to keep it maintainable. For example, we try to structure our logic into sub-aspects, put them in specific locations and give the units meaningful names. We want to achieve the same for our tests. One of the main goals is that a developer - or generally speaking, the person who has to maintain the test - knows where to find which test.</description>
+    </item>
+    
+    <item>
+      <title>Test Strategy</title>
+      <link>https://www.bilski.tech/posts/testing_primer/test-strategy/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/testing_primer/test-strategy/</guid>
+      <description>Note, this post was originally published on INNOQ blog together with Torsten Mandry and Theo Pack.
+In our previous posts, we focused on why and how we write tests. In most of our projects, there will be many of those tests. In the last post about tests granularity, we additionally stated that there usually will be different kinds of tests, on different levels of granularity. That leads to our next topic: which kinds of tests do we need and what is the ideal mix of them?</description>
+    </item>
+    
+  </channel>
+</rss>

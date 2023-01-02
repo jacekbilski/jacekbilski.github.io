@@ -23,7 +23,7 @@ MyFaces looks at Accept HTTP header, which, in my case, states text/html,applica
       <pubDate>Tue, 07 Jul 2009 00:00:00 +0000</pubDate>
       
       <guid>https://www.bilski.tech/posts/random/including-javascript-in-html-content/</guid>
-      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&#39; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
+      <description>For the last couple of days, I was struggling with Java ServerFaces. The exact problem was, that commandButtons were working as expected, but commandLinks were not. We are using Apache MyFaces with Tomahawk and Sandbox components. We were going to use commandLinks for navigation and other uses like selecting nodes in Tomahawks&amp;rsquo; tree2 component, but we were forced to render commandButtons instead, which looked quite awkward in some places.
 Symptoms we got, were that three browsers: Firefox, Opera and Konqueror, were complaining about &amp;ldquo;oamSubmitForm is not defined&amp;rdquo; after clicking a commandLink.</description>
     </item>
     
