@@ -5,7 +5,8 @@
     <link>https://www.bilski.tech/tags/value/</link>
     <description>Recent content in value on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language><atom:link href="https://www.bilski.tech/tags/value/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/tags/value/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving your software by Gernot Starke</title>
       <link>https://www.bilski.tech/videos/improving_your_software/</link>
@@ -23,6 +24,16 @@
       <guid>https://www.bilski.tech/videos/java_case_study/</guid>
       <description>This is unfortunately a paid material but I believe it was worth buying. Before I&amp;rsquo;ve seen this whole series I theoretically knew what TDD is and how to do it, but I always struggled with it. Watching this series has shown me how to apply all this theoretical knowledge, put most pieces in place.
 The link: https://cleancoders.com/videos?series=java-case-study</description>
+    </item>
+    
+    <item>
+      <title>Behaviour over structure</title>
+      <link>https://www.bilski.tech/posts/random/behaviour-over-structure/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/random/behaviour-over-structure/</guid>
+      <description>This post was originally posted on INNOQ blog.
+Note: In this post, I&amp;rsquo;m using the terms &amp;ldquo;behaviour&amp;rdquo; and &amp;ldquo;structure&amp;rdquo; to describe more &amp;ldquo;dynamic&amp;rdquo; and more &amp;ldquo;static&amp;rdquo; properties of a particular system or piece of software. That is, I&amp;rsquo;m using the term &amp;ldquo;structure&amp;rdquo; for properties like &amp;ldquo;Java is a statically-typed language&amp;rdquo; or &amp;ldquo;We follow Java Beans convention in this project&amp;rdquo;. On the other hand, &amp;ldquo;behaviour&amp;rdquo; to me are things like &amp;ldquo;The application correctly calculates SHA-512 checksum&amp;rdquo; or &amp;ldquo;The calculations are done within 10 seconds&amp;rdquo;.</description>
     </item>
     
   </channel>

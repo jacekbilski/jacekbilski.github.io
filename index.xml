@@ -6,7 +6,7 @@
     <description>Recent content on On Software Engineering</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.bilski.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple made easy by Rich Hickey</title>
       <link>https://www.bilski.tech/videos/simple_made_easy/</link>
@@ -71,6 +71,16 @@ The link: https://cleancoders.com/videos?series=java-case-study</description>
       
       <guid>https://www.bilski.tech/videos/software_faster/</guid>
       <description>This video is just one of many in which Dan presents some of the patterns he sees and uses to deliver value faster. All are equally good and worth watching. He also seem to have started a book collecting all those patterns, available on Leanpub, but it also seems that he hasn&amp;rsquo;t been working on that for quite some time already.</description>
+    </item>
+    
+    <item>
+      <title>Behaviour over structure</title>
+      <link>https://www.bilski.tech/posts/random/behaviour-over-structure/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.bilski.tech/posts/random/behaviour-over-structure/</guid>
+      <description>This post was originally posted on INNOQ blog.
+Note: In this post, I&amp;rsquo;m using the terms &amp;ldquo;behaviour&amp;rdquo; and &amp;ldquo;structure&amp;rdquo; to describe more &amp;ldquo;dynamic&amp;rdquo; and more &amp;ldquo;static&amp;rdquo; properties of a particular system or piece of software. That is, I&amp;rsquo;m using the term &amp;ldquo;structure&amp;rdquo; for properties like &amp;ldquo;Java is a statically-typed language&amp;rdquo; or &amp;ldquo;We follow Java Beans convention in this project&amp;rdquo;. On the other hand, &amp;ldquo;behaviour&amp;rdquo; to me are things like &amp;ldquo;The application correctly calculates SHA-512 checksum&amp;rdquo; or &amp;ldquo;The calculations are done within 10 seconds&amp;rdquo;.</description>
     </item>
     
     <item>

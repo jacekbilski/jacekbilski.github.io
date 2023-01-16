@@ -16,22 +16,40 @@
   </url><url>
     <loc>https://www.bilski.tech/videos/software_faster/</loc>
   </url><url>
-    <loc>https://www.bilski.tech/tags/automated-testing/</loc>
-    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+    <loc>https://www.bilski.tech/tags/basics/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/random/behaviour-over-structure/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/engineering/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/</loc>
-    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/posts/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/posts/random/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/software-development/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/value/</loc>
+    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.bilski.tech/tags/automated-testing/</loc>
     <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/series/</loc>
     <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/tags/software-quality/</loc>
-    <lastmod>2021-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/tags/</loc>
     <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/tags/testing/</loc>
@@ -48,9 +66,6 @@
   </url><url>
     <loc>https://www.bilski.tech/posts/testing_primer/tests-organization-and-naming/</loc>
     <lastmod>2021-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.bilski.tech/posts/random/</loc>
-    <lastmod>2021-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.bilski.tech/tags/simplicity/</loc>
     <lastmod>2021-07-20T00:00:00+00:00</lastmod>
@@ -193,9 +208,6 @@
     <loc>https://www.bilski.tech/posts/webcalc/motivation-and-plan/</loc>
     <lastmod>2018-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.bilski.tech/tags/software-development/</loc>
-    <lastmod>2018-09-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.bilski.tech/tags/code-readability/</loc>
     <lastmod>2018-06-22T00:00:00+00:00</lastmod>
   </url><url>
@@ -279,17 +291,11 @@
   </url><url>
     <loc>https://www.bilski.tech/tags/agile/</loc>
   </url><url>
-    <loc>https://www.bilski.tech/tags/basics/</loc>
-  </url><url>
     <loc>https://www.bilski.tech/categories/</loc>
-  </url><url>
-    <loc>https://www.bilski.tech/tags/engineering/</loc>
   </url><url>
     <loc>https://www.bilski.tech/tags/patterns-of-effective-delivery/</loc>
   </url><url>
     <loc>https://www.bilski.tech/tags/unit/</loc>
-  </url><url>
-    <loc>https://www.bilski.tech/tags/value/</loc>
   </url><url>
     <loc>https://www.bilski.tech/videos/</loc>
   </url>
